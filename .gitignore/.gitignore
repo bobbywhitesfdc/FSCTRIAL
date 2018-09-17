@@ -1,0 +1,3 @@
+package.xml
+# Exclude Managed Package artifacts
+*FinServ__*
