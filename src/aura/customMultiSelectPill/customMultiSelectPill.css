@@ -1,0 +1,37 @@
+.THIS .uiPillContainer {
+	border: 1px solid #d8dde6;
+}
+.THIS .uiInput--input .input, 
+.THIS .uiInput--input.input{
+	border: none;
+	outline: none;
+	width: 11rem;
+	min-height: calc(2.125rem + 3px);
+}
+
+.THIS .uiInput--input.input:focus, 
+.THIS .uiInput--input .input:focus, 
+.THIS .uiInput--input.input:active, 
+.THIS .uiInput--input .input:active{
+    outline: none;
+    box-shadow: none;
+}
+
+.THIS .uiInput--lookup.lookup__menu, 
+.THIS .uiInput--lookup .lookup__menu {
+	min-width: 11rem;
+	width: auto;
+    margin-left: -1px;
+    margin-top: calc(.25rem + 1px);
+}
+
+.THIS .uiInput--lookup .lookup__item.highlighted a {
+    background-color: rgb(244, 246, 249);
+    text-decoration: none;
+    color: #005fb2;
+}
+
+.THIS .uiPillContainerAutoComplete .pillIcon, 
+.THIS .uiPillContainerAutoComplete .pillIcon .uiImage {
+	display: none;
+}

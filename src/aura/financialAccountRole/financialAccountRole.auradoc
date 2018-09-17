@@ -1,0 +1,8 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:financialAccountRole</code> component renders a list of roles an individual has in relation to their financial accounts. </p>
+		<br/>
+		<p>Here is an example</p>
+		<pre> &lt;FinServ:financialAccountRole/> </pre>		
+	</aura:description>
+</aura:documentation>

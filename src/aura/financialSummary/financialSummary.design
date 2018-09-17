@@ -1,0 +1,6 @@
+<design:component label="Financial Summary - Financial Services Cloud" >
+	<sfdc:objects>
+		<sfdc:object>Account</sfdc:object>
+	</sfdc:objects>
+	<design:attribute name="fieldSet" label="Field Set (Account)" default="WM_Client_Profile_Fin_Acct_Summary" description="Name of field set used to display summary fields on account" />
+</design:component>

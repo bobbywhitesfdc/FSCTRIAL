@@ -1,0 +1,34 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component for a wizard based header for navigation.
+ * @since 206
+-->
+<aura:component>
+	<aura:attribute name="title" type="String" required="true" description="The title of the wizard" />
+	<aura:attribute name="steps" type="String[]" required="true" description="The list of steps for the wizard" />
+	<aura:attribute name="currentStepIndex" type="Integer" default="0" description="The index of current step in the wizard" />
+	<aura:attribute name="progress" type="Integer" default="0" description="The wizard progress bar" />
+	<aura:handler name="change" value="{!v.currentStepIndex}" action="{!c.changeProgess}" />
+	<div>
+		<div class="slds-modal__header slds-text-heading--medium expandHeader">{!v.title}</div>
+		<div class="slds-container--center slds-size--1-of-2">
+	        <div class="slds-wizard slds-m-top--medium" role="navigation">
+			  <ol class="slds-wizard__list">
+				<aura:iteration items="{!v.steps}" var="step" indexVar="index">
+				    <li aura:id="wizardStep" class="{!'slds-wizard__item' + (index le v.currentStepIndex ? ' slds-is-active' : '' )}">
+				      <p class="slds-wizard__link">
+				        <span class="slds-wizard__marker"></span>
+				        <span class="slds-wizard__label slds-text-title--caps slds-truncate">{!step}</span>
+				      </p>
+				    </li>
+				</aura:iteration>
+			  </ol>
+			  <span class="slds-wizard__progress">
+			  	<span aura:id="wizardProgressBar" class="slds-wizard__progress-bar" style="{!v.progress}"></span>
+			  </span>
+			</div>
+		</div>
+	</div>
+</aura:component>

@@ -1,0 +1,4 @@
+<design:component label="Create Individual - Financial Services Cloud" >
+    <design:attribute name="title" label="Title" description="Individual Client component header" />
+    <design:attribute name="contactFirst" label="Show Contact Details First" description="Displays Contact as first step of wizard" />
+</design:component>

@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Lead and Referral</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Leads and Referrals</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Referral_Form --></label>
+        <name>FSC_Referral_Form</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBLLabel_Field_Set_Referrals_Expressed_Interest --></label>
+        <name>FSC_Referrals_Expressed_Interest</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Referrals_Made --></label>
+        <name>FSC_Referrals_Made</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Referrals_Made --></label>
+        <name>FSC_Referrals_Made_Community</name>
+    </fieldSets>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Access</value>
+        </caseValues>
+        <name>lead_access</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Access Level</value>
+        </caseValues>
+        <name>lead_access_level</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Alert</value>
+        </caseValues>
+        <name>lead_alert</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Assignment Rule</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Lead and Referral Assignment Rules</value>
+        </caseValues>
+        <name>lead_assignment_rule</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Capture</value>
+        </caseValues>
+        <name>lead_capture</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Capture Interface</value>
+        </caseValues>
+        <name>lead_capture_interface</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Capture Page</value>
+        </caseValues>
+        <name>lead_capture_page</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Creator</value>
+        </caseValues>
+        <name>lead_creator</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Currency</value>
+        </caseValues>
+        <name>lead_currency</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Custom Field</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Lead and Referral Custom Fields</value>
+        </caseValues>
+        <name>lead_custom_field</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Data</value>
+        </caseValues>
+        <name>lead_data</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Division</value>
+        </caseValues>
+        <name>lead_division</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Edit</value>
+        </caseValues>
+        <name>lead_edit</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Field</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Lead and Referral Fields</value>
+        </caseValues>
+        <name>lead_field</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral General</value>
+        </caseValues>
+        <name>lead_general</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral History</value>
+        </caseValues>
+        <name>lead_history</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral History Report</value>
+        </caseValues>
+        <name>lead_history_report</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral ID</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Lead and Referral IDs</value>
+        </caseValues>
+        <name>lead_id</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Import</value>
+        </caseValues>
+        <name>lead_import</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Import Wizard</value>
+        </caseValues>
+        <name>lead_import_wizard</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Information</value>
+        </caseValues>
+        <name>lead_information</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Lifetime</value>
+        </caseValues>
+        <name>lead_lifetime</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral List Report</value>
+        </caseValues>
+        <name>lead_list_report</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Management</value>
+        </caseValues>
+        <name>lead_management</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Name</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Lead and Referral Names</value>
+        </caseValues>
+        <name>lead_name</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Owner</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Lead and Referral Owners</value>
+        </caseValues>
+        <name>lead_owner</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Owner Alias</value>
+        </caseValues>
+        <name>lead_owner_alias</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Owner Report</value>
+        </caseValues>
+        <name>lead_owner_report</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Picklist</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Lead and Referral Picklists</value>
+        </caseValues>
+        <name>lead_picklist</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Queue</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Lead and Referral Queues</value>
+        </caseValues>
+        <name>lead_queue</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Rating</value>
+        </caseValues>
+        <name>lead_rating</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Record</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Lead and Referral Records</value>
+        </caseValues>
+        <name>lead_record</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Record Type</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Lead and Referral Record Types</value>
+        </caseValues>
+        <name>lead_record_type</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Report</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Lead and Referral Reports</value>
+        </caseValues>
+        <name>lead_report</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Score</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Lead and Referral Scores</value>
+        </caseValues>
+        <name>lead_score</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Setting</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Lead and Referral Settings</value>
+        </caseValues>
+        <name>lead_setting</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Setup</value>
+        </caseValues>
+        <name>lead_setup</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Source</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Lead and Referral Sources</value>
+        </caseValues>
+        <name>lead_source</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Stage ID</value>
+        </caseValues>
+        <name>lead_stage_id</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Status</value>
+        </caseValues>
+        <name>lead_status</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Status Report</value>
+        </caseValues>
+        <name>lead_status_report</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Lead and Referral Views</value>
+        </caseValues>
+        <name>lead_views</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <label><!-- Conversion DateTime --></label>
+        <name>FinServ__ConversionDateTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By Me --></label>
+        <name>FinServ__CreatedByMe__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created from Lead --></label>
+        <name>FinServ__CreatedFromLead__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employer --></label>
+        <name>FinServ__Employer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expressed Interest --></label>
+        <name>FinServ__ExpressedInterest__c</name>
+    </fields>
+    <fields>
+        <label><!-- Household --></label>
+        <name>FinServ__Household__c</name>
+        <relationshipLabel><!-- Household Referrals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Potential Value --></label>
+        <name>FinServ__PotentialValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Referrer --></label>
+        <name>FinServ__ReferredByContact__c</name>
+        <relationshipLabel><!-- Client Referrals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Internal Referrer --></label>
+        <name>FinServ__ReferredByUser__c</name>
+        <relationshipLabel><!-- Leads and Referrals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Referrer Score --></label>
+        <name>FinServ__ReferrerScore__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Account --></label>
+        <name>FinServ__RelatedAccount__c</name>
+        <relationshipLabel><!-- Related Leads --></relationshipLabel>
+    </fields>
+    <recordTypes>
+        <label><!-- General --></label>
+        <name>General</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- A person, business, or organization that is a referral --></description>
+        <label><!-- Referral --></label>
+        <name>Referral</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Retirement Planning --></label>
+        <name>RetirementPlanning</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Internal referrers must be internal Salesforce users. --></errorMessage>
+        <name>FinServ__NonPortalUserReferrer</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter an internal referrer or an external referrer. You can list only one referrer for each referral. --></errorMessage>
+        <name>FinServ__SingleReferredByEntryByRecord</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+</CustomObjectTranslation>

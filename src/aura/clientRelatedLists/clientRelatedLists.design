@@ -1,0 +1,6 @@
+<design:component label="Client Related List - Financial Services Cloud">
+	<sfdc:objects>
+		<sfdc:object>Account</sfdc:object>
+	</sfdc:objects>
+	<design:attribute name="contactFirst" label="Show Contact Section at Top" />
+</design:component>

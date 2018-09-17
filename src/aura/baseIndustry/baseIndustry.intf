@@ -1,0 +1,9 @@
+<!--
++ * Copyright © 2015 salesforce.com, inc. All rights reserved.
++ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
++ * transferred, or disclosed to others, without the prior written consent of Salesforce.
++ * @description interface used as a metadata marker to signify base components
++ * @since 196
++-->
+<aura:interface description="Marker interface to tag all components developed by industry">
+</aura:interface>

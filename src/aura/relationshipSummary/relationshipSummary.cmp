@@ -1,0 +1,18 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle client relationships summary.
+ * @since 204
+-->
+<aura:component access="global" implements="flexipage:availableForRecordHome,force:hasRecordId" description="DEPRECATED">
+	
+	<aura:dependency resource="force:message" type="COMPONENT" />
+	<force:message severity="error" strength="3" theme="pOne">
+		<aura:set attribute="summary"></aura:set>
+		<aura:set attribute="detail">
+			<span>{!$Label.FinServ.Msg_Error_RelationshipSummary_Component_Deprecated}</span> 
+		</aura:set>
+	</force:message>
+
+</aura:component>

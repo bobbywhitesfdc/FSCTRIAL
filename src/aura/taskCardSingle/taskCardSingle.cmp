@@ -1,0 +1,72 @@
+<aura:component controller="FinServ.MoiUICommonController">
+    <aura:attribute name="sObjectName" required="true" default="" type="String" description="Name of the sObject that will be pulled" />
+    <aura:attribute name="activityDate" type="Date" />
+    <aura:attribute name="id" type="String" />
+    <aura:attribute name="type" type="String" />
+    <aura:attribute name="name" type="String" />
+    <aura:attribute name="relatedTo" type="String" />
+    <aura:attribute name="subject" type="String" />
+    <aura:attribute name="timestamp" type="DateTime" />
+    <aura:attribute name="isChecked" type="Boolean" default="{!false}" />
+    <aura:attribute name="status" type="String" />
+    <aura:attribute name="IsHighPriority" type="Boolean" />
+    <aura:attribute name="disableCheckbox" type="Boolean" access="PRIVATE" default="{!false}"/>
+    <aura:locator alias="taskCardSingle_checkOffTask" target="checkbox" description="Task Card Checkbox"/>
+    <aura:locator alias="taskCardSinge_clickTask" target="taskLink" description="Link to Task Record"/>
+
+    <li class="slds-list__item">
+        <div class="slds-media slds-tile slds-m-vertical--small slds-m-horizontal--large">
+            <div class="slds-media__figure">
+                <label class="slds-checkbox">
+                    <input aura:id = "checkbox" type="checkbox" class="{!v.isChecked == true? 'completed':''}" onclick="{!c.handleSelect}" />
+                    <span class="slds-checkbox--faux"></span>
+                    <span class="slds-assistive-text">{!v.status}</span>
+                    <span class="slds-form-element__label slds-assistive-text">{!empty(v.subject)? '[No subject]' : v.subject}</span>
+                </label>
+            </div>
+            <div class="slds-media__body">
+                <div class="slds-grid slds-grid--align-spread slds-has-flexi-truncate">
+                    <p class="slds-tile__title slds-truncate">
+                        <aura:if isTrue="{!v.isChecked == true}">
+                            <del>
+                                <aura:if isTrue="{!v.IsHighPriority == true}">
+                                    <force:icon aura:id="highPriority" class="highPriority" key="priority" alt="{!v.IsHighPriority ? $Label.ProjectOne_TaskList.HighPriority : ''}" />
+                                </aura:if>
+                                <FinServ:navToObjectWrapper aura:id="taskLink" sObjectId="{!v.id}" displayText="{!empty(v.subject)? $Label.activityTimeline.noSubjectActivityLabel : v.subject}" />
+                            </del>
+                            <aura:set attribute="else">
+                                <aura:if isTrue="{!v.IsHighPriority == true}">
+                                    <force:icon aura:id="highPriority" class="highPriority" key="priority" alt="{!v.IsHighPriority ? $Label.ProjectOne_TaskList.HighPriority : ''}" />
+                                </aura:if>
+                                <FinServ:navToObjectWrapper aura:id="taskLink" sObjectId="{!v.id}" displayText="{!empty(v.subject)? $Label.activityTimeline.noSubjectActivityLabel : v.subject}" />
+                            </aura:set>
+                        </aura:if>
+                    </p>
+                    <aura:if isTrue="{!v.activityDate}">
+                        <div>
+                            <aura:renderIf isTrue="{!v.activityDate lt v.timestamp}">
+                                <span class="uiOutputDate sfaTaskDueDate overdue">
+                                    <FinServ:dateCmp date="{!v.activityDate}" />
+                                </span>
+                                <aura:set attribute="else">
+                                    <span class="uiOutputDate sfaTaskDueDate">
+                                        <FinServ:dateCmp date="{!v.activityDate}" />
+                                    </span>
+                                </aura:set>
+                            </aura:renderIf>
+                        </div>
+                    </aura:if>
+                </div>
+                <ul class="slds-tile__detail slds-list--horizontal slds-has-dividers slds-text-body--small">
+                    <aura:if isTrue="{!v.name}">
+                        <li class="slds-truncate slds-list__item"> {!v.name} </li>
+                    </aura:if>
+                    <aura:if isTrue="{!!empty(v.relatedTo)}">
+                        <li class="slds-truncate slds-list__item"> {!v.relatedTo} </li>
+                    </aura:if>
+                </ul>
+            </div>
+        </div>
+    </li>
+
+</aura:component>

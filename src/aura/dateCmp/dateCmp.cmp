@@ -1,0 +1,16 @@
+<!--
+* Copyright © 2015 salesforce.com, inc. All rights reserved.
+* @copyright This document contains proprietary and confidential information and shall not be reproduced,
+* transferred, or disclosed to others, without the prior written consent of Salesforce.
+* @description component to show the date in a relative format when the date is within one week of today
+* e.g. "Today","Tomorrow","Yesterday"
+* @since 196
+-->
+<aura:component>
+    <aura:attribute name="date" default="" type="Date" description="the date of the component" />
+    <aura:attribute name="format" default="" type="String" description="the date format to use when the date is ourside of one week range, if this value is empty, it will use the date format from org configuration" />
+    <aura:attribute name="formatDt" default="" type="String" description="formatted output text" />
+    <aura:attribute name="showRelativeDate" type="Boolean" default="true" description="the flag to determine if showing relative date, e.g. today tomorrow, default if true" />
+    <span>{!v.formatDt}</span>
+    <ltng:require scripts="{!join(',',$Resource.FinServ__industryresources + '/externalresources/moment/moment.js',$Resource.FinServ__industryresources + '/externalresources/moment/moment-timezone.js')}" afterScriptsLoaded="{!c.init}" />
+</aura:component>

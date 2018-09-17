@@ -1,0 +1,26 @@
+.THIS .children.relType-Household {
+	border-left-color: #00AFA0;
+}
+
+.THIS .children.relType-Account{
+	border-left-color: #7F8DE1;
+}
+
+.THIS .children.relType-Contact {
+	border-left-color: #A094ED;
+}
+
+.THIS .children.relType-Individual{
+	border-left-color: #00DBC1;
+}
+
+.THIS .children {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-left-width: 3px;
+    border-radius: 0 .25rem .25rem 0;
+}
+
+.THIS .children .slds-m-bottom--xx-small {
+    margin-bottom: .25rem;
+}

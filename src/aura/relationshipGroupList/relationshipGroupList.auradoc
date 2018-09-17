@@ -1,0 +1,8 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:relationshipGroupList</code> component renders the groups (<code>Account</code>) that the individual is associated to.</p>
+		<p>This component can be added to <code>Account</code> and <code>Contact</code> record home flexipages.</p>
+		<p>Here is an example</p>
+		<pre>&lt;FinServ:relationshipGroupList /></pre>
+	</aura:description>
+</aura:documentation>

@@ -1,0 +1,36 @@
+<!--
+   * Copyright © 2015 salesforce.com, inc. All rights reserved.
+   * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+   * transferred, or disclosed to others, without the prior written consent of Salesforce.
+   * @description component for displaying individual alerts
+   * @since 206
+   -->
+<aura:component extends="FinServ:baseComponent">
+   <aura:set attribute="sObjectName" value="Alert__c" />
+
+   <aura:attribute name="message" type="String" required="true" description="The message that displays with an alert."/>
+   <aura:attribute name="recordId" type="String" required="true" description="The record Id "/>
+   <aura:attribute name="messageDescription" type="String" description="The description message that displays under alert message"/>
+   <aura:attribute name="severity" type="String" required="true" description="The severity level of this type of alerts" />
+   <span aura:id="alertComponent">
+      <div aura:id="alertMessage" class="{!v.severity + ' border slds-p-around--small slds-m-bottom--x-small slds-grid'}">
+         <lightning:icon size="x-small" class="{!v.severity + ' iconStyle' }" iconName="{! 'utility:' + v.severity}" />
+         <div class="slds-m-left--small">
+            <p class="slds-text-heading--small"> {!v.message}</p>
+            <p class="slds-text-body--regular">{!v.messageDescription}</p>
+         </div>
+         <div class="slds-col_bump-left">
+            <aura:if isTrue="{!v.severity !='info'}">
+               <button aura:id="snoozeAlert" class="slds-button slds-button--icon" onclick="{!c.snoozeAlert}" >
+                  <lightning:icon size="x-small" iconName="utility:clock" class="utility iconStyle"/>
+               </button>
+            </aura:if>
+            <aura:if isTrue="{!v.canUpdate}">
+               <button aura:id="closeAlert" class="slds-button slds-button--icon" onclick="{!c.closeAlert}" >
+                  <lightning:icon size="x-small" iconName="utility:close" class="utility iconStyle" />
+               </button>
+            </aura:if>
+         </div>
+      </div>
+   </span>
+</aura:component>

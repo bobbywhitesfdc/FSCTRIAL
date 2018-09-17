@@ -1,0 +1,28 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description a parent modal for selecting the record type of the group to be created which contains title, body & footer of the modal.
+ * @since 206
+-->
+<aura:component extends="FinServ:baseModal">
+	<aura:dependency resource="markup://FinServ:selectRecordType" type="COMPONENT" />
+	<aura:dependency resource="markup://FinServ:createPanelUtility" type="COMPONENT" />
+
+	<aura:registerEvent name="selectRecordTypeEvent" type="FinServ:selectRecordTypeEvent" />
+	<aura:dependency resource="markup://FinServ:selectRecordTypeEvent" type="EVENT" />
+	
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+	<aura:attribute name="recordTypes" type="List" />
+	<aura:attribute name="selectedRecordTypeId" type="String" />
+	<aura:attribute name="selectedRecordTypeName" type="String" />
+
+	<!-- Body -->
+	<FinServ:selectRecordType aura:id="body" recordTypes="{!v.recordTypes}" onChoose="{!c.chooseRecordType}"/>
+
+	<!-- Footer actions -->
+	<ui:button aura:id="nextButton" label="{!$Label.FinServ.Button_Label_Next}" buttonTitle="{!$Label.FinServ.Button_Label_Next}" class="slds-button slds-button--brand" press="{!c.onRecordTypeSelect}" />
+
+	<FinServ:createPanelUtility aura:id="createPanelUtility" />
+</aura:component>

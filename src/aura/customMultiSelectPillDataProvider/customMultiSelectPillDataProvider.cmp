@@ -1,0 +1,11 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description A provider of list multi select data
+ * @since 200
+-->
+<aura:component extends="ui:dataProvider" description="A provider of values from multi select picklist">
+    <aura:handler name="provide" action="{!c.onProvide}" />
+    <aura:attribute name="options" type="List" description="List of options to provide" />
+</aura:component>

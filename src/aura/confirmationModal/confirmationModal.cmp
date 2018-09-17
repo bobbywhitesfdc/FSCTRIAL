@@ -1,0 +1,25 @@
+<!--
+   * Copyright © 2015 salesforce.com, inc. All rights reserved.
+   * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+   * transferred, or disclosed to others, without the prior written consent of Salesforce.
+   * @description component for displaying modals. Fires app event used by alerts
+   * @since 206
+   -->
+<aura:component implements="ui:hasNotify">
+   <aura:attribute name="message" type="String" description="The message to be displayed" />
+   <aura:attribute name="attributes" type="Object" description="attributes for modal" />
+   <aura:attribute name="cancelText" type="String" required="true" default="{!$Label.FinServ.Button_Label_Cancel}" description="Text for Cancel button" />
+   <aura:attribute name="confirmText" type="String" required="true" default="{!$Label.FinServ.Button_Label_Remove}" description="Text for Confirm button " />
+   <span>
+      <button class="slds-button slds-modal__close slds-button--icon-inverse">
+         <lightning:icon class="slds-button__icon slds-button__icon--large" size="large" iconName="utility:close" />
+      </button>
+      <div class="slds-modal__content slds-p-around--medium">
+         {!v.message}
+      </div>
+      <div class="slds-modal__footer">
+         <button class="slds-button slds-button--neutral" onclick="{!c.closeModal}">{!v.cancelText}</button>
+         <button class="slds-button slds-button--neutral slds-button--brand" onclick="{!c.saveModal}"> {!v.confirmText}</button>
+      </div>
+   </span>
+</aura:component>

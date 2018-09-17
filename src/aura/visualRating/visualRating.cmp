@@ -1,0 +1,21 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to show rating or any visual indication
+ * @since 196
+-->
+<aura:component implements="FinServ:baseIndustry">
+    <aura:attribute name="iconType" type="String" default="star" description="order by criteria" />
+    <aura:attribute name="maxRating" type="Integer" default="5" description="Max rating limit" />
+    <aura:attribute name="rating" type="Integer" default="3" description="specify rating" />
+    <aura:attribute name="temperatureRating" type="String" default="Hot" description="specify rating" />
+    <aura:attribute name="iterator" type="String[]" default="" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <span title="{!format($Label.FinServ.Label_Star_Rating, v.temperatureRating)}">
+        <aura:iteration items="{!v.iterator}" var="item">
+            <lightning:icon iconName="utility:favorite" size="x-small" class="{!v.rating &gt;= item ? 'icon__svg rating-icon icon-' + v.iconType + '-active' : 'icon__svg rating-icon icon-' + v.iconType + '-inactive'}" />
+        </aura:iteration>
+        <span class="slds-assistive-text">{!format($Label.FinServ.Label_Star_Rating, v.temperatureRating)}</span>
+    </span>
+</aura:component>

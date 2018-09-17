@@ -1,0 +1,7 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:relationshipsTreeLeaf</code> component handles the hierarchical tree used to represent the household releationships </p>
+		<p>Here is an example</p>
+		<pre>&lt;FinServ:relationshipsTreeLeaf /></pre>
+	</aura:description>
+</aura:documentation>

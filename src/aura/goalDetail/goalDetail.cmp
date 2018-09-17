@@ -1,0 +1,80 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description Component for displaying Financial Goals detail of household/Client
+ * @since 196
+-->
+<aura:component extends="FinServ:listDataProvider">
+
+    <aura:set attribute="icon" value="custom:custom26"/>
+    <aura:set attribute="header" value="{!$Label.FinServ.Tab_Goals}"/>
+    <aura:set attribute="placeholder" value="table_list_line_item" />
+    <aura:set attribute="licenseKeys" value="['standard']" />
+    <aura:set attribute="sObjectName" value="FinancialGoal__c" />
+    <aura:set attribute="additionalSObjects" value="['Account']" />
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:handler name="change" value="{!v.fields}" action="{!c.getValues}" />
+    <aura:attribute name="defaultFieldValues" type="Map" />
+    <aura:method name="refresh" action="{!c.getValues}" access="PUBLIC" description="method to refresh the field" />
+    <aura:handler name="error" event="ui:dataProvideError" action="{!c.onError}" />
+    <aura:locator target="goalDetail_newButton" description="Create New Goal Button"/>
+
+    <div>
+        <aura:if isTrue="{!v.canRead}">
+            <FinServ:tabHeader hasRenderedList="{!v.queriedRecords}"  numberOfRecords="{!v.records.length}" label="{!$Label.FinServ.Tab_Goals}">
+                <aura:set attribute="headerIcon">
+                    <lightning:icon iconName="custom:custom26" size="small" />
+                </aura:set>
+                <aura:set attribute="headerRight">
+                    <FinServ:navToCreateRecordWrapper aura:id="goalDetail_newButton" sObjectName="FinancialGoal__c" displayText="{!$Label.FinServ.Button_Label_New}" class="slds-button slds-button--neutral slds-button--small" defaultFieldValues="{!v.defaultFieldValues}" navigateToAfterCreate="false" />
+                </aura:set>
+            </FinServ:tabHeader>
+            <aura:iteration items="{!v.records}" var="record" indexVar="iter">
+                <article class="slds-card slds-card_boundary" id="goalDetail">
+                    <div class="slds-card__header slds-grid">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <div class="slds-media__body slds-grid">
+                                <h3 class="slds-text-heading_medium slds-truncate">
+                                    <force:outputLookupWithPreview label="{!record.Name}" value="{!record.Id}" isProfilePicSupported="false" showRelatedLists="true" showPreview="true" />
+                                </h3>
+                                <div>
+                                    <span class="slds-badge slds-m-left_medium">{!record.Status__c}</span>
+                                </div>
+                            </div>
+                            <div class="slds-no-flex">
+                                <FinServ:actionsContainerWrapper recordId="{!record.Id}" refreshView="false" />
+                            </div>
+                        </header>
+                    </div>
+                    <div class="slds-card__body slds-card__body_inner">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-size--2-of-3 slds-large-size--9-of-12">
+                                <aura:if isTrue="{!!empty(record.Description__c)}">
+                                    <div class="slds-p-top_small slds-hyphenate">{!record.Description__c}</div>
+                                </aura:if>
+                                <div class="slds-grid slds-wrap slds-grid--align-spread">
+                                    <aura:iteration items="{!record.recordFieldInfo}" var="field" indexVar="iter">
+                                        <aura:if isTrue="{!and(and(field.APIName != 'Description__c', field.APINameKey != 'Client__r_Name'), field.APIName != 'Status__c')}">
+                                            <div id="targetDate">
+                                                <dl class="slds-p-top_large">
+                                                    <dt class="slds-text-heading--label">{!field.fieldName}</dt>
+                                                    <dd class="slds-text-heading_small"><FinServ:outputField fieldValue="{!field.fieldValue}" fieldType="{!field.fieldType}" fieldLabel="{!field.fieldName}" currencyIndicator="true" truncateDecimal="true" /></dd>
+                                                </dl>
+                                            </div>
+                                        </aura:if>
+                                    </aura:iteration>
+                                </div>
+                            </div>
+                            <div class="slds-size--1-of-3 slds-large-size--3-of-12 slds-grid" id="goalDial">
+                                <div class="slds-col_bump-left">
+                                    <FinServ:svgDonutWrapper donutId="{!(iter+'donutContainer')}" record="{!record}" size="100" color="#44c173" class="slds-resizable"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </aura:iteration>
+        </aura:if>
+    </div>
+</aura:component>

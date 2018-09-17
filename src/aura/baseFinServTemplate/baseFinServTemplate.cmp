@@ -1,0 +1,3 @@
+<aura:component extensible="true" extends="FinServ:baseComponent" implements="force:appHostable">
+    {!v.body}
+</aura:component>

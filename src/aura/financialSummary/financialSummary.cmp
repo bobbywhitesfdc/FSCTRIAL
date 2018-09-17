@@ -1,0 +1,22 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component for financial summary
+ * @since 204
+-->
+<aura:component extends="FinServ:financialAccountConfig" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    
+    <aura:attribute name="fieldSet" access="global" type="String" default="WM_Client_Profile_Fin_Acct_Summary" description="Name of field set used to display summary fields on account" />    
+    <aura:set attribute="header" value="{!$Label.FinServ.Header_Panel_Financial_Summary}" />
+    <aura:set attribute="placeholder" value="preview_panel_anchor" />
+    
+    <FinServ:recordSummary aura:id="summary"
+                     headerLabel="{!$Label.FinServ.Header_Panel_Financial_Summary}"
+                     fieldSetName="{!v.fieldSet}"
+                     sObjectName="Account"
+                     recordId="{!v.recordId}"
+                     currencyIndicator="true"
+                     percentageIndicator="true"
+                     error="{!c.onError}" />
+</aura:component>

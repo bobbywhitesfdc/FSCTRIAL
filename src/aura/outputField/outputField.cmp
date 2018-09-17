@@ -1,0 +1,39 @@
+<!--
++ * Copyright © 2015 salesforce.com, inc. All rights reserved.
++ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
++ * transferred, or disclosed to others, without the prior written consent of Salesforce.
++ * @description component to handle the display of various data formats
++ * @since 196
++-->
+<aura:component >
+    <aura:dependency resource="markup://ui:outputCurrency" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:outputDate" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:outputNumberOrPercent" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:navToObjectWrapper" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:outputText" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:navToLookup" type="COMPONENT" />
+	<aura:dependency resource="markup://ui:outputURL" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:outputPhone" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:outputEmail" type="COMPONENT" />
+    <aura:attribute name="fieldType" type="String" required="true" description="available options: currency,date,number,url,percent,boolean. will use ui:outputText if anything else"/>
+    <aura:attribute name="fieldValue" type="String" required="true" />
+    <aura:attribute name="fieldLabel" type="String" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="record" type="Object" />
+    <aura:attribute name="class" type="String" default=""/>
+    <aura:attribute name="percentageIndicator" type="Boolean" default="false" />
+    <aura:attribute name="numberIndicator" type="Boolean" default="false" />
+    <aura:attribute name="currencyIndicator" type="Boolean" default="false" />
+    <aura:attribute name="truncateDecimal" default="false" type="Boolean" />
+    <aura:attribute name="formatLabel" type="Boolean" default="false" />
+    <aura:attribute name="prependLabel" type="String" access="private" />
+    <aura:attribute name="appendLabel" type="String" access="private" />
+    <aura:attribute name="outputComponent" type="Aura.Component[]" access="private" />
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:handler name="change" value="{!v.fieldValue}" action="{!c.onValueChange}" />
+    <div class="{!v.class}">
+        <aura:if isTrue="{!v.formatLabel}"><span>{!v.prependLabel}</span></aura:if>
+        {!v.outputComponent}
+        <aura:if isTrue="{!v.formatLabel}"><span>{!v.appendLabel}</span></aura:if>
+    </div>
+</aura:component>

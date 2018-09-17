@@ -1,0 +1,16 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:financialAccountRoleList</code> component renders the financial accounts roles that are associated with the individual.</p>
+		<p>This component can only be added to <code>Account</code> record home flexipage.</p>
+		<ul>Available attributes:
+			<li>title - Header name for the component</li>
+			<li>iconName - Name of the icon for the component</li>
+			<li>recordTypeName - Name of the financial account record type for which the component is being configured</li>
+			<li>faFieldSet - Name of the financial account fieldset on Account that contains the fields to be displayed</li>
+			<li>financialHoldingFieldSet - Name of the holding fieldset on Account that contains the fields to be displayed</li>
+			<li>roles - Name of the financial account roles to be displayed.</li>
+		</ul>
+		<p>Here is an example</p>
+		<pre>&lt;FinServ:financialAccountRoleList title="Auto Loan Accounts" iconName="standard:investment_account" recordTypeName="AutoLoan" clientFieldSet="FSC_Client_AutoLoan" financialHoldingFieldSet="FSC_Group_AutoLoan" roles="Primary Owner, Joint Owner"/></pre>
+	</aura:description>
+</aura:documentation>

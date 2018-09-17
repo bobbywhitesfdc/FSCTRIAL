@@ -1,0 +1,81 @@
+.THIS {
+    overflow: auto;
+}
+
+.THIS .placeholder .below-text-body {
+	display: none;
+}
+
+.THIS li.tree-leaf .slds-popover {
+	box-shadow: none;
+	width: 13rem;
+	z-index:1;
+}
+
+/* Tree stuff below */
+.THIS ul.tree-branch {
+	padding-top: 20px; position: relative;
+	transition: all 0.5s;
+    display:table;
+}
+
+.THIS li.tree-leaf {
+	display:table-cell;
+	list-style-type: none;
+	position: relative;
+	padding: 20px 10px 0 0;
+	
+	transition: all 0.5s;
+}
+
+.THIS li.tree-leaf::before {
+	content: '';
+	position: absolute; top: 0;
+	border-top: 3px solid #ccc;
+	width: 50%; height: 20px;
+}
+
+.THIS li.tree-leaf::after{
+	right: auto; left: 6.5rem;
+	border-left: 3px solid #ccc;
+
+	content: '';
+	position: absolute; top: 0; right: 50%;
+	border-top: 3px solid #ccc;
+	width: 90%; height: 25px;
+}
+
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+.THIS li.tree-leaf:only-child::after, .THIS li.tree-leaf:only-child::before {
+	display: none;
+}
+
+/*Remove space from the top of single children*/
+.THIS li.tree-leaf:only-child{ 
+	padding-top: 0;
+}
+
+/*Remove left connector from first child and 
+right connector from last child*/
+.THIS li.tree-leaf:first-child::before, .THIS li.tree-leaf:last-child::after{
+	border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.THIS li.tree-leaf:last-child::before{
+	border-right: 3px solid #ccc;
+}
+
+/*Time to add downward connectors from parents*/
+/* TODO: are both selectors needed here?
+- remove Width (no effect)*/
+.THIS ul.tree-branch ul.tree-branch::before{
+	content: '';
+	position: absolute; top: 0; left: 6.5rem;
+	border-left: 3px solid #ccc;
+	width: 0; height: 20px;
+}
+
+.THIS .tree-leaf .slds-popover {
+    display: block;
+}

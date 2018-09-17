@@ -1,0 +1,58 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description a modal for creating a new individual.
+ * @since 208
+-->
+<aura:component controller="FinServ.RelationshipController">
+	<aura:dependency resource="markup://force:detailPanel" type="COMPONENT" />
+	<aura:dependency resource="markup://force:message" type="COMPONENT" />
+	<aura:dependency resource="markup://force:placeholder" type="COMPONENT" />
+
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+	<aura:attribute name="recordTypeId" type="String" description="Record Type ID of the Group selected in the previous step" />
+	<aura:attribute name="recordId" type="String" description="Record ID for edit record scenario" />
+	<aura:attribute name="objectName" type="String" description="API Name of object to modify" />
+	<aura:attribute name="defaultFieldValues" type="Map" description="Default values to be filled in on the Detail Panel." />
+	<aura:attribute name="pages" type="List" description="List of all page configurations" />
+	<aura:attribute name="currentPage" type="Integer" description="The current step number" />
+	<aura:attribute name="currentStep" type="String" description="Current step of wizard" />
+	<aura:attribute name="errors" type="List" description="list of error messages" />
+	<aura:attribute name="title" type="String" access="PRIVATE" description="Title of page" />
+	<aura:attribute name="subtitle" type="String" access="PRIVATE" description="Subtitle of page" />
+	<aura:attribute name="stepNumber" type="String" access="PRIVATE" default="1" description="Step number of the current step." />
+	<aura:attribute name="totalSteps" type="String" access="PRIVATE" default="1" description="Total number of steps in the wizard." />
+	<aura:handler name="change" value="{!v.currentPage}" action="{!c.onInit}" />
+
+	<aura:method name="save" action="{!c.save}">
+		<aura:attribute name="callback" type="Object" required="true" />
+	</aura:method>
+	
+	<div class="slds-text-heading--large slds-text-align--center">
+		{!v.title}
+	</div>
+	<div class="slds-text-align--center slds-p-bottom--medium message">
+		{!v.subtitle + ' ' + format($Label.FinServ.Wizard_Step_Number, v.stepNumber, v.totalSteps)}
+	</div>
+	<!-- Error State -->
+	<aura:if isTrue="{!!empty(v.errors)}">
+		<div aura:id="errorMessage" class="errorMessage">
+			<force:message severity="error" strength="3" theme="pOne">
+				<aura:set attribute="summary">{!$Label.DetailError.EntitySaveErrorSummary}</aura:set>
+				<aura:set attribute="detail">
+					<aura:iteration items="{!v.errors}" var="error">
+						<span>{!error.message}</span> 
+					</aura:iteration>
+				</aura:set>
+			</force:message>
+		</div>
+	</aura:if>
+	<aura:if isTrue="{!and(!empty(v.objectName), !empty(v.recordTypeId) || !empty(v.recordId) || !empty(v.defaultFieldValues))}">
+		<force:detailPanel aura:id="detailPanel" mode="{!if(empty(v.recordId), 'CREATE', 'EDIT')}" entityApiName="{!v.objectName}" recordId="{!v.recordId}" recordTypeId="{!v.recordTypeId}" defaultFieldValues="{!v.defaultFieldValues}" ignoreExistingAction="true" />
+		<aura:set attribute="else">
+			<force:placeholder name="detail" />
+		</aura:set>
+	</aura:if>
+</aura:component>

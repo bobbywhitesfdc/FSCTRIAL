@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" access="public" description="Event for the create record button clicked inside the autoComplete component">
+    <aura:attribute name="sObjectType" type="String" default="" description="type of the sObject to create" />
+    <aura:attribute name="recordType" type="String" />
+</aura:event>

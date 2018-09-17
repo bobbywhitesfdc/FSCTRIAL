@@ -1,0 +1,5 @@
+<design:component label="Client Redirect" >
+    <sfdc:objects>
+        <sfdc:object>Contact</sfdc:object>
+    </sfdc:objects>
+</design:component>

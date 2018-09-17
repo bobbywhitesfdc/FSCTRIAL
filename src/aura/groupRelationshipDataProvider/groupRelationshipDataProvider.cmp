@@ -1,0 +1,17 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description A backend provider of group membership data
+ * @since 204
+-->
+<aura:component extends="ui:dataProvider" controller="FinServ.RelationshipController" description="A data provider that loads membership and relationship data around groups">
+    <aura:attribute name="groupId" type="String" description="Group Id to query on" />
+    <aura:attribute name="members" type="List" description="Member ACRs to query on" />
+    <aura:attribute name="direct" type="Boolean" default="false" description="Flag to retreive direct members" />
+    <aura:attribute name="indirect" type="Boolean" default="false" description="Flag to retreive indirect members" />
+    <aura:attribute name="contact" type="Boolean" default="false" description="Flag to retreive contact relationships" />
+
+    <aura:handler name="provide" action="{!c.provide}"/>
+    
+</aura:component>

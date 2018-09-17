@@ -1,0 +1,8 @@
+.THIS input:disabled {
+    background-color: #e0e5ee;
+    border-color: #a8b7c7;
+    cursor: not-allowed;
+}
+.THIS .autowidth {
+    width:auto;
+}

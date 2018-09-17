@@ -1,0 +1,140 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle group setup section
+ * @since 206
+-->
+<aura:component controller="FinServ.FieldSetController" extensible="true" extends="FinServ:baseComponent">
+    <aura:dependency resource="markup://FinServ:inputOutputField" type="COMPONENT" />
+    <aura:dependency resource="markup://force:pageBlockSectionView" type="COMPONENT" />
+    <aura:dependency resource="markup://force:message" type="COMPONENT" />
+    <aura:dependency resource="markup://force:placeholder" type="COMPONENT" />
+    <aura:dependency resource="markup://lightning:button" type="COMPONENT" />
+    <aura:dependency resource="markup://lightning:buttonIcon" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:dataGridColumn" type="COMPONENT" />
+
+    <aura:attribute name="autoInit" default="true" type="Boolean" description="To be used only if you need to control the order of init if used with a child component inheriting from this component" />
+    <aura:attribute name="sectionTitle" type="String" description="Section title" />
+    <aura:attribute name="sectionId" type="String" description="Section id" />
+    <aura:attribute name="showSection" type="Boolean" default="false" description="Whether to display the page block section." />
+    <aura:attribute name="isCollapsible" type="Boolean" default="false" description="Is this section collapsible?" />
+    <aura:attribute name="class" type="String" description="CSS class to be applied to the table element" />
+    <aura:attribute name="sObjectName" type="String" description="Object from which to pull column data" />
+    <aura:attribute name="items" type="List" default="[]" description="A list of objects representing the rows of data in the grid" />
+    <aura:attribute name="dataProvider" type="Aura.Component[]" description="A list of data provider components. Use a ui:dataProvider component to provide list data." />
+    <aura:attribute name="headerColumns" type="Aura.Component[]" description="Components used as the header elements of the table" />
+    <aura:attribute name="columnsOverride" type="Map" description="Override information for column types" />
+    <aura:attribute name="defaultValueOverride" type="Map" description="Map of column name and the default value to set the column to"/>
+    <aura:attribute name="initCreateContactOptionsCall" type="Boolean" default="true" description="flag that gets set to false after creating Contact Options for the first
+    time"/>
+
+    <aura:attribute name="defaultRowValues" type="Map" description="Map of default values to pre-populate the record with, in the form fieldApiName:defaultFieldValue." />
+    <aura:attribute name="combineErrors" type="Boolean" default="true" description="Flag to display all errors together" />
+    <!-- Internally used -->
+    <aura:attribute name="priv_columnNames" type="List" description="List of column names for lookup reference" />
+    <aura:attribute name="priv_columns" type="Map" description="Map of column name to column metadata" />
+    <aura:attribute name="priv_tableMatrix" type="List" description="Display map of columns and items" />
+    <aura:attribute name="priv_redraw" type="Boolean" default="true" description="Flag to redraw table" />
+    <aura:registerEvent name="dataChanged" type="ui:dataChanged" description="The event fired when the data provider list changes."/>
+    <aura:registerEvent name="rowAddRemove" type="ui:addRemove" description="Fired when a row is added/removed by the user" />
+    <aura:registerEvent name="rowModified" type="ui:notify" description="Fired when a row is edited by the user" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:handler name="change" value="{!v.items}" action="{!c.onTableChange}" />
+    <aura:handler name="change" value="{!v.columnsOverride}" action="{!c.onTableChange}" />
+
+    <aura:method name="isValidGrid" description="Returns boolean if page is valid">
+        <aura:attribute name="callback" type="Object" required="true" description="Callback function" />
+    </aura:method>
+    <aura:method name="removeRow" action="{!c.deleteRow}">
+        <aura:attribute name="index" type="Integer" required="true" description="Index of item to remove" />
+    </aura:method>
+    <aura:method name="disableItem" description="Enable/Disable row and column in table">
+        <aura:attribute name="index" type="Integer" required="true" description="Index of row" />
+        <aura:attribute name="name" type="String" required="true" description="Name of the item" />
+        <aura:attribute name="disabled" type="String" default="true" required="true" description="Name of the item" />
+    </aura:method>
+    <aura:method name="validateItem" description="Validates row and column in table">
+        <aura:attribute name="index" type="Integer" required="true" description="Index of row" />
+        <aura:attribute name="name" type="String" required="true" description="Name of the item" />
+    </aura:method>
+    <aura:method name="invalidateItem" description="Invalidates row and column in table">
+        <aura:attribute name="index" type="Integer" required="true" description="Index of row" />
+        <aura:attribute name="name" type="String" required="true" description="Name of the item" />
+        <aura:attribute name="message" type="String" required="true" description="Error message" />
+    </aura:method>
+
+    <div>
+        <force:pageBlockSectionView isCollapsible="{!and(v.isCollapsible, !empty(v.sectionId))}" showHeader="{!and(v.showSection, !empty(v.sectionId))}" title="{!v.sectionTitle}" titleClass="slds-text-heading--small" sectionId="{!v.sectionId}">
+            <aura:set attribute="rows">
+                <table aura:id="table" class="{!'slds-table slds-table--compact slds-no-row-hover ' + v.class}">
+                    <thead aura:id="thead">
+                        <tr aura:id="headerRow">
+                            {!v.headerColumns}
+                            <ui:dataGridColumn name="Id" class="slds-cell-shrink" />
+                        </tr>
+                    </thead>
+                    <tfoot aura:id="tfoot"></tfoot>
+                    <aura:if isTrue="{!and(!empty(v.items), !empty(v.priv_columns))}">
+                        <tbody aura:id="tbody">{!v.body}</tbody>
+                        <aura:iteration items="{!v.priv_tableMatrix}" var="row" indexVar="index">
+                            <tbody aura:id="tbody">
+                                <tr>
+                                    <aura:if isTrue="{!!row.hideRow}">
+                                        <aura:iteration items="{!row.metadata}" var="column">
+                                            <td class="{!'slds-cell-wrap ' + ((v.combineErrors) ? 'hide-error' : '')}">
+                                                <FinServ:inputOutputField aura:id="cell" viewType="Edit" index="{!index}"
+                                                    fieldValue="{!column.fieldValue}"
+                                                    fieldType="{#column.type}"
+                                                    fieldName="{#column.fieldPath}"
+                                                    fieldLabel="{#column.label}"
+                                                    sObjectType="{#column.sObjectType}"
+                                                    fieldDisplayValue="{#column.displayValue}"
+                                                    fieldRequired="{!column.required}"
+                                                    options="{!column.picklistValues}"
+                                                    source="{#v.sObjectName}"
+                                                    additionalContext="{#column.additionalContext}"
+                                                    disabled="{! or(column.disabled, and(!v.canUpdate, !row.unsavedNewRow))}"
+                                                    invalid="{!column.invalid}"
+                                                    errors="{!column.errors}"
+                                                    valueChanged="{!c.onValueChange}" />
+                                            </td>
+                                        </aura:iteration>
+                                        <td>
+                                            <!--canRemoveRow factors in both dynamically created and persisted data-->
+                                            <aura:if isTrue="{! and((index != 0), row.canRemoveRow)}">
+                                                <lightning:buttonIcon aura:id="remove" name="{!index}" iconName="utility:close"
+                                                    variant="bare" onclick="{!c.onRemoveRow}" alternativeText="{!$Label.FinServ.Button_Label_Remove}" />
+                                                </aura:if>
+                                        </td>
+                                    </aura:if>
+                                </tr>
+                                <aura:if isTrue="{! and(v.combineErrors, !empty(row.errors)) }">
+                                    <tr>
+                                        <td class="error-messages" colspan="{!(v.headerColumns.length + 1)}">
+                                            <ui:inputDefaultError errors="{!row.errors}" />
+                                        </td>
+                                    </tr>
+                                </aura:if>
+                            </tbody>
+                        </aura:iteration>
+                        <aura:set attribute="else">
+                            <tbody aura:id="tbody">
+                                <tr>
+                                    <td colspan="{!(v.headerColumns.length + 1)}">
+                                        <force:placeholder name="table_list_line_item" />
+                                        <force:placeholder name="table_list_line_item" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </aura:set>
+                    </aura:if>
+                </table>
+                <aura:if isTrue="{!v.canCreate}">
+                    <lightning:button aura:id="add" label="{!$Label.FinServ.Button_Label_New_Row}" iconName="utility:add" onclick="{!c.onAddRow}" class="slds-m-bottom--medium slds-m-left--xx-small" />
+                </aura:if>
+            </aura:set>
+        </force:pageBlockSectionView>
+    </div>
+</aura:component>

@@ -1,0 +1,11 @@
+<design:component label="Referrals Assigned Summary - Financial Services Cloud" >
+    <design:attribute name="title" label="Title" description="Referrals Assigned To Me title" />
+    <design:attribute name="displayReferralsReceived" default="true" label="Referrals Received"/>
+    <design:attribute name="displayReferralsConverted" default="true" label="Referrals Converted"/>
+    <design:attribute name="displayReferralsRejected" default="false" label="Referrals Rejected"/>
+    <design:attribute name="displayRevenueFromReferrals" default="true" label="Revenue Generated"/>
+    <design:attribute name="displayTopExpressedInterest" default="true" label="Top Expressed Interest"/>
+    <design:attribute name="displayTopReferrer" default="true" label="Top Referrer"/>
+    <design:attribute name="displayTopReferrerType" default="true" label="Top Referrer Type"/>
+    <design:attribute name="displayViewAllLink" default="false" label="Display View All Link"/>
+</design:component>

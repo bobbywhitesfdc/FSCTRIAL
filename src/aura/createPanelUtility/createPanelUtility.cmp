@@ -1,0 +1,24 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description A utility component to create panels.
+ * @since 206
+-->
+<aura:component extends="FinServ:baseFinServTemplate">
+	<aura:dependency resource="markup://ui:button" type="COMPONENT"/>
+	<aura:dependency resource="markup://FinServ:modalCreateIndividual" type="COMPONENT"/>
+	<aura:dependency resource="markup://FinServ:modalCreateRelationshipGroup" type="COMPONENT"/>
+	<aura:dependency resource="markup://FinServ:modalSelectRecordType" type="COMPONENT"/>
+	<aura:dependency resource="markup://force:modal" type="COMPONENT"/>
+
+	<aura:handler name="showToast" event="FinServ:showToastModal" action="{!c.showToast}" />
+
+    <aura:method name="createPanel" action="{!c.createPanel}">
+		<aura:attribute name="componentName" type="String" required="true" />
+		<aura:attribute name="componentAttributes" type="Map" default="" description="map of attributes for the component to be created which contains the header/body/footer of the new panel" />
+		<aura:attribute name="panelAttributes" type="Map" default="" description="map of attributes for the new panel to be created" />
+	</aura:method>
+	<aura:locator alias="createPanelUtility" target="*" description="general locator for create modal"/>
+
+</aura:component>

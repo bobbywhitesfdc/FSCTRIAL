@@ -1,0 +1,35 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to autoComplete for multi select pill field.
+ * @since 200
+-->
+<aura:component >
+    <aura:dependency resource="markup://FinServ:customMultiSelectPillDataProvider" type="COMPONENT"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.selectedOptions}" action="{!c.onSelectedChange}" />
+    <aura:attribute name="flavor" type="String" default="default" />
+    <aura:attribute name="value" type="String" default="" />
+    <aura:attribute name="selectedOptions" type="List" />
+    <aura:attribute name="maxOptions" type="Integer" default="20" />
+    <aura:attribute name="label" type="String" />
+    <aura:attribute name="labelClass" type="String" />
+    <aura:attribute name="required" type="Boolean" default="false" />
+    <aura:attribute name="showErrors" type="Boolean" default="false" />
+    <aura:attribute name="errors" type="List" default="" />
+    <aura:attribute name="options" type="Object[]" default="" />
+    <ui:label for="pillAutoComplete" label="{!v.label}" class="{!v.labelClass}" />
+    <ui:pillContainer aura:flavor="{!v.flavor}" pillFlavor="{!v.flavor}" maxAllowed="{!v.maxOptions}" focusOnInput="false" items="{!v.selectedOptions}">
+	    <aura:set attribute="pillInput">
+	        <ui:pillContainerAutoComplete aura:id="pillAutoComplete" labelPosition="hidden" errors="{!v.errors}" required="{!v.required}" showErrors="{!v.showErrors}" optionVar="row">
+	            <aura:set attribute="dataProvider">
+	                <FinServ:customMultiSelectPillDataProvider options="{!v.options}" />
+	            </aura:set>
+	            <aura:set attribute="listOption">
+	                <ui:pillContainerAutoCompleteOption label="{!row.label}" keyword="{!row.value}" value="{!row}" visible="{!row.visible}" iconUrl="{!row.icon}" iconBackgroundColor="ffffff"/>
+	            </aura:set>
+	        </ui:pillContainerAutoComplete>
+	    </aura:set>
+	</ui:pillContainer>
+</aura:component>

@@ -1,0 +1,57 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle summary of records
+ * @since 198
+-->
+<aura:component extends="FinServ:fieldSetDataProvider" controller="FinServ.ListViewController">
+    <aura:dependency resource="markup://force:toggleModalSpinner" type="EVENT"/>
+    <aura:dependency resource="markup://force:navigateToRelatedList" type="EVENT"/>
+
+    <aura:attribute name="showHeader" type="Boolean" default="true" description="To show or hide the header" />
+    <aura:attribute name="headerLabel" type="String" description="The header label" />
+    <aura:attribute name="methodName" type="String" default="getRecordsById" description="The method name used" />
+    <aura:attribute name="percentageIndicator" type="Boolean" default="false" description="Choose if percentage indicator will be used" />
+    <aura:attribute name="numberIndicator" type="Boolean" default="false" description="Choose if number indicator will be used" />
+    <aura:attribute name="currencyIndicator" type="Boolean" default="false" description="Choose if currency indicator will be used" />
+    <aura:attribute name="class" type="string" description="Display styles to be used" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="force:recordChange" action="{!c.onChange}" />
+    <aura:handler event="force:recordDeleted" action="{!c.onChange}" />
+    <aura:method name="refresh" action="{!c.doInit}" access="PUBLIC" description="method to refresh the field" />
+    <aura:registerevent name="error" type="ui:dataProvideError" description="The event fired when a data retrieval error occurs." />
+    
+    <div class="{! 'loading' + ((v.showHeader) ? ' recordSummary ' : ' ') + v.class}">
+        <div class="content">
+            <aura:if isTrue="{!v.showHeader}">
+                <header class="slds-grid">
+                    <div class="slds-col slds-has-flexi-truncate">
+                        <div class="slds-truncate">
+                            <span class="slds-text-heading--medium">{!v.headerLabel}</span>&nbsp;
+                        </div>
+                    </div>
+                </header>
+            </aura:if>
+            <!-- v.fieldValues -->
+            <section class="slds-grid slds-grid--pull-padded">
+                <aura:iteration items="{!v.records}" var="so" indexVar="iter">
+                    <div class="slds-col--padded slds-no-space">
+                        <dl>
+                            <dt>
+                                <div title="{!so.fieldName}" alt="{!so.fieldName}" class="slds-text-heading--label slds-truncate">{!so.fieldName}</div>
+                            </dt>
+                            <dd>
+                                <FinServ:outputField fieldValue="{!so.fieldValue}" fieldType="{!so.fieldType}" fieldLabel="{!so.fieldName}" percentageIndicator="{!v.percentageIndicator}" numberIndicator="{!v.numberIndicator}" currencyIndicator="{!v.currencyIndicator}" truncateDecimal="true" />
+                            </dd>
+                        </dl>
+                    </div>
+                </aura:iteration>
+            </section>
+        </div>
+        <div class="loadingIndicator">
+            <force:placeholder name="record_home_anchor" />
+        </div>
+    </div>
+</aura:component>

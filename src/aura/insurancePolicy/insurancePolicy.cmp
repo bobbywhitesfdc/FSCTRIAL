@@ -1,0 +1,67 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component for financial account insurance policy record type
+ * @since 204
+-->
+<aura:component extends="FinServ:financialAccountConfig" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+
+    <aura:dependency resource="markup://FinServ:listViewCard" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:listViewDataProvider" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:actionCreateButton" type="COMPONENT" />
+    <aura:dependency resource="markup://force:message" type="COMPONENT" />
+    
+    <aura:set attribute="icon" value="custom:custom60"/>
+    <aura:set attribute="header" value="{!$Label.FinServ.Header_Section_Insurance_Policies + ' (--)'}"/>
+    <aura:set attribute="clientFieldSet" value="WM_Client_InsuranceAccount" />
+    <aura:set attribute="householdFieldSet" value="WM_Household_InsuranceAccount" />
+    <aura:set attribute="recordTypeName" value="InsurancePolicy" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:method name="refresh" action="{!c.refresh}" access="PUBLIC"/>
+    <aura:locator target="insurancePolicy_newButton" description="create new InsurancePolicy"/>
+    <aura:locator target="insurancePolicy_viewAll" description="InsurancePolicy View All"/>
+
+    <aura:if isTrue="{!and(v.accountInfo != null, v.financialAccountFieldSet != null)}">
+        <div aura:id="insurancePolicyData">
+            <FinServ:listViewCard aura:id="listViewCard"
+                            recordId="{!v.recordId}"
+                            label="{!$Label.FinServ.Header_Section_Insurance_Policies}"
+                            fieldSetName="{!v.financialAccountFieldSet}"
+                            sObjectName="FinancialAccount__c"
+                            actionTypes="['standardButton', 'quickAction']"
+                            percentageIndicator="true"
+                            error="{!c.onError}">
+                <aura:set attribute="dataProvider">
+                    <FinServ:listViewDataProvider aura:id="listViewDataProvider" pageSize="{!v.listSize}" recordId="{!v.recordId}" 
+                        sObjectName="FinancialAccount__c" 
+                        methodName="getInsuranceAccounts" 
+                        onchange="{!c.handleDataChange}"
+                        error="{!c.onDataLoadError}"/>
+                </aura:set>
+                <aura:set attribute="headerIcon">
+                    <lightning:icon aura:id="headerIcon" iconName="custom:custom60" size="small" />
+                </aura:set>
+                <aura:set attribute="actionsComponent">
+                    <FinServ:actionCreateButton aura:id="insurancePolicy_newButton" sObjectName="FinancialAccount__c" event="e.force:createRecord" params="{!v.createParam}" />
+                </aura:set>
+                <aura:set attribute="footerComponent">
+                    <FinServ:navToRelatedListWrapper aura:id="insurancePolicy_viewAll" relatedListId="{!v.relationshipName}" 
+                        parentRecordId="{!v.recordId}" displayText="{!$Label.RecordHomeCards.ViewAll}" />
+                </aura:set>
+            </FinServ:listViewCard>
+        </div>
+    </aura:if>            
+    <div aura:id="errorMessage" class="errorMessage slds-hide">
+        <!-- Error State -->
+        <force:message severity="error" strength="3" theme="pOne">
+            <aura:set attribute="summary">{!$Label.DetailError.EntitySaveErrorSummary}</aura:set>
+            <aura:set attribute="detail">
+                <aura:iteration aura:id="errors" items="{!v.errors}" var="error">
+                    <span>{!error.message}</span> 
+                </aura:iteration>
+            </aura:set>
+        </force:message>
+    </div>
+</aura:component>

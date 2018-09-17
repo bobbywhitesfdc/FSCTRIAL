@@ -1,0 +1,15 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle navigating tab to list view.
+ * @since 204
+-->
+<aura:component extensible="true" controller="FinServ.MoiUICommonController" extends="FinServ:baseFinServTemplate">
+
+    <aura:attribute name="listViewName" type="String" description="the API name of the listView"/>
+    <aura:attribute name="objectName" type="String" description="the name of the object of this listView"/>
+
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+</aura:component>

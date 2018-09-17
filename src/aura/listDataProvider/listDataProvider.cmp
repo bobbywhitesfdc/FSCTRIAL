@@ -1,0 +1,22 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description listViewTable component create a table based on fields and object data passed into it
+ * @since 196
+-->
+
+<aura:component extensible="true" controller="FinServ.ListViewController" extends="FinServ:fieldSetDataProvider">
+    <aura:dependency resource="markup://force:toggleModalSpinner" type="EVENT"/>
+    <aura:attribute name="methodName" type="String" />
+    <aura:attribute name="sObjectName" type="String" description="Name of the sObject for which the fields needs to be retrieved" />
+    <aura:attribute name="whereField" type="String" default="PrimaryOwner__c" />
+    <aura:attribute name="recordCounter" type="Integer" />
+    <aura:attribute name="fields" type="Object[]" />
+    <aura:attribute name="columnHeaders" type="List" /> {!v.body}
+    <aura:attribute name="queriedRecords" type="Boolean" default="false" />
+    <aura:registerevent name="error" type="ui:dataProvideError" description="The event fired when a data retrieval error occurs." />
+    <aura:handler event="force:recordChange" action="{!c.onChange}" />
+    <aura:handler event="force:recordDeleted" action="{!c.onChange}" />
+    <aura:method name="refresh" action="{!c.doInit}" access="PUBLIC" description="method to refresh the field" />
+</aura:component>

@@ -1,0 +1,8 @@
+<design:component label="Referrals Expressed Interest List - Financial Services Cloud">
+	<sfdc:objects>
+		<sfdc:object>Account</sfdc:object>
+	</sfdc:objects>
+	<design:attribute name="title" label="Title" description="Name of the component." />
+	<design:attribute name="numRecords" label="Number of Records" datasource="6,10,15,25" default="6" />
+	<design:attribute name="referralFieldset" label="Fieldset" description="Fieldset to be used to render this component." />
+</design:component>

@@ -1,0 +1,54 @@
+<!--
++ * Copyright © 2015 salesforce.com, inc. All rights reserved.
++ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
++ * transferred, or disclosed to others, without the prior written consent of Salesforce.
++ * @description component to handle the display of various data formats
++ * @since 196
++-->
+<aura:component>
+    <aura:dependency resource="markup://FinServ:customLookUp" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:customMultiSelectPill" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:outputGeneric" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:picklist" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:readOnlyLookup" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:toggle" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:inputCurrency" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:inputDate" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:inputDateTime" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:inputEmail" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:inputNumber" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:inputPhone" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:inputSelect" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:inputText" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:inputTextArea" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:inputURL" type="COMPONENT" />
+    <aura:dependency resource="markup://lightning:input" type="COMPONENT" />
+
+    <aura:attribute name="fieldType" type="String" required="true" />
+    <aura:attribute name="fieldName" type="String" required="true" />
+    <aura:attribute name="fieldLabel" type="String" required="true" />
+    <aura:attribute name="fieldRequired" type="Boolean" default="false" />
+    <aura:attribute name="fieldValue" type="String" default="" />
+    <aura:attribute name="fieldDisplayValue" type="String" default="" />
+    <aura:attribute name="disabled" type="Boolean" default="false" />
+    <aura:attribute name="invalid" type="Boolean" default="false" />
+    <aura:attribute name="options" type="Object[]" default="[{}]" />
+    <aura:attribute name="format" type="String" default="" />
+    <aura:attribute name="viewType" type="String" default="" />
+    <aura:attribute name="sObjectType" type="String" default="" />
+    <aura:attribute name="errors" type="Object[]" description="The list of errors to be displayed."/>
+    <aura:attribute name="index" type="String" default="" />
+    <aura:attribute name="additionalContext" type="Map" description="Additional context in format of {entityType:{fieldName:fieldValue}} to filter lookup results"/>
+    <aura:attribute name="source" type="String" description="The parent entity that owns the field."/>
+    <aura:attribute name="addDefaultOption" type="Boolean" default="false" />
+    <aura:attribute name="hideLabel" type="Boolean" default="true" />
+    <aura:attribute name="priv_fieldValue" type="String" default="" />
+    
+    <aura:registerEvent name="valueChanged" type="ui:notify" description="Fired when a value is changed"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.priv_fieldValue}" action="{!c.onValueChange}" />
+    <aura:handler name="change" value="{!v.options}" action="{!c.onOptionsChange}" />
+
+    <div class="slds-form-element__control"> {!v.body} </div>
+</aura:component>

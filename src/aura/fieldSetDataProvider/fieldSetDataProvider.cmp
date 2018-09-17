@@ -1,0 +1,20 @@
+<!--
++ * Copyright © 2015 salesforce.com, inc. All rights reserved.
++ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
++ * transferred, or disclosed to others, without the prior written consent of Salesforce.
++ * @description component to handle retrieving information from field sets based on SObject Name and fieldSetName
++ * @since 196
++-->
+<aura:component abstract="true" controller="FinServ.FieldSetController" extensible="true" extends="FinServ:baseFinServTemplate" implements="FinServ:baseIndustry">
+    <aura:attribute name="fields" type="Object[]" />
+    <aura:attribute name="fieldValues" type="Object[]" />
+    <aura:attribute name="createButtonEventParam" type="Object" />
+    <aura:attribute name="sObjectName" required="true" default="" type="String" description="Name of the sObject for which the fields needs to be retrieved"/>
+    <aura:attribute name="fieldSetName" required="true" default="" type="String" description="Name of the Field Set for which the field needs to be retrieved"/>
+    <aura:attribute name="recordId" default="" type="String" description="Id of the record that needs to be retrieved"/>
+    <aura:attribute name="recordType" default="" type="String" description="Record Types for Custom Labels"/>
+    <aura:attribute name="records" type="Object[]" description="List of records returned by data provider" />
+    <aura:attribute name="viewType" type="String" description="Edit or Read" />
+    <aura:registerevent name="error" type="ui:dataProvideError" description="The event fired when a data retrieval error occurs." />
+    {!v.body}
+</aura:component>

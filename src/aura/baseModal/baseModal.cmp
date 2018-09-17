@@ -1,0 +1,10 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description a parent base modal for creating a new custom modal/panel using the createPanelUtility.
+ * @since 206
+-->
+<aura:component extends="force:modal" extensible="true">
+	<aura:attribute name="currentPanel" type="String" default="" description="Global ID of the panel" />
+</aura:component>

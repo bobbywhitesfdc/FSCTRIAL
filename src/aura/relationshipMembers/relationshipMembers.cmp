@@ -1,0 +1,48 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle client relationships members.
+ * @since 204
+-->
+<aura:component access="global" extends="FinServ:baseComponent" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" controller="FinServ.RecordTypeController" description="Relationship group members and associated information.">
+	<aura:dependency resource="markup://FinServ:householdMemberList" type="COMPONENT" />
+	<aura:dependency resource="markup://force:message" type="COMPONENT" />
+	<aura:dependency resource="markup://FinServ:messagePlaceHolder" type="COMPONENT" />
+    
+	<aura:set attribute="icon" value="standard:household" />
+	<aura:set attribute="header" value="{!$Label.FinServ.Header_Section_Primary_Group +' / ' + $Label.FinServ.Header_Section_Household_Members + ' (--)'}" />
+    <aura:set attribute="sObjectName" value="AccountContactRelation" />
+    <aura:set attribute="additionalSObjects" value="['Account','Contact']" />
+    <aura:set attribute="licenseKeys" value="['standard']" />
+   
+	<aura:attribute name="objectInfo" type="Map" description="contact/business/client/household information" />
+	<aura:attribute name="memberId" type="String" description="the id of the member" />
+	<aura:attribute name="householdId" type="String" description="the id of the household" />
+	<aura:attribute name="createParam" type="Map" description="fields used in record create event" />
+	<aura:attribute name="showErrors" type="Boolean" default="false" description="flag used to handle errors" />
+	<aura:attribute name="errors" type="List" default="" description="list of error messages" />
+
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	
+	<aura:if isTrue="{!(!v.showErrors)}">
+		<aura:if isTrue="{!v.objectInfo != null}">
+			<FinServ:householdMemberList aura:id="householdMemberList" recordId="{!v.memberId}"
+				householdId="{!v.householdId}"
+				createParam="{!v.createParam}" />
+		</aura:if>
+		<aura:set attribute="else">
+			<!-- Error State -->
+			<div aura:id="errorMessage" class="errorMessage">
+				<force:message severity="error" strength="3" theme="pOne">
+					<aura:set attribute="summary">{!$Label.DetailError.EntitySaveErrorSummary}</aura:set>
+					<aura:set attribute="detail">
+						<aura:iteration items="{!v.errors}" var="error">
+							<span>{!error.message}</span> 
+						</aura:iteration>
+					</aura:set>
+				</force:message>
+			</div>
+		</aura:set>
+	</aura:if>
+</aura:component>

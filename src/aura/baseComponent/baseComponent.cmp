@@ -1,0 +1,33 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description base industry template component for top most component.
+ * @since 196
+-->
+<aura:component controller="FinServ.MoiAppConfigController" implements="FinServ:baseIndustry" extensible="true" abstract="true">
+    <aura:attribute name="icon" type="String" />
+    <aura:attribute name="header" type="String" />
+    <aura:attribute name="placeholder" type="String" />
+    <aura:attribute name="canCreate" type="Boolean" description="Create access" />
+    <aura:attribute name="canRead" type="Boolean" description="Read access" />
+    <aura:attribute name="canUpdate" type="Boolean" description="Update access" />
+    <aura:attribute name="canDelete" type="Boolean" description="Delete access" />
+    <aura:attribute name="hasLicense" type="Boolean" description="Checks for assigned PSL License access" default="false"/>
+    <aura:attribute name="sObjectName" type="String" description="sObject to check security" />
+    <aura:attribute name="additionalSObjects" type="List" description="Additional list of sObjects to check security" />
+    <aura:attribute name="licenseKeys" type="List" description="Must match with one of the License key Mapping custom metadata." />
+    <aura:attribute name="recordTypeNamesMap" type="Map" description="{sObject, recordtype developernames} map to check security" />
+    <aura:attribute name="addRecTypNamespace" type="Boolean" description="append namespace to all record type names from recordTypeNamesMap attribute" default="true"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <div>
+        <aura:if isTrue="{! empty(v.licenseKeys) || v.hasLicense}">
+            {!v.body}
+            <aura:set attribute="else">
+                <FinServ:PSLAccessError aura:id="pslAccessError" icon="{#v.icon}" headerTitleText="{#v.header}" placeholder="{#v.placeholder}" />
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>

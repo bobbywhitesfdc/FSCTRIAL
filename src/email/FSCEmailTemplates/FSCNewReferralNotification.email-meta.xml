@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>39.0</apiVersion>
+    <available>true</available>
+    <description>Financial Services Cloud email template for notifying your Salesforce org when a referral is created.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>FSC New Referral Notification</name>
+    <packageVersions>
+        <majorNumber>210</majorNumber>
+        <minorNumber>3</minorNumber>
+        <namespace>FinServ</namespace>
+    </packageVersions>
+    <style>none</style>
+    <subject>Salesforce: New Referral</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,11 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle household tab.
+ * @since 196
+-->
+<aura:component implements="force:appHostable" access="global">
+	<aura:dependency resource="markup://FinServ:messagePlaceHolder" type="COMPONENT" />
+	<FinServ:messagePlaceHolder label="{!$Label.FinServ.Msg_Error_Page_Not_Configured}" />
+</aura:component>

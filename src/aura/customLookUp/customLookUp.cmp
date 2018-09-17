@@ -1,0 +1,42 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to autoComplete for Lookup field.
+ * @since 198
+-->
+<aura:component>
+    <aura:dependency resource="markup://forceSearch:inputLookupDesktop" type="COMPONENT" />
+
+    <aura:attribute name="sObjectName" required="true" type="String" description="The name of SObject"/>
+    <aura:attribute name="fieldName" type="String" description="The field name " />
+    <aura:attribute name="label" type="String" description="The associated Label" />
+    <aura:attribute name="labelClass" type="String" description="The css class for the label" />
+    <aura:attribute name="hideLabel" type="Boolean" default="true" description="Flag to display label" />
+    <aura:attribute name="value" type="String" description="The value of the field" />
+    <aura:attribute name="selectedLabel" type="String" description="The display name of the currently selected record"/>
+    <aura:attribute name="required" type="Boolean" default="false" description="Specify if required" />
+    <aura:attribute name="disabled" type="Boolean" default="false" description="Enabled/Disabled" />
+    <aura:attribute name="showErrors" type="Boolean" default="false" description="Specify if Errors will be shown" />
+    <aura:attribute name="errors" type="List" default="" description="List of errors" />
+    <aura:attribute name="matchOnContains" type="Boolean" default="true" description="If set true match if containes the selected field" />
+    <aura:attribute name="additionalContext" type="Map" description="Additional context in format of {entityType:{fieldName:fieldValue}} to filter lookup results"/>
+    <aura:attribute name="source" type="String" description="The parent entity that owns the field."/>
+    <aura:attribute name="contextId" type="String" description="Parent entity id set if relevant."/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:attribute name="entities" type="Object" description="Contains the metadata to support MRU, search, and etc."/>
+    <aura:attribute name="createableEntities" type="List" description="Entity types that can be created from a 'New' option or button to populate the input"/>
+    
+    <aura:if isTrue="{!!v.hideLabel}">
+        <aura:if isTrue="{!v.required}"><span class="required">*</span></aura:if>
+        <lightning:formattedText class="{!v.labelClass}" value="{!v.label}" />
+    </aura:if>
+    <aura:if isTrue="{!!empty(v.entities)}">
+        <forceSearch:inputLookupDesktop value="{!v.value}" selectedLabel="{!v.selectedLabel}" field="{!v.fieldName}"
+            labelClass="{!v.labelClass}" fieldLabel="{!v.label}" entities="{!v.entities}" source="{!v.source}"
+            createableEntities="{!v.createableEntities}" additionalContext="{!v.additionalContext}" showErrors="{!v.showErrors}"
+            matchOnContains="{!v.matchOnContains}" errors="{!v.errors}" required="{!v.required}" disabled="{!v.disabled}" />
+    </aura:if>
+</aura:component>

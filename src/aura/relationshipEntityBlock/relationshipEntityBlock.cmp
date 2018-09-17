@@ -1,0 +1,40 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component for each relationship entity block which resides inside a branch of the Relationship Visualization tree
+ * @since 206
+-->
+<aura:component>
+    <aura:attribute name="entity" type="FinServ.VisualizationComponent" description="An instance of the Visualization component"/>
+    <aura:attribute name="actionTypes" type="List" default="['standardButton']" description="Action types" />
+    <aura:locator target="relationshipEntityBlock_actionMenuList" description="rel entity block menu"/>
+
+    <div class="slds-p-horizontal--x-small slds-p-bottom--x-small">
+        <div class="{!'slds-p-around--x-small children relType-' + v.entity.relType}">
+            <div class="slds-float--left slds-size--2-of-12">
+                <aura:if isTrue="{!v.entity.isContact}">
+                    <lightning:icon aura:id="iconStandardContact" iconName="standard:contact" size="small" />
+                    <aura:set attribute="else">
+                        <lightning:icon aura:id="iconClientOrAccount" iconName="{!'standard:' + (v.entity.isIndividual ? 'client' : 'account')}" size="small" />
+                    </aura:set>
+                </aura:if>
+            </div>
+            <div class="slds-float--left slds-size--8-of-12 slds-p-left--x-small">
+                <force:outputLookupWithPreview aura:id="outputLookupWithPreview" label="{!v.entity.name}" value="{!v.entity.objId}" isProfilePicSupported="false" showRelatedLists="true" />
+                <div class="slds-text-heading--label-normal">
+                    <p aura:id="relRole" class="slds-truncate">{!v.entity.role}</p>
+                </div>
+                <aura:if isTrue="{!(v.entity.isPrimaryMember)}">
+                    <div class="slds-m-top--x-small slds-m-bottom--xx-small">
+                        <span aura:id="primaryMemberLabel" class="slds-badge">{!$Label.FinServ.Label_Visualization_Primary_Member}</span>
+                    </div>
+                </aura:if>
+            </div>
+            <div class="slds-float--left slds-size--2-of-12">
+                <FinServ:actionMenuList aura:id="relationshipEntityBlock_actionMenuList" actionTypes="{!v.actionTypes}" recordId="{!v.entity.relId}" groupId="{!v.entity.primaryAccountId}" />
+            </div>
+            <div class="slds-clear"></div>
+        </div>
+    </div>
+</aura:component>

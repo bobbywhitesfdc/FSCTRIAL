@@ -1,0 +1,17 @@
+<!--
++ * Copyright © 2015 salesforce.com, inc. All rights reserved.
++ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
++ * transferred, or disclosed to others, without the prior written consent of Salesforce.
++ * @description component wrapper to render a donut chart with a given percentage, color, size and text. Works with namespaced orgs
++ * @since 196
++-->
+<aura:component>
+    <aura:attribute name="record" required="true" type="Object" description="Record to parse in order to get percentage info" />
+    <aura:attribute name="donutId" required="true" type="String" description="Unique Id" />
+    <aura:attribute name="percentage" type="String" description="Percentage value to fill the donut" />
+    <aura:attribute name="size" default="100" type="String" description="Size of the donut" />
+    <aura:attribute name="color" default="#44c173" type="String" description="Hex code for fill color" />
+    <aura:attribute name="class" default="" type="String" description="Custom class" />
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <FinServ:svgDonutChart donutId="{!v.donutId}" percentage="{!v.percentage}" size="{!v.size}" color="{!v.color}" class="{!v.class}" />
+</aura:component>

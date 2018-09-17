@@ -1,0 +1,16 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component used for navigation to object detail page
+ * References native force namespaced events that will not work outside of SFX
+ * @since 196
+-->
+<aura:component >
+	<aura:attribute name="sObjectId" type="String" required="true" description="the id of the SObject we navigate to" />
+	<aura:attribute name="class" type="String" description="styling" />
+	<aura:attribute name="displayText" type="String" default="" description="the text display on this navigation link" />
+    <aura:locator target="navToObjectWrapper" description="navToObject Button"/>
+
+	<a href='javascript:void(0);' aura:id="navToObjectWrapper" class="{!v.class}" onclick="{!c.navigate}" label="{!v.displayText}" >{!v.displayText}</a>
+</aura:component>

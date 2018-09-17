@@ -1,0 +1,96 @@
+<!--
+* Copyright © 2017 salesforce.com, inc. All rights reserved.
+* @copyright This document contains proprietary and confidential information and shall not be reproduced,
+* transferred, or disclosed to others, without the prior written consent of Salesforce.
+* @description component to show details of the member belongs to the same household.
+* @since 208
++-->
+<aura:component implements="force:hasRecordId" extends="FinServ:baseFinServTemplate" controller="FinServ.RelationshipController">
+    <aura:dependency resource="markup://FinServ:groupActionButton" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:memberDetail" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:recordSummary" type="COMPONENT" />
+    <aura:dependency resource="markup://force:placeholder" type="COMPONENT" />
+    <aura:dependency resource="markup://lightning:icon" type="COMPONENT" />
+
+    <aura:attribute name="householdId" type="String" description="household id" />
+    <aura:attribute name="householdName" type="String" description="name of household" />
+    <aura:attribute name="loading" type="Boolean" default="true" description="loading stencil"/>
+    <aura:attribute name="mandatoryFields" type="String[]" default="['Primary__c','Roles','Contact.Name','Contact.AccountId','Account.Name']" description="the fields we need to query irregardless of field set"/>
+    <aura:attribute name="fsName" type="String" description="name of the field set that admin configured" />
+    <aura:attribute name="records" type="Object[]" description="List of SObjects" />
+    <aura:attribute name="sObjectName" type="String" default="AccountContactRelation" description="SObject that control security" />
+    <aura:attribute name="memberCount" type="Integer" />
+    <aura:attribute name="createParam" type="Map" default="{}" description="fields used in record create event" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="force:recordChange" action="{!c.onChange}" />
+    <aura:handler event="force:recordPublished" action="{!c.handleRecordPublished}" />
+
+    <div class="slds-card slds-card_boundary slds-m-top--medium householdBackground">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <!-- Household Header -->
+                <div class="slds-media__figure">
+                    <lightning:icon iconName="standard:household" size="small" class="slds-icon__container--square" />
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="slds-text-heading--small slds-card__header-link slds-truncate" aura:id="householdMemberGridHeader">
+                        <aura:if isTrue="{!(v.recordId == v.householdId)}">
+                            {!format($Label.FinServ.Header_Section_Group_Name, $Label.FinServ.Label_Groups_Members_Details, v.memberCount)}
+                            <aura:set attribute="else">
+                                <aura:if isTrue="{! empty(v.householdId)}">
+                                    {!format($Label.FinServ.Header_Section_Group_Name, $Label.FinServ.Header_Section_Primary_Group, v.memberCount)}
+                                    <aura:set attribute="else">
+                                        <FinServ:navToObjectWrapper aura:id="householdMemberGrid_householdLink" sObjectId="{!v.householdId}" displayText="{!format($Label.FinServ.Header_Section_Group_Name, v.householdName, v.memberCount)}"  />
+                                    </aura:set>
+                                </aura:if>
+                            </aura:set>
+                        </aura:if>
+                    </h2>
+                </div>
+            </header>
+            <div class="slds-no-flex">
+                <FinServ:groupActionButton aura:id="householdMemberGrid_listAction" params="{!v.createParam}" additionalSObjects="['AccountContactRelation']" editMode="{!!empty(v.householdId)}" />
+            </div>
+        </div>
+        <div class="slds-card__body slds-card__body--inner">
+            <aura:if isTrue="{! !empty(v.householdId)}">
+                    <!-- Record Summary header -->
+                    <FinServ:recordSummary aura:id="recordSummary" recordId="{!v.householdId}"
+                    fieldSetName="WM_Client_Profile_Relations_HH_Summary"
+                    sObjectName="Account"
+                    showHeader="false"
+                    class="slds-p-vertical--small"
+                    />
+                <!-- Member List -->
+                <aura:if isTrue="{!v.loading}">
+                    <div aura:id="memberGridLoadingStencil" class="slds-grid slds-wrap">
+                        <div class="slds-size--1-of-2">
+                            <div class="slds-card slds-hint-parent slds-m-around--xx-small slds-p-around--medium ">
+                                <force:placeholder name="preview_panel_anchor" />
+                            </div>
+                        </div>
+                        <div class="slds-size--1-of-2">
+                            <div class="slds-card slds-hint-parent slds-m-around--xx-small slds-p-around--medium ">
+                                <force:placeholder name="preview_panel_anchor" />
+                            </div>
+                        </div>
+                        <div class="slds-size--1-of-2">
+                            <div class="slds-card slds-hint-parent slds-m-around--xx-small slds-p-around--medium ">
+                                <force:placeholder name="preview_panel_anchor" />
+                            </div>
+                        </div>
+                        <div class="slds-size--1-of-2">
+                            <div class="slds-card slds-hint-parent slds-m-around--xx-small slds-p-around--medium ">
+                                <force:placeholder name="preview_panel_anchor" />
+                            </div>
+                        </div>
+                    </div>
+                    <aura:set attribute="else">
+                        <FinServ:memberGridDetail aura:id="memberGridDetail" records="{!v.records}" />
+                    </aura:set>
+                </aura:if>
+            </aura:if>
+        </div>
+    </div>
+</aura:component>

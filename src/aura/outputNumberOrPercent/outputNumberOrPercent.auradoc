@@ -1,0 +1,6 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:outputNumberOrPercent</code> component adds the % sign at the end of the number if the number is of type percent. </p>
+		<br/>	
+	</aura:description>
+</aura:documentation>

@@ -1,0 +1,8 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:bankAccount</code> component renders the financial Account with record type Bank Account.</p>
+		<p>This component can only be added to the Lightning page: for example <code>Financial Account</code> record home flexipage</p>
+		<p>Here is an example</p>
+		<pre>&lt;FinServ:bankAccount /></pre>
+	</aura:description>
+</aura:documentation>

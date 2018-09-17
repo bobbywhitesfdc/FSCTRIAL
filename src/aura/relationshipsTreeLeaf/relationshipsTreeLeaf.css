@@ -1,0 +1,20 @@
+.THIS {
+    border: 1px solid #d8dde6;
+    border-radius: .25rem;
+    background-color: #F7F9FB;
+}
+
+.THIS .leaf-header {
+    position: relative;
+    top: -10px;
+}
+
+.THIS .onTop {
+    z-index: 1;
+    position: relative;
+}
+
+.THIS .absoluteRight {
+	position: absolute;
+	right: 0;
+}

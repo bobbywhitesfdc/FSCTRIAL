@@ -1,0 +1,36 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to display task card for today page
+ * @since 208
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" extends="FinServ:baseComponent" access="global">
+    <aura:attribute name="title" type="String" default="" description="Individual Client component header" access="global" />
+    <aura:attribute name="contactFirst" type="Boolean" default="false" description="Displays Contact as first step of wizard" access="global" />
+    <aura:set attribute="icon" value="standard:client" />
+    <aura:set attribute="header" value="{!$Label.FinServ.Header_Component_Create_Individual}" />
+    <aura:set attribute="sObjectName" value="Account" />
+    <aura:set attribute="additionalSObjects" value="AccountContactRelation,Contact" />
+    <aura:set attribute="licenseKeys" value="['standard']" />
+    <aura:locator alias="createNewClientCard_newButton" target="newButton" description="create new individual button"/>
+
+
+    <FinServ:tabHeader label="{! empty(v.title)? $Label.FinServ.Header_Component_Create_Individual : v.title}" >
+        <aura:set attribute="headerIcon">
+            <lightning:icon iconName="standard:client" size="small" class="slds-icon--small" />
+        </aura:set>
+        <aura:set attribute="headerRight">
+            <aura:if isTrue="{!v.canCreate}">
+                <FinServ:individualActionButton aura:id="newButton" class="slds-size--12-of-12 slds-button slds-button--neutral" label="{!$Label.FinServ.Button_Label_New}" contactFirst="{!v.contactFirst}" />
+            </aura:if>
+        </aura:set>
+        <aura:set attribute="body">
+            <aura:if isTrue="{!not(v.canCreate)}">
+                <p class="tile__title slds-truncate slds-tile__title slds-has-flexi-truncate" align="Center">
+                    <lightning:formattedText value="{!$Label.FinServ.Msg_Component_ObjectAccess_Invalid}"/>
+                </p>
+            </aura:if>
+        </aura:set>
+    </FinServ:tabHeader>
+</aura:component>

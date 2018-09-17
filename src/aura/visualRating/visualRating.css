@@ -1,0 +1,12 @@
+.THIS .rating-icon svg{
+    fill: #F88962;
+}
+
+.THIS .icon-star-inactive svg{
+    fill: transparent;
+    stroke: #BAC4D0;
+}
+
+.THIS .rating-icon:not(:last-child) {
+    margin-right: 1px;
+}

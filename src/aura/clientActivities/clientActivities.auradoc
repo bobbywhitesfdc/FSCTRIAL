@@ -1,0 +1,8 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:clientActivities</code> component renders the activities from an individual's contact record and displays on the individual's profile page</p>
+		<p>This component can only be added to the Lightning page: Client Record page</p>
+		<p>Here is an example</p>
+		<pre>&lt;FinServ:clientActivities /></pre>
+	</aura:description>
+</aura:documentation>

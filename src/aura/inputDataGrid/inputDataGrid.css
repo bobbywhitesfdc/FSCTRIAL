@@ -1,0 +1,36 @@
+.THIS table thead th.slds-form-element__label {
+	display: table-cell;
+}
+
+.THIS table tbody .slds-form-element__label {
+	display: none;
+}
+
+.THIS table tbody .forcePlaceholder .placeholder .border-bottom {
+	border-bottom: 0;
+}
+
+.THIS .slds-table--compact th, 
+.THIS .slds-table--compact td {
+	padding: 0.125rem .25rem;
+}
+
+.THIS .slds-table--compact td {
+	padding-bottom: 1rem;
+}
+
+.THIS .slds-table--compact td.error-messages {
+	padding-bottom: 0.75rem;
+}
+
+.THIS .slds-table--compact td.error-messages ul.has-error {
+	margin-top: -1rem;
+}
+
+.THIS .slds-table--compact td.hide-error ul.has-error {
+	display: none;
+}
+
+.THIS .uiInput--default .form-element__help {
+	margin-top: 0.25rem;
+}

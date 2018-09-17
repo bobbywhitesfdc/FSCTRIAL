@@ -1,0 +1,91 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component for the leaf of the relationships visualization tree.
+ * @since 206
+-->
+<aura:component>
+    <aura:attribute name="entity" type="Object" required="true" description="and instance of VisualizationComponent for the leaf node" />
+    <aura:attribute name="parentEntity" type="Object" description="and instance of VisualizationComponent for the leaf's parent node" />
+    <aura:attribute name="createGroupParam" type="Map" description="fields used in record create event" />
+    <aura:attribute name="createParam" type="Map" description="fields used in record create event" />
+    <aura:attribute name="createAccountContactRelation_Param_W_Acc" type="Map" />
+    <aura:attribute name="createAccountContactRelation_Param_W_Con" type="Map" />
+    <aura:attribute name="createAccountAccountRelation_Param" type="Map" />
+    <aura:attribute name="createContactContactRelation_Param" type="Map" />
+    <aura:attribute name="bucketLabel" type="String" description="Label of visualization bucket / node" />
+    <aura:attribute name="actionTypes" type="List" default="['standardButton']" description="Action types" />
+    <aura:attribute name="expanded" type="Boolean" default="true" description="Expanded state of the member list" />
+
+    <aura:attribute name="showRelatedAccounts" type="Boolean" default="true" description="Show the Related Accounts section" />
+    <aura:attribute name="showRelatedContacts" type="Boolean" default="true" description="Show the Related Contacts section" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:locator target="relationshipsTreeLeaf_groupAddMember" description="Relationship Leaf Add Member"/>
+    <aura:locator target="relationshipsTreeLeaf_groupAddAAR" description="Relationship Leaf rel Group AAR"/>
+    <aura:locator target="relationshipsTreeLeaf_addGroup" description="Relationship Leaf Add group"/>
+    <aura:locator target="relationshipsTreeLeaf_contactAddACR" description="Relationship Leaf rel Contact ACR"/>
+    <aura:locator target="relationshipsTreeLeaf_contactAddCCR" description="Relationship Leaf rel Contact CCR"/>
+    <aura:locator target="relationshipsTreeLeaf_accountAddACR" description="Relationship Leaf rel Account ACR"/>
+    <aura:locator target="relationshipsTreeLeaf_accountAddAAR" description="Relationship Leaf rel Account AAR"/>
+    <aura:locator target="toggleHideButton" description="Group Member list toggle"/>
+
+    <div class="slds-popover">
+        <!-- LEAF HEADER -->
+        <div class="slds-p-top--x-small slds-p-right--x-small slds-p-left--x-small">
+            <lightning:buttonIcon aura:id="toggleHideButton" class="{!'onTop' + (empty(v.entity.elements) ? ' slds-hidden' : '')}" 
+                iconName="{!v.expanded ? 'utility:contract_alt' : 'utility:expand_alt'}" variant="bare" onclick="{!c.clickGroupShowHide}" 
+                alternativeText="{! v.expanded ? $Label.FinServ.Button_Label_Hide_Group_Members : $Label.FinServ.Button_Label_Show_Group_Members}" />
+            <div class="slds-clear"></div>
+            <div class="slds-text-align--center leaf-header">
+                <FinServ:relationshipsTreeLeafHeader aura:id="leafHeader" entity="{!v.entity}" showRelatedAccounts="{!v.showRelatedAccounts}" showRelatedContacts="{!v.showRelatedContacts}" />
+            </div>
+            <div class="slds-clear"></div>
+        </div>
+        <!-- LEAF ELEMENTS/BLOCKS -->
+        <aura:if isTrue="{!not(empty(v.entity.elements))}">
+            <div aura:id="elementsContainer" class="{! v.expanded ? '' : 'slds-hide'}">
+                <aura:iteration items="{!v.entity.elements}" var="element">
+                    <span>
+                        <FinServ:relationshipEntityBlock entity="{!element}" actionTypes="{!v.actionTypes}" />
+                    </span>
+                </aura:iteration>
+            </div>
+        </aura:if>
+        <!-- LEAF ACTION BUTTONS -->
+        <div class="slds-p-horizontal--x-small slds-p-bottom--small">
+            <aura:if isTrue="{!v.entity.isGroup}">
+                <FinServ:groupActionButton aura:id="relationshipsTreeLeaf_groupAddMember" class="slds-size--12-of-12 slds-button slds-button--neutral" editMode="{!true}" params="{!v.createParam}" label="{!$Label.FinServ.Button_Label_Add_Relationship}" additionalSObjects="['AccountContactRelation']" />
+                <aura:set attribute="else">
+                    <!-- Related Groups bucket -->
+                    <aura:if isTrue="{!v.entity.bucketType == 'RELATED_GROUP'}">
+                        <FinServ:actionCreateButton aura:id="relationshipsTreeLeaf_groupAddAAR" class="slds-size--12-of-12 slds-button slds-button--neutral" sObjectName="AccountAccountRelation__c" event="e.force:createRecord" label="{!$Label.FinServ.Button_Label_Add_Group}" params="{!v.createAccountAccountRelation_Param}" />
+                    </aura:if>
+                    <!-- Relationship Groups bucket -->
+                    <aura:if isTrue="{!v.entity.bucketType == 'RELATIONSHIP_GROUP'}">
+                        <FinServ:groupActionButton  aura:id="relationshipsTreeLeaf_addGroup" class="slds-size--12-of-12 slds-button slds-button--neutral" params="{!v.createGroupParam}" additionalSObjects="['Account']" label="{!$Label.FinServ.Button_Label_Add_Group}" />
+                    </aura:if>
+                    <!-- Related Contacts bucket -->
+                    <aura:if isTrue="{!v.entity.bucketType == 'RELATED_CONTACT'}">
+                        <aura:if isTrue="{!or(or(v.parentEntity.isContact, v.parentEntity.isGroup), v.parentEntity.isIndividual)}">
+                            <FinServ:actionCreateButton aura:id="relationshipsTreeLeaf_contactAddCCR" class="slds-size--12-of-12 slds-button slds-button--neutral" sObjectName="ContactContactRelation__c" event="e.force:createRecord" label="{!$Label.FinServ.Button_Label_Add_Contact}" params="{!v.createContactContactRelation_Param}" />
+                            <aura:set attribute="else">
+                                <FinServ:actionCreateButton aura:id="relationshipsTreeLeaf_contactAddACR" class="slds-size--12-of-12 slds-button slds-button--neutral" sObjectName="AccountContactRelation" event="e.force:createRecord" label="{!$Label.FinServ.Button_Label_Add_Contact}" params="{!v.createAccountContactRelation_Param_W_Acc}" />
+                            </aura:set>
+                        </aura:if>
+                    </aura:if>
+                    <!-- Related Accounts bucket -->
+                    <aura:if isTrue="{!v.entity.bucketType == 'RELATED_ACCOUNT'}">
+                        <aura:if isTrue="{!or(v.parentEntity.isContact, v.parentEntity.isIndividual)}">
+                            <FinServ:actionCreateButton aura:id="relationshipsTreeLeaf_accountAddACR" class="slds-size--12-of-12 slds-button slds-button--neutral" sObjectName="AccountContactRelation" event="e.force:createRecord" label="{!$Label.FinServ.Button_Label_Add_Account}" params="{!v.createAccountContactRelation_Param_W_Con}" />
+                            <aura:set attribute="else">
+                                <FinServ:actionCreateButton aura:id="relationshipsTreeLeaf_accountAddAAR" class="slds-size--12-of-12 slds-button slds-button--neutral" sObjectName="AccountAccountRelation__c" event="e.force:createRecord" label="{!$Label.FinServ.Button_Label_Add_Account}" params="{!v.createAccountAccountRelation_Param}" />
+                            </aura:set>
+                        </aura:if>
+                    </aura:if>
+                </aura:set>
+            </aura:if>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,78 @@
+/* Any change on button Should test in both SFX and Community,
+ * since the button font size in SFX use 0.75 rem but community use 0.85 rem
+
+/*Mobile fix to remove margin around card*/
+.THIS .WIDE .forceBaseCard.slds-card {
+    margin: 0;
+}
+
+.THIS .NARROW .referSummaryGroup {
+    width: 100%;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.THIS .NARROW .referSummaryGroup .slds-button {
+    flex-grow: 1;
+}
+
+.THIS .NARROW .referralSummaryFieldCell {
+    width: 100%;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.THIS .NARROW .referralSummaryFieldCell:not(:last-child) {
+    border-bottom: 1px solid #dddbda;
+}
+
+.THIS .NARROW .referralSummaryFieldValue {
+    width: 33.3333333333%;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 33.3333333333%;
+    -ms-flex: 0 0 33.3333333333%;
+    flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
+}
+
+.THIS .NARROW .referralSummaryFieldTitle {
+    width: 66.6666666666%;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 66.6666666666%;
+    -ms-flex: 0 0 66.6666666666%;
+    flex: 0 0 66.6666666666%;
+    max-width: 66.6666666666%;
+}
+
+@media (min-width: 48em) {
+    .THIS .WIDE .referSummaryGroup button {
+        width: 6rem;
+    }
+
+    .THIS .WIDE .referralSummaryFieldValue {
+        text-align: left;
+    }
+}
+
+@media (max-width: 48em) {
+    .THIS .WIDE .referralSummaryFieldCell:not(:last-child) {
+        border-bottom: 1px solid #dddbda;
+    }
+    .THIS .WIDE .referSummaryGroup {
+        width: 100%;
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 100%;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .THIS .WIDE .referSummaryGroup .slds-button{
+        flex-grow: 1;
+    }
+}

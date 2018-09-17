@@ -1,0 +1,10 @@
+.THIS .tooltipContainer {
+    height: 0px;
+}
+.THIS .tooltipPosition {
+    left: -1rem;
+    z-index: 7000;
+}
+.THIS .slds-popover  {
+	min-width: 10rem;
+}

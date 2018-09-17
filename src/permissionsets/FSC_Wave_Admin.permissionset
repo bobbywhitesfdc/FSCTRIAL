@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Give users full access to manage Einstein Analytics for Financial Services Cloud</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>User.FinServWaveExt__WavePermissions__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>FSC Analytics Admin</label>
+    <tabSettings>
+        <tab>FinServWaveExt__WMAdvisorWave</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>InsightsAppAdmin</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>InsightsAppUser</name>
+    </userPermissions>
+</PermissionSet>

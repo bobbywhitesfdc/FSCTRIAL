@@ -1,0 +1,55 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description a modal for creating a new relationship group(new setup ui)
+ * @since 206
+-->
+<aura:component controller="FinServ.RelationshipController">
+    <aura:dependency resource="markup://force:detailPanel" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:groupMembersDataGrid" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:groupAccountsDataGrid" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:groupRelationshipDataProvider" type="COMPONENT" />
+
+    <aura:attribute name="recordTypeId" type="String" description="Record Type ID of the Group selected in the previous step" />
+    <aura:attribute name="recordId" type="String" default="" description="Record ID for edit record scenario" />
+    <aura:attribute name="defaultMember" type="Map" description="Contact to defaulted in the group" />
+    <aura:attribute name="defaultIndirectMember" type="Map" description="Business Account defaulted in the group" />
+    <aura:attribute name="currentStep" type="String" description="Current step of wizard" />
+    <aura:attribute name="members" type="List" default="[]" description="List of AccountContactRelationships that are members of group" />
+    <aura:attribute name="existingMembers" type="List" default="[]" description="List of existing AccountContactRelationships that are indirect members of group" />
+    <aura:attribute name="indirectMembers" type="List" default="[]" description="List of AccountContactRelationships that are indirect members of group" />
+    <aura:attribute name="contactRelationships" type="List" default="[]" description="List of ContactContactRelationships to the members of group" />
+    <aura:attribute name="errors" type="List" description="list of error messages" />
+    <aura:attribute name="isPersonAccount" type="Boolean" default="false" description="True if Person Account is enabled for the organization" />
+    <aura:attribute name="showRelatedAccounts" type="Boolean" default="true" description="Show Related Accounts" />
+    <aura:attribute name="showRelatedContacts" type="Boolean" default="true" description="Show Related Contacts" />
+    
+    <aura:method name="save" action="{!c.save}">
+        <aura:attribute name="callback" type="Object" required="true" />
+    </aura:method>
+    
+    <aura:if aura:id="details" isTrue="{!and(v.currentStep == 'detailsStep', or(!empty(v.recordId), !empty(v.recordTypeId)))}">
+        <force:detailPanel aura:id="accountDetailPanel" mode="{!if(empty(v.recordId), 'CREATE', 'EDIT')}" entityApiName="Account" recordId="{!v.recordId}" recordTypeId="{!v.recordTypeId}" ignoreExistingAction="true" />
+    </aura:if>
+    
+    <aura:if aura:id="members" isTrue="{!(v.currentStep == 'membersStep')}">
+        <aura:if isTrue="{!!empty(v.errors)}">
+            <force:pageError errors="{!v.errors}" />
+        </aura:if>
+        <FinServ:groupMembersDataGrid aura:id="membersDataGrid" isPersonAccount="{!v.isPersonAccount}" items="{!v.members}" defaultRowValues="{!v.defaultMember}">
+            <aura:set attribute="dataProvider">
+                <FinServ:groupRelationshipDataProvider aura:id="relationshipDataProvider" groupId="{!v.recordId}" direct="true" onchange="{!c.onDataChange}"/>
+            </aura:set>
+        </FinServ:groupMembersDataGrid>
+        <aura:if isTrue="{!v.showRelatedAccounts}">
+            <FinServ:groupAccountsDataGrid aura:id="accountsDataGrid" items="{!v.indirectMembers}" 
+            members="{!v.members}" existing="{!v.existingMembers}" 
+            defaultRowValues="{!v.defaultIndirectMember}" />
+        </aura:if>
+        <aura:if isTrue="{!v.showRelatedContacts}">
+            <FinServ:groupContactsDataGrid aura:id="contactsDataGrid" items="{!v.contactRelationships}" 
+            members="{!v.members}" />
+        </aura:if>
+    </aura:if>
+</aura:component>

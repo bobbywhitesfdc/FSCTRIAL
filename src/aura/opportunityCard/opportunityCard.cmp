@@ -1,0 +1,101 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to display lead card for today page
+ * @since 196
+-->
+<!--
+TODO: This overwrites the version in core to make it available for Community Builder. We should
+empty out the implementation in core reduce confusion about which version needs to be maintained.
+-->
+<aura:component extends="FinServ:recordList" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="currencyFormat" type="String" description="formats currency to not have decimal places" />
+    <aura:set attribute="icon" value="standard:opportunity"/>
+    <aura:set attribute="header" value="{!format($Label.FinServ.Header_Component_Opportunities,'--')}"/>
+    <aura:set attribute="placeholder" value="table_list_line_item" />
+    <aura:set attribute="licenseKeys" value="['standard']" />
+    <aura:set attribute="sObjectName" value="Opportunity" />
+    <aura:set attribute="fields" value="['Name', 'Account.Name', 'Amount', 'StageName', 'CloseDate']" />
+    <aura:set attribute="limit" value="5" />
+    <aura:set attribute="orderBy" value="CloseDate" />
+    <aura:set attribute="useOr" value="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:locator target="opportunityCard_newButton" description="Button to create new Record"/>
+    <aura:locator target="opportunityCard_viewAll" description="View All Opportunities button on footer"/>
+    <aura:locator target="opportunityCard_navToObj" description="Opportunity Card navToObjectWrapper button"/>
+
+    <div id="opportunityCard" class="narrow slds-card slds-text-body--regular">
+        <header class="slds-card__header slds-media--center slds-grid">
+            <div class="slds-media__figure">
+                <lightning:icon iconName="standard:opportunity" size="small" class="slds-icon--small" />
+            </div>
+            <div class="slds-col slds-has-flexi-truncate slds-align-middle">
+                <div class="slds-media__body">
+                    <h3 class="slds-text-heading--small slds-m-right--small slds-truncate">
+                        <ui:outputText aura:id="opps" value="{!format($Label.FinServ.Header_Component_Opportunities, if(empty(v.recordCount),'--',v.recordCount))}" />
+                    </h3>
+                </div>
+            </div>
+            <div id="opportunityButton" class="slds-col slds-no-flex slds-align-bottom">
+                <FinServ:navToCreateRecordWrapper aura:id="opportunityCard_newButton" sObjectName="Opportunity" displayText="{!$Label.FinServ.Button_Label_New}" class="slds-button slds-button--neutral slds-button--small" promptRecordType="{!1==1}"/>
+            </div>
+        </header>
+
+        <aura:if isTrue="{!v.canRead}">
+            <section class="slds-card__body">
+              <aura:if isTrue="{!(v.recordCount != 0)}">
+                <ul>
+                    <aura:iteration items="{!v.sObjectList}" var="so">
+                        <li class="slds-tile slds-m-vertical--small slds-m-horizontal--large">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <div class="slds-grid slds-grid--align-spread slds-has-flexi-truncate">
+                                        <p class="slds-truncate slds-tile__title">
+                                            <aura:if isTrue="{!so.Account.Name}">
+                                                <FinServ:navToObjectWrapper aura:id="opportunityCard_navToObj" sObjectId="{!so.Id}" displayText="{!(so.Account.Name + ' - ' + so.Name)}" />
+                                                <aura:set attribute="else">
+                                                    <FinServ:navToObjectWrapper aura:id="opportunityCard_navToObj" sObjectId="{!so.Id}" displayText="{!(so.Name)}" />
+                                                </aura:set>
+                                            </aura:if>
+                                        </p>
+                                        <div>
+                                            <ui:outputCurrency value="{!so.Amount}" format="{!v.currencyFormat}" />
+                                        </div>
+                                    </div>
+                                    <ul class="slds-tile__detail slds-list--horizontal slds-has-dividers slds-text-body--small">
+                                        <li class="slds-truncate slds-list__item">{!so.StageName}</li>
+                                        <li class="slds-truncate slds-list__item">
+                                            <FinServ:dateCmp date="{!so.CloseDate}" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </aura:iteration>
+                </ul>
+                <aura:set attribute="else">
+                        <div class="slds-media__body"> 
+                        <div class="slds-has-flexi-truncate">
+                            <p class="tile__title slds-truncate slds-tile__title slds-text-align--center">
+                                <lightning:formattedText value="{!$Label.FinServ.Text_No_Opportunities}"/>
+                            </p>
+                        </div>
+                        </div>
+                </aura:set>
+              </aura:if>
+            </section>
+        <aura:set attribute="else">
+            <div class="slds-card__body">
+                <p class="tile__title slds-truncate slds-tile__title slds-has-flexi-truncate" align="Center">
+                    <lightning:formattedText value="{!$Label.FinServ.Msg_Component_ObjectAccess_Invalid}"/>
+                </p>
+            </div>
+        </aura:set>
+        </aura:if>
+
+        <footer class="slds-card__footer">
+            <FinServ:navToObjectHomeWrapper aura:id="opportunityCard_viewAll" sObjectName="Opportunity" displayText="{!$Label.FinServ.Link_View_All}" assistiveText= "{!$Label.FinServ.Label_Opportunities}"/>
+        </footer>
+    </div>
+</aura:component>

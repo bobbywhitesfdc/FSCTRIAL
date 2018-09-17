@@ -1,0 +1,45 @@
+<messaging:emailTemplate subject="{!$Organization.Name}: New Referral" relatedToType="Lead">
+    <messaging:htmlEmailBody >
+        <html>
+            <body>
+            <apex:outputPanel layout="block" rendered="{!AND(NOT(ISBLANK(relatedTo.FinServ__ReferredByUser__c)) , ISBLANK(relatedTo.FinServ__ReferredByContact__c))}">
+                <p>Hello {!relatedTo.FinServ__ReferredByUser__r.name}</p>
+            </apex:outputPanel>
+            <apex:outputPanel layout="block" rendered="{!AND(ISBLANK(relatedTo.FinServ__ReferredByUser__c) , NOT(ISBLANK(relatedTo.FinServ__ReferredByContact__c)))}">
+                <p>Hello {!relatedTo.FinServ__ReferredByContact__r.name}</p>
+            </apex:outputPanel>
+            <p/>
+            <p>
+            This&nbsp;<apex:outputLink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+relatedTo.Id}">referral</apex:outputLink>&nbsp;has been created.
+            </p>
+            <p/>
+            <table border="0" >
+                <tr>
+                    <td>Referral Name:</td>
+                    <td>{!relatedTo.name}</td>
+                </tr>
+                <apex:outputPanel layout="block" rendered="{!AND(NOT(ISBLANK(relatedTo.FinServ__ReferredByUser__c)) , ISBLANK(relatedTo.FinServ__ReferredByContact__c))}">
+                    <tr>
+                        <td>Referrer:</td>
+                        <td>{!relatedTo.FinServ__ReferredByUser__r.name}</td>
+                    </tr>
+                </apex:outputPanel>
+                <apex:outputPanel layout="block" rendered="{!AND(ISBLANK(relatedTo.FinServ__ReferredByUser__c) , NOT(ISBLANK(relatedTo.FinServ__ReferredByContact__c)))}">
+                    <tr>
+                        <td>Referrer:</td>
+                        <td>{!relatedTo.FinServ__ReferredByContact__r.name}</td>
+                    </tr>
+                </apex:outputPanel>
+            </table>
+            <p/>
+            <p>
+            Salesforce
+            </p>
+            <p/>
+            <p>
+                You're registered in the Salesforce org,&nbsp;{!$Organization.Name}. Need help? Contact your Salesforce admin.
+            </p>
+            </body>
+        </html>
+        </messaging:htmlEmailBody>
+</messaging:emailTemplate>

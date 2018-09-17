@@ -1,0 +1,16 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description Wrapper for force:actionsContainer
+ * @since 200
+-->
+<aura:component >
+	<aura:attribute name="recordId" type="String" />
+	<aura:attribute name="context" type="String" default="RELATED_LIST_RECORD"  description="Context for actionsContainer" />
+	<aura:attribute name="refreshView" type="Boolean" default="true" description="Flag to refresh whole view" />
+	<aura:attribute name="actionTypes" type="List" default="['standardButton']" description="Action types" />
+	<aura:locator target="actionsContainerWrapper" description="link to household"/>
+
+	<force:virtualAction aura:id="actionsContainerWrapper" recordId="{!v.recordId}" actionTypes="{!v.actionTypes}" context="{!v.context}" />
+</aura:component>

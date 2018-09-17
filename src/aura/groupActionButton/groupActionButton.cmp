@@ -1,0 +1,30 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description This button handles the create and edit of a relationship group using the new Setup UI screens.
+ * @since 206
+-->
+<aura:component extends="FinServ:baseFinServTemplate" controller="FinServ.RecordTypeController">
+	<aura:dependency resource="markup://FinServ:createPanelUtility" type="COMPONENT" />
+
+	<aura:attribute name="editMode" type="Boolean" default="false" />
+	<aura:attribute name="params" type="Map" description="the params for createPanel" />
+	<aura:attribute name="class" type="String" description="css class override on the button" default="slds-button slds-button--neutral slds-button--small"/>
+	<aura:attribute name="label" type="String" description="Label for the button, Edit/New will display if this is empty" />
+	<aura:handler event="force:recordChange" action="{!c.onChange}" />
+	<aura:locator target="groupActionButton" description="Group action button to create/edit relationship"/>
+
+	<aura:if isTrue="{!or(and(v.editMode, v.canUpdate),and(!v.editMode, v.canCreate))}">
+		<button aura:id="groupActionButton" class="{!v.class}" data-selected="false" onclick="{!c.clickActionButton}">
+			<aura:if isTrue="{!v.editMode}">
+				{!!empty(v.label)? v.label:$Label.FinServ.Button_Label_Edit}
+				<aura:set attribute="else">
+					{!!empty(v.label)? v.label:$Label.FinServ.Button_Label_New}
+				</aura:set>
+			</aura:if>
+		</button>
+	</aura:if>
+
+	<FinServ:createPanelUtility aura:id="createPanelUtility" />
+</aura:component>

@@ -1,0 +1,101 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to display lead card for today page
+ * @since 196
+-->
+<!--
+TODO: This overwrites the version in core to make it available for Community Builder. We should
+empty out the implementation in core reduce confusion about which version needs to be maintained.
+-->
+<aura:component extends="FinServ:recordList" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:dependency resource="markup://force:toggleModalSpinner" type="EVENT"/>
+    <aura:attribute name="listURL" type="String" default="" description="the url value used for View All link" />
+    <aura:set attribute="icon" value="standard:lead"/>
+    <aura:set attribute="header" value="{!format($Label.FinServ.Header_Component_Leads,'--')}"/>
+    <aura:set attribute="placeholder" value="table_list_line_item" />
+    <aura:set attribute="sObjectName" value="Lead" />
+    <aura:set attribute="licenseKeys" value="['standard']" />
+    <aura:set attribute="fields" value="['Name', 'LeadSource', 'Status', 'Rating', 'CreatedDate']" />
+    <aura:set attribute="useOr" value="false" />
+    <aura:set attribute="limit" value="5" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:locator target="leadCard_viewAll" description="View All Leads button on footer"/>
+    <aura:locator target="leadCard_newButton" description="Lead Card create new button"/>
+    <aura:locator target="leadCard_navToObj" description="Lead Card navToObjectWrapper button"/>
+    
+    <div id="leadCard" class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <lightning:icon iconName="standard:lead" size="small" class="slds-icon--small" />
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="slds-text-heading--small slds-m-right--small slds-truncate">
+                        <ui:outputText aura:id="leads" value="{!format($Label.FinServ.Header_Component_Leads, if(empty(v.recordCount),'--',v.recordCount))}" />
+                    </h2>
+                </div>
+                <div id="leadButton" class="slds-no-flex">
+                    <FinServ:navToCreateRecordWrapper aura:id="leadCard_newButton" sObjectName="Lead" displayText="{!$Label.FinServ.Button_Label_New}" class="slds-button slds-button--neutral slds-button--small" promptRecordType="{!1==1}"/>
+                </div>
+            </header>
+        </div>
+
+        <aura:if isTrue="{!v.canRead}">
+            <div class="slds-card__body slds-card__body_inner">
+                <aura:if isTrue="{!(v.recordCount != 0)}">
+                <ul>
+                    <aura:iteration items="{!v.sObjectList}" var="so">
+                        <li class="slds-media slds-m-vertical_small">
+                            <div class="slds-media__body">
+                                <div class="slds-grid slds-grid--align-spread slds-has-flexi-truncate">
+                                    <p class="tile__title slds-truncate slds-tile__title">
+                                        <FinServ:navToObjectWrapper aura:id="leadCard_navToObj" sObjectId="{!so.Id}" displayText="{!so.Name}" />
+                                    </p>
+                                    <div>
+                                        <FinServ:visualRating iconType="star" maxRating="3" temperatureRating="{! (so.Rating.length > 0 ) ? so.Rating : 0}" />
+                                    </div>
+                                </div>
+                                <ul class="slds-tile__detail slds-list--horizontal slds-has-dividers slds-text-body--small">
+                                    <aura:if isTrue="{!so.LeadSource}">
+                                        <li class="slds-truncate slds-list__item">{!so.LeadSource}</li>
+                                    </aura:if>
+                                    <aura:if isTrue="{!so.Status}">
+                                        <li class="slds-truncate slds-list__item">{!so.Status}</li>
+                                    </aura:if>
+                                    <aura:if isTrue="{!so.CreatedDate}">
+                                        <li class="slds-truncate slds-list__item">
+                                            <FinServ:dateCmp date="{!so.CreatedDate}" />
+                                        </li>
+                                    </aura:if>
+                                </ul>
+                            </div>
+                        </li>
+                    </aura:iteration>
+                </ul>
+                <aura:set attribute="else">
+                    <div class="slds-card__body slds-card__body_inner">
+                        <div class="slds-has-flexi-truncate">
+                            <p class="tile__title slds-truncate slds-tile__title slds-text-align--center">
+                                <lightning:formattedText aura:id="noLeadsLabel" value="{!$Label.FinServ.Text_No_Leads}"/>
+                            </p>
+                        </div>
+                    </div>
+                </aura:set>
+              </aura:if>
+            </div>
+        <aura:set attribute="else">
+            <div class="slds-card__body">
+                <p class="tile__title slds-truncate slds-tile__title slds-has-flexi-truncate" align="Center">
+                    <lightning:formattedText aura:id="invalidAccess" value="{!$Label.FinServ.Msg_Component_ObjectAccess_Invalid}"/>
+                </p>
+            </div>
+        </aura:set>
+        </aura:if>
+
+        <footer class="slds-card__footer">
+            <FinServ:navToObjectHomeWrapper aura:id="leadCard_viewAll" sObjectName="Lead" displayText="{!$Label.FinServ.Link_View_All}" assistiveText= "{!$Label.FinServ.Label_Leads}"/>
+        </footer>
+    </div>
+</aura:component>

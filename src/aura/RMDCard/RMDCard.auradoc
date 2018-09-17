@@ -1,0 +1,15 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:RMDCard</code> component renders list of those clients who are about to be eligible to receive retirement benefits (About to turn 70.5) without penalty. Default range starts at 70.25 (Those who are already 70 yrs 3 months) </p>
+		<br/>
+		<p> The following are publicily available attributes: </p>		
+		<ul>
+			<li>maxListSize - The maximum amount records that you can render at once</li>
+			<li>age. Mimumum age (in years) to include in list. Default is 70</li>
+			<li>dayAfterAge Number of days after birthday. Default is 90 (70.3 years) </li>
+			<li> dayRange Affects how days are shown. Default is 7 </li>
+		</ul>
+		<p>Here is an example</p>
+		<pre> &lt;FinServ:RMDCard/> </pre>		
+	</aura:description>
+</aura:documentation>

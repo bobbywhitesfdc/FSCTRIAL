@@ -1,0 +1,100 @@
+<!-- New version of Member Detail -->
+<aura:component extends="FinServ:baseFinServTemplate" description="Group member and associated information in a grid.">
+    <aura:attribute name="records" type="Object[]" description="Member sObjects"/>
+    <div class="slds-grid slds-wrap">
+        <aura:iteration items="{!v.records}" var="member">
+            <div class="slds-size--1-of-2 memberGridDetailCard">
+                <article class="{! 'slds-card slds-card_boundary borderMember slds-m-top_small ' + ((member.isIndividual) ? 'borderIndividual' : ((member.isAccount) ? 'borderAccount' : 'borderContact'))}">
+                    <div class="slds-card__header slds-grid">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <!-- Different icon depending on record type -->
+                            <aura:if isTrue="{!member.isIndividual}">
+                                <lightning:icon iconName="standard:client" size="small" class="slds-icon__container--square" />
+                                <aura:set attribute="else">
+                                    <aura:if isTrue="{!member.isAccount}">
+                                        <lightning:icon iconName="standard:account" size="small" class="slds-icon__container--square" />
+                                        <aura:set attribute="else">
+                                            <lightning:icon iconName="standard:contact" size="small" class="slds-icon__container--square" />
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:set>
+                            </aura:if>
+                            <div class="slds-truncate slds-text-heading--small slds-m-left--x-small">
+                                <aura:if isTrue="{!member.isAccount}">
+                                    <force:outputLookupWithPreview label="{!member.acr.Account.Name}"  value="{!member.acr.Account.Id}" isProfilePicSupported="false" showRelatedLists="true" showPreview="true" />
+                                    <aura:set attribute="else">
+                                        <force:outputLookupWithPreview label="{!member.acr.Contact.Name}"  value="{!member.acr.Contact.Id}" isProfilePicSupported="false" showRelatedLists="true" showPreview="true" />
+                                    </aura:set>
+                                </aura:if>
+                            </div>
+                            <aura:if isTrue="{!member.isPrimary}">
+                                <div class="slds-badge slds-m-left--x-small">{!$Label.FinServ.Pill_Primary}</div>
+                            </aura:if>
+                            <div class="slds-col_bump-left">
+                                <FinServ:actionMenuList actionTypes="['membership']" recordId="{!member.acr.Id}" groupId="{!member.acr.AccountId}" />
+                            </div>
+                        </header>
+                    </div>
+                    <div class="slds-card__body slds-card__body_inner">
+                        <article class="slds-tile">
+                            <div class="slds-tile__detail">
+                                <!-- Member Columns -->
+                                <dl class="slds-list_horizontal slds-wrap">
+                                    <aura:if isTrue="{!member.isAccount}">
+                                        <dt title="{!format($Label.FinServ.Label_Member_Fields, $Label.Global.Contact)}" class="slds-item_label slds-text-color_weak slds-truncate">
+                                            {!format($Label.FinServ.Label_Member_Fields, $Label.Global.Contact)}
+                                        </dt>
+                                        <dd class="slds-item_detail slds-truncate">
+                                            <force:outputLookupWithPreview label="{!member.acr.Contact.Name}"  value="{!member.acr.Contact.Id}" isProfilePicSupported="false" showRelatedLists="true" showPreview="true" />
+                                        </dd>
+                                    </aura:if>
+                                    <dt title="{!format($Label.FinServ.Label_Member_Fields, $Label.FinServ.Label_Household_Member_Roles)}" class="slds-item_label slds-text-color_weak slds-truncate">
+                                        {!format($Label.FinServ.Label_Member_Fields, $Label.FinServ.Label_Household_Member_Roles)}
+                                    </dt>
+                                    <dd title="{!member.acr.Roles}" class="slds-item_detail slds-truncate">
+                                        {!member.acr.Roles}&nbsp;
+                                    </dd>
+
+                                    <aura:iteration items="{!member.recordFieldInfo}" var="field" indexVar="iter">
+                                        <aura:if isTrue="{!or(member.isIndividual, !field.isContactField)}">
+                                            <dt title="{!format($Label.FinServ.Label_Member_Fields, field.fieldName)}" class="slds-item_label slds-text-color_weak slds-truncate">
+                                                {!format($Label.FinServ.Label_Member_Fields, field.fieldName)}
+                                            </dt>
+                                             <aura:if isTrue="{!or(field.fieldType == 'date', field.fieldType == 'datetime')}">
+                                                <dd class="slds-item_detail slds-truncate">
+                                                    <FinServ:dateCmp date="{!field.fieldValue}" showRelativeDate="false" />
+                                                </dd>
+                                                <aura:set attribute="else">
+                                                    <aura:if isTrue="{!field.renderUrl}">
+                                                        <dd class="slds-item_detail slds-truncate">
+                                                            <force:outputLookupWithPreview label="{!field.name}" value="{!field.Id}" isProfilePicSupported="false" showRelatedLists="true" showPreview="true" />
+                                                        </dd>
+                                                        <aura:set attribute="else">
+                                                            <dd title="{!field.fieldValue}" class="slds-item_detail slds-truncate">
+                                                                <FinServ:outputField fieldValue="{!field.fieldValue}"
+                                                                    fieldType="{!field.fieldType}"
+                                                                    fieldLabel="{!field.fieldName}" />
+                                                            </dd>
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </aura:set>
+                                            </aura:if>
+                                        </aura:if>
+                                    </aura:iteration>
+                                </dl>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="slds-has-divider--top-space slds-p-around--x-small">
+                        <aura:if isTrue="{!member.isAccount}">
+                            <FinServ:memberGridActivity identifier="{!member.acr.Account.Id}" error="{!c.onError}"/>
+                            <aura:set attribute="else">
+                                <FinServ:memberGridActivity identifier="{!member.acr.Contact.Id}" error="{!c.onError}"/>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                </article>
+            </div>
+        </aura:iteration>
+    </div>
+</aura:component>

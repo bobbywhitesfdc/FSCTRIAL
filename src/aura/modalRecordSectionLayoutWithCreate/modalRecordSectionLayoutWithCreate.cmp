@@ -1,0 +1,9 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component work as modal controller to turn on and off between the main and sub modal. (the second modal handles the creation of sobject from a specfic field)
+ * @since 198
+-->
+<aura:component description="DEPRECATED">
+</aura:component>

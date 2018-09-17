@@ -1,0 +1,27 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to display error message when user does not have permission to access it.
+ * @since 208
+-->
+<aura:component description="component to display error message when user does not have permission to access it." extends="force:baseCard">
+    <aura:set attribute="actionableMode" value="NONE" />
+    <aura:attribute name="icon" type="String" />
+    <aura:attribute name="header" type="String" />
+    <aura:attribute name="placeholder" type="String" />
+    <aura:method name="showError" action="{!c.showError}" access="PUBLIC"/>
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:set attribute="headerIcon">
+        <lightning:icon iconName="{#v.icon}" size="small" class="slds-icon--small" />
+    </aura:set>
+    <aura:set attribute="body">
+        <div aura:id="placeholder">
+        </div>
+        <div aura:id="noAccess" class="slds-card__body slds-hide">
+            <div class="slds-media__body slds-tile__detail slds-text-align--center slds-p-around--small">
+                <span>{!$Label.FinServ.Msg_Component_Has_NoAccess}</span>
+            </div>
+        </div>
+    </aura:set>
+</aura:component>

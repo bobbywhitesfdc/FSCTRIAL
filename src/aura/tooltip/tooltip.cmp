@@ -1,0 +1,23 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to display the tooltip
+ * @since 208
+-->
+<aura:component >
+    <aura:attribute name="value" type="String"  description="text value to display in the tooltip."/>
+    <aura:attribute name="class" type="String"  description="Style class on the component"/>
+    <aura:attribute name="ypos" type="Integer" access="PRIVATE" />
+    <aura:attribute name="oldHeight" type="Integer" default="-1" access="PRIVATE" />
+    <div class="{!v.class}">
+        <div onmouseover="{!c.showTooltip}" onmouseout="{!c.hideTooltip}">
+            <lightning:buttonIcon size="medium" variant="bare" iconName="utility:info" onfocus="{!c.showTooltip}" onblur="{!c.hideTooltip}" alternativeText="{!$Label.FinServ.Button_Label_More_Info}" />
+        </div>
+        <div class="slds-is-absolute tooltipContainer">
+            <div aura:id="tooltip" class="slds-popover slds-popover--tooltip slds-nubbin--bottom-left slds-hidden slds-is-relative tooltipPosition" style="{!'top:'+v.ypos+'px;'}" role="tooltip">
+                <div class="slds-popover__body">{!v.value}</div>
+            </div>
+        </div>
+    </div>
+</aura:component>

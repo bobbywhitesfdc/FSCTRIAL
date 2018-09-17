@@ -1,0 +1,17 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description Component for handling the display of generic tab Headers
+ * @since 202
+-->
+<aura:component extends="force:baseCard">
+    <aura:attribute name="numberOfRecords" type="Integer" description="Number of records to be listed" />
+    <aura:attribute name="label" type="String" required="true" description="Label for header component" />
+    <aura:attribute name="hasRenderedList" type="Boolean" default="false" />
+    
+    <aura:set attribute="actionableMode" value="NONE" />
+    <aura:set attribute="articleClass" value="forceRelatedListCardDesktop" />
+    <aura:set attribute="headerTitleText" value="{!v.label + (v.hasRenderedList ? ' (' + v.numberOfRecords + ')' : '')}" />
+    {!v.body}
+</aura:component>

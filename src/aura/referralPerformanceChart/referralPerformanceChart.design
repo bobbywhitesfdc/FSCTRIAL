@@ -1,0 +1,3 @@
+<design:component label="Referrals Made Chart - Financial Services Cloud">
+    <design:attribute name="chartType" datasource="Month,Quarter,Year,All" default="Year" label="Timeline" description="The default timeline for the chart."/>
+</design:component>

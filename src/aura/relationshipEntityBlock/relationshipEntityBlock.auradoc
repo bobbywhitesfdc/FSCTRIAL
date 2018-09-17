@@ -1,0 +1,7 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:relationshipGroupList</code> component for each relationship entity block which resides inside a branch of the Relationship Visualization tree </p>
+		<p>Here is an example</p>
+		<pre>&lt;FinServ:relationshipEntityBlock /></pre>
+	</aura:description>
+</aura:documentation>

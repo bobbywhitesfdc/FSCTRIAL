@@ -1,0 +1,4 @@
+<design:component label="Referrals Create Form - Financial Services Cloud">
+	<design:attribute name="fieldSetName" label="Lead Field Set Name for Create Referral Form" default="FSC_Referral_Form" />
+	<design:attribute name="allUserAccess" label="Let all users submit this form" description="Bypasses CRUD and FLS check on Lead." />
+</design:component>

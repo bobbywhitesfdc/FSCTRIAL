@@ -1,0 +1,55 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description abstract component for the leaf of the relationships visualization tree.
+ * @since 206
+-->
+<aura:component description="abstractRelationshipTreeLeaf" extensible="true" abstract="true">
+    <!--
+        implement init handler for onInit in the concrete component
+    -->
+
+    <aura:attribute name="entity" type="Object" required="true" description="and instance of VisualizationComponent for the leaf node" />
+    <aura:attribute name="parentEntity" type="Object" description="and instance of VisualizationComponent for the leaf's parent node" />
+
+    <aura:attribute name="actionTypes" type="List" default="['standardButton']" description="Action types" />
+
+    <aura:attribute name="leafActionButtons" type="Aura.Component[]"/>
+
+    <aura:attribute name="treeLeafHeader" type="Aura.Component[]"/>
+
+    <li class="tree-leaf">
+        <span class=" leafBox leafColor">
+            <div>
+                <!-- LEAF HEADER -->
+                <div class="slds-p-top--x-small slds-p-right--x-small slds-p-left--x-small">
+                    <lightning:buttonIcon aura:id="toggleHideButton" class="{!'onTop' + (empty(v.entity.elements) ? ' slds-hidden' : '')}"
+                                          iconName="utility:contract_alt" variant="bare" onclick="{!c.clickGroupShowHide}"
+                                          alternativeText="{!$Label.FinServ.Button_Label_ShowHide_Group_Members}" />
+                    <div class="slds-clear"></div>
+                    <div class="slds-text-align--center leaf-header">
+                        {!v.treeLeafHeader}
+                    </div>
+                    <div class="slds-clear"></div>
+                </div>
+                <!-- LEAF ELEMENTS/BLOCKS -->
+                <div>
+                    <aura:if isTrue="{!not(empty(v.entity.elements))}">
+                        <div aura:id="elementsContainer">
+                            <!-- in the relationshipTreeLeaf concrete implementation create the entity blocks with an aura:iteration -->
+                            <!-- for the entity elements, using the concrete relationshipEntityBlock component-->
+                            {!v.body}
+                        </div>
+                    </aura:if>
+                </div>
+                <!-- LEAF ACTION BUTTONS -->
+                <div class="slds-p-horizontal--x-small slds-p-bottom--small">
+
+                    {!v.leafActionButtons}
+
+                </div>
+            </div>
+        </span>
+    </li>
+</aura:component>

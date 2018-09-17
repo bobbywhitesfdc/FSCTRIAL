@@ -1,0 +1,118 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description listViewTable component create a table based on fields and object data passed into it
+ * @since 196
+-->
+<aura:component controller="FinServ.FieldSetController" extensible="true" extends="ui:abstractList">
+	
+    <aura:dependency resource="markup://FinServ:outputField" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:expandArrowIcon" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:actionsContainerWrapper" type="COMPONENT" />
+
+	<aura:attribute name="recordId" type="String" description="The parent record id for the related list"/>
+	<!-- We only need to specify either fields in case of Individuals and Contacts on Related Account and Related Contacts, for other cases we need to specify fieldSetName attribute  -->
+	<aura:attribute name="fieldSetName" default="" type="String" description="Name of the Field Set for which the field needs to be retrieved for Business Accounts and Groups"/>
+	<aura:attribute name="fields" default="" type="String" description="List of the Fields to be retrieved for Individuals and Contacts"/>
+	<aura:attribute name="sObjectName" type="String" description="The entity api name of the records in the related list"/>
+	<aura:attribute name="expandable" type="Boolean" default="false" description="Whether or not rows are expandable" />
+	<aura:attribute name="calculatedFields" type="List" default="[]" description="Fields that have to be calculated on the go, but aren't part of the SObject." />
+	<aura:attribute name="childTables" type="List" default="[]" description="Attributes for expandable tables" />
+	<aura:attribute name="tableCaption" type="String" default="" description="Screen reader caption for accessibility"/>	
+	<aura:attribute name="actionTypes" type="List" default="['standardButton']" description="Action types" />
+	<aura:attribute name="navigateToName" type="Boolean" default="true" description="Have hyperlink on names of records" />
+	<aura:attribute name="readOnly" type="Boolean" default="false" description="Whether or not to display fields as read only" />
+	<aura:attribute name="selectable" type="Boolean" default="false" description="Whether or not rows are selectable" />
+	<aura:attribute name="fixedWidth" type="Boolean" default="false" description="Whether or not to set width of columns" />
+	<aura:attribute name="currencyIndicator" type="Boolean" default="false" description="Whether or not to display data as currency" />
+	<aura:attribute name="numberIndicator" type="Boolean" default="false" description="Whether or not to display data as number" />
+	<aura:attribute name="percentageIndicator" type="Boolean" default="false" description="Whether or not to display data as percentage" />
+	<aura:attribute name="validateFieldSet" type="Boolean" default="false" description="Whether or not to validate the fieldset"/>
+	<aura:attribute name="filterInaccessibleFields" type="Boolean" default="false" description="Whether or not to to hide a field column if inaccessible to user." />
+	
+	<!-- Internal Attributes -->
+	<aura:attribute name="isChild" type="Boolean" access="PRIVATE" default="false" description="set to true for expanded tables" />
+	<aura:attribute name="columnHeaders" type="List" access="PRIVATE" description="column headers" />
+	<aura:attribute name="relationshipObject" type="String" access="PRIVATE" default="" description="relationship to base fields on " />
+
+	<aura:registerevent name="error" type="ui:dataProvideError" description="The event fired when a data retrieval error occurs." />
+	
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+		
+	<aura:if isTrue="{! !empty(v.items) }">
+		<table class="{! 'slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal slds-no-hover' + (or(v.expandable, v.isChild) ? ' slds-table-expandable' : '')}">
+			<caption class="slds-assistive-text">{!v.tableCaption}</caption>
+			<thead>
+				<tr>
+					<aura:if isTrue="{!or(v.expandable, v.isChild)}">
+						<th scope="col"><span class="slds-assistive-text">{!$Label.FinServ.Label_ShowHide_Members_ListView_Table}</span></th>
+					</aura:if>
+					<aura:if isTrue="{!v.selectable}">
+						<th scope="col" class="slds-row-select">
+							<label class="slds-checkbox" for="select-all" tabindex="-1" aria-hidden="true">
+								<input type="checkbox" value="checkbox" name="checkbox" id="select-all" />
+								<span class="slds-checkbox--faux"></span>
+							</label>
+						</th>
+					</aura:if>
+					<aura:iteration items="{!v.columnHeaders}" var="col" indexVar="index">
+						<th scope="col" class="{!'slds-text-heading--label' + ((v.fixedWidth) ? ' slds-size--1-of-' + (v.columnHeaders.length + 1) : '')}">
+							<span>{!col}</span>
+						</th>
+					</aura:iteration>
+					<aura:if isTrue="{!not(v.readOnly)}">
+						<th scope="col"><span class="slds-assistive-text">{!$Label.FinServ.Label_Action_Dropdown_ListView_Table}</span></th>
+					</aura:if>
+				</tr>
+			</thead>
+			<tbody aura:id="listViewTableBody">
+				<aura:iteration items="{!v.items}" var="record">
+					<tr class="slds-no-hover">
+						<aura:if isTrue="{!or(v.expandable, v.isChild)}">
+							<td class="slds-cell-shrink">
+								<aura:if isTrue="{!or(record.expandable, v.isChild)}">
+									<span class="{! (v.isChild) ? 'slds-hidden slds-p-right--xx-large' : ''}">
+										<FinServ:expandArrowIcon rowRecordId="{!record.lookupId}" expandListViewTable="{!c.expandListViewTable}" />
+									</span>
+								</aura:if>
+							</td>
+						</aura:if>
+						<aura:if isTrue="{!v.selectable}">
+							<td>
+								<label class="slds-checkbox" for="select-1" tabindex="-1" aria-hidden="true">
+									<input type="checkbox" value="checkbox" name="checkbox" id="select-1" />
+									<span class="slds-checkbox--faux"></span>
+								</label>
+							</td>
+						</aura:if>
+
+						<aura:iteration items="{!record.recordFieldInfo}" var="so">
+							<td>
+								<FinServ:outputField record="{!so.lookupObj}" 
+												recordId="{!so.Id}" 
+												fieldValue="{!so.fieldValue}" 
+												fieldType="{!so.fieldType}" 
+												fieldLabel="{!so.fieldName}" 
+												percentageIndicator="{!v.percentageIndicator}" 
+												numberIndicator="{!v.numberIndicator}" />
+							</td>
+						</aura:iteration>
+						<aura:if isTrue="{!not(v.readOnly)}">
+							<td>
+								<span class="slds-float--right">
+									<FinServ:actionMenuList actionTypes="{!v.actionTypes}" recordId="{!record.Id}" groupName="{!record.lookupName}" groupId="{!record.lookupId}" />
+								</span>
+							</td>
+						</aura:if>
+					</tr>
+					<aura:if isTrue="{!v.expandable}">
+						<tr id="{! 'listViewRowParent_' + record.lookupId}" class="slds-hide">
+							<td class="expanded-table" id="{! 'listViewRow_' + record.lookupId}"  colspan="{!(v.columnHeaders.length * 2)}"></td>
+						</tr>
+					</aura:if>
+				</aura:iteration>
+			</tbody>
+		</table>
+	</aura:if>
+</aura:component>

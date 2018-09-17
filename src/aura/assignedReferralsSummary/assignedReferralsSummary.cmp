@@ -1,0 +1,103 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle summary of referral
+ * @since 210
+-->
+<aura:component extends="FinServ:baseComponent" controller="FinServ.ReferralController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes"  access="global">
+
+    <aura:set attribute="icon" value="standard:reward"/>
+    <aura:set attribute="header" value="{!format($Label.FinServ.Label_Referrals_I_Am_Assigned,'--')}"/>
+    <aura:set attribute="recordTypeNamesMap" value="{'Lead' : ['Referral']}" />
+    <aura:set attribute="sObjectName" value="Lead" />
+
+    <aura:attribute name="title" type="String" default="" description="Referrals I am Assigned To title" access="GLOBAL"/>
+    <aura:attribute name="displayReferralsReceived" type="boolean" description="number referrals I am assigned to" access="GLOBAL"/>
+    <aura:attribute name="displayReferralsConverted" type="boolean" description="number referrals converted I am assigned to" access="GLOBAL"/>
+    <aura:attribute name="displayReferralsRejected" type="boolean" description="number referrals rejected I am assigned to" access="GLOBAL"/>
+    <aura:attribute name="displayRevenueFromReferrals" type="boolean" description="revenues from Referrals I am assigned to" access="GLOBAL"/>
+    <aura:attribute name="displayTopExpressedInterest" type="boolean" description="Most Expressed Interest I am assigned to" access="GLOBAL"/>
+    <aura:attribute name="displayTopReferrer" type="boolean" description="Top Referrer, where most referrals are from" access="GLOBAL"/>
+    <aura:attribute name="displayTopReferrerType" type="boolean" description="Top Referrer Type, where most referrals are from" access="GLOBAL"/>
+    <aura:attribute name="displayViewAllLink" type="boolean" description="Enable / Disable View All Link to Dashboards" access="GLOBAL"/>
+    <aura:attribute name="selectPeriod" type="String" default="All" description="the period key of which period button is clicked. the value is set on the button, it should match the key from backend. see ReferralController.getReferrerSummary" access="private"/>
+    <aura:attribute name="selectPeriodLabel" type="String" default="{!$Label.FinServ.Label_Select_Period_YTD}" description="The label of the selected period" access="PRIVATE" />
+    <aura:attribute name="data" type="Map" default="{}" description="this is a JSON object that store/cached data from all period, if the data does not exist, it will make a call to the backend" access="private" />
+    <aura:attribute name="dataToDisplayInField" type="Map" access="private" description="this is a JSON object used to render the actual field/value, it copied the fieldConfig object then load values to each field. This only show one period's data, when period switched, it will try to find data from data object."/>
+    <aura:attribute name="fieldConfig" type="Map[]" default="[]" access="private" description="a JSON object defined which field to display(this is like a setting object), what information is in the field, it is defined in helper's initializeParam function"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+    <div aura:id="summary">
+        <aura:if isTrue="{!v.canRead}">
+            <div class="slds-card slds-text-body--regular">
+                <header class="slds-card__header slds-media--top slds-grid">
+                    <div class="slds-media__figure">
+                        <lightning:icon iconName="standard:reward" size="small" class="slds-icon--small"/>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-align-middle header-title-container slds-list--inline slds-p-right--small">
+                            <span class="slds-text-heading--small slds-truncate">
+                                {!empty(v.title)? $Label.FinServ.Label_Referrals_I_Am_Assigned : v.title}
+                            </span>
+                        </h2>
+                        <ul class="slds-list--horizontal slds-has-dividers--right slds-text-color_weak slds-text-body_small">
+                            <li class="slds-item">
+                                {!$Label.FinServ.Label_Summary}
+                            </li>
+                            <li class="slds-item">
+                                {!format($Label.FinServ.Label_Selected_Summary_Period_View, v.selectPeriodLabel)}
+                            </li>
+                        </ul>
+                    </div>
+                    <lightning:buttonMenu aura:id="menu" iconName="utility:event" onselect="{!c.handlePeriodSelection}" menuAlignment="right" alternativeText="{!$Label.FinServ.Label_MenuButton_Select_Period}">
+                        <lightning:menuItem value="Month"   label="{!$Label.FinServ.Label_Select_Period_MTD}" checked="{!v.selectPeriod=='Month'}"/>
+                        <lightning:menuItem value="Quarter" label="{!$Label.FinServ.Label_Select_Period_QTD}" checked="{!v.selectPeriod=='Quarter'}"/>
+                        <lightning:menuItem value="Year"    label="{!$Label.FinServ.Label_Select_Period_YTD}" checked="{!v.selectPeriod=='Year'}"/>
+                        <lightning:menuItem value="All"     label="{!$Label.FinServ.Label_Select_Period_All_Time}" checked="{!v.selectPeriod=='All'}"/>
+                    </lightning:buttonMenu>
+                </header>
+                <table class="slds-table slds-no-row-hover slds-no-hover">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <aura:if isTrue="{!!empty(v.dataToDisplayInField)}">
+                                    <section class="slds-grid slds-wrap slds-grid--pull-padded-x-small slds-p-horizontal--medium">
+                                        <aura:iteration items="{!v.dataToDisplayInField}" var="so" indexVar="iter">
+                                            <aura:if isTrue="{!and(!empty(so), so.shouldDisplay)}">
+                                                <div class="slds-no-space slds-size--1-of-1 slds-has-divider--top slds-p-around--small">
+                                                    <div class="slds-grid slds-wrap">
+                                                        <div class="slds-size--1-of-2">
+                                                            <div class="slds-text-body--regular slds-text-color--weak slds-truncate slds-cell-wrap">
+                                                                {!so.label}
+                                                            </div>
+                                                        </div>
+                                                        <div class="{!'slds-text-align--right slds-size--1-of-2 ' + ((so.isNumber) ? ' slds-page-header__title' : '')}">
+                                                            <FinServ:outputField fieldValue="{!so.value}" fieldType="{!so.fieldType}" fieldLabel="{!so.label}" percentageIndicator="{!so.isPercentage}" numberIndicator="{!so.isNumber}" currencyIndicator="{!so.isCurrency}" truncateDecimal="true" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </aura:if>
+                                        </aura:iteration>
+                                        <aura:if isTrue="{!v.displayViewAllLink}">
+                                            <div class="slds-p-horizontal--small slds-text-align_center slds-has-divider--top-space slds-size--1-of-1">
+                                                <footer class="slds-card__footer slds-text-align_center">
+                                                    <FinServ:navToListView aura:id="view-all-link" listViewName="Open_Referrals_Im_Assigned" objectName="Lead" displayText="{!$Label.FinServ.Link_View_All}" assistiveText= "{!$Label.FinServ.Label_Open_Referrals_Im_Assigned}"/>
+                                                </footer>
+                                            </div>
+                                        </aura:if>
+                                    </section>
+                                    <aura:set attribute="else">
+                                        <force:placeholder name="table_list_line_item" />
+                                    </aura:set>
+                                </aura:if>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="slds-card__footer"></div>
+            </div>
+        </aura:if>
+    </div>
+</aura:component>

@@ -1,0 +1,70 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description Common component for all record types of FinancialAccount
+ * @since 210
+-->
+<aura:component extends="FinServ:financialAccountConfig" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    
+    <aura:dependency resource="markup://FinServ:listViewCard" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:listViewDataProvider" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:actionCreateButton" type="COMPONENT" />
+    <aura:dependency resource="markup://force:message" type="COMPONENT" />
+
+    <aura:attribute name="title" type="String" default="" description="Header name for the component" access="global" />
+    <aura:attribute name="iconName" type="String" default="custom:custom16" description="Name of the icon for the component" access="global" />
+    <aura:attribute name="financialHoldingFieldSet" type="String"  access="global" description="Name of the fieldset for financial holding"/>
+    <aura:attribute name="recordTypeNames" type="String" access="global" description="Comma separated list of financial account record types"/>
+    <aura:attribute name="faFieldSet" type="String" access="global" description="Name of financial account field set"/>
+    <aura:attribute name="roles" type="String" access="global" description="Comma separated list of financial account roles"/>
+    <aura:attribute name="method" type="String" default="getFAR" description="Name of the method for callback" />
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:method name="refresh" action="{!c.refresh}" access="PUBLIC"/>  
+    <aura:attribute name="financialAccountChildTable" type="List" />
+    <aura:attribute name="recordTypeNameList" type="List" />
+    <aura:attribute name="methodParams" type="Map" />
+    <aura:attribute name="validateFieldSet" type="boolean" default="true" description="Whether or not to validate the fieldset"/>
+    <aura:attribute name="createParam" type="Map" />
+    <aura:if isTrue="{!and(v.accountInfo != null, v.financialAccountFieldSet != null)}" >
+        <div aura:id="finAccountData">
+            <FinServ:listViewCard aura:id="listViewCard"
+                            recordId="{#v.recordId}"
+                            label="{#v.title}"
+                            fieldSetName="{!v.financialAccountFieldSet}"
+                            sObjectName="FinancialAccountRole__c"
+                            childTables="{!v.financialAccountChildTable}"
+                            actionTypes="['standardButton', 'quickAction']"
+                            expandable="true"
+                            percentageIndicator="true"
+                            error="{!c.onError}"
+                            validateFieldSet="{#v.validateFieldSet}">
+                <aura:set attribute="dataProvider">
+                    <FinServ:listViewDataProvider aura:id="listViewDataProvider" pageSize="{!v.listSize}" recordId="{!v.recordId}" recordTypeNames="{!v.recordTypeNameList}"
+                        sObjectName="FinancialAccountRole__c" methodName="{#v.method}" onchange="{!c.handleDataChange}" methodParams="{!v.methodParams}" error="{!c.onError}"/>
+                </aura:set>
+                <aura:set attribute="headerIcon">
+                    <lightning:icon aura:id="headerIcon" iconName="{#v.iconName}" size="small" class="slds-icon--small" />
+                </aura:set>
+                <aura:set attribute="actionsComponent">
+                    <FinServ:actionCreateButton aura:id="finAccount_newButton" sObjectName="FinancialAccount__c" event="e.force:createRecordWithRecordTypeCheck" params="{!v.createParam}" />
+                </aura:set>
+                <aura:set attribute="footerComponent">
+                    <FinServ:navToRelatedListWrapper aura:id="finAccount_viewAll" relatedListId="{!v.relationshipName}" 
+                        parentRecordId="{!v.recordId}" displayText="{!$Label.RecordHomeCards.ViewAll}" />
+                </aura:set>
+            </FinServ:listViewCard>
+        </div>
+    </aura:if>
+    <div aura:id="errorMessage" class="errorMessage slds-hide">
+        <!-- Error State -->
+        <force:message severity="error" strength="3" theme="pOne">
+            <aura:set attribute="summary">{!$Label.DetailError.EntitySaveErrorSummary}</aura:set>
+            <aura:set attribute="detail">
+                <aura:iteration aura:id="errors" items="{!v.errors}" var="error">
+                    <span>{!error.message}</span> 
+                </aura:iteration>
+            </aura:set>
+        </force:message>
+   </div>
+</aura:component>

@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Relationship_Group_Members --></label>
+        <name>WM_Client_Relationship_Group_Members</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Affiliations --></label>
+        <name>FinServ__Affiliations__c</name>
+    </fields>
+    <fields>
+        <label><!-- Age As Text --></label>
+        <name>FinServ__AgeAsText__c</name>
+    </fields>
+    <fields>
+        <label><!-- Age --></label>
+        <name>FinServ__Age__c</name>
+    </fields>
+    <fields>
+        <label><!-- Annual Income --></label>
+        <name>FinServ__AnnualIncome__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billing Address --></label>
+        <name>FinServ__BillingAddress__c</name>
+    </fields>
+    <fields>
+        <label><!-- Citizenship --></label>
+        <name>FinServ__Citizenship__c</name>
+    </fields>
+    <fields>
+        <label><!-- Communication Preferences --></label>
+        <name>FinServ__CommunicationPreferences__c</name>
+        <picklistValues>
+            <masterLabel>Balance Activities:Email</masterLabel>
+            <translation>Actividades de saldo:Correo electrónico</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Balance Activities:Phone</masterLabel>
+            <translation>Actividades de saldo:Teléfono</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Balance Activities:SMS</masterLabel>
+            <translation>Actividades de saldo:SMS</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fraud:Email</masterLabel>
+            <translation>Fraude:Correo electrónico</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fraud:Phone</masterLabel>
+            <translation>Fraude:Teléfono</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fraud:SMS</masterLabel>
+            <translation>Fraude:SMS</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promotions:Email</masterLabel>
+            <translation>Promociones:Correo electrónico</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promotions:Phone</masterLabel>
+            <translation>Promociones:Teléfono</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promotions:SMS</masterLabel>
+            <translation>Promociones:SMS</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Contact Preference --></label>
+        <name>FinServ__ContactPreference__c</name>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation>Correo electrónico</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile</masterLabel>
+            <translation>Teléfono</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone</masterLabel>
+            <translation>Teléfono</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Country Of Birth --></label>
+        <name>FinServ__CountryOfBirth__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>FinServ__CountryOfResidence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created from Lead --></label>
+        <name>FinServ__CreatedFromLead__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Employer --></label>
+        <name>FinServ__CurrentEmployer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Timezone --></label>
+        <name>FinServ__CustomerTimezone__c</name>
+        <picklistValues>
+            <masterLabel>Africa/Cairo</masterLabel>
+            <translation>África/Cairo</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Africa/Johannesburg</masterLabel>
+            <translation>África/Johannesburgo</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Africa/Nairobi</masterLabel>
+            <translation>África/Nairobi</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Anchorage</masterLabel>
+            <translation>América/Anchorage</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Bogota</masterLabel>
+            <translation>América/Bogotá</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Buenos_Aires</masterLabel>
+            <translation>América/Buenos_Aires</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Caracas</masterLabel>
+            <translation>América/Caracas</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Chicago</masterLabel>
+            <translation>América/Chicago</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Denver</masterLabel>
+            <translation>América/Denver</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/El_Salvador</masterLabel>
+            <translation>América/El_Salvador</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Halifax</masterLabel>
+            <translation>América/Hálifax</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Indianapolis</masterLabel>
+            <translation>América/Indianápolis</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Lima</masterLabel>
+            <translation>América/Lima</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Los_Angeles</masterLabel>
+            <translation>América/Los_Ángeles</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Mexico_City</masterLabel>
+            <translation>América/Ciudad_de_México</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/New_York</masterLabel>
+            <translation>América/Nueva_York</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Panama</masterLabel>
+            <translation>América/Panamá</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Phoenix</masterLabel>
+            <translation>América/Phoenix</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Puerto_Rico</masterLabel>
+            <translation>América/Puerto_Rico</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Santiago</masterLabel>
+            <translation>América/Santiago</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Sao_Paulo</masterLabel>
+            <translation>América/Sao_Paulo</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/St_Johns</masterLabel>
+            <translation>América/St_Johns</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>America/Tijuana</masterLabel>
+            <translation>América/Tijuana</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Baghdad</masterLabel>
+            <translation>Asia/Bagdad</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Bangkok</masterLabel>
+            <translation>Asia/Bangkok</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Calcutta</masterLabel>
+            <translation>Asia/Calcuta</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Colombo</masterLabel>
+            <translation>Asia/Colombo</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Dacca</masterLabel>
+            <translation>Asia/Daca</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Dubai</masterLabel>
+            <translation>Asia/Dubái</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Hong_Kong</masterLabel>
+            <translation>Asia/Hong_Kong</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Jakarta</masterLabel>
+            <translation>Asia/Yakarta</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Jerusalem</masterLabel>
+            <translation>Asia/Jerusalén</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Kabul</masterLabel>
+            <translation>Asia/Kabul</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Kamchatka</masterLabel>
+            <translation>Asia/Kamchatka</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Karachi</masterLabel>
+            <translation>Asia/Karachi</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Katmandu</masterLabel>
+            <translation>Asia/Katmandú</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Kuala_Lumpur</masterLabel>
+            <translation>Asia/Kuala_Lumpur</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Kuwait</masterLabel>
+            <translation>Asia/Kuwait</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Manila</masterLabel>
+            <translation>Asia/Manila</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Rangoon</masterLabel>
+            <translation>Asia/Rangún</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Riyadh</masterLabel>
+            <translation>Asia/Riad</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Saigon</masterLabel>
+            <translation>Asia/Saigón</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Seoul</masterLabel>
+            <translation>Asia/Seúl</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Shanghai</masterLabel>
+            <translation>Asia/Shanghái</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Singapore</masterLabel>
+            <translation>Asia/Singapur</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Taipei</masterLabel>
+            <translation>Asia/Taipéi</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Tashkent</masterLabel>
+            <translation>Asia/Taskent</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Tbilisi</masterLabel>
+            <translation>Asia/Tiflis</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Tehran</masterLabel>
+            <translation>Asia/Teherán</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Tokyo</masterLabel>
+            <translation>Asia/Tokio</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Yekaterinburg</masterLabel>
+            <translation>Asia/Ekaterimburgo</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Atlantic/Bermuda</masterLabel>
+            <translation>Atlántico/Bermudas</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Atlantic/Cape_Verde</masterLabel>
+            <translation>Atlántico/Cabo_Verde</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Atlantic/South_Georgia</masterLabel>
+            <translation>Atlántico/Georgias_del_Sur</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australia/Adelaide</masterLabel>
+            <translation>Australia/Adelaida</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australia/Brisbane</masterLabel>
+            <translation>Australia/Brisbane</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australia/Darwin</masterLabel>
+            <translation>Australia/Darwin</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australia/Lord_Howe</masterLabel>
+            <translation>Australia/Lord_Howe</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australia/Perth</masterLabel>
+            <translation>Australia/Perth</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australia/Sydney</masterLabel>
+            <translation>Australia/Sídney</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/Amsterdam</masterLabel>
+            <translation>Europa/Ámsterdam</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/Athens</masterLabel>
+            <translation>Europa/Atenas</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/Berlin</masterLabel>
+            <translation>Europa/Berlín</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/Brussels</masterLabel>
+            <translation>Europa/Bruselas</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/Bucharest</masterLabel>
+            <translation>Europa/Bucarest</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/Dublin</masterLabel>
+            <translation>Europa/Dublín</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/Helsinki</masterLabel>
+            <translation>Europa/Helsinki</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/Istanbul</masterLabel>
+            <translation>Europa/Estambul</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/Lisbon</masterLabel>
+            <translation>Europa/Lisboa</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/London</masterLabel>
+            <translation>Europa/Londres</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/Minsk</masterLabel>
+            <translation>Europa/Minsk</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/Moscow</masterLabel>
+            <translation>Europa/Moscú</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/Paris</masterLabel>
+            <translation>Europa/París</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/Prague</masterLabel>
+            <translation>Europa/Praga</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe/Rome</masterLabel>
+            <translation>Europa/Roma</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GMT</masterLabel>
+            <translation>GMT</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pacific/Auckland</masterLabel>
+            <translation>Pacífico/Auckland</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pacific/Chatham</masterLabel>
+            <translation>Pacífico/Chatham</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pacific/Enderbury</masterLabel>
+            <translation>Pacífico/Enderbury</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pacific/Fiji</masterLabel>
+            <translation>Pacífico/Fiyi</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pacific/Guadalcanal</masterLabel>
+            <translation>Pacífico/Guadalcanal</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pacific/Honolulu</masterLabel>
+            <translation>Pacífico/Honolulú</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pacific/Kiritimati</masterLabel>
+            <translation>Pacífico/Kiritimati</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pacific/Niue</masterLabel>
+            <translation>Pacífico/Niue</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pacific/Norfolk</masterLabel>
+            <translation>Pacífico/Norfolk</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pacific/Pago_Pago</masterLabel>
+            <translation>Pacífico/Pago_Pago</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pacific/Tongatapu</masterLabel>
+            <translation>Pacífico/Tongatapu</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Email Verified --></label>
+        <name>FinServ__EmailVerified__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employed Since --></label>
+        <name>FinServ__EmployedSince__c</name>
+    </fields>
+    <fields>
+        <label><!-- Facebook --></label>
+        <name>FinServ__Facebook__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fax Verified --></label>
+        <name>FinServ__FaxVerified__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gender --></label>
+        <name>FinServ__Gender__c</name>
+        <picklistValues>
+            <masterLabel>Female</masterLabel>
+            <translation>Mujer</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Male</masterLabel>
+            <translation>Hombre</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Otro</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Home Ownership --></label>
+        <name>FinServ__HomeOwnership__c</name>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Otra</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Own</masterLabel>
+            <translation>Propia</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rent</masterLabel>
+            <translation>Alquiler</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Home Phone Verified --></label>
+        <name>FinServ__HomePhoneVerified__c</name>
+    </fields>
+    <fields>
+        <label><!-- Individual ID --></label>
+        <name>FinServ__IndividualId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Individual Type --></label>
+        <name>FinServ__IndividualType__c</name>
+        <picklistValues>
+            <masterLabel>Individual</masterLabel>
+            <translation>Individuo</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Languages Spoken --></label>
+        <name>FinServ__LanguagesSpoken__c</name>
+    </fields>
+    <fields>
+        <label><!-- SSN/Tax ID (Last Four Digits) --></label>
+        <name>FinServ__LastFourDigitSSN__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn --></label>
+        <name>FinServ__LinkedIn__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mailing Address --></label>
+        <name>FinServ__MailingAddress__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marital Status --></label>
+        <name>FinServ__MaritalStatus__c</name>
+        <picklistValues>
+            <masterLabel>Divorced</masterLabel>
+            <translation>Divorciado/a</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Married</masterLabel>
+            <translation>Casado/a</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Separated</masterLabel>
+            <translation>Separado/a</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single</masterLabel>
+            <translation>Soltero/a</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Widowed</masterLabel>
+            <translation>Viudo/a</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Marketing Opt-Out --></label>
+        <name>FinServ__MarketingOptOut__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mobile Verified --></label>
+        <name>FinServ__MobileVerified__c</name>
+    </fields>
+    <fields>
+        <label><!-- Most Used Channel --></label>
+        <name>FinServ__MostUsedChannel__c</name>
+        <picklistValues>
+            <masterLabel>Branch</masterLabel>
+            <translation>Sucursal</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Call Center</masterLabel>
+            <translation>Centro de llamadas</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile</masterLabel>
+            <translation>Teléfono</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Otra</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web</masterLabel>
+            <translation>Web</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Mother&apos;s Maiden Name --></label>
+        <name>FinServ__MotherMaidenName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Life Event --></label>
+        <name>FinServ__NextLifeEvent__c</name>
+        <picklistValues>
+            <masterLabel>Children</masterLabel>
+            <translation>Hijos</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Critical Family Event</masterLabel>
+            <translation>Evento familiar grave</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enter Workforce</masterLabel>
+            <translation>Entrada en plantilla</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>First Home Purchase</masterLabel>
+            <translation>Primera compra de vivienda</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Higher Education</masterLabel>
+            <translation>Educación superior</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moving</masterLabel>
+            <translation>Mudanza</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promotion</masterLabel>
+            <translation>Promoción</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renovations</masterLabel>
+            <translation>Renovaciones</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retirement</masterLabel>
+            <translation>Jubilación</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Returning to Workforce</masterLabel>
+            <translation>Vuelta a plantilla</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Number Of Children --></label>
+        <name>FinServ__NumberOfChildren__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Dependents --></label>
+        <name>FinServ__NumberOfDependents__c</name>
+    </fields>
+    <fields>
+        <label><!-- Occupation --></label>
+        <name>FinServ__Occupation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Address --></label>
+        <name>FinServ__OtherAddress__c</name>
+    </fields>
+    <fields>
+        <label><!-- Preferred Name --></label>
+        <name>FinServ__PreferredName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Address (Billing) --></label>
+        <name>FinServ__PrimaryAddressIsBilling__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Address (Mailing) --></label>
+        <name>FinServ__PrimaryAddressIsMailing__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Address (Other) --></label>
+        <name>FinServ__PrimaryAddressIsOther__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Address (Shipping) --></label>
+        <name>FinServ__PrimaryAddressIsShipping__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Citizenship --></label>
+        <name>FinServ__PrimaryCitizenship__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Language --></label>
+        <name>FinServ__PrimaryLanguage__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Referrer --></label>
+        <name>FinServ__ReferredByContact__c</name>
+        <relationshipLabel><!-- My Referrals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Internal Referrer --></label>
+        <name>FinServ__ReferredByUser__c</name>
+        <relationshipLabel><!-- Contacts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Referrer Score --></label>
+        <name>FinServ__ReferrerScore__c</name>
+    </fields>
+    <fields>
+        <label><!-- Secondary Citizenship --></label>
+        <name>FinServ__SecondaryCitizenship__c</name>
+    </fields>
+    <fields>
+        <label><!-- Secondary Language --></label>
+        <name>FinServ__SecondaryLanguage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shipping Address --></label>
+        <name>FinServ__ShippingAddress__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System ID --></label>
+        <name>FinServ__SourceSystemId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tax Bracket --></label>
+        <name>FinServ__TaxBracket__c</name>
+        <picklistValues>
+            <masterLabel>10%</masterLabel>
+            <translation>10%</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>15%</masterLabel>
+            <translation>15%</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>25%</masterLabel>
+            <translation>25%</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>28%</masterLabel>
+            <translation>28%</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>33%</masterLabel>
+            <translation>33%</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>35%</masterLabel>
+            <translation>35%</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Tax ID --></label>
+        <name>FinServ__TaxId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Twitter --></label>
+        <name>FinServ__Twitter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wedding Anniversary --></label>
+        <name>FinServ__WeddingAnniversary__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- Contact data for an institution or a business account --></description>
+        <label><!-- Business --></label>
+        <name>IndustriesBusiness</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Contact data for a retail client --></description>
+        <label><!-- Individual --></label>
+        <name>IndustriesIndividual</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Date of birth can&apos;t be in the future. --></errorMessage>
+        <name>FinServ__BirthdateCannotBeInFuture</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only one address can be designated as the primary address. --></errorMessage>
+        <name>FinServ__CannotHaveMoreThanOnePrimaryAddress</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A lead must be associated with an individual account. A contact must be associated with a business account. --></errorMessage>
+        <name>FinServ__ContactCannotBeAssociatedToHousehold</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The selected account has an Individual record type and can&apos;t have additional contacts associated with it --></errorMessage>
+        <name>FinServ__IndividualCannotHaveMoreThanOneContact</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Internal referrers must be internal Salesforce users. --></errorMessage>
+        <name>FinServ__NonPortalUserReferrer</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Individual record type can&apos;t be changed --></errorMessage>
+        <name>FinServ__NotAllowingConversionFromIndividual</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The record type can&apos;t be changed to Individual. --></errorMessage>
+        <name>FinServ__NotAllowingConversionToIndividual</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter an internal referrer or an external referrer. You can list only one referrer for each referral. --></errorMessage>
+        <name>FinServ__SingleReferredByEntryByRecord</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- AddRelation --></label>
+        <name>FinServ__AddRelation</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+</CustomObjectTranslation>

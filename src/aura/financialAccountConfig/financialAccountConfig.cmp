@@ -1,0 +1,26 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component for financial account investment account record type
+ * @since 204
+-->
+<aura:component controller="FinServ.RecordTypeController" extends="FinServ:baseFinServTemplate" extensible="true" abstract="true">
+    
+    <aura:set attribute="sObjectName" value="FinancialAccount__c" />
+    <aura:set attribute="licenseKeys" value="['standard']" />
+    <aura:attribute name="accountInfo" type="Map" description="client/household information" />
+    <aura:attribute name="recordTypes" type="Map" />
+    <aura:attribute name="recordTypeName" type="String" description="Financial Account Record Type" />
+    <aura:attribute name="financialRoleRecordTypes" type="Map" />
+    <aura:attribute name="financialAccountFieldSet" type="String" />
+    <aura:attribute name="listSize" type="Integer" default="6" description="Max items to display" />    
+    <aura:attribute name="clientFieldSet" type="String" description="Name of the client field set" />
+    <aura:attribute name="householdFieldSet" type="String" description="Name of the household field set" />
+    <aura:attribute name="relationshipName" type="String" default=""/>
+    <aura:attribute name="showErrors" type="Boolean" default="false" description="flag used to handle errors" />
+    <aura:attribute name="errors" type="List" default="" description="list of error messages" />
+    <aura:attribute name="createParam" type="Map" />
+    <aura:attribute name="financialRoleCreateParam" type="Map" />
+    {!v.body}
+</aura:component>

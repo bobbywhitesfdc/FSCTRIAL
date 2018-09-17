@@ -1,0 +1,24 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description A backed provider of list data for list views
+ * @since 204
+-->
+<aura:component extends="ui:dataProvider" controller="FinServ.ListViewController" description="A data provider that loads all records of the specified entity, with the ability to cross-check against a related list to determine whether the record is already present.">
+
+    <aura:attribute name="recordId" type="String" required="true" description="Record Id to query" />
+    <aura:attribute name="sObjectName" type="String" required="true" description="Name of the object to query"/>
+    <aura:attribute name="methodName" type="String" required="true" description="Name of the action to use"/>
+    <aura:attribute name="whereField" type="String" default="PrimaryOwner__c" description="Field on which to query" />
+    <aura:attribute name="recordTypeNames" type="List" default="" description="RecordType of the record" />
+    <aura:attribute name="methodParams" type="Map" default="{}" description="Extra params to send to the specified method" />
+    <aura:handler name="provide" action="{!c.provide}"/>
+    <aura:handler name="change" value="{!v.columns}" action="{!c.provide}" />
+    <aura:handler event="force:recordChange" action="{!c.onChange}" />
+    <aura:handler event="force:recordDeleted" action="{!c.onChange}" />
+    <aura:handler event="ui:createPanel" action="{!c.onCreatePanel}" />
+    
+    <aura:registerEvent name="error" type="ui:dataProvideError" description="The event fired when a data retrieval error occurs." />
+	
+</aura:component>

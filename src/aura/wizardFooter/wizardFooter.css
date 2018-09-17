@@ -1,0 +1,6 @@
+.THIS .slds-popover--tooltip {
+	position:absolute;
+	top:-3rem;
+	margin-left: 8px;
+	transform:translateX(-50%);
+}

@@ -1,0 +1,133 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to display Top Referrers card for today page
+ * @since 210
+-->
+<aura:component extends="FinServ:baseComponent" controller="FinServ.ReferralController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+
+    <aura:set attribute="icon" value="standard:client"/>
+    <aura:set attribute="header" value="{!format($Label.FinServ.Label_Top_Referrers_Summary_Title,'--')}"/>
+    <aura:set attribute="recordTypeNamesMap" value="{'Lead' : ['Referral']}" />
+    <aura:set attribute="sObjectName" value="Lead" />
+
+    <aura:attribute name="title" type="String" default="" description="Referral Sumary component title" access="GLOBAL"/>
+    <aura:attribute name="selectOrderBy" type="String" default="Revenue" description="Choose the sorting order to display referrers" access="GLOBAL"/>
+    <aura:attribute name="displayRevenueFromReferrals" type="boolean" description="revenues from Referrals I am assigned to" access="GLOBAL"/>
+    <aura:attribute name="displayTooltip" type="boolean" description="Show or Hide the tooltip for help text" access="GLOBAL"/>
+    <aura:attribute name="displayViewMoreLink" type="boolean" description="Enable / Disable View More Link to Dashboards" access="GLOBAL"/>
+    <aura:attribute name="selectOrderByLabel" type="String" description="The label of the selected sort by" access="PRIVATE" />
+    <aura:attribute name="selectPeriod" type="String" default="Year" description="The selection of Period key will be used to store/pass value to of the selected period" />
+    <aura:attribute name="selectPeriodLabel" type="String" default="{!$Label.FinServ.Label_Select_Period_YTD}" description="The label of the selected period" access="PRIVATE" />
+    <aura:attribute name="selectFilterType" type="String" default="INTERNAL_ASSIGNED_TO_ME" description="Select the Filtering Type, Owned by or Referred By "/>
+    <aura:attribute name="data" type="Map" default="{}" description="this is a JSON object that store/cached data from all period, if the data does not exist, it will make a call to the backend" />
+    <aura:attribute name="columnsConfig" type="Map[]" default="[]" description="This Map will be used to store the column settings" />
+    <aura:attribute name="topReferrersList" type="List" description="list of top referrers" access="PRIVATE"/>
+    <aura:attribute name="loading" type="Boolean" default="true" access="PRIVATE"/>
+    <aura:attribute name="typeOfReferrers" type="List" default="[]" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <aura:if isTrue="{!v.canRead}">
+        <div class="slds-card slds-text-body--regular">
+            <header class="slds-card__header slds-media--top slds-grid">
+                <div class="slds-media__figure">
+                    <lightning:icon iconName="standard:client" size="small" class="slds-icon--small" />
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="slds-align-middle header-title-container slds-list--inline slds-p-right--small">
+                        <span aura:id="headerTitle" class="slds-text-heading--small slds-truncate">
+                            {!empty(v.title)? $Label.FinServ.Label_Top_Referrers_Summary_Title : v.title}
+                        </span>
+                    </h2>
+                    <aura:if isTrue="{!v.displayTooltip}">
+                        <lightning:helptext aura:id="headerTooltip" content="{!$Label.FinServ.Msg_Help_Top_Referrers}" />
+                    </aura:if>
+                    <ul class="slds-list--horizontal slds-has-dividers--right slds-text-color_weak slds-text-body_small">
+                        <li aura:id="selectedPeriodView" class="slds-item">
+                            {!format($Label.FinServ.Label_Selected_Summary_Period_View, v.selectPeriodLabel)}
+                        </li>
+                        <li aura:id="selectedSortedBy" class="slds-item">
+                            {!format($Label.FinServ.Label_Selected_Summary_Sorted_By, v.selectOrderByLabel)}
+                        </li>
+                    </ul>
+                </div>
+                <lightning:buttonMenu aura:id="menu" iconName="utility:event" onselect="{!c.handlePeriodSelection}" menuAlignment="right" alternativeText="{!$Label.FinServ.Label_MenuButton_Select_Period}" >
+                    <lightning:menuItem value="Month"   label="{!$Label.FinServ.Label_Select_Period_MTD}" checked="{!v.selectPeriod=='Month'}"/>
+                    <lightning:menuItem value="Quarter" label="{!$Label.FinServ.Label_Select_Period_QTD}" checked="{!v.selectPeriod=='Quarter'}"/>
+                    <lightning:menuItem value="Year"    label="{!$Label.FinServ.Label_Select_Period_YTD}" checked="{!v.selectPeriod=='Year'}"/>
+                    <lightning:menuItem value="All"     label="{!$Label.FinServ.Label_Select_Period_All_Time}" checked="{!v.selectPeriod=='All'}"/>
+                </lightning:buttonMenu>
+            </header>
+            <section class="slds-card__body">
+                <div class="slds-grid slds-grid--align-center slds-m-top--small slds-m-bottom--small">
+                    <lightning:radioGroup aura:id="topReferrerGroup"                      
+                    name="topReferrerGroup"               
+                    type="button"
+                    options="{! v.typeOfReferrers }"
+                    value="{! v.selectFilterType }"
+                    onchange="{!c.handleFilterTypeSelection}" />
+                </div>
+                <ul>
+                    <aura:if isTrue="{!!empty(v.topReferrersList)}">
+                        <aura:iteration items="{!v.topReferrersList}" var="so" indexVar="rowno">
+                            <li class="slds-tile slds-m-vertical--small slds-m-horizontal--large">
+                                <div class="slds-tile slds-media">
+                                    <div class="slds-media__figure">
+                                        <p class="slds-text-heading_medium slds-text-color_weak">{!rowno + 1}.</p>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <aura:if isTrue="{!so.Columns[2].shouldDisplay}">
+                                            <div class="slds-float--right">
+                                                <p class="slds-tile__title">
+                                                    <FinServ:outputField fieldValue="{!so.Columns[2].value}" fieldType="{!so.Columns[2].fieldType}" fieldLabel="{!so.Columns[2].label}" percentageIndicator="false" numberIndicator="true" currencyIndicator="{!so.Columns[2].isCurrency}" truncateDecimal="true" />
+                                                </p>
+                                            </div>
+                                        </aura:if>
+                                        <h3 class="slds-truncate slds-tile__title">
+                                            <FinServ:navToObjectWrapper aura:id="topReferrers_navToObj" sObjectId="{!so.Id}" displayText="{!so.Name}" />
+                                        </h3>
+                                        <div class="slds-tile__detail slds-text-color_weak slds-text-body--small">
+                                            <ul class="slds-list--horizontal slds-has-dividers--right">
+                                                <aura:if isTrue="{!so.Columns[0].shouldDisplay}">
+                                                    <li class="slds-item">
+                                                        <FinServ:outputField fieldValue="{!so.Columns[0].value}" fieldType="{!so.Columns[0].fieldType}" fieldLabel="{!so.Columns[0].label}" numberIndicator="true" currencyIndicator="{!so.Columns[0].isCurrency}" truncateDecimal="true" formatLabel="true" />
+                                                    </li>
+                                                </aura:if>
+                                                <aura:if isTrue="{!so.Columns[1].shouldDisplay}">
+                                                    <li class="slds-item">
+                                                        <FinServ:outputField fieldValue="{!so.Columns[1].value}" fieldType="{!so.Columns[1].fieldType}" fieldLabel="{!so.Columns[1].label}" numberIndicator="true" currencyIndicator="{!so.Columns[1].isCurrency}" truncateDecimal="true" formatLabel="true" />
+                                                    </li>
+                                                </aura:if>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </aura:iteration>
+                        <aura:set attribute="else">
+                            <li class="slds-tile slds-m-vertical--small slds-m-horizontal--large">
+                                <div class="slds-media__body"> 
+                                    <div class="{!v.loading ? '' : 'slds-hide'}">
+                                        <force:placeholder name="table_list_line_item" />  
+                                    </div>
+                                    <div class="{!v.loading ? 'slds-hide' : 'slds-has-flexi-truncate'}">
+                                        <p class="tile__title slds-truncate slds-tile__title slds-text-align--center">
+                                            <lightning:formattedText aura:id="noReferralsLabel" value="{!$Label.FinServ.Text_No_Referrals}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </aura:set>
+                    </aura:if>
+                </ul>
+            </section>
+            <aura:if isTrue="{!v.displayViewMoreLink}">                
+                <footer class="slds-card__footer">
+                    <FinServ:navToDashboard aura:id="topReferrersViewMoreLink" dashboardName="MyTopReferrers" displayText="{!$Label.FinServ.Link_View_More}" assistiveText= "{!$Label.FinServ.Label_Of_My_Top_Referrers_Dashboard}"/>
+                </footer>
+            </aura:if>
+        </div>
+    </aura:if>
+</aura:component>

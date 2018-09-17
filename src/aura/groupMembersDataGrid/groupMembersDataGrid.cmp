@@ -1,0 +1,23 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle ACR membership in setup ui
+ * @since 206
+-->
+<aura:component extends="FinServ:inputDataGrid" controller="FinServ.RelationshipController">
+    <aura:dependency resource="markup://ui:dataGridColumn" type="COMPONENT" />
+    <aura:handler name="init" value="{!this}" action="{!c.membersInit}" />
+    <aura:attribute name="isPersonAccount" type="Boolean" default="false" />
+    <aura:set attribute="autoInit" value="false"/>
+    
+    <aura:set attribute="showSection" value="true" />
+    <aura:set attribute="sectionTitle" value="{!$Label.FinServ.Label_Group_Setup_Members}" />
+    <aura:set attribute="sectionId" value="fsc_group_detail1" />
+    <aura:set attribute="isCollapsible" value="true" />
+    <aura:set attribute="sObjectName" value="AccountContactRelation" />     
+
+    <aura:handler name="dataChanged" event="ui:dataChanged" action="{!c.onDataChanged}" />
+    <aura:handler name="rowAddRemove" event="ui:addRemove" action="{!c.onAddRemoveRow}" />
+    <aura:handler name="rowModified" event="ui:notify" action="{!c.onRowChange}" />
+</aura:component>

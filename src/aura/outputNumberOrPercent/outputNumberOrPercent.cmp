@@ -1,0 +1,13 @@
+<aura:component>
+    <aura:attribute name="value" type="Integer" required="true" description="value of number" />
+    <aura:attribute name="soapType" type="String" required="true" description="The type of the number, if percent then display % sign" />
+    <aura:attribute name="indicator" type="Boolean" default="false" description="To indicate if the indicator will be applied or not." />
+    <aura:attribute name="isNegative" type="Boolean" description="To indicate if the number is of negative sign" />
+    <aura:handler name="init" value="{!this}" action="{!c.applyIndicator}"  />
+    <div aura:id="value">
+        {!v.value}
+        <aura:if isTrue="{!v.soapType=='percent'}">
+            %
+        </aura:if>
+    </div>
+</aura:component>

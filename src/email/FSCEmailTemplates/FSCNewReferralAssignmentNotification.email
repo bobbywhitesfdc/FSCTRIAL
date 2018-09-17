@@ -1,0 +1,59 @@
+<messaging:emailTemplate subject="{!$Organization.Name}: New Referral Assignment" relatedToType="Lead">
+    <messaging:htmlEmailBody >
+        <html>
+            <body>
+            <apex:outputPanel layout="block" rendered="{!relatedTo.owner.type == 'Queue'}">
+                <p>Hello,</p>
+            </apex:outputPanel>
+            <apex:outputPanel layout="block" rendered="{!relatedTo.owner.type == 'User'}">
+                <p>Hello {!relatedTo.owner.name},</p>
+            </apex:outputPanel>
+            <p/>
+            <apex:outputPanel layout="block" rendered="{!relatedTo.owner.type == 'Queue'}">
+                <p>This&nbsp;<apex:outputLink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+relatedTo.Id}">referral</apex:outputLink> is ready to be assigned.</p>
+            </apex:outputPanel>
+            <apex:outputPanel layout="block" rendered="{!relatedTo.owner.type == 'User'}">
+                <p>You've been assigned this&nbsp;<apex:outputLink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+relatedTo.Id}">referral</apex:outputLink>.</p>
+            </apex:outputPanel>
+            <p/>
+            <table border="0" >
+                <tr>
+                    <td>Referral Name:</td>
+                    <td>{!relatedTo.name}</td>
+                </tr>
+                <apex:outputPanel layout="block" rendered="{!AND(NOT(ISBLANK(relatedTo.FinServ__ReferredByUser__c)) , ISBLANK(relatedTo.FinServ__ReferredByContact__c))}">
+                    <tr>
+                        <td>Referred By:</td>
+                        <td>{!relatedTo.FinServ__ReferredByUser__r.name}</td>
+                    </tr>
+                </apex:outputPanel>
+                <apex:outputPanel layout="block" rendered="{!AND(ISBLANK(relatedTo.FinServ__ReferredByUser__c) , NOT(ISBLANK(relatedTo.FinServ__ReferredByContact__c)))}">
+                    <tr>
+                        <td>Referred By:</td>
+                        <td>{!relatedTo.FinServ__ReferredByContact__r.name}</td>
+                    </tr>
+                </apex:outputPanel>
+            </table>
+            <apex:outputPanel layout="block" rendered="{!relatedTo.owner.type == 'User'}">
+                <p>Next, work on converting this referral.</p>
+            </apex:outputPanel>
+            
+            <p/>
+            <p>
+            Salesforce
+            </p>
+            <p/>
+            <apex:outputPanel layout="block" rendered="{!relatedTo.owner.type == 'Queue'}">
+                <p>
+                    You're registered in the Salesforce org,&nbsp;{!$Organization.Name}. Need help? Contact your Salesforce admin.
+                </p>
+            </apex:outputPanel>
+            <apex:outputPanel layout="block" rendered="{!relatedTo.owner.type == 'User'}">
+                <p>
+                    You're registered as&nbsp;{!relatedTo.owner.email}&nbsp;in the Salesforce org,{!$Organization.Name}. Need help? Contact your Salesforce admin.
+                </p>
+            </apex:outputPanel>
+            </body>
+        </html>
+        </messaging:htmlEmailBody>
+</messaging:emailTemplate>

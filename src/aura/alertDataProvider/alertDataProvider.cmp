@@ -1,0 +1,12 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description A backed provider of list data for alert notifications
+ * @since 206
+-->
+<aura:component extends="ui:dataProvider"  controller="FinServ.AlertsController" description="A data provider that loads all records of the specified entity, with the ability to cross-check against a related list to determine whether the record is already present.">
+    <aura:attribute name="recordId" type="String" required="true" description="Record Id to query" />
+    <aura:handler name="provide" action="{!c.provide}" />
+    <aura:handler event="FinServ:confirmationModalEvent" action="{!c.handleAlertDeactivation}" />
+</aura:component>

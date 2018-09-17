@@ -1,0 +1,67 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description a parent modal for creating a new individual (new setup ui) which contains header, body & footer of the modal.
+ * @since 208
+-->
+<aura:component extends="FinServ:baseModal" controller="FinServ.ClientController">
+	<aura:dependency resource="markup://FinServ:createIndividual" type="COMPONENT" />
+	<aura:dependency resource="markup://FinServ:wizardFooter" type="COMPONENT" />
+	<aura:dependency resource="markup://FinServ:createPanelUtility" type="COMPONENT" />
+	
+	<aura:registerEvent name="showToast" type="FinServ:showToastModal"/>
+
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+	<aura:attribute name="recordTypeId" type="String" description="Record Type ID of the individual selected in the previous step" />
+	<aura:attribute name="recordTypeName" type="String" description="Record type name of the individual selected" />
+	<aura:attribute name="recordId" type="String" description="Record ID for edit record scenario" />
+	<aura:attribute name="accountId" type="String" description="Account ID of the individual" />
+	<aura:attribute name="contactId" type="String" description="Contact ID of the individual" />
+	<aura:attribute name="individualName" type="String" description="Name of the individual" />
+	<aura:attribute name="steps" type="String[]" description="List of wizard steps" />
+	<aura:attribute name="contactFirst" type="Boolean" default="false" description="Displays Contact as first step of wizard" />
+	<aura:attribute name="pageNumber" type="Integer" default="0" description="The current step number" />
+	<aura:attribute name="pages" type="List" description="List of all page configurations" />
+	<aura:attribute name="defaultFieldValues" type="Map" description="Default values to be filled in on the Detail Panel." />
+	<aura:attribute name="errors" type="List" description="list of error messages" />
+	<aura:locator alias="modalCreateIndividual_saveNextButton" target="saveAndNextButton" description="save and next button"/>
+	<aura:locator alias="modalCreateIndividual_backButton" target="backButton" description="back button on individual modal"/>
+	<aura:locator alias="modalCreateIndividual_saveButton" target="saveButton" description="save button on individual modal"/>
+	<aura:locator alias="modalCreateIndividual_saveNewButton" target="saveAndNewButton" description="save and new button"/>
+
+
+	<!-- Header -->
+	<div aura:id="header" class="slds-text-heading--medium slds-text-align--center">
+		{!format($Label.FinServ.Header_Panel_Individual_Create, v.recordTypeName)}
+	</div>
+
+	<!-- Body -->
+	<aura:if isTrue="{!not(empty(v.pages))}">
+		<FinServ:createIndividual aura:id="body" pages="{!v.pages}" currentPage="{!v.pageNumber}" recordTypeId="{!v.recordTypeId}" defaultFieldValues="{!v.defaultFieldValues}" recordId="{!v.recordId}" errors="{!v.errors}" />
+	</aura:if>
+	
+	<FinServ:individualActionButton aura:id="actionButton" class="slds-hide" contactFirst="{!v.contactFirst}" />
+
+	<!-- Footer -->
+	<FinServ:wizardFooter aura:id="footer" steps="{!v.steps}">
+		<aura:set attribute="actionsLeft">
+			<!-- If not first step -->
+			<aura:if isTrue="{!greaterthan(v.pageNumber, 0)}">
+				<ui:button aura:id="backButton" label="{!$Label.FinServ.Button_Label_Back}" buttonTitle="{!$Label.FinServ.Button_Label_Back}" class="slds-button slds-button--neutral" press="{!c.onBack}" />
+			</aura:if>
+		</aura:set>
+		<aura:set attribute="actionsRight">
+			<!-- If past first step -->
+			<aura:if isTrue="{!greaterthan(v.pageNumber, 0)}">
+				<ui:button aura:id="saveAndNewButton" label="{!$Label.FinServ.Button_Label_SaveAndNew}" buttonTitle="{!$Label.FinServ.Button_Label_SaveAndNew}" class="slds-button slds-button--neutral" press="{!c.saveIndividual}" />
+				<ui:button aura:id="saveButton" label="{!$Label.FinServ.Button_Label_Save}" buttonTitle="{!$Label.FinServ.Button_Label_Save}" class="{!'slds-button' + (v.pageNumber == (v.pages.length - 1) ? ' slds-button--brand' : ' slds-button--neutral')}" press="{!c.saveIndividual}" />
+			</aura:if>
+			<!-- if not last step -->
+			<aura:if isTrue="{!v.pageNumber != (v.pages.length - 1)}">
+				<ui:button aura:id="saveAndNextButton" label="{!$Label.FinServ.Button_Label_SaveAndNext}" buttonTitle="{!$Label.FinServ.Button_Label_SaveAndNext}" class="slds-button slds-button--brand" press="{!c.saveIndividual}"/>
+			</aura:if>
+		</aura:set> 
+	</FinServ:wizardFooter>
+</aura:component>

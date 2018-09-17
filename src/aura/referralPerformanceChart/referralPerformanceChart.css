@@ -1,0 +1,130 @@
+.THIS {
+    background-color: white;
+    border: 1px solid #D8DDE6;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    position: relative;
+    /*box-shadow: 0 0 3px #D8DDE6;*/
+}
+
+.THIS .chartBody {
+    height: 342px;
+    position: relative;
+}
+
+/* For hiding the extra white space from the Y-axis label */
+.THIS .chartWrapper {
+    position: relative;
+    left: -16px;
+    height: 325px;
+    top: 15px;
+}
+
+.THIS .chartPlaceHolder {
+    position: absolute;
+    top: 0;
+    left: 28px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: white;
+}
+
+.THIS .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    z-index: 110;
+}
+
+.THIS .overlay.error {
+    color: #c2343b;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.THIS .mask {
+    background-color: white;
+    z-index: 99;
+    animation: refresh 300ms ease-out forwards;
+    position: absolute;
+    height: 305px;
+    width: calc(100% - 35px);
+    right: 0;
+    margin-left: 28px;
+}
+
+@keyframes refresh {
+    0% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+.THIS .refreshSpinner {
+    position: absolute;
+    top: 38%;
+    left: 52%;
+    z-index: 100;
+}
+
+.THIS .header {
+    border-bottom: 1px solid #e4dcdc;
+}
+
+.THIS .header .metricRow {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.THIS .header .slds-text-title--caps {
+    letter-spacing: normal;
+}
+
+.THIS .header .metric {
+    align-self: center;
+    min-width: 60px;
+}
+
+.THIS .header .slds-dropdown-trigger.slds-button-group .slds-button {
+    border-radius: 0.25rem;
+}
+
+.THIS .legend {
+    position: relative;
+    top: -8px;
+}
+
+.THIS .legend span {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.THIS .legend .colorPalette {
+    height: 0.5rem;
+    width: 0.5rem;
+}
+
+.THIS .colorPalette.made {
+    background-color: #52b7d8;
+}
+
+.THIS .colorPalette.converted {
+    background-color: #4bca81;
+}
+
+.THIS .colorPalette.rejected {
+    background-color: #C23934;
+}

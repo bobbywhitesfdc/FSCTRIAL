@@ -1,0 +1,12 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description This event is fired when the next button in the group record type selector is clicked.
+ * @since 206
+-->
+<aura:event type="COMPONENT" description="Event fired when the next button in the group record type selector is clicked">
+	<aura:attribute name="recordTypeId" type="String" description="Selected Record Type ID"/>
+	<aura:attribute name="recordTypeName" type="String" description="Selected Record Type Name"/>
+	<aura:attribute name="editMode" type="Boolean" description="Boolean indicating edit mode"/>
+</aura:event>

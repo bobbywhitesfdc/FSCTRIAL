@@ -1,0 +1,26 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description expand arrow component houses the arrow in the listViewTable. When clicked, it fires the 
+ * list listViewTableEvent to trigger table expansion/collapse
+ * @since 196
+-->
+<aura:component >
+    <aura:attribute name="isArrowRight" type="Boolean"  default="true"/>
+    <aura:attribute name="firstTimeAccessed" type="Boolean" access="private" default="true"/>
+    <aura:attribute name="rowRecordId" type="String" />
+    <aura:registerEvent name="expandListViewTable" type="FinServ:listViewTableEvent" />
+    <button aura:id="arrowButton" aria-expanded="{!not(v.isArrowRight)}" class="slds-button slds-button--icon" 
+        onclick="{!c.handleClick}" onkeydown="{!c.handleKeydown}">
+        <aura:if isTrue="{!v.isArrowRight}" >
+            <lightning:icon aura:id="iconRight" iconName="utility:chevronright" size="x-small" 
+                alternativeText="{!$Label.FinServ.Label_Expand_Arrow_Assistive}"/>
+            
+            <aura:set attribute="else" >
+                    <lightning:icon aura:id="iconDown" iconName="utility:chevrondown" size="x-small" 
+                        alternativeText="{!$Label.FinServ.Label_Collapse_Arrow_Assistive}"/>
+            </aura:set>
+        </aura:if>
+    </button>
+</aura:component>

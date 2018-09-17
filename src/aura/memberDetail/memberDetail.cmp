@@ -1,0 +1,141 @@
+<!--
+TODO:
+This is a temporary component. When field sets are supported for the AccountContactRelationship object, we will be using that instead
+-->
+<aura:component extends="FinServ:baseFinServTemplate">
+    <aura:attribute name="records" type="Object[]" description="Member sObjects" />
+    <!-- THIS COMPONENT IS NOT UTILIZING FIELDSET AS ACCOUNT CONTACT RELATIONSHIP DOESN'T HAVE FIELDSET SUPPORT -->
+    <div>
+        <aura:iteration items="{!v.records}" var="member">
+            <div class="{! 'slds-card slds-card_boundary slds-m-vertical_medium borderMember ' + ((member.isIndividual) ? 'borderIndividual' : ((member.isAccount) ? 'borderAccount' : 'borderContact'))}">
+                <div class="slds-card__header slds-grid">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__figure">
+                            <!-- Different icon depending on record type -->
+                            <aura:if isTrue="{!member.isIndividual}">
+                                <lightning:icon iconName="standard:client" size="small" class="slds-icon__container--square" />
+                                <aura:set attribute="else">
+                                    <aura:if isTrue="{!member.isAccount}">
+                                        <lightning:icon iconName="standard:account" size="small" class="slds-icon__container--square" />
+                                    <aura:set attribute="else">
+                                        <lightning:icon iconName="standard:contact" size="small" class="slds-icon__container--square" />
+                                    </aura:set>
+                                    </aura:if>
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                        <div class="slds-media__body slds-grid">
+                            <h2 class="slds-text-heading--small">
+                                <aura:if isTrue="{!member.isAccount}">
+                                     <FinServ:navToObjectWrapper sObjectId="{!member.acr.Account.Id}" displayText="{!member.acr.Account.Name}" />
+                                    <aura:set attribute="else">
+                                        <FinServ:navToObjectWrapper sObjectId="{!member.acr.Contact.Id}" displayText="{!member.acr.Contact.Name}" />
+                                    </aura:set>
+                                </aura:if>
+                            </h2>
+                            <aura:if isTrue="{!member.acr.Primary__c}">
+                                <div class="slds-badge slds-m-left--small">{!$Label.FinServ.Pill_Primary}</div>
+                            </aura:if>
+                        </div>
+                    </header>
+                    <div class="slds-no-flex">
+                         <FinServ:actionMenuList actionTypes="['membership']" recordId="{!member.acr.Id}" groupId="{!member.acr.AccountId}" />
+                    </div>
+                </div>
+                <div class="slds-card__body slds-card__body_inner">
+                    <div class="slds-tile__detail slds-grid slds-wrap">
+                        <!-- Member Columns -->
+                        <div class="slds-size--3-of-4 slds-grid slds-wrap">
+                            <div class="slds-size--1-of-2 slds-p-right--large">
+                                <dl class="slds-dl--inline">
+                                    <aura:if isTrue="{!member.isAccount}">
+                                        <dt class="slds-dl--inline__label slds-text-color--weak">
+                                            {!$Label.Global.Contact}
+                                        </dt>
+                                        <dd class="slds-dl--inline__detail slds-truncate">
+                                            <FinServ:navToObjectWrapper sObjectId="{!member.acr.Contact.Id}" displayText="{!member.acr.Contact.Name}" />
+                                        </dd>
+                                    </aura:if>
+                                    <dt class="slds-dl--inline__label slds-text-color--weak">
+                                        {!$Label.FinServ.Label_Household_Member_Roles}
+                                    </dt>
+                                    <dd class="slds-dl--inline__detail slds-truncate">
+                                        {!member.acr.Roles}
+                                    </dd>
+                                    <aura:if isTrue="{!!member.isAccount}">
+                                        <dt class="slds-dl--inline__label slds-text-color--weak">
+                                            {!$Label.FinServ.Label_Household_Member_Age}
+                                        </dt>
+                                        <dd class="slds-dl--inline__detail slds-truncate">
+                                            {!member.acr.Contact.Age__c}
+                                        </dd>
+                                    </aura:if>
+                                    <dt class="slds-dl--inline__label slds-text-color--weak">
+                                        <p>{!$Label.FinServ.Label_Household_Member_Phone}</p>
+                                    </dt>
+                                    <dd class="slds-dl--inline__detail slds-truncate">
+                                        <aura:if isTrue="{!member.isAccount}">
+                                            <ui:outputPhone value="{!member.acr.Account.Phone}" />
+                                        <aura:set attribute="else">
+                                            <ui:outputPhone value="{!member.acr.Contact.Phone}" />
+                                        </aura:set>
+                                        </aura:if>
+                                    </dd>
+                                    <aura:if isTrue="{!!member.isAccount}">
+                                        <dt class="slds-dl--inline__label slds-text-color--weak">
+                                            {!$Label.FinServ.Label_Household_Member_Mobile}
+                                        </dt>
+                                        <dd class="slds-dl--inline__detail slds-truncate">
+                                            <ui:outputPhone value="{!member.acr.Contact.MobilePhone}" />
+                                        </dd>
+                                        <dt class="slds-dl--inline__label slds-text-color--weak">
+                                            {!$Label.FinServ.Label_Household_Member_Email}
+                                        </dt>
+                                        <dd class="slds-dl--inline__detail sslds-truncate">
+                                            <ui:outputEmail value="{!member.acr.Contact.Email}" />
+                                        </dd>
+                                    </aura:if>
+                                </dl>
+                            </div>
+                            <div class="slds-size--1-of-2 slds-p-right--large">
+                                <dl class="slds-dl--inline">
+                                    <dt class="slds-dl--inline__label slds-text-color--weak">
+                                        {!$Label.FinServ.Label_Household_Member_Last_Interaction}
+                                    </dt>
+                                    <dd class="slds-dl--inline__detail slds-truncate">
+                                        <aura:if isTrue="{!member.isAccount}">
+                                            <FinServ:dateCmp date="{!member.acr.Account.LastInteraction__c}" showRelativeDate="false" />
+                                        <aura:set attribute="else">
+                                            <FinServ:dateCmp date="{!member.acr.Contact.Account.LastInteraction__c}" showRelativeDate="false" />
+                                        </aura:set>
+                                        </aura:if>
+                                        &nbsp;
+                                    </dd>
+                                    <dt class="slds-dl--inline__label slds-text-color--weak">
+                                        {!$Label.FinServ.Label_Household_Member_Next_Interaction}
+                                    </dt>
+                                    <dd class="slds-dl--inline__detail slds-truncate">
+                                        <aura:if isTrue="{!member.isAccount}">
+                                            <FinServ:dateCmp date="{!member.acr.Account.NextInteraction__c}" showRelativeDate="false" />
+                                        <aura:set attribute="else">
+                                            <FinServ:dateCmp date="{!member.acr.Contact.Account.NextInteraction__c}" showRelativeDate="false" />
+                                        </aura:set>
+                                        </aura:if>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="slds-size--1-of-4">
+                            <aura:if isTrue="{!member.isAccount}">
+                                <FinServ:memberActivity identifier="{!member.acr.Account.Id}" error="{!c.onError}"/>
+                            <aura:set attribute="else">
+                                <FinServ:memberActivity identifier="{!member.acr.Contact.Id}" error="{!c.onError}"/>
+                            </aura:set>
+                            </aura:if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aura:iteration>
+    </div>
+</aura:component>

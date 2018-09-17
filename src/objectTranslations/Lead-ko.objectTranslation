@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Referral_Form --></label>
+        <name>FSC_Referral_Form</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBLLabel_Field_Set_Referrals_Expressed_Interest --></label>
+        <name>FSC_Referrals_Expressed_Interest</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Referrals_Made --></label>
+        <name>FSC_Referrals_Made</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Referrals_Made --></label>
+        <name>FSC_Referrals_Made_Community</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Conversion DateTime --></label>
+        <name>FinServ__ConversionDateTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By Me --></label>
+        <name>FinServ__CreatedByMe__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created from Lead --></label>
+        <name>FinServ__CreatedFromLead__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employer --></label>
+        <name>FinServ__Employer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expressed Interest --></label>
+        <name>FinServ__ExpressedInterest__c</name>
+    </fields>
+    <fields>
+        <label><!-- Household --></label>
+        <name>FinServ__Household__c</name>
+        <relationshipLabel><!-- Household Referrals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Potential Value --></label>
+        <name>FinServ__PotentialValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Referrer --></label>
+        <name>FinServ__ReferredByContact__c</name>
+        <relationshipLabel><!-- Client Referrals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Internal Referrer --></label>
+        <name>FinServ__ReferredByUser__c</name>
+        <relationshipLabel><!-- Leads and Referrals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Referrer Score --></label>
+        <name>FinServ__ReferrerScore__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Account --></label>
+        <name>FinServ__RelatedAccount__c</name>
+        <relationshipLabel><!-- Related Leads --></relationshipLabel>
+    </fields>
+    <recordTypes>
+        <label><!-- General --></label>
+        <name>General</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- A person, business, or organization that is a referral --></description>
+        <label><!-- Referral --></label>
+        <name>Referral</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Retirement Planning --></label>
+        <name>RetirementPlanning</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Internal referrers must be internal Salesforce users. --></errorMessage>
+        <name>FinServ__NonPortalUserReferrer</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter an internal referrer or an external referrer. You can list only one referrer for each referral. --></errorMessage>
+        <name>FinServ__SingleReferredByEntryByRecord</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+</CustomObjectTranslation>

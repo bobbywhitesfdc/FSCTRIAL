@@ -1,0 +1,8 @@
+<aura:documentation>
+    <aura:description>
+        <p>The <code>FinServ:createNewClientCard</code> component renders a card that contains action to create new individuals.</p>
+        <p>This component can be added to anywhere in flexipage.</p>
+        <p>Here is an example</p>
+        <pre>&lt;FinServ:createNewClientCard /></pre>
+    </aura:description>
+</aura:documentation>

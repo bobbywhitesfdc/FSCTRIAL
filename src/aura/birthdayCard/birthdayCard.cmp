@@ -1,0 +1,84 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to display birthday card for today page
+ * @since 202
+-->
+<aura:component extends="FinServ:baseFinServTemplate" controller="FinServ.ClientController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:set attribute="icon" value="standard:client"/>
+    <aura:set attribute="header" value="{!format($Label.FinServ.Text_Birthdays,'--')}"/>
+    <aura:set attribute="placeholder" value="table_list_line_item" />
+    <aura:set attribute="licenseKeys" value="['standard']" />
+    <aura:set attribute="sObjectName" value="Contact" />
+    <aura:set attribute="additionalSObjects" value="Account" />
+    <aura:attribute name="birthdayList" type="Object[]" access="PRIVATE"/>
+    <aura:attribute name="recordCount" type="String" access="PRIVATE"/>
+     
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:locator target="birthdayCard_viewAll" description="View All Birthday Contacts button on footer"/>
+
+    
+    <div class="slds-card slds-text-body--regular">
+        <header class="slds-card__header slds-media--center slds-grid">
+            <div class="slds-media__figure">
+                <lightning:icon iconName="standard:thanks" size="small" class="slds-icon--small" />
+            </div>
+            <div class="slds-col slds-has-flexi-truncate slds-align-middle">
+                <div class="slds-media__body">
+                    <h3 class="slds-text-heading--small slds-m-right--small slds-truncate">
+                        <ui:outputText aura:id="birthdays" value="{!format($Label.FinServ.Text_Birthdays,v.recordCount)}" />
+                    </h3>
+                </div>
+            </div>
+        </header>
+        <section class="slds-card__body" >
+            <aura:if isTrue="{!(v.recordCount != 0)}">
+                <ul>
+                    <aura:iteration items="{!v.birthdayList}" var="so">
+                        <li class="slds-media slds-tile slds-m-vertical--small slds-m-horizontal--large">
+                            <div class="slds-media__figure">
+                            <span class="slds-avatar slds-avatar_small slds-avatar--circle slds-icon-standard-client">
+                                <lightning:icon iconName="standard:client" size="small" class="slds-icon--small" />
+                            </span>
+                           </div>  
+                            <div class="slds-media__body">
+                                <div class="slds-grid slds-grid--align-spread slds-has-flexi-truncate">
+                                    <p class="tile__title slds-truncate slds-tile__title">
+                                        <force:outputLookupWithPreview aura:id="clientLookup" label="{!so.clientName}" value="{!so.accountId}" isProfilePicSupported="false" showRelatedLists="true" showPreview="true" />
+                                    </p>
+                                     <div>
+                                        <lightning:formattedText value="{!so.birthDateText}"/>
+                                    </div>
+                                </div>
+                                <ul class="slds-tile__detail slds-list--horizontal slds-has-dividers slds-text-body--small">
+                                    <aura:if isTrue="{!so.turningAge}">
+                                        <li class="slds-truncate slds-list__item">
+                                            <lightning:formattedText value="{!format($Label.FinServ.Text_Turning_Age,so.turningAge)}"/> 
+                                        </li>
+                                    </aura:if>
+                                    <aura:if isTrue="{!so.clientCategory}">
+                                        <li class="slds-truncate slds-list__item">{!so.clientCategory}</li>
+                                    </aura:if>
+                                </ul>
+                            </div>
+                        </li>
+                    </aura:iteration>
+                </ul>
+
+                <aura:set attribute="else">
+                    <div class="slds-media__body"> 
+                    <div class="slds-has-flexi-truncate">
+                        <p class="tile__title slds-truncate slds-tile__title" align="Center">
+                            <lightning:formattedText aura:id="noBirthdayLabel" value="{!$Label.FinServ.Text_No_Upcoming_Birthdays}"/>
+                        </p>
+                    </div>
+                    </div>
+                </aura:set>
+            </aura:if>
+        </section>
+         <footer class="slds-card__footer">
+            <FinServ:navToListView aura:id="birthdayCard_viewAll" listViewName="Upcoming_Birthdays_Next_7_Days" objectName="Contact" displayText="{!$Label.FinServ.Link_View_All}" assistiveText= "{!$Label.FinServ.Label_Upcoming_Birthdays_Next_7_Days}"/>
+        </footer>
+    </div>
+</aura:component>

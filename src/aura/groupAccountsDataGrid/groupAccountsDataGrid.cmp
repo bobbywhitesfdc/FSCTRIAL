@@ -1,0 +1,58 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle ACR membership in setup ui
+ * @since 206
+-->
+<aura:component controller="FinServ.MoiUICommonController" extends="FinServ:inputDataGrid">
+	<aura:dependency resource="markup://lightning:input" type="COMPONENT" />
+	<aura:dependency resource="markup://ui:dataGridColumn" type="COMPONENT" />
+	
+	<aura:set attribute="showSection" value="true" />
+	<aura:set attribute="sectionTitle" value="{!$Label.FinServ.Label_Group_Setup_Accounts}" />
+	<aura:set attribute="sectionId" value="fsc_group_detail2" />
+	<aura:set attribute="isCollapsible" value="true" />
+	<aura:set attribute="sObjectName" value="AccountContactRelation" />
+	<aura:set attribute="headerColumns">
+		<ui:dataGridColumn name="ContactId" label="{!$Label.FinServ.Label_Group_Related_Member}"
+			class="slds-size--2-of-7 slds-form-element__label" />
+		<ui:dataGridColumn name="Roles" label="{!$Label.FinServ.Label_Group_Member_Role}"
+			class="slds-size--2-of-7 slds-form-element__label" />
+		<ui:dataGridColumn name="AccountId" label="{!$Label.FinServ.Label_Group_Account_Name}"
+			class="slds-size--2-of-7 slds-form-element__label" />
+		<ui:dataGridColumn name="IncludeInGroup__c" label="{!$Label.FinServ.Label_Group_Add_To_Group}"
+			class="slds-size--1-of-7 slds-form-element__label slds-text-align--center" />
+	</aura:set>
+
+	<aura:attribute name="members" type="List" description="A list of ACR members" />
+	<aura:attribute name="existing" type="List" default="[]" description="List of AccountContactRelationships that are already indirect members of group" />
+	<aura:attribute name="contactMap" type="Map" access="PRIVATE" description="A list of ACR members" />
+
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler name="rowAddRemove" event="ui:addRemove" action="{!c.onAddRemoveRow}" />
+	<aura:handler name="rowModified" event="ui:notify" action="{!c.validate}" />
+	<aura:handler name="change" value="{!v.members}" action="{!c.onMembersChange}"/>
+	<aura:handler name="change" value="{!v.existing}" action="{!c.validate}" />
+
+	<FinServ:groupRelationshipDataProvider aura:id="indirectDataProvider" columns="{!v.priv_columnNames}" 
+		members="{!v.members}" indirect="true" onchange="{!c.onDataChange}" />
+
+	<aura:iteration items="{!v.existing}" var="item" indexVar="index">
+		<tr>
+			<td>
+				<lightning:input label="{!$Label.FinServ.Label_Group_Related_Member}" value="{!item.Contact.Name}" disabled="true" />
+			</td>
+			<td>
+				<lightning:input label="{!$Label.FinServ.Label_Group_Member_Role}" value="{!item.Roles}" disabled="true" />
+			</td>
+			<td>
+				<lightning:input label="{!$Label.FinServ.Label_Group_Account_Name}" value="{!item.Account.Name}" disabled="true" />
+			</td>
+			<td>
+				<FinServ:toggle aura:id="addToGroup" name="{!index}" value="{!item.IncludeInGroup__c}" />
+			</td>
+			<td></td>
+		</tr>
+	</aura:iteration>
+</aura:component>

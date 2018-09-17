@@ -1,0 +1,39 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component for multi-select picklist
+ * @since 206
+-->
+<aura:component extends="ui:input">
+    <aura:attribute name="options" type="List" default="[]" description="List of options in picklist." />
+    <aura:attribute name="selectedLabels" type="List" default="[]" access="PRIVATE" description="Selected labels" />
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+    <div class="{! v.class }">
+        <label class="slds-form-element__label" for="{!globalId}">{!v.label}</label>
+        <div class="slds-form-element__control">
+            <ui:menu class="slds-picklist">
+                <ui:menuTrigger disabled="{!v.disabled}" class="{!(v.showErrors ? 'has-error ' : '')}">
+                        <button disabled="{!v.disabled}" class="slds-button slds-button--neutral slds-picklist__label slds-dropdown-trigger slds-dropdown-trigger--click" aria-haspopup="true">
+                            <span class="slds-truncate">
+                                <aura:if isTrue="{! v.selectedLabels.length == 1}">
+                                    {!v.selectedLabels[0]}
+                                    <aura:set attribute="else">
+                                        {!v.selectedLabels.length == v.options.length ? $Label.FinServ.Label_All_Options_Selected : format($Label.FinServ.Label_Options_Selected, v.selectedLabels.length)}
+                                    </aura:set>
+                                </aura:if>
+                            </span>
+                            <lightning:icon iconName="utility:down" size="small" class="slds-show" />
+                        </button>
+                </ui:menuTrigger>
+                    <ui:menuList class="actionMenu" aura:id="actionMenu">
+                        <aura:iteration items="{!v.options}" var="option" indexVar="index">
+                            <ui:checkboxMenuItem class="slds-truncate" label="{!option.label}" value="{!option.value}" selected="{!option.selected}" menuSelect="{!c.onSelect}" hideMenuAfterSelected="false">
+                            </ui:checkboxMenuItem>
+                        </aura:iteration>
+                    </ui:menuList>
+            </ui:menu>
+        </div>
+    </div>
+</aura:component>

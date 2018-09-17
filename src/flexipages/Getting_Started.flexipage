@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>&lt;strong&gt;&lt;span style=&quot;font-size:22px&quot;&gt;Getting Started with Financial Services Cloud&lt;/span&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;span style=&quot;font-size:18px&quot;&gt;Welcome to the &lt;b&gt;Financial Services Cloud&lt;/b&gt; &lt;b&gt;30-Day Free Trial&lt;/b&gt;. Complete the following items before getting started:&lt;/span&gt;&lt;br /&gt;
+&amp;nbsp;
+&lt;p&gt;&lt;span style=&quot;font-size:16px&quot;&gt;&lt;strong&gt;Set&amp;nbsp;Up Your Trial Experience&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;span style=&quot;font-size:14px&quot;&gt;&lt;strong&gt;1.&amp;nbsp;&lt;a href=&quot;https://developer.salesforce.com/docs/atlas.en-us.financial_services_cloud_quick_start.meta/financial_services_cloud_quick_start/fsc_admin_register_custom_domain.htm&quot;&gt;Register a &amp;lsquo;My Domain&amp;rsquo; Subdomain&lt;/a&gt;&lt;/strong&gt;&amp;nbsp;- Add a subdomain to your Salesforce org URL that&amp;nbsp;lets you highlight your brand and makes your org more secure. Financial Services Cloud leverages Lightning components to enhance users&amp;#39; productivity, and &lt;b&gt;My Domain registration is required&lt;/b&gt; before you can use Lightning components.&lt;/span&gt;&lt;br /&gt;
+&lt;span style=&quot;font-size:14px&quot;&gt;&lt;b&gt;2.&amp;nbsp;&lt;a href=&quot;https://developer.salesforce.com/docs/atlas.en-us.financial_services_cloud_quick_start.meta/financial_services_cloud_quick_start/fsc_admin_setup_run_wave_dataflow.htm&quot;&gt;Schedule Data Refreshes in Einstein Analytics&lt;/a&gt;&amp;nbsp;&lt;/b&gt;-&amp;nbsp;To take advantage of &lt;b&gt;Advisor Analytics&lt;/b&gt;, run a dataflow today! Also, set up a daily refresh of your data in Einstein Analytics.&lt;/span&gt;&lt;br /&gt;
+&lt;span style=&quot;font-size:14px&quot;&gt;&lt;strong&gt;3. Launch a Financial Services Cloud app&lt;/strong&gt;&lt;/span&gt;​​
+
+&lt;ol&gt;
+	&lt;li&gt;&lt;span style=&quot;font-size:14px&quot;&gt;​From the top left-hand corner of your page, click the &lt;strong&gt;App Launcher&lt;/strong&gt; icon under the Salesforce cloud&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;Click on the &lt;strong&gt;Wealth Management&lt;/strong&gt;, &lt;b&gt;Retail&amp;nbsp;Banking&lt;/b&gt; or &lt;b&gt;Retail Banking Console&lt;/b&gt;&amp;nbsp;app.&lt;span style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;Remember to check out &lt;strong&gt;Rachel Adams&lt;/strong&gt;&amp;#39; profile using the Accounts tab or by searching in Global Search.&lt;/span&gt;&amp;nbsp;&lt;span style=&quot;font-size: 14px;&quot;&gt;To return to these instructions, switch to the &lt;strong&gt;Welcome&lt;/strong&gt;&amp;nbsp;app.&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>&lt;p&gt;&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;strong&gt;Financial Services Cloud Top Resources&lt;/strong&gt;&lt;/span&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;strong&gt;Embark on the Financial Services Cloud Trail Today!&lt;/strong&gt;&lt;/span&gt;&lt;br /&gt;
+&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;b&gt;&lt;a href=&quot;https://trailhead.salesforce.com/trails/fsc_build_loyalty&quot;&gt;Inspire Loyalty with Financial Services Cloud&lt;/a&gt;&lt;/b&gt; - Get to know Financial Services Cloud with a fun and interactive trail designed for Financial Services Cloud Administrators. Built with three modules, this trail is a guided learning path that charts your course through the Financial Services Cloud. All that, and you also earn&amp;nbsp;three sweet Trailhead Badges when you complete the trail!&lt;/span&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;strong&gt;Documentation&amp;nbsp;Resources&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;strong&gt;&lt;a href=&quot;https://resources.docs.salesforce.com/sfdc/pdf/salesforce_finserv_quick_start.pdf&quot;&gt;Quick Start Guide&lt;/a&gt;&lt;/strong&gt; - Learn to create a new User, and set up your My Domain subdomain and schedule data refreshes in Einstein Analytics for Financial Services Cloud.&lt;br /&gt;
+&lt;strong&gt;&lt;a href=&quot;https://resources.docs.salesforce.com/sfdc/pdf/salesforce_finserv_admin_guide.pdf&quot;&gt;Administrator Guide&lt;/a&gt;&lt;/strong&gt; - Learn about the Financial Services Cloud data model, customize your user experience, and tailor Financial Services Cloud to suit your business needs.&lt;br /&gt;
+&lt;strong&gt;&lt;a href=&quot;https://resources.docs.salesforce.com/sfdc/pdf/financial_services.pdf&quot;&gt;User Guide&lt;/a&gt;&lt;/strong&gt; - Learn how your users can use Financial Services Cloud to increase productivity&amp;nbsp;with technology and digital workflows that reduce the time they spend on routine, administrative tasks.&lt;/span&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;span style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Important Notes:&lt;br /&gt;
+1.&amp;nbsp;&lt;/b&gt;The trial leverages &lt;a href=&quot;https://developer.salesforce.com/docs/atlas.en-us.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_person_accounts.htm&quot;&gt;Person Accounts for Financial Services Cloud&lt;/a&gt;. Feature comparison between Person Accounts&amp;nbsp;and Individual&amp;nbsp;is available &lt;a href=&quot;https://developer.salesforce.com/docs/atlas.en-us.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_pers_impl_consid.htm&quot;&gt;here&lt;/a&gt;. You may revert to the Individual model&amp;nbsp;with &lt;a href=&quot;https://developer.salesforce.com/docs/atlas.en-us.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_disable_person_acct.htm&quot;&gt;these steps&lt;/a&gt;.&lt;br /&gt;
+2. Not all ISV packages are compatible with both Individual and Person Accounts. Please evaluate which object model is right for your needs before proceeding.&lt;/span&gt;&lt;/p&gt;</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+        </componentInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Getting Started with Financial Services Cloud</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>

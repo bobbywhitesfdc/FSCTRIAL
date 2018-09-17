@@ -1,0 +1,8 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:goalDetailList</code> component renders the list of <code>FinServ:FinancialGoal__c</code> associated with the individual.</p>
+		<p>This component can only be added to  Lightning page: for example <code>Account</code> record home flexipage.</p>
+		<p>Here is an example</p>
+		<pre>&lt;FinServ:goalDetailList /></pre>
+	</aura:description>
+</aura:documentation>

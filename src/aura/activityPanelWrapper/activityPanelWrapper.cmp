@@ -1,0 +1,13 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description wrapper component to activityPanel
+ * @since 202
+-->
+<aura:component extends="FinServ:baseComponent">
+    <aura:attribute name="recordId" type="String" description="The record Id" />
+    <aura:attribute name="width" type="String" description="The width of this components parent region: WIDE or NARROW" />
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    {!v.body}
+</aura:component>

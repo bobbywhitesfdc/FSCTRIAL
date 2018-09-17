@@ -1,0 +1,13 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description householdList component renders list of applicable households
+ * @since 200
+-->
+<aura:component extends="FinServ:baseFinServTemplate" controller="FinServ.MoiUICommonController">
+    <aura:attribute name="householdRecordTypeName" type="String" default="IndustriesHousehold" description="The name for account household record type"/>
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" description="Retrieves the record type id for the household 'Group' type" />
+    <aura:attribute name="groupRecordTypeId" type="String" access="private" description="Contains the record type id for record type name 'Group'" />
+    <aura:method name="openModal" action="{!c.openModal}" access="PUBLIC" />
+</aura:component>

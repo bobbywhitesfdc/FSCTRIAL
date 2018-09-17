@@ -1,0 +1,41 @@
+.THIS.uiAbstractList .loadingIndicator {
+	z-index: 3;
+}
+
+.THIS.loading.loadingIndicator-large {
+	min-height: 15.65rem;
+	background-color: white;
+}
+
+.THIS.loading.loadingIndicator-small {
+	min-height: 4rem;
+}
+
+.THIS .THIS .slds-table--bordered {
+	border-bottom: 0;
+}
+
+.THIS .slds-table thead th:last-of-type, 
+.THIS .slds-table tbody td:last-of-type {
+	padding-right: 1.5rem;
+}
+
+.THIS .slds-table:not(.slds-table-expandable) thead th:first-of-type, 
+.THIS .slds-table:not(.slds-table-expandable) tbody td:first-of-type {
+	padding-left: 1.5rem;
+}
+ 
+.THIS .slds-table.slds-table-expandable tbody td.slds-cell-shrink {
+	width: 1.5rem;
+	padding: 0 0 0 0.25rem;
+}
+
+.THIS .slds-table.slds-table-expandable thead th:nth-of-type(2), 
+.THIS .slds-table.slds-table-expandable tbody td:nth-of-type(2) {
+	padding-left: 0;
+}
+ 
+.THIS .slds-table.slds-table-expandable tbody td.expanded-table {
+	padding: 0;
+	border-top: 0;
+}

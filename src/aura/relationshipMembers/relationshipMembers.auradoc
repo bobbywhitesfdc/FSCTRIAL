@@ -1,0 +1,8 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:relationshipMembers</code> component renders list relationships that a client has, and that a client can create. By default, this component is accessible through retail banking individual account page in Lightning. A visualizer (tree) will be used to represent relationships for Financial Services users. Being as this is a global component, you are free to add it to any flexipage you wish. Though it relies on the current individual's id to render correctly. This id is passed in automatically; you do not need to specify this.    </p>
+		<br/>
+		<p>Here is an example</p>
+		<pre> &lt;FinServ:relationshipMembers/> </pre>		
+	</aura:description>
+</aura:documentation>

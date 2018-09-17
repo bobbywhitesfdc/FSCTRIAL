@@ -1,0 +1,5 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:clientRedirect</code> component seamlessly links the account and contact records to create an individual account record type. Click on contact type to redirect to appropriate client. </p>
+	</aura:description>
+</aura:documentation>

@@ -1,0 +1,58 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description dropDown component. Houses dropDown container
+ * @since 196
+-->
+<aura:component controller="FinServ.RelationshipController" extends="FinServ:baseFinServTemplate">
+    <aura:dependency resource="markup://ui:button" type="COMPONENT"/>
+    <aura:dependency resource="markup://force:showToast" type="EVENT"/>
+    <aura:dependency resource="markup://force:toggleModalSpinner" type="EVENT"/>
+
+    <aura:attribute name="isRelationship" type="boolean" default="false" description="flag to determine if relationship" />
+    <aura:attribute name="recordId" type="String" required="true" description="the AccountContactRelation id" />
+    <aura:attribute name="groupName" type="String" default="group" description="the record name" />
+    <aura:attribute name="groupId" type="String" description="the Group id" />
+    <aura:attribute name="class" type="String" default="" description="css used for container" />
+    <aura:attribute name="groupEdit" type="Boolean" default="false" description="Boolean to indicate group edit" />
+    <aura:attribute name="groupAttributes" type="Map" description="Attributes used for edit group modal/Setup UI" />
+    <aura:attribute name="sObjectName" type="String" default="AccountContactRelation" description="SObject that control security" />
+    <aura:locator target="actionRelationshipMenuList_removeActionMenuItem" description="action menu remove"/>
+    <aura:locator target="actionRelationshipMenuList_deleteActionMenuItem" description="action menu delete"/>
+    <aura:locator target="actionRelationshipMenuList_editActionMenuItem" description="action menu edit"/>
+
+    <div class="{!v.class}" align="right" aria-haspopup="true">
+        <ui:menu>
+            <ui:menuTriggerLink aura:id="trigger" label="{!$Label.ActionBar.ShowMore}" class="slds-button slds-button--icon-border-filled slds-button--icon-x-small">
+                <force:icon key="down" alt="{!$Label.ActionBar.ShowMore}" class="slds-show--inline slds-button__icon slds-button__icon--hint slds-button__icon--small"/>
+            </ui:menuTriggerLink>
+            <ui:menuList class="actionMenu uiMenuList--left uiMenuList--default" aura:id="actionMenu" attachToBody="true">
+                <aura:if isTrue="{!v.canUpdate}">
+                    <ui:actionMenuItem aura:id="actionRelationshipMenuList_editActionMenuItem" click="{!c.onEdit}">
+                        <div class="slds-text-link">{!v.groupEdit ? $Label.FinServ.Menu_Item_Group_Edit : $Label.FinServ.Menu_Item_Household_Membership_Edit}</div>
+                    </ui:actionMenuItem>      
+                
+                    <aura:if isTrue="{!!v.groupEdit}">
+                        <ui:actionMenuItem aura:id="actionRelationshipMenuList_removeActionMenuItem" click="{!c.onRemove}">
+                            <div class="slds-text-link">
+                                <aura:if isTrue="{!v.isRelationship}">
+                                    {!$Label.FinServ.Menu_Item_Relationship_Remove}
+                                    <aura:set attribute="else">
+                                        {!$Label.FinServ.Menu_Item_Household_Membership_Remove}
+                                    </aura:set>
+                                </aura:if>
+                            </div>
+                        </ui:actionMenuItem>
+                    </aura:if>
+                </aura:if>
+                <aura:if isTrue="{!and(v.canDelete, !v.groupEdit)}">
+                    <ui:actionMenuItem aura:id="actionRelationshipMenuList_deleteActionMenuItem"  click="{!c.onDelete}">
+                        <div class="slds-text-link"> {!$Label.FinServ.Menu_Item_Household_Membership_Delete} </div>
+                    </ui:actionMenuItem>     
+                </aura:if> 
+            </ui:menuList>
+        </ui:menu>
+    </div>
+    <FinServ:createPanelUtility aura:id="createPanelUtility" />
+</aura:component>

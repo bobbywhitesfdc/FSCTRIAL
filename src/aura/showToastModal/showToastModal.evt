@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT" description="Event to show toast message in modal">
+    <aura:attribute name="name" type="String" description="Name to display in toaster for object." />
+    <aura:attribute name="recordId" type="String" description="Record ID of object" />
+    <aura:attribute name="isCreate" type="Boolean" default="false" description="Flag if new object is created." />
+</aura:event>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Expectations --></label>
+        <name>FinServ__Expectations__c</name>
+    </fields>
+    <fields>
+        <label><!-- Household --></label>
+        <name>FinServ__Household__c</name>
+        <relationshipLabel><!-- Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Next Steps --></label>
+        <name>FinServ__NextSteps__c</name>
+    </fields>
+    <fields>
+        <label><!-- Objectives --></label>
+        <name>FinServ__Objectives__c</name>
+    </fields>
+    <fields>
+        <label><!-- Regarding --></label>
+        <name>FinServ__Regarding__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- Default task record type for Advisor profile --></description>
+        <label><!-- Advisor Task --></label>
+        <name>AdvisorTask</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Default task record type for Client Associate profile --></description>
+        <label><!-- Client Associate Task --></label>
+        <name>ClientAssociateTask</name>
+    </recordTypes>
+</CustomObjectTranslation>

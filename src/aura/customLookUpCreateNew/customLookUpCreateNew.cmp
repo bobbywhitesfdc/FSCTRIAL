@@ -1,0 +1,20 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to Create new button for for Lookup field.
+ * @since 200
+-->
+<aura:component extends="FinServ:baseFinServTemplate">
+    <aura:attribute name="parentGlobalId" type="String" description="The parent global ID" />
+    <aura:attribute name="option" type="Object" description="Options" />
+    <aura:attribute name="title" type="String" description="Title" />
+    <aura:if isTrue="{!v.canCreate}">
+    <div class="slds-lookup__item" title="{!v.title}" onclick="{!c.onClick}">
+        <button class="slds-button">
+          <lightning:icon size="small" iconName="utility:add"/>
+                       {!v.option.CreateNewLabel}
+        </button>
+    </div>
+    </aura:if>
+</aura:component>

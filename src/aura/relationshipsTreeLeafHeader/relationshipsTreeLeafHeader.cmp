@@ -1,0 +1,69 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component for the header of the leaf of the relationships visualization tree.
+ * @since 206
+-->
+<aura:component>
+	<aura:attribute name="entity" type="FinServ.VisualizationComponent" description="An instance of VisualizationComponent for the leaf node" />
+	<aura:attribute name="nonGroupLabel" type="String" description="Label for non-group (Related Accounts and Contacts)" />
+	<aura:attribute name="groupAttributes" type="Map" description="Attributes used for edit group modal/Setup UI" />
+	<aura:attribute name="showRelatedAccounts" type="Boolean" default="true" description="Show the Related Accounts section" />
+    <aura:attribute name="showRelatedContacts" type="Boolean" default="true" description="Show the Related Contacts section" />
+
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    
+	<aura:if isTrue="{!v.entity.isGroup}">
+		<div class="absoluteRight">
+	    	<FinServ:actionMenuList class="onTop" aura:id="householdMemberEditDropDown" actionTypes="['group']" groupName="{!v.entity.name}" groupId="{!v.entity.relId}" groupAttributes="{!v.groupAttributes}" />
+	    </div>
+		<lightning:icon aura:id="householdIcon" iconName="standard:household" size="medium" />
+		<aura:set attribute="else">
+			<aura:if isTrue="{!v.entity.isContact}">
+		        <lightning:icon aura:id="contactIcon" iconName="standard:contact" size="medium" />
+		        <aura:set attribute="else">
+					<aura:if isTrue="{!or(v.entity.bucketType == 'RELATED_GROUP', v.entity.bucketType == 'RELATIONSHIP_GROUP')}">
+						<lightning:icon aura:id="householdIcon" iconName="standard:household" size="medium" />
+						<aura:set attribute="else">
+							<lightning:icon aura:id="accountIcon" iconName="{!'standard:' + (v.entity.isIndividual ? 'client' : 'account')}" size="medium" />
+						</aura:set>
+					</aura:if>
+		        </aura:set>
+		    </aura:if>
+		</aura:set>
+	</aura:if>
+
+    <aura:if isTrue="{!v.entity.isGroup}">
+		<h3 class="slds-p-top--x-small slds-text-heading--small">
+            <aura:if isTrue="{!not(empty(v.entity.elements))}">
+                <force:outputLookupWithPreview aura:id="headerLookupPreview" label="{!format($Label.FinServ.Header_Section_Group_Name, v.entity.name, v.entity.elements.length)}" value="{!v.entity.objId}" isProfilePicSupported="false" showRelatedLists="true" showPreview="true" />
+                
+                <aura:set attribute="else">
+                    <force:outputLookupWithPreview label="{!v.entity.name}" value="{!v.entity.objId}" isProfilePicSupported="false" showRelatedLists="true" showPreview="true" />
+                </aura:set>
+            </aura:if>
+		</h3>
+        <div class="slds-text-heading--label-normal">
+        	<!-- record type name -->
+            <p class="slds-truncate">{!v.entity.objType}</p>
+        </div>
+		<aura:if isTrue="{!(v.entity.isPrimaryGroup)}">
+	        <div class="slds-m-top--x-small">
+	            <span class="slds-badge">{!$Label.FinServ.Label_Visualization_Primary_Group}</span>
+	        </div>
+	    </aura:if>
+        <aura:set attribute="else">
+        	<!-- Related Accounts / Related Contacts label -->
+			<h3 aura:id="headerLookupPreview" class="slds-p-top--x-small slds-text-heading--small">
+				<aura:if isTrue="{!not(empty(v.entity.elements))}">
+					{!format($Label.FinServ.Header_Section_Group_Name, v.nonGroupLabel, v.entity.elements.length)}
+
+					<aura:set attribute="else">
+						{!v.nonGroupLabel}
+					</aura:set>
+				</aura:if>
+			</h3>
+        </aura:set>
+    </aura:if>
+</aura:component>

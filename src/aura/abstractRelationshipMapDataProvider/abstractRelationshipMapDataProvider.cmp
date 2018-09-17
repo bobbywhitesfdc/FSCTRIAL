@@ -1,0 +1,16 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description base data provider for relationship map components
+ * @since 210
+-->
+<aura:component extends="ui:dataProvider" description="relationshipMapDataProvider" extensible="true" abstract="true">
+    <!-- REQUIRED: To invoke helper functions like getData and sortData in the
+         extending component's context, the concrete component must implement
+         handler for the provide action, as follows:
+
+    <aura:handler name="provide" action="{!c.provider}" />
+
+    -->
+</aura:component>

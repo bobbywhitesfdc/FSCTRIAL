@@ -1,0 +1,64 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description This component renders a list of referrals.
+ * @since 208
+-->
+<aura:component controller="FinServ.ReferralController" implements="flexipage:availableForAllPageTypes,force:hasRecordId" extends="FinServ:baseComponent" access="GLOBAL">
+    
+    <aura:dependency resource="markup://FinServ:listViewCard" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:listViewDataProvider" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:actionCreateButton" type="COMPONENT" />
+    <aura:dependency resource="markup://force:message" type="COMPONENT" />
+
+    <aura:set attribute="sObjectName" value="Lead" />
+    <aura:set attribute="recordTypeNamesMap" value="{'Lead' : ['Referral']}" />
+
+    <aura:attribute name="referralFieldset" type="String" access="GLOBAL" description="Fieldset to be used to render this component." default="FSC_Referrals_Expressed_Interest" />
+    <aura:attribute name="title" type="String" access="GLOBAL" description="Name of the component." />
+    <aura:attribute name="numRecords" access="GLOBAL" type="String" description="Number of records to fetch" />
+    <aura:attribute name="errors" type="List" default="" description="list of error messages" />
+    <aura:attribute name="createParam" type="Map" description="params for creating object" />
+    <aura:attribute name="methodParams" type="Map" />
+    <aura:attribute name="isIndividual" type="Boolean" default="false" description="render this component only if account is of type Individual" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    
+    <aura:if isTrue="{!and(and(v.isIndividual, (v.referralFieldset != null)), v.canRead)}">
+        <div aura:id="referralsData">
+            <FinServ:listViewCard recordId="{!v.recordId}"
+                            label="{! empty(v.title)? $Label.FinServ.Label_Field_Set_Referrals_Expressed_Interest : v.title}"
+                            fieldSetName="{!v.referralFieldset}"
+                            sObjectName="Lead"
+                            error="{!c.onError}"
+                            showViewAll="true">
+                <aura:set attribute="dataProvider">
+                    <FinServ:listViewDataProvider recordId="{!v.recordId}" sObjectName="Lead" methodParams="{!v.methodParams}" methodName="getOpenReferralsRelatedToIndividual" />
+                </aura:set>
+                <aura:set attribute="headerIcon">
+                    <lightning:icon iconName="standard:product" size="small" />
+                </aura:set>
+                <aura:set attribute="actionsComponent">
+                    <aura:if isTrue="{!not(empty(v.createParam))}">
+                        <FinServ:actionCreateButton sObjectName="Lead" event="e.force:createRecord" params="{!v.createParam}" />
+                    </aura:if>
+                </aura:set>
+                <aura:set attribute="footerComponent">
+                    <FinServ:navToRelatedListWrapper relatedListId="RelatedLeads__r" parentRecordId="{!v.recordId}" displayText="{!$Label.RecordHomeCards.ViewAll}" />
+                </aura:set>
+            </FinServ:listViewCard>
+        </div>
+    </aura:if>
+    <div aura:id="errorMessage" class="errorMessage slds-hide">
+        <!-- Error State -->
+        <force:message severity="error" strength="3" theme="pOne">
+            <aura:set attribute="summary">{!$Label.DetailError.EntitySaveErrorSummary}</aura:set>
+            <aura:set attribute="detail">
+                <aura:iteration items="{!v.errors}" var="error">
+                    <span>{!error.message}</span> 
+                </aura:iteration>
+            </aura:set>
+        </force:message>
+    </div>
+</aura:component>

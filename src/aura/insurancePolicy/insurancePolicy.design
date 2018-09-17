@@ -1,0 +1,5 @@
+<design:component label="Insurance Policy - Financial Services Cloud" >
+	<sfdc:objects>
+        <sfdc:object>Account</sfdc:object>
+    </sfdc:objects>
+</design:component>

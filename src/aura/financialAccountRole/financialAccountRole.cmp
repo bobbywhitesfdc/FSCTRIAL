@@ -1,0 +1,68 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component for financial account role
+ * @since 204
+-->
+<aura:component extends="FinServ:financialAccountConfig" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    
+    <aura:dependency resource="markup://FinServ:listViewCard" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:listViewDataProvider" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:actionCreateButton" type="COMPONENT" />
+    <aura:dependency resource="markup://force:message" type="COMPONENT" />
+    
+    <aura:set attribute="icon" value="custom:custom14"/>
+    <aura:set attribute="header" value="{!$Label.FinServ.Header_Section_Financial_Account_Roles + ' (--)'}"/>
+    <aura:set attribute="additionalSObjects" value="['FinancialAccountRole__c']" />
+    <aura:attribute name="FinancialAccountRoleFieldset" type="String" />
+    <aura:set attribute="clientFieldSet" value="WM_Client_FinancialAccountRole" />
+    <aura:set attribute="householdFieldSet" value="WM_Client_FinancialAccountRole" />
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:method name="refresh" action="{!c.refresh}" access="PUBLIC"/>  
+    <aura:locator target="financialAccountRole_newButton" description="create new FAR"/>
+    <aura:locator target="financialAccountRole_viewAll" description="FAR View All"/>
+    
+    <aura:if isTrue="{!(!v.showErrors)}">
+        <aura:if isTrue="{!and(v.accountInfo != null, v.FinancialAccountRoleFieldset != null)}">
+            <FinServ:listViewCard aura:id="listViewCard"
+                                recordId="{!v.recordId}"
+                                label="{!$Label.FinServ.Header_Section_Financial_Account_Roles}"
+                                fieldSetName="{!v.FinancialAccountRoleFieldset}"
+                                sObjectName="FinancialAccountRole__c"
+                                percentageIndicator="true"
+                                error="{!c.onError}">
+                    <aura:set attribute="dataProvider">
+                        <FinServ:listViewDataProvider aura:id="listViewDataProvider" pageSize="{!v.listSize}" recordId="{!v.recordId}" 
+                            sObjectName="FinancialAccountRole__c" 
+                            methodName="getFinancialAccountRoles"
+                            onchange="{!c.handleDataChange}"
+                            error="{!c.onDataLoadError}" />
+                    </aura:set>
+                    <aura:set attribute="headerIcon">
+                        <lightning:icon aura:id="headerIcon" iconName="custom:custom14" size="small" />
+                    </aura:set>
+                    <aura:set attribute="actionsComponent">
+                        <FinServ:actionCreateButton aura:id="newFARButton" sObjectName="FinancialAccountRole__c" event="e.force:createRecord" params="{!v.financialRoleCreateParam}" />
+                    </aura:set>
+                    <aura:set attribute="footerComponent">
+                        <FinServ:navToRelatedListWrapper aura:id="FARViewAll" relatedListId="{!v.relationshipName}" 
+                            parentRecordId="{!v.recordId}" displayText="{!$Label.RecordHomeCards.ViewAll}" />
+                    </aura:set>
+                </FinServ:listViewCard>
+        </aura:if>
+        <aura:set attribute="else">
+            <!-- Error State -->
+            <div aura:id="errorMessage" class="errorMessage">
+                <force:message severity="error" strength="3" theme="pOne">
+                    <aura:set attribute="summary">{!$Label.DetailError.EntitySaveErrorSummary}</aura:set>
+                    <aura:set attribute="detail">
+                        <aura:iteration aura:id="errors" items="{!v.errors}" var="error">
+                            <span>{!error.message}</span> 
+                        </aura:iteration>
+                    </aura:set>
+                </force:message>
+            </div>
+        </aura:set>
+    </aura:if>
+</aura:component>

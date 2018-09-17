@@ -1,0 +1,12 @@
+<aura:documentation>
+	<aura:description>
+		<p>The <code>FinServ:createReferral</code> component renders a form for the user to create a referral. </p>
+		<br/>
+		<p> The following are publicily available attributes: </p>		
+		<ul>
+			<li>fieldSetName - The name of the field set on the Lead object</li>
+		</ul>
+		<p>Here is an example</p>
+		<pre> &lt;FinServ:createReferral /> </pre>		
+	</aura:description>
+</aura:documentation>

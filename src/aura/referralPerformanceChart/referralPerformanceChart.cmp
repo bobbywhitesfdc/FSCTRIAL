@@ -1,0 +1,128 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description referral performance chart for today page
+ * @since 210
+-->
+<aura:component controller="FinServ.ReportController" extends="FinServ:baseComponent" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+
+    <aura:dependency resource="markup://reports:eclairChart" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:referralPerformanceChartTable" type="COMPONENT" />
+
+    <aura:set attribute="sObjectName" value="Lead" />
+    <aura:set attribute="recordTypeNamesMap" value="{'Lead' : ['Referral']}" />
+
+    <aura:attribute name="chartType" type="String" default="Year" description="Type of chart based on date granularity, i.e. YTD, QTD, MTD, All Time" access="GLOBAL" />
+    <aura:attribute name="config" type="Object" description="Eclair chart configuration" />
+    <aura:attribute name="data" type="Object" description="Eclair chart data" />
+    <aura:attribute name="categorySums" type="Object" description="Sum of made, closed, rejected, open referrals. {Made: 100, Closed: 50, Rejected: 10, Open: 40}"/>
+    <aura:attribute name="hasError" type="Boolean" default="false" description="Indicate whether there is an error"/>
+    <aura:attribute name="refreshTimestamp" type="String" description="Show the timestamp since last refresh"/>
+    <aura:attribute name="refreshButtonDisabled" type="Boolean" default="false" description="Disable the refresh button"/>
+    <aura:attribute name="_eclairChart" type="Aura.Component" />
+    <aura:attribute name="_chartConfig" type="Object" access="PRIVATE" />
+    <aura:attribute name="_chartData" type="Object" access="PRIVATE" />
+    <aura:attribute name="_chartTypeChanged" type="Boolean" default="false" access="PRIVATE" />
+    <aura:attribute name="_chartGenerated" type="Boolean" default="false" access="PRIVATE" />
+    <aura:attribute name="_dataInserted" type="Boolean" default="false" access="PRIVATE" />
+    <aura:attribute name="_hasNoData" type="Boolean" default="false" access="PRIVATE" />
+    <aura:attribute name="_isDataReady" type="Boolean" default="false" access="PRIVATE" />
+    <aura:attribute name="_refreshClicked" type="Boolean" default="false" access="PRIVATE" />
+    <aura:attribute name="_readyForChart" type="Boolean" default="false" access="PRIVATE" />
+    <aura:attribute name="_reportData" type="Object" access="PRIVATE" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <aura:if isTrue="{!v.canRead}">
+        <div aura:id="chartContainer">
+            <!-- Header -->
+            <div class="header slds-p-around--small">
+                <div>
+                    <h2 class="slds-p-bottom--x-small slds-text-heading--small slds-show--inline">{#$Label.FinServ.Label_Referral_Performance_Chart}</h2>
+                    <span class="slds-text-title slds-m-left--small">{!format($Label.FinServ.Label_Selected_Summary_Period_View, v.chartType)}</span>
+                    <div class="slds-grid slds-grid--vertical-align-center slds-float--right">
+                        <ui:outputText class="slds-text-body--small slds-text-color--weak slds-p-right--x-small" value="{!v.refreshTimestamp}"/>
+                        <lightning:buttonIcon aura:id="refreshButton"
+                            iconName="utility:refresh"     
+                            alternativeText="{#$Label.HeroChart.Refresh}"
+                            onclick="{!c.refreshChart}"
+                            disabled="{!v.refreshButtonDisabled}"/>
+                        <lightning:buttonMenu aura:id="menu" class="slds-button-group" iconName="utility:event" onselect="{!c.handleChartTypeChange }" menuAlignment="right" alternativeText="{!$Label.FinServ.Label_MenuButton_Select_Period}" >
+                            <lightning:menuItem value="Month"   label="{!$Label.FinServ.Label_Select_Period_MTD}" checked="{!v.chartType=='Month'}"/>
+                            <lightning:menuItem value="Quarter" label="{!$Label.FinServ.Label_Select_Period_QTD}" checked="{!v.chartType=='Quarter'}"/>
+                            <lightning:menuItem value="Year"    label="{!$Label.FinServ.Label_Select_Period_YTD}" checked="{!v.chartType=='Year'}"/>
+                            <lightning:menuItem value="All"     label="{!$Label.FinServ.Label_Select_Period_All_Time}" checked="{!v.chartType=='All'}"/>
+                        </lightning:buttonMenu>
+                    </div>
+                </div>
+                <!-- Sum of categories -->
+                <ul class="metricRow">
+                    <li class="metric slds-p-right--large">
+                       <span class="slds-text-title--caps slds-p-right--x-small">{#$Label.FinServ.Label_Referrers_Summary_Made}</span>
+                       <ui:outputText value="{!v.categorySums.Made}" class="slds-section-title"/>
+                    </li>
+                    <li class="metric slds-p-right--large">
+                        <span class="slds-text-title--caps slds-p-right--x-small">{#$Label.FinServ.Label_Referrers_Summary_Converted}</span>
+                        <ui:outputText value="{!v.categorySums.Converted}" class="slds-section-title"/>
+                    </li>
+                    <li class="metric slds-p-right--large">
+                        <span class="slds-text-title--caps slds-p-right--x-small">{#$Label.FinServ.Label_Referrers_Summary_Rejected}</span>
+                        <ui:outputText value="{!v.categorySums.Rejected}" class="slds-section-title"/>
+                    </li>
+                    <li class="metric slds-p-right--large">
+                        <span class="slds-text-title--caps slds-p-right--x-small">{#$Label.FinServ.Label_Referrers_Summary_Open}</span>
+                        <ui:outputText value="{!v.categorySums.Open}" class="slds-section-title"/>
+                    </li>
+                </ul>
+            </div>  
+
+            <!-- Chart body -->
+            <div aura:id="chartBody" class="chartBody">
+                <div class="chartWrapper">
+                   {!v._eclairChart}
+                    <div aura:id="refreshSpinner" class="refreshSpinner slds-hide">
+                        <lightning:spinner variant="brand" size="medium" alternativeText="{!$Label.FinServ.Label_Loading_Alternative_Text}" />
+                    </div>
+                    <div aura:id="mask" class="mask slds-hide"/>
+                    
+                    <aura:if isTrue="{!!v._isDataReady}">
+                        <div aura:id="placeHolder" class="chartPlaceHolder">
+                            <force:placeHolder name="empty_chart" />
+                        </div>
+                    </aura:if>
+                 </div>
+
+                 <aura:if isTrue="{!v._hasNoData}">
+                    <div class="overlay">
+                        <ui:outputText value="{#$Label.FinServ.Label_Referral_Performance_Chart_Empty}" class="slds-grow sls-p-horizontal--medium slds-text-body--regular slds-text-align--center"/>
+                    </div>
+                 </aura:if>
+
+                 <!-- Legend -->
+                <div class="legend slds-text-body--small slds-text-align--center slds-text-color--weak">
+                    <span class="colorPalette slds-m-right--x-small made"></span>
+                    <span class="label slds-m-right--x-large">{#$Label.FinServ.Label_Referrers_Summary_Made}</span>
+                    <span class="colorPalette slds-m-right--x-small converted"></span>
+                    <span class="label slds-m-right--x-large">{#$Label.FinServ.Label_Referrers_Summary_Converted}</span>
+                    <span class="colorPalette slds-m-right--x-small rejected"></span>
+                    <span class="label slds-m-right--x-large">{#$Label.FinServ.Label_Referrers_Summary_Rejected}</span>
+                </div>
+            </div>
+
+            <aura:if isTrue="{!v.hasError}">
+                <div class="overlay error">
+                    <ui:outputText value="{#$Label.HeroChart.ErrorMessage}" class="slds-grow sls-p-horizontal--medium slds-text-body--regular slds-text-align--center"/>
+                </div>
+            </aura:if>
+
+            <!-- For Accessbility -->
+            <aura:if isTrue="{!v._isDataReady}">
+                <a aura:id="insertData" class="insertDataLink" onclick="{!c.insertData}" onfocus="{!c.hideOverlay}">
+                    <span class="slds-assistive-text">{!$Label.HeroChart.ViewData}</span>
+                </a>
+            </aura:if>
+            <div aura:id="assistiveBox" class="slds-assistive-text"/>
+        </div>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,8 @@
+.THIS .slds-wizard__progress {
+    z-index: 0;
+}
+
+.THIS .expandHeader {
+    margin-left: -1rem;
+    margin-right: -1rem;
+}

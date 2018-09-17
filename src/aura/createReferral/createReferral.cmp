@@ -1,0 +1,67 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to create referrals aka Project NEMO
+ * @since 208
+-->
+<aura:component controller="FinServ.ReferralController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+
+	<aura:dependency resource="markup://FinServ:inputOutputField" type="COMPONENT" />
+	<aura:dependency resource="markup://force:pageBlockSectionView" type="COMPONENT" />
+	<aura:dependency resource="markup://force:message" type="COMPONENT" />
+	<aura:dependency resource="markup://force:toggleModalSpinner" type="EVENT"/>
+
+	<aura:set attribute="recordTypeNamesMap" value="{'Lead' : ['Referral']}" />
+
+	<aura:attribute name="fieldSetName" default="FSC_Referral_Form" type="String" access="global" description="API Name of the Field Set on Leads for which the field needs to be retrieved for Referral Form"/>
+	<aura:attribute name="allUserAccess" default="false" type="Boolean" access="global" description="Bypass CRUD and FLS settings" />
+	<aura:attribute name="fields" type="Object[]" description="List of the Fields to be retrieved from fieldSetName" />
+	<aura:attribute name="file" type="Object" access="PRIVATE" description="The selected file information" />
+	<aura:attribute name="icon" type="String" access="PRIVATE" description="The selected icon information" />
+	<aura:attribute name="errors" type="List" default="" description="list of error messages" />
+
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	
+	<div class="slds-table">
+		<aura:if isTrue="{!!empty(v.errors)}">
+			<force:pageError errors="{!v.errors}" />
+		</aura:if>
+		<force:pageBlockSectionView title="{!$Label.FinServ.Label_Field_Set_Referral_Form}" isCollapsible="true" showHeader="true" titleClass="slds-text-heading--small" sectionId="fsc_referral_form">
+			<aura:set attribute="rows">
+				<div class="slds-p-horizontal--x-small slds-p-bottom--x-small">
+					<aura:iteration items="{!v.fields}" var="field">
+						<div class="slds-form-element">
+							<FinServ:inputOutputField viewType="Edit"
+								fieldValue="{!field.value}"
+								fieldType="{#field.type}" 
+								fieldName="{#field.fieldPath}" 
+								fieldLabel="{#field.label}" 
+								sObjectType="{#field.sObjectType}"
+								fieldRequired="{!field.required}" 
+								options="{!field.picklistValues}"
+								source="Lead" 
+								invalid="{!field.invalid}" 
+								errors="{!field.errors}" 
+								addDefaultOption="true"
+								hideLabel="false" />
+						</div>
+					</aura:iteration>
+					<lightning:input aura:id="file" name="file-upload-input" type="file" label="{!$Label.FinServ.Text_Upload_File}" accept="image/*" onchange="{!c.onFileChange}" />
+					<aura:if isTrue="{!not(empty(v.file))}">
+						<div class="slds-pill slds-theme--shade slds-p-around--x-small slds-m-top--xxx-small">
+							<span class="slds-pill__label slds-p-right--x-small" title="{!v.file.name}">
+								<lightning:icon iconName="{!v.icon}" size="small" class="slds-p-right--x-small" />
+								{!v.file.name}
+							</span>
+							<lightning:buttonIcon iconName="utility:close" variant="bare" alternativeText="{!$Label.FinServ.Button_Label_Remove}" onclick="{!c.onFileRemove}" />
+						</div>
+					</aura:if>
+					<div class="slds-form-element slds-p-top--medium">
+						<lightning:button aura:id="save" label="{!$Label.FinServ.Button_Label_Save}" onclick="{!c.onSave}" class="slds-button slds-button--brand" />
+					</div>
+				</div>
+			</aura:set>
+		</force:pageBlockSectionView>
+	</div>
+</aura:component>

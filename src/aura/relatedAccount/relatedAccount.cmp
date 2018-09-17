@@ -1,0 +1,111 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle client relationships tab.
+ * @since 204
+-->
+<aura:component access="global" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" extends="FinServ:baseFinServTemplate" controller="FinServ.RecordTypeController">
+
+    <aura:dependency resource="markup://FinServ:listViewCard" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:listViewDataProvider" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:actionCreateButton" type="COMPONENT" />
+    <aura:dependency resource="markup://force:message" type="COMPONENT" />
+
+    <aura:set attribute="icon" value="standard:account"/>
+    <aura:set attribute="header" value="{!$Label.FinServ.Header_Section_Related_Accounts + ' (--)'}"/>
+    <aura:set attribute="placeholder" value="table_list_line_item" />
+    <aura:set attribute="sObjectName" value="AccountContactRelation" />
+    <aura:set attribute="additionalSObjects" value="['Account','Contact']" />
+    <aura:set attribute="licenseKeys" value="['standard']" />
+    <aura:attribute name="objectInfo" type="Map" description="client/household information" />
+    <aura:attribute name="showErrors" type="Boolean" default="false" description="flag used to handle errors" />
+    <aura:attribute name="errors" type="List" default="" description="list of error messages" />
+    <aura:attribute name="contactId" type="String" description="Id of contact" />
+
+    <aura:attribute name="aarParams" type="Map" />
+    <aura:attribute name="acrParams" type="Map" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:registerevent name="error" type="ui:dataProvideError" description="The event fired when a data retrieval error occurs." />
+    <aura:locator target="relatedAccount_newACR" description="Related Account New ACR"/>
+    <aura:locator target="relatedAccount_newAAR" description="Related Account New AAR"/>
+
+
+    <aura:if isTrue="{!(!v.showErrors)}">
+        <aura:if isTrue="{!v.objectInfo != null}">
+            <aura:if isTrue="{!or(v.objectInfo.IsIndividual, v.objectInfo.IsContact)}">
+                <!-- Individual & Contact / ACR-->
+                <FinServ:listViewCard aura:id="listViewCard"
+                                recordId="{!v.contactId}"
+                                label="{!$Label.FinServ.Header_Section_Related_Accounts}"
+                                fields="Account.Name,Roles,StartDate,EndDate,IsActive"
+                                sObjectName="AccountContactRelation"
+                                tableCaption="{!$Label.FinServ.Header_Section_Related_Accounts}"
+                                actionTypes="relationship"
+                                error="{!c.onError}">
+                    <aura:set attribute="dataProvider">
+                        <FinServ:listViewDataProvider aura:id="listViewDataProvider"
+                            recordId="{!v.contactId}" 
+                            sObjectName="AccountContactRelation" 
+                            methodName="getRelatedAccounts" 
+                            onchange="{!c.handleDataChange}"
+                            error="{!c.onDataLoadError}"/>
+                    </aura:set>
+                    <aura:set attribute="headerIcon">
+                        <lightning:icon iconName="standard:account" size="small" />
+                    </aura:set>
+                    <aura:set attribute="actionsComponent">
+                        <FinServ:actionCreateButton aura:id="relatedAccount_newACR" sObjectName="AccountContactRelation" event="e.force:createRecord" params="{!v.acrParams}" />
+                    </aura:set>
+                    <aura:set attribute="footerComponent">
+                        <span>&nbsp;</span>
+                    </aura:set>
+                </FinServ:listViewCard>
+
+                <aura:set attribute="else">
+                    <!-- Household or business / AAR -->
+                    <FinServ:listViewCard aura:id="listViewCard"
+                                    recordId="{!v.recordId}"
+                                    label="{!$Label.FinServ.Header_Section_Related_Accounts}"
+                                    fieldSetName="WM_Household_RelatedAccounts"
+                                    sObjectName="AccountAccountRelation__c"
+                                    tableCaption="{!$Label.FinServ.Header_Section_Related_Accounts}"
+                                    error="{!c.onError}">
+                        <aura:set attribute="dataProvider">
+                            <FinServ:listViewDataProvider aura:id="listViewDataProvider"
+                                recordId="{!v.recordId}" 
+                                sObjectName="AccountAccountRelation__c" 
+                                methodName="getAccountRelationships" 
+                                onchange="{!c.handleDataChange}"
+                                error="{!c.onDataLoadError}"/>
+                        </aura:set>
+                        <aura:set attribute="headerIcon">
+                            <lightning:icon iconName="standard:account" size="small" />
+                        </aura:set>
+                        <aura:set attribute="actionsComponent">
+                            <FinServ:actionCreateButton aura:id="relatedAccount_newAAR" sObjectName="AccountAccountRelation__c" event="e.force:createRecord" params="{!v.aarParams}" />
+                        </aura:set>
+                        <aura:set attribute="footerComponent">
+                            <FinServ:navToRelatedListWrapper relatedListId="RelatedFromAccounts__r" 
+                                parentRecordId="{!v.recordId}" displayText="{!$Label.RecordHomeCards.ViewAll}" />
+                        </aura:set>
+                    </FinServ:listViewCard>
+                </aura:set>
+            </aura:if>
+        </aura:if>
+        <aura:set attribute="else">
+            <!-- Error State -->
+            <div aura:id="errorMessage" class="errorMessage">
+                <force:message severity="error" strength="3" theme="pOne">
+                    <aura:set attribute="summary">{!$Label.DetailError.EntitySaveErrorSummary}</aura:set>
+                    <aura:set attribute="detail">
+                        <aura:iteration items="{!v.errors}" var="error">
+                            <span>{!error.message}</span> 
+                        </aura:iteration>
+                    </aura:set>
+                </force:message>
+            </div>
+        </aura:set>
+    </aura:if>
+</aura:component>

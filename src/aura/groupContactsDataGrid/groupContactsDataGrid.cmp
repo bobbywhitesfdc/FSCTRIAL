@@ -1,0 +1,50 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle CCR membership in setup ui
+ * @since 206
+-->
+<aura:component controller="FinServ.MoiUICommonController" extends="FinServ:inputDataGrid">
+	<aura:dependency resource="markup://lightning:input" type="COMPONENT" />
+	<aura:dependency resource="markup://ui:dataGridColumn" type="COMPONENT" />
+	
+	<aura:set attribute="showSection" value="true" />
+	<aura:set attribute="sectionTitle" value="{!$Label.FinServ.Label_Group_Setup_Contacts}" />
+	<aura:set attribute="sectionId" value="fsc_group_detail3" />
+	<aura:set attribute="isCollapsible" value="true" />
+	<aura:set attribute="sObjectName" value="ContactContactRelation__c" />
+	<aura:set attribute="headerColumns">
+		<ui:dataGridColumn name="Contact__c" label="{!$Label.FinServ.Label_Group_Related_Member}"
+			class="slds-size--1-of-3 slds-form-element__label" />
+		<ui:dataGridColumn name="Role__c" label="{!$Label.FinServ.Label_Group_Related_Role}"
+			class="slds-size--1-of-3 slds-form-element__label" />
+		<ui:dataGridColumn name="RelatedContact__c" label="{!$Label.FinServ.Label_Group_Contact_Name}"
+			class="slds-size--1-of-3 slds-form-element__label" />
+	</aura:set>
+
+	<aura:attribute name="members" type="List" description="A list of Contacts" />
+	<aura:attribute name="existing" type="List" default="[]" description="List of ContactContactRelations that already exist for other members" />
+
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler name="rowAddRemove" event="ui:addRemove" action="{!c.onAddRemoveRow}" />
+	<aura:handler name="change" value="{!v.members}" action="{!c.onMembersChange}"/>
+
+	<FinServ:groupRelationshipDataProvider aura:id="contactDataProvider" columns="{!v.priv_columnNames}" 
+		members="{!v.members}" contact="true" onchange="{!c.onDataChange}" />
+
+	<aura:iteration items="{!v.existing}" var="item">
+		<tr>
+			<td class="slds-align-top">
+				<lightning:input  label="{!$Label.FinServ.Label_Group_Related_Member}" value="{!item.Contact__r.Name}" disabled="true" />
+			</td>
+			<td class="slds-align-top">
+				<lightning:input label="{!$Label.FinServ.Label_Group_Related_Role}" value="{!item.Role__r.Name}" disabled="true" />
+			</td>
+			<td class="slds-align-top slds-cell-wrap">
+				<lightning:input label="{!$Label.FinServ.Label_Group_Account_Name}" value="{!item.RelatedContact__r.Name}" disabled="true" />
+			</td>
+			<td class="slds-align-top"></td>
+		</tr>
+	</aura:iteration>
+</aura:component>

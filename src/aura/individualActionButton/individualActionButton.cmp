@@ -1,0 +1,31 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description This button handles the create and edit of an individual using the new Setup UI screens.
+ * @since 208
+-->
+<aura:component extends="FinServ:baseFinServTemplate" controller="FinServ.RecordTypeController">
+	<aura:dependency resource="markup://FinServ:createPanelUtility" type="COMPONENT" />
+
+	<aura:attribute name="editMode" type="Boolean" default="false" />
+	<aura:attribute name="params" type="Map" description="the params for createPanel" />
+	<aura:attribute name="class" type="String" description="css class override on the button" default="slds-button slds-button--neutral slds-button--small"/>
+	<aura:attribute name="label" type="String" description="Label for the button, Edit/New will display if this is empty" />
+	<aura:attribute name="contactFirst" type="Boolean" default="false" description="Displays Contact as first step of wizard" />
+	<aura:attribute name="individualMapping" type="Map" access="PRIVATE" description="map of individual record type mapping" />
+	<aura:handler event="force:recordChange" action="{!c.onChange}" />
+	<aura:method name="openModal" action="{!c.clickActionButton}" description="Method to openModal buttton" />	
+	<aura:locator target="individualActionButton" description="edit using individualActionButton"/>
+
+	<button aura:id="individualActionButton" class="{!v.class}" data-selected="false" onclick="{!c.clickActionButton}">
+		<aura:if isTrue="{!v.editMode}">
+			{!!empty(v.label)? v.label:$Label.FinServ.Button_Label_Edit}
+			<aura:set attribute="else">
+				{!!empty(v.label)? v.label:$Label.FinServ.Button_Label_New}
+			</aura:set>
+		</aura:if>
+	</button>
+
+	<FinServ:createPanelUtility aura:id="createPanelUtility" />
+</aura:component>

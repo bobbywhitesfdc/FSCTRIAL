@@ -1,0 +1,18 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle the navigation to related list
+ * @since 196
++-->
+<aura:component controller="FinServ.MoiUICommonController">
+	<aura:attribute name="class" type="String" description="the css class to display on this navigation link" />
+	<aura:attribute name="displayText" type="String" default="" description="the text display on this navigation link" />
+	<aura:attribute name="parentRecordId" required="true" type="String" description="the parent record id" />
+	<aura:attribute name="relatedListId" required="true" type="String" description="the name of the related list navigating to" />
+    <aura:locator target="navToRelatedListWrapper" description="navToRelatedListWrapper action"/>
+
+	<aura:if isTrue="{!(v.relatedListId != undefined)}">
+		<a href='javascript:void(0);' aura:id="navToRelatedListWrapper" class="{!v.class}" onclick="{!c.navigate}" label="{!v.displayText}">{!v.displayText}</a>
+	</aura:if>
+</aura:component>

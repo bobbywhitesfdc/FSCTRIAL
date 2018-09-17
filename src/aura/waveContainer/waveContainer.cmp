@@ -1,0 +1,53 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle client tab.
+ * @since 204
+-->
+<aura:component implements="force:appHostable" access="global">
+    <aura:attribute name="namespacePrefix" type="String" description="the namespace of this component" default="" access="PRIVATE"/>
+    <aura:attribute name="isReady" type="Boolean" description="the Ready flag of init" default="false" access="PRIVATE"/>
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />  
+    <aura:if isTrue="{!v.isReady}">
+        <div class="waveTabWidth">
+            <lightning:tabset aura:id="waveTabs" class="slds-size--1-of-1">  
+                    <lightning:tab title="{!$Label.FinServWaveExt.Wave_Tab_Client_List}">
+                        <aura:set attribute="label">
+                            {!$Label.FinServWaveExt.Wave_Tab_Client_List}
+                        </aura:set>
+                        <wave:waveDashboard developerName="{!v.namespacePrefix + 'Client_List'}" height="1190" 
+                                            openLinksInNewWindow="false" showTitle="false" />
+                    </lightning:tab>
+                    <lightning:tab title="{!$Label.FinServWaveExt.Wave_Tab_8020}">
+                        <aura:set attribute="label">
+                            {!$Label.FinServWaveExt.Wave_Tab_8020}
+                        </aura:set>
+                        <wave:waveDashboard developerName="{!v.namespacePrefix + 'X80_20'}" height="3320" 
+                                            openLinksInNewWindow="false" showTitle="false" />
+                    </lightning:tab>
+                    <lightning:tab title="{!$Label.FinServWaveExt.Wave_Tab_Activities}">
+                        <aura:set attribute="label">
+                            {!$Label.FinServWaveExt.Wave_Tab_Activities}
+                        </aura:set>
+                        <wave:waveDashboard developerName="{!v.namespacePrefix + 'Activities'}" height="2290" 
+                                            openLinksInNewWindow="false" showTitle="false" />
+                    </lightning:tab>
+                    <lightning:tab title="{!$Label.FinServWaveExt.Wave_Tab_Financial_Accounts}">
+                        <aura:set attribute="label">
+                            {!$Label.FinServWaveExt.Wave_Tab_Financial_Accounts}
+                        </aura:set>
+                        <wave:waveDashboard developerName="{!v.namespacePrefix + 'Financial_Accounts'}" height="1630" 
+                                            openLinksInNewWindow="false" showTitle="false" />
+                    </lightning:tab>
+                    <lightning:tab title="{!$Label.FinServWaveExt.Wave_Tab_Client_Goals}">
+                        <aura:set attribute="label">
+                            {!$Label.FinServWaveExt.Wave_Tab_Client_Goals}
+                        </aura:set>
+                        <wave:waveDashboard developerName="{!v.namespacePrefix + 'Client_Goals'}" height="1460" 
+                                            openLinksInNewWindow="false" showTitle="false" />
+                    </lightning:tab>
+            </lightning:tabset>
+        </div>
+    </aura:if>
+</aura:component>

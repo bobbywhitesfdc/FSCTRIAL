@@ -1,0 +1,14 @@
+.THIS .leaf-header {
+    position: relative;
+    top: -10px;
+}
+
+.THIS .onTop {
+    z-index: 1;
+    position: relative;
+}
+
+.THIS .absoluteRight {
+    position: absolute;
+    right: 0;
+}

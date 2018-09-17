@@ -1,0 +1,11 @@
+<design:component label="Financial Account Role List - Financial Services Cloud">
+	<design:attribute name="title" label="Title" description="Component name" />
+	<design:attribute name="iconName" label="Icon Style" description="Component icon name" />
+    <design:attribute name="recordTypeNames" label="Financial Account Record Type" description="Financial account record types separated by commas" />
+    <design:attribute name="faFieldSet" label="Fieldset (Financial Account Role)" description="Financial account field set" />
+	<design:attribute name="financialHoldingFieldSet" label="Fieldset (Financial Holding)" description="Financial holding field set" />
+	<design:attribute name="roles" label="Roles" description="Financial account roles" />
+	<sfdc:objects>
+        <sfdc:object>Account</sfdc:object>
+    </sfdc:objects>
+</design:component>

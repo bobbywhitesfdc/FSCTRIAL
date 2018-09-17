@@ -1,0 +1,129 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle summary of referral
+ * @since 208
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:hasRecordId" extends="FinServ:baseComponent" access="global" controller="FinServ.ReferralController">
+
+
+<!-- How this component works:
+
+v.score holds the referral score value
+
+v.displayxxxx are boolean flags determine if we should display/hide certain fields
+
+v.fieldConfig is a configuration about fields to show, think it as a metadata (it only represent one period)
+
+v.data is storing actual data of all period, when a period is not in the v.data, it will try to retrieve it from the backend, then it makes a copy of the v.fieldConfig and fill in value to the copy, it looks like this: {"periodKey": v.fieldConfig(with value)}
+
+v.dataToDisplayInField is the data to displayed in the current selected period, it will try to get data from the v.data object
+
+the actual fields are rendered from v.dataToDisplayInField and v.score
+
+To change fields to display, check the initializeParam in helper and modify the strucure of v.fieldConfig
+ -->
+
+    <aura:set attribute="sObjectName" value="Lead" />
+    <aura:set attribute="recordTypeNamesMap" value="{'Lead' : ['Referral']}" />
+
+    <aura:attribute name="displayReferralsMade" type="boolean" default="true" description="flag to show/hide referral made" access="GLOBAL"/>
+    <aura:attribute name="displayReferralsConverted" type="boolean" default="true" description="flag to show/hide referral converted" access="GLOBAL"/>
+    <aura:attribute name="displayReferralsRejected" type="boolean" default="true" description="flag to show/hide referral rejected" access="GLOBAL"/>
+    <aura:attribute name="displayRevenueFromReferrals" type="boolean" default="true" description="flag to show/hide revenue from referrals" access="GLOBAL"/>
+    <aura:attribute name="displayReferralsHHPenetration" type="boolean" default="true" description="flag to show/hide referral household penetration" access="GLOBAL"/>
+    <aura:attribute name="displayAverageConversionRate" type="boolean" default="true" description="flag to show/hide average conversion rate" access="GLOBAL"/>
+    <aura:attribute name="displayReferrerScore" type="boolean" default="true" description="flag to show/hide referrer score" access="GLOBAL"/>
+    <aura:attribute name="title" type="String" default="" description="Referral Sumary component title" access="GLOBAL"/>
+    <aura:attribute name="fieldConfig" type="Map[]" default="[]" access="private" description="a JSON object defined which field to display(this is like a setting object), what information is in the field, it is defined in helper's initializeParam function"/>
+    <aura:attribute name="dataToDisplayInField" type="Map" access="private" description="this is a JSON object used to render the actual field/value, it copied the fieldConfig object then load values to each field. This only show one period's data, when period switched, it will try to find data from data object."/>
+    <aura:attribute name="selectedPeriodKey" type="String" default="All" description="the period key of which period button is clicked. the value is set on the button, it should match the key from backend. see ReferralController.getReferrerSummary" access="private"/>
+    <aura:attribute name="data" type="Map" default="{}" description="this is a JSON object that store/cached data from all period, if the data does not exist, it will make a call to the backend" access="private" />
+    <aura:attribute name="score" type="Integer" default="-1" access="private" description="this value holds the referral score, default value is -1, at that time the component will not be rendered"/>
+    <aura:attribute name="renderComponent" type="boolean" default="false" description="flag to show/hide referral summary" access="PRIVATE"/>
+    <!-- This is a temporary workaround, once the force:widthAware interface is available to us, this should be switched over -->
+    <aura:attribute name="width" type="String" default="WIDE" access="private" description="determine if the component is in a WIDE container or a NARROW container, can only be WIDE or NARROW"/>
+    <aura:attribute name="errors" type="List" default="" description="list of error messages" />
+    <aura:attribute name="periodKeys" type="List" default="[]" />
+    
+    <aura:handler event="force:recordChange" action="{!c.onChange}" />
+    <aura:handler event="ui:createPanel" action="{!c.onChange}" />
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    
+    <aura:if isTrue="{!and(v.renderComponent, v.canRead)}">
+        <div aura:id="summary" class="{!v.width}">
+            <force:baseCard bodyClass="">
+                <aura:set attribute="articleClass" value="forceRelatedListCardDesktop" />
+                <aura:set attribute="headerIcon">
+                    <aura:if isTrue="{! and( and(!empty(v.score), v.score>=0), v.displayReferrerScore ) }">
+                        <FinServ:svgDonutChart percentage="{!v.score}" size="40" color="#44c173" showPercentage="false" donutThicknessPercentage="15"/>
+                    </aura:if>
+                </aura:set>
+                <aura:set attribute="headerTitle">
+                    <h2 class="slds-text-heading_small slds-p-right_small">
+                        <span class="slds-truncate">{!empty(v.title)? $Label.FinServ.Label_Client_Referral_Summary_Title : v.title}</span>
+                    </h2>
+                    <aura:if isTrue="{! and( and(!empty(v.score), v.score>=0), v.displayReferrerScore ) }">
+                        <lightning:helptext content="{!$Label.FinServ.Msg_Help_Referrer_Score}" />
+                    </aura:if>
+                </aura:set>
+                <aura:set attribute="body">
+                    <div class="slds-card__body_inner">
+                        <div class="slds-grid slds-grid_align-center slds-p-vertical_medium">
+                             <lightning:radioGroup 
+                                aura:id="referSummaryGroup"                      
+                                name="referSummaryGroup"               
+                                type="button"
+                                options="{! v.periodKeys }"
+                                value="{! v.selectedPeriodKey }"
+                                onchange="{!c.handleClick}" />
+                        </div>
+
+                        <!-- v.width=="NARROW"/"WIDE" -->
+                        <div class="slds-border--top">
+                            <aura:if isTrue="{!!empty(v.dataToDisplayInField)}">
+                                <section class="slds-grid slds-wrap">
+                                    <aura:iteration items="{!v.dataToDisplayInField}" var="so" indexVar="iter">
+                                        <aura:if isTrue="{!and(!empty(so) , so.shouldDisplay)}">
+                                            <div class="referralSummaryFieldCell slds-p-around_small slds-no-space slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-size_3-of-4 slds-medium-size_1-of-1 slds-large-size_1-of-1 referralSummaryFieldTitle">
+                                                        <div class="slds-text-body--regular slds-text-color--weak slds-cell-wrap">
+                                                            {!so.label}
+                                                            <aura:if isTrue="{!!empty(so.tooltip)}">
+                                                                <lightning:helptext content="{!so.tooltip}" />
+                                                            </aura:if>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-text-align--right slds-size_1-of-4 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-page-header__title slds-align-middle referralSummaryFieldValue">
+                                                        <FinServ:outputField fieldValue="{!so.value}" fieldType="{!so.fieldType}" fieldLabel="{!so.label}" percentageIndicator="{!so.isPercentage}" numberIndicator="{!so.isNumber}" currencyIndicator="{!so.isCurrency}" truncateDecimal="true" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </aura:if>
+                                    </aura:iteration>
+                                </section>
+                                <aura:set attribute="else">
+                                    <force:placeholder name="table_list_line_item" />
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                    </div>
+                </aura:set>
+                <aura:set attribute="footer"></aura:set>
+            </force:baseCard>
+        </div>
+        <div aura:id="errorMessage" class="errorMessage slds-hide">
+            <!-- Error State -->
+            <force:message severity="error" strength="3" theme="pOne">
+                <aura:set attribute="summary">{!$Label.DetailError.EntitySaveErrorSummary}</aura:set>
+                <aura:set attribute="detail">
+                    <aura:iteration aura:id="errors" items="{!v.errors}" var="error">
+                        <span>{!error.message}</span>
+                    </aura:iteration>
+                </aura:set>
+            </force:message>
+        </div>
+    </aura:if>
+</aura:component>

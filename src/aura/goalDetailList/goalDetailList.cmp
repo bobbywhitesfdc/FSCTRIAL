@@ -1,0 +1,57 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description Component used to display list of goals
+ * @since 204
+-->
+<aura:component access="global" implements="flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,force:hasRecordId" controller="FinServ.RecordTypeController">
+    <aura:dependency resource="markup://FinServ:goalDetail" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:messagePlaceHolder" type="COMPONENT" />
+
+    <aura:attribute name="accountInfo" type="Map" description="client/household information" />
+    <aura:attribute name="showErrors" type="Boolean" default="false" description="flag used to handle errors" />
+    <aura:attribute name="errors" type="List" default="" description="list of error messages" />
+    <aura:attribute name="defaultFieldValues" type="Map" default=""/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    
+    <aura:if isTrue="{!(!v.showErrors)}">
+        <aura:if isTrue="{!v.accountInfo != null}">
+            <aura:if isTrue="{!v.accountInfo.IsIndividual}">
+                <FinServ:goalDetail aura:id="individualGoalDetail" recordId="{!v.recordId}" 
+                    whereField="PrimaryOwner__c" 
+                    sObjectName="FinancialGoal__c" 
+                    fieldSetName="WM_Client_FinancialGoal" 
+                    defaultFieldValues="{!v.defaultFieldValues}" 
+                />
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!v.accountInfo.IsHousehold}">
+                        <FinServ:goalDetail aura:id="householdGoalDetail" recordId="{!v.recordId}" 
+                            whereField="Household__c" 
+                            sObjectName="FinancialGoal__c" 
+                            fieldSetName="WM_Household_FinancialGoal" 
+                            defaultFieldValues="{!v.defaultFieldValues}" 
+                        />
+                        <aura:set attribute="else">
+                            <FinServ:messagePlaceHolder label="{!$Label.ObjectHomeEmptyContentLabels.emptyRelatedListLine1}" />
+                        </aura:set>
+                    </aura:if>
+                </aura:set>
+            </aura:if>
+        </aura:if>
+        <aura:set attribute="else">
+            <!-- Error State -->
+            <div aura:id="errorMessage" class="errorMessage">
+                <force:message severity="error" strength="3" theme="pOne">
+                    <aura:set attribute="summary">{!$Label.DetailError.EntitySaveErrorSummary}</aura:set>
+                    <aura:set attribute="detail">
+                        <aura:iteration items="{!v.errors}" var="error">
+                            <span>{!error.message}</span> 
+                        </aura:iteration>
+                    </aura:set>
+                </force:message>
+            </div>
+        </aura:set>
+    </aura:if>
+</aura:component>

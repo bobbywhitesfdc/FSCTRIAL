@@ -1,0 +1,8 @@
+<design:component label="Relationship Map - Financial Services Cloud">
+	<design:attribute name="showRelatedAccounts" label="{!$Label.FinServ.Label_Show_Related_Accounts}" description="{!$Label.FinServ.Label_Show_Related_Accounts_Description}" default="true" />
+	<design:attribute name="showRelatedContacts" label="{!$Label.FinServ.Label_Show_Related_Contacts}" description="{!$Label.FinServ.Label_Show_Related_Contacts_Description}" default="true" />
+	<sfdc:objects >
+        <sfdc:object >Account</sfdc:object>
+        <sfdc:object >Contact</sfdc:object>
+    </sfdc:objects>
+</design:component>

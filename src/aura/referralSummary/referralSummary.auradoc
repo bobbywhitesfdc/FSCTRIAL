@@ -1,0 +1,8 @@
+<aura:documentation>
+    <aura:description>
+        <p>A <code>FinServ:referralSummary</code> component renders referral information about a contact.</p>
+        <p>This component can be added to all pages, if the page does not reference a referrer, it pulls summary information for the user.</p>
+        <p>Here is an example:</p>
+        <pre>&lt;FinServ:referralSummary /></pre>
+    </aura:description>
+</aura:documentation>

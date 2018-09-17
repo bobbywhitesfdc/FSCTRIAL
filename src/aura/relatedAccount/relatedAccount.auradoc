@@ -1,0 +1,8 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:relatedAccount</code> component renders the related accounts that are associated with the individual (<code>Account</code> and <code>Contact</code>).</p>
+		<p>This component can only be added to <code>Account</code> record home flexipage.</p>
+		<p>Here is an example</p>
+		<pre>&lt;FinServ:relatedAccount /></pre>
+	</aura:description>
+</aura:documentation>

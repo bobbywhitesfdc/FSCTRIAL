@@ -1,0 +1,44 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description a modal for selecting the record type of the group to be created.
+ * @since 206
+-->
+<aura:component controller="FinServ.RecordTypeController">
+	<aura:attribute name="recordTypes" type="List" />
+	<aura:attribute name="headerTitle" type="String" default="" />
+	
+	<aura:registerEvent name="onChoose" type="FinServ:chooseRecordType" />
+
+		<div class="slds-align--absolute-center slds-p-around--medium">
+			<fieldset aura:id="recordTypesRadioGroup" class="slds-form-element slds-align--absolute-center">
+				<div class="slds-grid">
+					<div class="slds-col">
+						<legend class="slds-form-element__legend slds-form-element__label slds-p-right--small">{!$Label.FinServ.Text_Panel_Group_New}</legend>
+					</div>
+					<div class="slds-col slds-form-element__control">
+						<aura:iteration items="{!v.recordTypes}" var="recordTypeVar" indexVar="index">
+							<label class="slds-radio" for="{!recordTypeVar.Name}">
+								<div class="slds-grid">
+									<div class="slds-col">
+                                        <aura:if isTrue="{!(index == 0)}">
+											<lightning:input aura:id="firstSelectorChecked" type="radio" name="selectRecordTypeRadio" value="{!recordTypeVar.Id}" checked="true" label="{!recordTypeVar.Name}" onchange="{!c.chooseRecordType}" />
+											<aura:set attribute="else">
+												<lightning:input type="radio" name="selectRecordTypeRadio" value="{!recordTypeVar.Id}" label="{!recordTypeVar.Name}" onchange="{!c.chooseRecordType}" />
+											</aura:set>
+										</aura:if>
+									</div>
+								</div>
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-p-left--large">
+                                        <div class="slds-text-color--weak slds-p-bottom--small slds-p-left--large">{!recordTypeVar.Description}</div>
+                                    </div>
+                                </div>
+							</label>
+						</aura:iteration>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+</aura:component>

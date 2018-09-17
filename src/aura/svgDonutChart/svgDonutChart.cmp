@@ -1,0 +1,19 @@
+<!--
++ * Copyright © 2015 salesforce.com, inc. All rights reserved.
++ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
++ * transferred, or disclosed to others, without the prior written consent of Salesforce.
++ * @description component to render a donut chart with a given percentage, color, size and text
++ * @since 196
++-->
+<aura:component>
+    <aura:attribute name="donutId" required="true" default="" type="String" description="Unique Id" />
+    <aura:attribute name="percentage" required="true" default="" type="Integer" description="Percentage value to fill the donut" />
+    <aura:attribute name="size" default="100" type="String" description="Size of the donut" />
+    <aura:attribute name="class" default="" type="String" description="Custom class" />
+    <aura:attribute name="color" default="#44c173" type="String" description="Hex code for fill color" />
+    <aura:attribute name="showPercentage" type="boolean" default="true" description="boolean determine if showing percentage in text"/>
+    <aura:attribute name="donutThicknessPercentage" type="Integer" default="40" description="the thickness of the donut, represent what percentage the donut in whole circle. 100 will be a circle, 0 will be empty." />
+    <div id="{!v.donutId}">
+    	<div id="{!v.percentage}"></div>
+    </div>
+</aura:component>

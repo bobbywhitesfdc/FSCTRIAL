@@ -1,0 +1,37 @@
+.THIS .info {
+    background-color: #F1F5FC;
+}
+.THIS .warning{
+    background-color: #FDF6ED;
+}
+.THIS .error {
+    background-color: #FAF5F5;
+}
+.THIS .info.border{
+    border-color: #54698D;
+    border-style: solid;
+    border-width: 1px 0;
+}
+.THIS .warning.border{
+    border-color: #FFB75D;
+    border-style: solid;
+    border-width: 1px 0;
+}
+.THIS .error.border{
+    border-color: #A84638;
+    border-style: solid;
+    border-width: 1px 0;
+}
+
+.THIS .info.iconStyle svg{
+    fill: #54698D;
+}
+.THIS .warning.iconStyle svg{
+    fill: #FFB75D;
+}
+.THIS .error.iconStyle svg{
+    fill: #A84638;
+}
+.THIS .utility.iconStyle svg{
+    fill: #16325C;
+}

@@ -1,0 +1,6 @@
+<design:component label="Group Members - Financial Services Cloud">
+    <sfdc:objects>
+        <sfdc:object>Account</sfdc:object>
+        <sfdc:object>Contact</sfdc:object>
+    </sfdc:objects>
+</design:component>

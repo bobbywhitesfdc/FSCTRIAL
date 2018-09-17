@@ -1,0 +1,12 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:financialSummary</code> component renders the summary stats of a given client's financials. This includes:
+		<ul>
+			<li>Total Investments</li>
+			<li>Total Bank Desposits</li>
+			<li>Total Insurance</li>
+			<li>Wallet Share</li>
+		</ul>
+		There are no arguments that need to be passed in; just drop it onto a flexipage </p>	
+	</aura:description>
+</aura:documentation>

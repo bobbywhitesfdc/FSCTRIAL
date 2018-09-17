@@ -1,0 +1,8 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:assetsAndLiabilities</code> component renders the assetsAndLiabilties table.</p>
+		<p>This component can only be added only to the Lightning page: for example <code>Account</code> record home flexipage</p>
+		<p>Here is an example</p>
+		<pre>&lt;FinServ:assetsAndLiabilites /></pre>
+	</aura:description>
+</aura:documentation>

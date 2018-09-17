@@ -1,0 +1,20 @@
+.THIS .memberGridDetailCard:nth-child(odd) .borderMember {
+	margin-right: 1rem;
+}
+
+.THIS .slds-card.borderMember {
+	border-left-style: solid;
+	border-left-width: thick;
+}
+
+.THIS .slds-card.borderIndividual {
+	border-left-color: #00D2BE;
+}
+
+.THIS .slds-card.borderAccount {
+	border-left-color: #7f8de1;
+}
+
+.THIS .slds-card.borderContact {
+	border-left-color: #a094ed;
+}

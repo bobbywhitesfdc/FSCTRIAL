@@ -1,0 +1,67 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description a parent modal for creating a new relationship group(new setup ui) which contains header, body & footer of the modal.
+ * @since 206
+-->
+<aura:component extends="FinServ:baseModal" controller="FinServ.RelationshipController">
+    <aura:dependency resource="markup://FinServ:createRelationshipGroup" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:wizardHeader" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:createPanelUtility" type="COMPONENT" />
+
+    <aura:registerEvent name="showToast" type="FinServ:showToastModal"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+    <aura:attribute name="recordTypeId" type="String" description="Record Type ID of the Group selected in the previous step" />
+    <aura:attribute name="recordId" type="String" description="Record ID for edit record scenario" />
+    <aura:attribute name="groupName" type="String" description="Record Name for edit record scenario" />
+    <aura:attribute name="recordTypeName" type="String" description="Record type name of the group selected" />
+    <aura:attribute name="defaultRowValues" type="Map" description="Values defaulted in the group" />
+    <aura:attribute name="defaultMember" type="Map" description="Contact to defaulted in the group" />
+    <aura:attribute name="defaultIndirectMember" type="Map" description="Business Account defaulted in the group" />
+    <aura:attribute name="editMode" type="Boolean" default="false" description="Flag if in edit mode or not" />
+    <aura:attribute name="steps" type="String[]" description="List of wizard steps" />
+    <aura:attribute name="pages" type="List" description="List of all page configurations" />
+    <aura:attribute name="pageNumber" type="Integer" default="0" description="The current step number" />
+    <aura:attribute name="stepName" type="String" default="detailsStep" description="Name of the current step in the wizard panel. Current set of steps are: {detailsStep, memberStep}" />
+    <aura:attribute name="showRelatedAccounts" default="true" type="Boolean" description="Show Related Accounts" />
+    <aura:attribute name="showRelatedContacts" default="true" type="Boolean" description="Show Related Contacts" />
+    <aura:locator alias="modalCreateRelationshipGroup_backButton" target="backButton" description="createRelationshipGroup back button"/>
+    <aura:locator alias="modalCreateRelationshipGroup_cancelButton" target="cancelButton" description="createRelationshipGroup cancel button"/>
+    <aura:locator alias="modalCreateRelationshipGroup_saveAndNextButton" target="saveAndNextButton" description="createRelationshipGroup save next button"/>
+    <aura:locator alias="modalCreateRelationshipGroup_saveButton" target="saveButton" description="createRelationshipGroup save button"/>
+
+    <!-- Header -->
+    <div aura:id="header" class="slds-text-heading--medium slds-text-align--center">
+        {! (v.editMode) ? format($Label.FinServ.Header_Panel_Group_Edit, v.groupName) : format($Label.FinServ.Header_Panel_Group_Create, v.recordTypeName) }
+    </div>
+
+    <!-- Body -->
+    <FinServ:createRelationshipGroup aura:id="body" currentStep="{!v.stepName}" recordTypeId="{!v.recordTypeId}" 
+        recordId="{!v.recordId}" defaultMember="{!v.defaultMember}" defaultIndirectMember="{!v.defaultIndirectMember}" showRelatedAccounts="{!v.showRelatedAccounts}" showRelatedContacts="{!v.showRelatedContacts}" />
+
+    <!-- Footer -->
+    <FinServ:wizardFooter aura:id="footer" steps="{!v.steps}">
+        <aura:set attribute="actionsLeft">
+            <!-- If not first step -->
+            <aura:if isTrue="{!greaterthan(v.pageNumber, 0)}">
+                <ui:button aura:id="backButton" label="{!$Label.FinServ.Button_Label_Back}" buttonTitle="{!$Label.FinServ.Button_Label_Back}" class="slds-button slds-button--neutral" press="{!c.onBack}" />
+                <aura:set attribute="else">
+                    <ui:button aura:id="cancelButton" label="{!$Label.FinServ.Button_Label_Cancel}" buttonTitle="{!$Label.FinServ.Button_Label_Cancel}" class="slds-button" press="{!c.onCancel}" />
+                </aura:set>
+            </aura:if>
+        </aura:set>
+        <aura:set attribute="actionsRight">
+            <!-- if not last step -->
+            <aura:if isTrue="{!v.pageNumber != (v.pages.length - 1)}">
+                <ui:button aura:id="saveAndNextButton" label="{!$Label.FinServ.Button_Label_SaveAndNext}" buttonTitle="{!$Label.FinServ.Button_Label_SaveAndNext}" class="slds-button slds-button--brand" press="{!c.saveGroup}"/>
+                <aura:set attribute="else">
+                    <ui:button aura:id="saveButton" label="{!$Label.FinServ.Button_Label_Save}" buttonTitle="{!$Label.FinServ.Button_Label_Save}" class="slds-button slds-button--brand" press="{!c.saveGroup}" />
+                </aura:set>
+            </aura:if>
+        </aura:set> 
+    </FinServ:wizardFooter>
+
+</aura:component>

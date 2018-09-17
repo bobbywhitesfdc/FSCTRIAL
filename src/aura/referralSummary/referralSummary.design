@@ -1,0 +1,10 @@
+<design:component label="Referrals Made Summary - Financial Services Cloud" >
+    <design:attribute name="title" label="Title" description="Referral Summary component title" />
+    <design:attribute name="displayReferralsMade" default="true" label="Referrals"/>
+    <design:attribute name="displayReferralsConverted" default="true" label="Referrals Converted"/>
+    <design:attribute name="displayReferralsRejected" default="true" label="Referrals Rejected"/>
+    <design:attribute name="displayRevenueFromReferrals" default="true" label="Revenue Generated"/>
+    <design:attribute name="displayReferralsHHPenetration" default="true" label="Average Membership of Converted Referrals"/>
+    <design:attribute name="displayAverageConversionRate" default="true" label="Average Conversion Rate of Referrers"/>
+    <design:attribute name="displayReferrerScore" default="false" label="Referrer Score"/>
+</design:component>

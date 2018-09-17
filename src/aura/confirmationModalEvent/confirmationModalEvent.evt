@@ -1,0 +1,11 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description event for handling alert modal acction
+ * @since 206
+-->
+<aura:event type="APPLICATION" description="Event template" >
+    <aura:attribute name="attributes" type="Object" description="Generic attribute object"/>
+    <aura:attribute name="modalId" type="String" description="Id for modal component"/>
+</aura:event>

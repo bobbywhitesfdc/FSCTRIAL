@@ -1,0 +1,14 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description his component handles dynamic navigation to Client profile, Household profile and Contact Profile based on the type of object injected to it at runtime
+ * @since 198 -->
+<aura:component extends="FinServ:baseFinServTemplate" extensible="true">
+    <aura:dependency resource="markup://FinServ:navToComponentWrapper" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:navToObjectWrapper" type="COMPONENT" />
+    <aura:attribute name="householdRecordTypeName" type="String" default="IndustriesHousehold" description="The name for account household record type"/>
+    <aura:attribute name="individualAccountRecordTypeName" type="String" default="IndustriesIndividual" description="The name for account household record type"/>
+    <aura:attribute name="record" type="Object" description="Result set with data from CCR or AAR" />
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" /> {!v.body}
+</aura:component>

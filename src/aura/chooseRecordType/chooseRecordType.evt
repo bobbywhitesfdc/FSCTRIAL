@@ -1,0 +1,11 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description This event is fired when the next button in the group record type selector is clicked.
+ * @since 208
+-->
+<aura:event type="COMPONENT" description="Event fired when the a record type is selected">
+	<aura:attribute name="recordTypeId" type="String" description="Selected Record Type Id"/>
+	<aura:attribute name="recordTypeName" type="String" description="Selected Record Type Name"/>
+</aura:event>

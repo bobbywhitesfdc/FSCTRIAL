@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- Financial Accounts Summary --></label>
+        <name>FSC_Banker_Profile_Fin_Acct_Summary</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Client_Info --></label>
+        <name>WM_Client_Edit_Section_1</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Phone_and_Email --></label>
+        <name>WM_Client_Edit_Section_2</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Mailing_Address --></label>
+        <name>WM_Client_Edit_Section_3</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Permanent_Address --></label>
+        <name>WM_Client_Edit_Section_31</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Seasonal_Address --></label>
+        <name>WM_Client_Edit_Section_32</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Other_Address --></label>
+        <name>WM_Client_Edit_Section_33</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Client_Services --></label>
+        <name>WM_Client_Edit_Section_4</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Know_Your_Client --></label>
+        <name>WM_Client_Edit_Section_5</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Employment_Info --></label>
+        <name>WM_Client_Edit_Section_6</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Client_Info --></label>
+        <name>WM_Client_New_Section_1</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Client_Services --></label>
+        <name>WM_Client_New_Section_3</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Know_Your_Client --></label>
+        <name>WM_Client_New_Section_4</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Employment_Info --></label>
+        <name>WM_Client_New_Section_5</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Phone_and_Email --></label>
+        <name>WM_Client_New_Section_6</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Mailing_Address --></label>
+        <name>WM_Client_New_Section_7</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Permanent_Address --></label>
+        <name>WM_Client_New_Section_71</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Seasonal_Address --></label>
+        <name>WM_Client_New_Section_72</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Other_Address --></label>
+        <name>WM_Client_New_Section_73</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Client_Info --></label>
+        <name>WM_Client_Profile_Details_Section_1</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Phone_and_Email --></label>
+        <name>WM_Client_Profile_Details_Section_2</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Addresses --></label>
+        <name>WM_Client_Profile_Details_Section_3</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Client_Services --></label>
+        <name>WM_Client_Profile_Details_Section_4</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Know_Your_Client --></label>
+        <name>WM_Client_Profile_Details_Section_5</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Employment_Info --></label>
+        <name>WM_Client_Profile_Details_Section_6</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Financial_Summary --></label>
+        <name>WM_Client_Profile_Details_Section_7</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_System_Info --></label>
+        <name>WM_Client_Profile_Details_Section_8</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Financial_Accounts_Summary --></label>
+        <name>WM_Client_Profile_Fin_Acct_Summary</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Client_Header --></label>
+        <name>WM_Client_Profile_Header</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Household_Summary --></label>
+        <name>WM_Client_Profile_Relations_HH_Summary</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Relationship_Group_Members --></label>
+        <name>WM_Client_Relationship_Group_Members</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Relationship_Groups --></label>
+        <name>WM_Client_Relationship_Groups</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Household_Info --></label>
+        <name>WM_HH_Profile_Details_Section_1</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Addresses --></label>
+        <name>WM_HH_Profile_Details_Section_2</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Financial_Accounts_Summary --></label>
+        <name>WM_HH_Profile_Fin_Acct_Summary</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- LBL.Label_Field_Set_Household_Header --></label>
+        <name>WM_HH_Profile_Header</name>
+    </fieldSets>
+    <fields>
+        <label><!-- AUM --></label>
+        <name>FinServ__AUM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bank Number --></label>
+        <name>FinServ__BankNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Borrowing History --></label>
+        <name>FinServ__BorrowingHistory__c</name>
+        <picklistValues>
+            <masterLabel>Excellent</masterLabel>
+            <translation>非常に良い</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Limited to No History</masterLabel>
+            <translation>限られた履歴または履歴なし</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moderate</masterLabel>
+            <translation>中</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poor</masterLabel>
+            <translation>悪い</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Borrowing Priorities --></label>
+        <name>FinServ__BorrowingPriorities__c</name>
+        <picklistValues>
+            <masterLabel>Build Equity</masterLabel>
+            <translation>資産価値の構築</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Debt Consolidation</masterLabel>
+            <translation>債務整理</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation>教育</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investments</masterLabel>
+            <translation>投資</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Large Capital Purchases</masterLabel>
+            <translation>大資本購入</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Property Purchase</masterLabel>
+            <translation>物件購入</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renovations</masterLabel>
+            <translation>改築</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Branch Code --></label>
+        <name>FinServ__BranchCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Branch Name --></label>
+        <name>FinServ__BranchName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>FinServ__ClientCategory__c</name>
+        <picklistValues>
+            <masterLabel>Bronze</masterLabel>
+            <translation>ブロンズ</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gold</masterLabel>
+            <translation>ゴールド</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum</masterLabel>
+            <translation>プラチナ</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silver</masterLabel>
+            <translation>シルバー</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Conversion DateTime --></label>
+        <name>FinServ__ConversionDateTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Credit Rating --></label>
+        <name>FinServ__CreditRating__c</name>
+        <picklistValues>
+            <masterLabel>Excellent</masterLabel>
+            <translation>非常に良い</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fair</masterLabel>
+            <translation>ふつう</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Good</masterLabel>
+            <translation>良い</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poor</masterLabel>
+            <translation>悪い</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Credit Score --></label>
+        <name>FinServ__CreditScore__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer ID --></label>
+        <name>FinServ__CustomerID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Segment --></label>
+        <name>FinServ__CustomerSegment__c</name>
+        <picklistValues>
+            <masterLabel>Borrower</masterLabel>
+            <translation>借り手</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Long Term Growth</masterLabel>
+            <translation>長期成長</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mass Affluent</masterLabel>
+            <translation>富裕層</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mass Market</masterLabel>
+            <translation>大衆市場</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Millennial</masterLabel>
+            <translation>ミレニアル</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transactional</masterLabel>
+            <translation>取引</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wealth Accumulation</masterLabel>
+            <translation>富の蓄積</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Customer Type --></label>
+        <name>FinServ__CustomerType__c</name>
+        <picklistValues>
+            <masterLabel>Borrower</masterLabel>
+            <translation>借り手</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investor</masterLabel>
+            <translation>投資家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relational</masterLabel>
+            <translation>関係的</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transaction</masterLabel>
+            <translation>取引</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Financial Interests --></label>
+        <name>FinServ__FinancialInterests__c</name>
+        <picklistValues>
+            <masterLabel>College Planning</masterLabel>
+            <translation>大学学費準備</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy</masterLabel>
+            <translation>エネルギー</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fixed Income</masterLabel>
+            <translation>確定利付債</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Municipal Bonds</masterLabel>
+            <translation>地方債</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retirement</masterLabel>
+            <translation>定年後の収入</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology</masterLabel>
+            <translation>ハイテク</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Individual ID --></label>
+        <name>FinServ__IndividualId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Individual Type --></label>
+        <name>FinServ__IndividualType__c</name>
+        <picklistValues>
+            <masterLabel>Group</masterLabel>
+            <translation>グループ</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Individual</masterLabel>
+            <translation>個人</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Investment Experience --></label>
+        <name>FinServ__InvestmentExperience__c</name>
+        <picklistValues>
+            <masterLabel>Experienced</masterLabel>
+            <translation>経験あり</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inexperienced</masterLabel>
+            <translation>経験なし</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moderately Experienced</masterLabel>
+            <translation>少し経験がある</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moderately Inexperienced</masterLabel>
+            <translation>あまり経験がない</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Investment Objectives --></label>
+        <name>FinServ__InvestmentObjectives__c</name>
+        <picklistValues>
+            <masterLabel>Aggressive Growth</masterLabel>
+            <translation>積極的な成長</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Balanced</masterLabel>
+            <translation>安定</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conservative Income</masterLabel>
+            <translation>低リスクの収入</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Growth</masterLabel>
+            <translation>成長</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Income</masterLabel>
+            <translation>収入</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- KYC Date --></label>
+        <name>FinServ__KYCDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- KYC Status --></label>
+        <name>FinServ__KYCStatus__c</name>
+        <picklistValues>
+            <masterLabel>Completed - Invalid</masterLabel>
+            <translation>完了 - 無効</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed - Valid</masterLabel>
+            <translation>完了 - 有効</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Expired</masterLabel>
+            <translation>期限切れ</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Queue</masterLabel>
+            <translation>キュー待機中</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In progress</masterLabel>
+            <translation>処理中</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Overdue</masterLabel>
+            <translation>期限切れ</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Required</masterLabel>
+            <translation>必須</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Last Interaction --></label>
+        <name>FinServ__LastInteraction__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Review --></label>
+        <name>FinServ__LastReview__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Transaction Date - Joint Owner --></label>
+        <name>FinServ__LastTransactionDateJointOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Transaction Date - Primary Owner --></label>
+        <name>FinServ__LastTransactionDatePrimaryOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Transaction Date --></label>
+        <name>FinServ__LastTransactionDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Used Channel --></label>
+        <name>FinServ__LastUsedChannel__c</name>
+        <picklistValues>
+            <masterLabel>Branch</masterLabel>
+            <translation>支社</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Call Center</masterLabel>
+            <translation>コールセンター</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile</masterLabel>
+            <translation>携帯</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>その他</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web</masterLabel>
+            <translation>Web</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Relationship Length --></label>
+        <name>FinServ__LengthOfRelationship__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lifetime Value --></label>
+        <name>FinServ__LifetimeValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketing Segment --></label>
+        <name>FinServ__MarketingSegment__c</name>
+        <picklistValues>
+            <masterLabel>Female Investor</masterLabel>
+            <translation>女性投資家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Net Worth</masterLabel>
+            <translation>高純資産</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mass Affluent</masterLabel>
+            <translation>富裕層</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Millennial</masterLabel>
+            <translation>ミレニアル</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Net Worth --></label>
+        <name>FinServ__NetWorth__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Interaction --></label>
+        <name>FinServ__NextInteraction__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Review --></label>
+        <name>FinServ__NextReview__c</name>
+    </fields>
+    <fields>
+        <label><!-- Important Notes --></label>
+        <name>FinServ__Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Personal Interests --></label>
+        <name>FinServ__PersonalInterests__c</name>
+        <picklistValues>
+            <masterLabel>Biking</masterLabel>
+            <translation>サイクリング</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>College Basketball</masterLabel>
+            <translation>カレッジバスケットボール</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cooking</masterLabel>
+            <translation>料理</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Environment</masterLabel>
+            <translation>環境</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hiking</masterLabel>
+            <translation>ハイキング</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wine</masterLabel>
+            <translation>ワイン</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Primary Contact --></label>
+        <name>FinServ__PrimaryContact__c</name>
+        <relationshipLabel><!-- Accounts (Primary Contact) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- External Referrer --></label>
+        <name>FinServ__ReferredByContact__c</name>
+        <relationshipLabel><!-- My Referrals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Internal Referrer --></label>
+        <name>FinServ__ReferredByUser__c</name>
+        <relationshipLabel><!-- Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Relationship Start Date --></label>
+        <name>FinServ__RelationshipStartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Review Frequency --></label>
+        <name>FinServ__ReviewFrequency__c</name>
+        <picklistValues>
+            <masterLabel>Annually</masterLabel>
+            <translation>一括年間前払い</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monthly</masterLabel>
+            <translation>毎月</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quarterly</masterLabel>
+            <translation>毎四半期</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Risk Tolerance --></label>
+        <name>FinServ__RiskTolerance__c</name>
+        <picklistValues>
+            <masterLabel>Aggressive</masterLabel>
+            <translation>積極的</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conservative</masterLabel>
+            <translation>保守的</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moderate</masterLabel>
+            <translation>中</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation>なし</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Model --></label>
+        <name>FinServ__ServiceModel__c</name>
+        <picklistValues>
+            <masterLabel>Tier 1</masterLabel>
+            <translation>Tier 1</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier 2</masterLabel>
+            <translation>Tier 2</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier 3</masterLabel>
+            <translation>Tier 3</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Source System ID --></label>
+        <name>FinServ__SourceSystemId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>FinServ__Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation>有効</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deceased</masterLabel>
+            <translation>死亡</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation>無効</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Onboarding</masterLabel>
+            <translation>オンボーディング</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prospect</masterLabel>
+            <translation>見込み客</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Time Horizon --></label>
+        <name>FinServ__TimeHorizon__c</name>
+        <picklistValues>
+            <masterLabel>Long Term</masterLabel>
+            <translation>長期</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium Term</masterLabel>
+            <translation>中期</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Short Term</masterLabel>
+            <translation>短期</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total AUM Joint Owner --></label>
+        <name>FinServ__TotalAUMJointOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total AUM Primary Owner --></label>
+        <name>FinServ__TotalAUMPrimaryOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Bank Deposits Joint Owner --></label>
+        <name>FinServ__TotalBankDepositsJointOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Bank Deposits Primary Owner --></label>
+        <name>FinServ__TotalBankDepositsPrimaryOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Bank Deposits --></label>
+        <name>FinServ__TotalBankDeposits__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Financial Accounts Joint Owner --></label>
+        <name>FinServ__TotalFinAcctsJointOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Financial Accounts Primary Owner --></label>
+        <name>FinServ__TotalFinAcctsPrimaryOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Financial Accounts --></label>
+        <name>FinServ__TotalFinancialAccounts__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Held Financial Accounts Joint --></label>
+        <name>FinServ__TotalHeldFinAcctsJointOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Held Financial Accounts Primary --></label>
+        <name>FinServ__TotalHeldFinAcctsPrimaryOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Insurance Joint Owner --></label>
+        <name>FinServ__TotalInsuranceJointOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Insurance Primary Owner --></label>
+        <name>FinServ__TotalInsurancePrimaryOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Insurance --></label>
+        <name>FinServ__TotalInsurance__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Investments Joint Owner --></label>
+        <name>FinServ__TotalInvestmentsJointOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Investments Primary Owner --></label>
+        <name>FinServ__TotalInvestmentsPrimaryOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Investments --></label>
+        <name>FinServ__TotalInvestments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Liabilities Joint Owner --></label>
+        <name>FinServ__TotalLiabilitiesJointOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Liabilities Primary Owner --></label>
+        <name>FinServ__TotalLiabilitiesPrimaryOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Liabilities --></label>
+        <name>FinServ__TotalLiabilities__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Nonfinancial Assets Joint Owner --></label>
+        <name>FinServ__TotalNonfinancialAssetsJointOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Nonfinancial Assets Primary Owner --></label>
+        <name>FinServ__TotalNonfinancialAssetsPrimaryOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Nonfinancial Assets --></label>
+        <name>FinServ__TotalNonfinancialAssets__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Fin. Accounts - Joint Owner --></label>
+        <name>FinServ__TotalNumberOfFinAccountsJointOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Fin. Accounts - Primary Owner --></label>
+        <name>FinServ__TotalNumberOfFinAccountsPrimaryOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Number of Financial Accounts --></label>
+        <name>FinServ__TotalNumberOfFinAccounts__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Outstanding Credit - Joint Owner --></label>
+        <name>FinServ__TotalOutstandingCreditJointOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Outstanding Credit - Primary Owner --></label>
+        <name>FinServ__TotalOutstandingCreditPrimaryOwner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Outstanding Credit --></label>
+        <name>FinServ__TotalOutstandingCredit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Premium --></label>
+        <name>FinServ__TotalPremium__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Revenue --></label>
+        <name>FinServ__TotalRevenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wallet Share --></label>
+        <name>FinServ__WalletShare__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- A business or an organization --></description>
+        <label><!-- Business --></label>
+        <name>IndustriesBusiness</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- A grouping of related people and institutions --></description>
+        <label><!-- Household --></label>
+        <name>IndustriesHousehold</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- A person who is a prospect or a client --></description>
+        <label><!-- Individual --></label>
+        <name>IndustriesIndividual</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- An institution that is a prospect or a client --></description>
+        <label><!-- Institution --></label>
+        <name>IndustriesInstitution</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Internal referrers must be internal Salesforce users. --></errorMessage>
+        <name>FinServ__NonPortalUserReferrer</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Individual record type can&apos;t be changed --></errorMessage>
+        <name>FinServ__NotAllowingConversionFromIndividual</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The record type can&apos;t be changed to Individual. --></errorMessage>
+        <name>FinServ__NotAllowingConversionToIndividual</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter an internal referrer or an external referrer. You can list only one referrer for each referral. --></errorMessage>
+        <name>FinServ__SingleReferredByEntryByRecord</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- AddMember --></label>
+        <name>FinServ__AddMember</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- AddRelation --></label>
+        <name>FinServ__AddRelation</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+</CustomObjectTranslation>

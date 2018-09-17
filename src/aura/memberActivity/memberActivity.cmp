@@ -1,0 +1,48 @@
+<aura:component controller="FinServ.ActivityCountController" extends="FinServ:baseFinServTemplate">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="identifier" type="String" description="Contact Id of a household member" />
+    <aura:attribute name="activityCounts" type="Object" default="" description="Map of activity counts" />
+    <aura:registerevent name="error" type="ui:dataProvideError" description="The event fired when a data retrieval error occurs." />
+    <ul>
+        <li class="slds-m-top_xx-small">
+            <div class="slds-media">
+                <div class="slds-media__figure">
+                    <lightning:icon iconName="standard:event" size="x-small" class="slds-icon--x-small" />
+                </div>
+                <div class="slds-media__body">
+                    <span class="slds-text-color--weak slds-m-right--xx-small">{!$Label.FinServ.Link_Events}</span> {!v.activityCounts.Events}
+                </div>
+            </div>
+        </li>
+        <li class="slds-m-top_xx-small">
+            <div class="slds-media">
+                <div class="slds-media__figure">
+                    <lightning:icon iconName="standard:task" size="x-small" class="slds-icon--x-small" />
+                </div>
+                <div class="slds-media__body">
+                    <span class="slds-text-color--weak slds-m-right--xx-small">{!$Label.FinServ.Link_Tasks}</span> {!v.activityCounts.Tasks}
+                </div>
+            </div>
+        </li>
+        <li class="slds-m-top_xx-small">
+            <div class="slds-media">
+                <div class="slds-media__figure">
+                    <lightning:icon iconName="standard:log_a_call" size="x-small" class="slds-icon--x-small" />
+                </div>
+                <div class="slds-media__body">
+                    <span class="slds-text-color--weak slds-m-right--xx-small">{!$Label.FinServ.Link_Calls}</span> {!v.activityCounts.Calls}
+                </div>
+            </div>
+        </li>
+        <li class="slds-m-top_xx-small">
+            <div class="slds-media">
+                <div class="slds-media__figure">
+                    <lightning:icon iconName="standard:email" size="x-small" class="slds-icon--x-small" />
+                </div>
+                <div class="slds-media__body">
+                    <span class="slds-text-color--weak slds-m-right--xx-small">{!$Label.FinServ.Link_Emails}</span> {!v.activityCounts.Emails}
+                </div>
+            </div>
+        </li>
+    </ul>
+</aura:component>

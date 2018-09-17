@@ -1,0 +1,9 @@
+<aura:component >
+    <aura:attribute name="selectedValue" type="String" required="true" description="The Selected Value" />
+    <aura:attribute name="displayValue" type="String" required="true" description="The Displayed Value" />
+    <aura:attribute name="label" type="String" required="true"/>
+    <div> 
+        <FinServ:navToObjectWrapper sObjectId="{!v.selectedValue}" 
+                              displayText="{!v.displayValue}" />
+    </div>
+</aura:component>

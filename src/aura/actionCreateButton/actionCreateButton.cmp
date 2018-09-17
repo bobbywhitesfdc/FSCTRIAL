@@ -1,0 +1,19 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description actionCreateButton button create record
+ * @since 204
+-->
+<aura:component extensible="true" extends="FinServ:baseFinServTemplate">
+
+    <aura:attribute name="label" type="String" default="{!$Label.FinServ.Button_Label_New}" description="label for button" />
+    <aura:attribute name="event" type="String" required="true" default="e.force:createRecord" description="if this is set, clicking the create button will fire this event, to use the default create modal from SFX, e.g. e.force:createRecord" />
+    <aura:attribute name="params" type="Map" description="the params for the createButtonEvent" />
+	<aura:attribute name="class" type="String" description="css class override on the button" default="slds-button slds-button--neutral slds-button--small"/>
+	<aura:locator target="actionCreateButton" description="create record"/>
+    
+    <aura:if isTrue="{!v.canCreate}">
+        <button aura:id="actionCreateButton" class="{!v.class}" title="{!v.label}" data-selected="false" onclick="{!c.clickCreate}">{!v.label}</button>
+    </aura:if>
+</aura:component>

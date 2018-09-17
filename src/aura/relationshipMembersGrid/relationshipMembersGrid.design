@@ -1,0 +1,7 @@
+<design:component label="Group Members (Configurable) - Financial Services Cloud">
+    <sfdc:objects>
+        <sfdc:object>Account</sfdc:object>
+        <sfdc:object>Contact</sfdc:object>
+    </sfdc:objects>
+    <design:attribute label="Field Set Name" name="fsName"/>
+</design:component>

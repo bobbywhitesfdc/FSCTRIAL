@@ -1,0 +1,8 @@
+<aura:documentation>
+    <aura:description>
+		<p>An <code>FinServ:alert</code> component renders alerts that are tied to either the user or the financial account</p>
+		<p>This component can only be added to the Lightning page: <code>Account</code> or <code>Financial Account</code> record home flexipage</p>
+		<p>Here is an example</p>
+		<pre>&lt;FinServ:alert /></pre>
+	</aura:description>
+</aura:documentation>

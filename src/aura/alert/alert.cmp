@@ -1,0 +1,23 @@
+<!--
+   * Copyright © 2015 salesforce.com, inc. All rights reserved.
+   * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+   * transferred, or disclosed to others, without the prior written consent of Salesforce.
+   * @description component for displaying alerts. Can pass in custom dataProvider
+   * @since 206
+   -->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" extends="FinServ:baseComponent" access="global">
+    <aura:set attribute="sObjectName" value="Alert__c" />
+
+    <aura:handler name="error" event="ui:dataProvideError" action="{!c.handleError}" />
+    
+    <aura:if isTrue="{!v.canRead}">
+        <FinServ:alertList aura:id="alertList">
+            <aura:set attribute="dataProvider">
+                <FinServ:alertDataProvider recordId="{!v.recordId}" />
+            </aura:set>
+            <aura:set attribute="loadingIndicator">
+               <force:placeholder name="table_list_line_item" />
+            </aura:set>
+        </FinServ:alertList>
+    </aura:if>
+</aura:component>

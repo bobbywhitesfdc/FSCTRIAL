@@ -1,0 +1,46 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to handle client details tab.
+ * @since 204
+-->
+<aura:component extends="FinServ:baseFinServTemplate" controller="FinServ.ClientController" implements="force:hasRecordId,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes" access="global">
+	<aura:dependency resource="markup://force:detailPanel" type="COMPONENT" />
+
+	<aura:attribute name="contactFirst" access="global" type="Boolean" default="false" description="Shows contact details first on Client Record page if not Person Account" />    
+	<aura:attribute name="contactId" type="String" default="" description="Contact ID associated to Client if not Person Account" />
+	<aura:attribute name="showErrors" type="Boolean" default="false" description="Display error state" />
+	<aura:attribute name="errors" type="List" default="" description="list of error messages" />
+	
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="force:refreshView" action="{!c.onChange}" />
+	<aura:handler event="force:recordChange" action="{!c.onChange}" />
+	<aura:handler event="force:recordDeleted" action="{!c.onChange}" />
+	<div>
+		<aura:if isTrue="{!(!v.showErrors)}">
+			<!-- Show contact details first -->
+			<aura:if isTrue="{! and(v.contactFirst, !empty(v.contactId))}" >
+				<force:detailPanel aura:id="contactFirstDetailPanel" canRefresh="true" recordId="{!v.contactId}" />
+			</aura:if>
+			<force:detailPanel aura:id="accountDetailPanel" canRefresh="true" recordId="{!v.recordId}" />
+			<!-- Show contact details second (Note this a copy of the above) -->
+			<aura:if isTrue="{! and(!(v.contactFirst), !empty(v.contactId))}" >
+				<force:detailPanel aura:id="contactLastDetailPanel" canRefresh="true" recordId="{!v.contactId}" />
+			</aura:if>
+			<aura:set attribute="else">
+				<!-- Error State -->
+				<div aura:id="errorMessage" class="errorMessage">
+					<force:message severity="error" strength="3" theme="pOne">
+						<aura:set attribute="summary">{!$Label.DetailError.EntitySaveErrorSummary}</aura:set>
+						<aura:set attribute="detail">
+							<aura:iteration items="{!v.errors}" var="error">
+								<span>{!error.message}</span> 
+							</aura:iteration>
+						</aura:set>
+					</force:message>
+				</div>
+			</aura:set>
+		</aura:if>
+	</div>
+</aura:component>

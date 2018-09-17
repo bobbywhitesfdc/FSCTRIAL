@@ -1,0 +1,65 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description listViewCard component creates a card with list
+ * @since 204
+-->
+<aura:component extensible="true" extends="force:baseCard">
+
+    <aura:dependency resource="markup://FinServ:listViewTable" type="COMPONENT" />
+    <aura:dependency resource="markup://force:relatedListPreviewGrid" type="COMPONENT" />
+    
+    <aura:set attribute="actionableMode" value="NONE" />    
+    <aura:set attribute="articleClass" value="forceRelatedListCardDesktop" />
+
+    <aura:attribute name="dataProvider" type="Aura.Component[]"  description="A client side data provider passed to generate the related list. force:relatedListPreviewDataProvider"/>
+    <aura:attribute name="actionsComponent" type="Aura.Component[]" description="Component to perform actions on list"/>
+    <aura:attribute name="footerComponent" type="Aura.Component[]" description="Component to navigate to view all list"/>
+    <aura:attribute name="recordId" type="String" description="The parent record id for the related list"/>
+    <aura:attribute name="relatedListId" type="String" description="Id for the related list"/>
+    <aura:attribute name="label" type="String" description="The label for the related list"/>
+    <aura:attribute name="sObjectName" type="String" description="The entity api name of the records in the related list"/>
+    <!-- We only need to specify either fields in case of Individuals and Contacts on Related Account and Related Contacts, for other cases we need to specify fieldSetName attribute  -->
+    <aura:attribute name="fieldSetName" default="" type="String" description="Name of the Field Set for which the field needs to be retrieved for Business Accounts and Groups"/>
+    <aura:attribute name="fields" default="" type="String" description="List of the Fields to be retrieved for Individuals and Contacts"/>
+    <aura:attribute name="calculatedFields" type="List" default="[]" description="Fields that have to be calculated on the go, but aren't part of the SObject." />
+    <aura:attribute name="subtitle" type="String" default="" description="A subtitle to display adjacent to the header label"/>
+    <aura:attribute name="showViewAll" type="Boolean" default="false" description="Whether or not to display a view all link"/>
+    <aura:attribute name="expandable" type="Boolean" default="false" description="Whether or not rows are expandable" />
+    <aura:attribute name="childTables" type="List" default="[]" description="Attributes for expandable tables" />
+    <aura:attribute name="tableCaption" type="String" default="" description="Screen reader caption for accessibility"/>    
+    <aura:attribute name="actionTypes" type="List" default="['standardButton']" description="Action types" />
+    <aura:attribute name="navigateToName" type="Boolean" default="true" description="Have hyperlink on names of records" />
+    <aura:attribute name="readOnly" type="Boolean" default="false" description="Whether or not to display fields as read only" />
+    <aura:attribute name="selectable" type="Boolean" default="false" description="Whether or not rows are selectable"  />
+    <aura:attribute name="currencyIndicator" type="Boolean" default="false" description="Whether or not to display data as currency" />
+    <aura:attribute name="numberIndicator" type="Boolean" default="false" description="Whether or not to display data as number" />
+    <aura:attribute name="percentageIndicator" type="Boolean" default="false" description="Whether or not to display data as percentage" />
+    <aura:attribute name="validateFieldSet" type="boolean" default="false" description="Whether or not to validate the fieldset"/>
+    <aura:attribute name="filterInaccessibleFields" type="Boolean" default="true" description="Whether or not to to hide a field column if inaccessible to user." />
+    <!-- Internal Attributes -->
+    <aura:attribute name="hasDataLoadError" type="Boolean" default="false" description="Return true if there's error during data loading" />
+        
+    <aura:registerevent name="error" type="ui:dataProvideError" description="The event fired when a data retrieval error occurs." />
+
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+    <aura:set attribute="headerTitleText" value="{!v.label + (and(!v.hasDataLoadError, !empty(v.subtitle)) ? ' (' + v.subtitle + ')' : '')}" />
+    <aura:set attribute="headerRight">
+        {!v.actionsComponent}
+    </aura:set>
+    <aura:set attribute="body">
+        <div class="slds-grid--pull-padded">
+            <div class="slds-scrollable--x">
+                <FinServ:listViewTable dataProvider="{#v.dataProvider}" fieldSetName="{#v.fieldSetName}" fields="{#v.fields}" calculatedFields="{#v.calculatedFields}" sObjectName="{#v.sObjectName}" expandable="{#v.expandable}" childTables="{!v.childTables}" tableCaption="{#v.tableCaption}" actionTypes="{#v.actionTypes}" navigateToName="{#v.navigateToName}" readOnly="{#v.readOnly}" selectable="{#v.selectable}" currencyIndicator="{#v.currencyIndicator}" numberIndicator="{#v.numberIndicator}" percentageIndicator="{#v.percentageIndicator}" validateFieldSet="{#v.validateFieldSet}" filterInaccessibleFields="{#v.filterInaccessibleFields}">
+                </FinServ:listViewTable>
+            </div>
+        </div>
+    </aura:set>
+    <aura:set attribute="footer">
+        <aura:if isTrue="{!v.showViewAll}">
+            {!v.footerComponent}
+        </aura:if>
+    </aura:set>
+</aura:component>

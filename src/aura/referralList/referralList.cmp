@@ -1,0 +1,71 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description This component renders a list of referrals.
+ * @since 208
+-->
+<aura:component controller="FinServ.ReferralController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:hasRecordId" extends="FinServ:baseComponent" access="GLOBAL">
+    
+    <aura:dependency resource="markup://FinServ:listViewCard" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:listViewDataProvider" type="COMPONENT" />
+    <aura:dependency resource="markup://FinServ:actionCreateButton" type="COMPONENT" />
+    <aura:dependency resource="markup://force:message" type="COMPONENT" />
+
+    <aura:set attribute="sObjectName" value="Lead" />
+    <aura:set attribute="recordTypeNamesMap" value="{'Lead' : ['Referral']}" />
+
+    <aura:attribute name="referredById" type="String" description="ID of the ReferredBy field." />
+    <aura:attribute name="referralFieldset" type="String" access="GLOBAL" description="Fieldset to be used to render this component." default="FSC_Referrals_Made" />
+    <aura:attribute name="readOnly" type="Boolean" access="GLOBAL" description="Read only access to referrals." default="false" />
+    <aura:attribute name="calculatedFields" type="List" default="[]" description="Fields that have to be calculated on the go, but aren't part of the SObject." />
+    <aura:attribute name="errors" type="List" default="" description="list of error messages" />
+    <aura:attribute name="createParam" type="Map" description="params for creating object" />
+    <aura:attribute name="userProfile" type="Boolean" description="Flag if used on user profile" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:handler name="error" event="ui:dataProvideError" action="{!c.handleDataProviderError}" />
+    
+    <aura:if isTrue="{!and(and(and(v.referralFieldset != null, v.referredById != null), v.calculatedFields != null), v.canRead)}">
+        <div aura:id="referralsData">
+            <FinServ:listViewCard aura:id="listViewCardForReferralsMade" recordId="{!v.recordId}"
+                            label="{!$Label.FinServ.Label_Field_Set_Referrals_Made}"
+                            fieldSetName="{!v.referralFieldset}"
+                            calculatedFields="{!v.calculatedFields}"
+                            sObjectName="Lead"
+                            tableCaption="{!$Label.FinServ.Label_Field_Set_Referrals_Made}"
+                            readOnly="{!v.readOnly}"
+                            error="{!c.onError}"
+                            showViewAll="true">
+                <aura:set attribute="dataProvider">
+                    <FinServ:listViewDataProvider aura:id="listViewDpReferralsMade" recordId="{!v.recordId}" sObjectName="Lead" methodName="getReferrals" />
+                </aura:set>
+                <aura:set attribute="headerIcon">
+                    <lightning:icon iconName="standard:reward" size="small" />
+                </aura:set>
+                <aura:set attribute="actionsComponent">
+                    <aura:if isTrue="{!and(not(empty(v.createParam)), v.canCreate)}">
+                        <FinServ:actionCreateButton sObjectName="Lead" event="e.force:createRecord" params="{!v.createParam}" />
+                    </aura:if>
+                </aura:set>
+                <aura:set attribute="footerComponent">
+                    <aura:if isTrue="{!not(v.userProfile)}">
+                        <FinServ:navToRelatedListWrapper relatedListId="Referral__r" 
+                            parentRecordId="{!v.referredById}" displayText="{!$Label.RecordHomeCards.ViewAll}" />
+                    </aura:if>
+                </aura:set>
+            </FinServ:listViewCard>
+        </div>
+    </aura:if>
+    <div aura:id="errorMessage" class="errorMessage slds-hide">
+        <!-- Error State -->
+        <force:message severity="error" strength="3" theme="pOne">
+            <aura:set attribute="summary">{!$Label.DetailError.EntitySaveErrorSummary}</aura:set>
+            <aura:set attribute="detail">
+                <aura:iteration items="{!v.errors}" var="error">
+                    <span>{!error.message}</span> 
+                </aura:iteration>
+            </aura:set>
+        </force:message>
+    </div>
+</aura:component>

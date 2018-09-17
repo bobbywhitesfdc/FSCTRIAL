@@ -1,0 +1,63 @@
+.THIS .recordSummary {
+	padding: 1.5rem;
+	border-radius: 0.25rem;
+	border: 1px solid #e0e5ee;
+	background-color: white;
+}
+
+.THIS header {
+    margin-bottom: 1.5rem;
+}
+
+.THIS .loadingIndicator {
+	display: none;
+}
+
+.THIS.loading .loadingIndicator {
+	display: block;
+}
+
+.THIS.loading .content {
+	display: none;
+}
+
+.THIS .placeholder.record_home_anchor .body {
+	background: transparent;
+	height: 83px;
+	padding: 0;
+}
+
+.THIS .placeholder.record_home_anchor .icon {
+	display: none;
+}
+
+.THIS .placeholder.record_home_anchor .below-text-body {
+	background: transparent;
+	border-bottom: none;
+	margin-top: 0;
+    padding-bottom: 0.5rem;
+}
+
+.THIS .placeholder.record_home_anchor .below-text-body>.text-body {
+	width: 20%;
+	margin: 0 1.25rem 0 0;
+}
+
+.THIS:not(.recordSummary) .placeholder.record_home_anchor .body {
+	height: 34px;
+}
+
+.THIS:not(.recordSummary) .placeholder.record_home_anchor .body>.text-body {
+	display: none;
+}
+
+.THIS:not(.recordSummary) .placeholder.record_home_anchor .below-text-body {
+	margin: 0;
+	padding: 0;
+}
+
+.THIS .slds-col--padded {
+	-ms-overflow-x: hidden;
+	-ms-flex: 1 1 auto;
+		flex: 1 1 auto;
+}

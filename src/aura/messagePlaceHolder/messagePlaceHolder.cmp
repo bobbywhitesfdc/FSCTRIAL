@@ -1,0 +1,17 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description Component used to show a user friendly message in accordance to slds card styling
+ * @since 204
+-->
+<aura:component>
+    <aura:attribute name="label" type="String" required="true" description="Message to show" />
+    <div class="">
+        <div class="slds-card__header slds-grid" />
+        <div class="slds-card__body slds-text-align--center">
+            <lightning:formattedText aura:id="message-place-holder" value="{!v.label}" />
+        </div>
+        <div class="slds-card__footer" />
+    </div>
+</aura:component>

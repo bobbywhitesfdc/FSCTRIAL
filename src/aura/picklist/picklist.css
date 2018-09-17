@@ -1,0 +1,34 @@
+.THIS .truncate-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.THIS .slds-dropdown-trigger, 
+.THIS .slds-dropdown-trigger > button,
+.THIS .slds-dropdown,
+.THIS .slds-dropdown__item > a {
+    width: 100%;
+}
+
+.THIS .slds-dropdown__item>a {
+    display: block;
+    padding: 0.25rem 0.5rem;
+}
+
+.THIS .uiPopupTarget .popupTargetContainer, 
+.THIS .uiPopupTarget.popupTargetContainer {
+    box-shadow: none;
+}
+
+.THIS .uiPopupTrigger .slds-button[disabled] {
+    background-color: rgb(224, 229, 238);
+    color: rgb(62,62,60);
+    border-color: #a8b7c7;
+    color: default;
+    cursor: not-allowed;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

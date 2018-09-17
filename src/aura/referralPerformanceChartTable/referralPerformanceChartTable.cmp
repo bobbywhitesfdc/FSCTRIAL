@@ -1,0 +1,30 @@
+<!--
+ * Copyright © 2018 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description This displays referralPerformanceChart component data in tabluar format for accessibility purpose.
+ * @since 214 -->
+<aura:component access="PUBLIC" description="display referralPerformanceChart component data in tabular format">
+    <aura:attribute name="items" type="List" default="" description="data array with properties as headers"/>
+    <table>
+		<caption>{#$Label.HeroChart.Title}</caption>
+        <thead>
+            <tr>
+                <th scope="col">{#$Label.HeroChart.Date}</th>
+                <th scope="col">{#$Label.FinServ.Label_Referrers_Summary_Made}</th>
+                <th scope="col">{#$Label.FinServ.Label_Referrers_Summary_Converted}</th>
+                <th scope="col">{#$Label.FinServ.Label_Referrers_Summary_Rejected}</th>
+        	</tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.items}" var="row">
+                <tr>
+                    <td>{!row.date}</td>
+                    <td>{!row.Made}</td>
+                    <td>{!row.Converted}</td>
+                    <td>{!row.Rejected}</td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>

@@ -1,0 +1,9 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description This component is used to work around mru issues.
+ * @since 200
+-->
+<aura:component description="DEPRECATED">
+</aura:component>

@@ -1,0 +1,23 @@
+<!--
++ * Copyright © 2015 salesforce.com, inc. All rights reserved.
++ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
++ * transferred, or disclosed to others, without the prior written consent of Salesforce.
++ * @description component to handle the population of a given SObject List
++ * @since 196
++-->
+<aura:component controller="FinServ.MoiUICommonController" extends="FinServ:baseComponent" extensible="true" abstract="true">
+    <aura:attribute name="sObjectName" required="true" default="" type="String" description="Name of the sObject that will be pulled" />
+    <aura:attribute name="fields" type="String[]" required="true" default="" description="List of fields to get with each record" />
+    <aura:attribute name="fieldLabels" type="String[]" default="" description="List of fields to get with each record" />
+    <aura:attribute name="filterCriteria" type="Object" default="" description="Field we would like to filter on" />
+    <aura:attribute name="filterRequired" type="Boolean" default="false" description="Indicates whether this component has filters to filter on." />
+    <aura:attribute name="orderBy" type="String" default="" description="order by criteria" />
+    <aura:attribute name="useOr" type="Boolean" default="false" description="order by criteria" />
+    <aura:attribute name="limit" type="Integer" default="" description="Limits the number of records returned" />
+    <aura:attribute name="isOrderByDesc" type="Boolean" default="false" description="Limits the number of records returned" />
+    <aura:attribute name="recordCount" type="Integer" description="Number of records returned" />
+    <aura:attribute name="sObjectList" type="sObject[]" description="List of SObjects" />
+    <aura:attribute name="SObjectArray" type="String[]" description="An array of strings to hold field values of the object" /> 
+    <aura:handler name="change" value="{!v.hasLicense}" action="{!c.getList}"/>
+    {!v.body}
+</aura:component>

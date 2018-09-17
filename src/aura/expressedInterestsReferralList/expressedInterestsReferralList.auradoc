@@ -1,0 +1,8 @@
+<aura:documentation>
+    <aura:description>
+        <p>The <code>FinServ:expressedInterestsReferralList</code> component renders a list of referrals made for the client based on his/her expressed interests.</p>
+        <p>This component can be added to anywhere in flexipage.</p>
+        <p>Here is an example</p>
+        <pre>&lt;FinServ:expressedInterestsReferralList /></pre>
+    </aura:description>
+</aura:documentation>

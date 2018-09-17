@@ -1,0 +1,11 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description listViewTable component event that is fired when expand arrow is clicked
+ * @since 196
+-->
+<aura:event type="COMPONENT" description="Component event for handling table expansion" >
+    <aura:attribute name="rowRecordId" type="String" />
+    <aura:attribute name="firstTimeAccessed" type="Boolean" />
+</aura:event>

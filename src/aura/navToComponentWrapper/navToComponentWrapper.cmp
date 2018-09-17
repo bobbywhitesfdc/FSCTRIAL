@@ -1,0 +1,16 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description internalNav houses logic navigate internally. Fires internalNavEvent with corresponding attributes
+ * References native force namespaced events that will not work outside of SFX
+ * @since 196
+-->
+<aura:component >
+    <aura:attribute name="view" required="true" type="String" description="the name of the page we navigate to" />
+    <aura:attribute name="class" type="String" default="" description="the css class to display on this navigation link" />
+    <aura:attribute name="displayText" type="String" default="" description="the text display on this navigation link" />
+    <aura:attribute name="recordId" type="String" default="" description="used if the page you are navigating to requires a record id" />
+    <aura:attribute name="attributes" type="Object" default="{}" description="attribute values to pass in" />
+    <a href='javascript:void(0)' onclick="{!c.navigate}" class="{!v.class}" label="{!v.displayText}">{!v.displayText}</a>
+</aura:component>

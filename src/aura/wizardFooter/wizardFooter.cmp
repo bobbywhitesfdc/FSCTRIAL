@@ -1,0 +1,57 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component for a wizard based footer for navigation.
+ * @since 208
+-->
+<aura:component>
+	<aura:attribute name="steps" type="String[]" required="true" description="The list of steps for the wizard" />
+	<aura:attribute name="currentStepIndex" type="Integer" default="0" description="The index of current step in the wizard" />
+	<aura:attribute name="progress" type="Integer" default="0" description="The wizard progress bar" />
+	<aura:attribute name="actionsLeft" type="Aura.Component[]" description="Action buttons on left on the footer." />
+	<aura:attribute name="actionsRight" type="Aura.Component[]" description="Action buttons on right on the footer." />
+
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler name="change" value="{!v.currentStepIndex}" action="{!c.changeProgress}" />
+
+	<div class="slds-grid slds-grid--align-spread">
+		<div class="slds-order--1 slds-size--3-of-7 slds-align-middle slds-text-align--left">
+			{!v.actionsLeft}
+		</div>
+		<div class="slds-order--2 slds-size--1-of-7 slds-align-middle slds-text-align--center">
+			<aura:if isTrue="{!greaterthan(v.steps.length, 1)}">
+				<div class="slds-progress slds-progress--shade slds-size--1-of-1">
+					<ol class="slds-progress__list">
+						<aura:iteration items="{!v.steps}" var="step" indexVar="index">
+							<li aura:id="listElements" data-index="{!index}" class="{!'slds-progress__item' + (lessthan(index, v.currentStepIndex) ? ' slds-is-completed' : (index == v.currentStepIndex ? ' slds-is-active' : '' ))}" onmouseover="{!c.toggleTooltip}" onmouseout="{!c.toggleTooltip}">
+								<aura:if isTrue="{!lessthan(index, v.currentStepIndex)}">
+									<lightning:buttonIcon class="slds-progress__marker slds-progress__marker--icon" iconName="utility:success" variant="bare" alternativeText="{!step}">
+										<span class="slds-assistive-text">{!step}</span>
+									</lightning:buttonIcon>
+									<aura:set attribute="else">
+										<lightning:button class="slds-progress__marker" variant="base">
+											<span class="slds-assistive-text">{!step}</span>
+										</lightning:button>
+									</aura:set>
+								</aura:if>
+								<div aura:id="tooltip" data-index="{!index}" 
+									class="slds-popover slds-popover--tooltip slds-nubbin--bottom slds-hide" role="tooltip">
+									<div class="slds-popover__body slds-truncate">{!step}</div>
+								</div>
+							</li>
+						</aura:iteration>
+					</ol>
+					<div class="slds-progress-bar slds-progress-bar--x-small">
+						<span class="slds-progress-bar__value" style="{!'width:' + v.progress + '%'}">
+							<span class="slds-assistive-text">{! 'Progress: ' + v.progress + '%'}</span>
+						</span>
+					</div>
+				</div>
+			</aura:if>
+		</div>
+		<div class="slds-order--3 slds-align-middle slds-size--3-of-7">
+			{!v.actionsRight}
+		</div>
+	</div>
+</aura:component>

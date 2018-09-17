@@ -1,0 +1,19 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to navigate to Dashboard
+ * References native force namespaced events that will not work outside of SFX
+ * @since 210
+-->
+<aura:component controller="FinServ.MoiUICommonController">
+	<aura:attribute name="dashboardName" type="String" description="the API name of the dashboard"/>
+	<aura:attribute name="dashboardId" type="String" default="" access="PRIVATE"/>
+	<aura:attribute name="class" type="String" default="" description="the css class to display on this navigation link" />
+	<aura:attribute name="displayText" type="String" default="" description="the text display on this navigation link" />
+	<aura:attribute name="assistiveText" type="String" default="" description="assistive text for accessibility" />
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" /> 
+	<aura:if isTrue="{!!empty(v.dashboardId)}">
+		<a href='javascript:void(0)' onclick="{!c.navigate}" class="{!v.class}" label="{!v.displayText}">{!v.displayText} <span class="slds-assistive-text">{!v.assistiveText}</span></a>
+	</aura:if>
+</aura:component>

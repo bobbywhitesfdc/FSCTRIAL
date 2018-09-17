@@ -1,0 +1,6 @@
+<design:component label="Financial Account Alert - Financial Services Cloud" >
+	<sfdc:objects>
+        <sfdc:object>Account</sfdc:object>
+        <sfdc:object>FinServ__FinancialAccount__c</sfdc:object>
+    </sfdc:objects>
+</design:component>

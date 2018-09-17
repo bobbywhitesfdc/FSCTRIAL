@@ -1,0 +1,9 @@
+<design:component label="Referrals Made List - Financial Services Cloud">
+	<sfdc:objects>
+		<sfdc:object>Account</sfdc:object>
+		<sfdc:object>Contact</sfdc:object>
+		<sfdc:object>User</sfdc:object>
+	</sfdc:objects>
+	<design:attribute name="referralFieldset" label="Fieldset" description="Fieldset to be used to render this component." />
+	<design:attribute name="readOnly" label="Read Only" description="Read only access to referrals." />
+</design:component>

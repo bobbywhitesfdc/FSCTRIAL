@@ -1,0 +1,17 @@
+<!--
+   * Copyright © 2015 salesforce.com, inc. All rights reserved.
+   * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+   * transferred, or disclosed to others, without the prior written consent of Salesforce.
+   * @description component for displaying alerts
+   * @since 206
+   -->
+<aura:component extends="ui:abstractList" >
+    <aura:if isTrue="{!v.items.length gt 0}">
+        <div class="slds-m-bottom--large">
+            <!-- Iterate through the alert items -->
+            <aura:iteration items="{!v.items}" var="alertItem">
+                <FinServ:alertItem aura:id="alertItem" severity="{!alertItem.Severity}" message="{!alertItem.Message}" messageDescription="{!alertItem.MessageDescription}" recordId="{!alertItem.Id}"  />
+            </aura:iteration>
+        </div>
+    </aura:if>
+</aura:component>

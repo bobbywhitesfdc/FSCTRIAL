@@ -1,0 +1,57 @@
+<aura:component controller="FinServ.ActivityCountController" extends="FinServ:baseFinServTemplate">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="identifier" type="String" description="Contact Id of a household member" />
+    <aura:attribute name="activityCounts" type="Object" default="" description="Map of activity counts" />
+    <aura:registerevent name="error" type="ui:dataProvideError" description="The event fired when a data retrieval error occurs." />
+    <div class="slds-tile__detail slds-grid slds-wrap">
+        <div class="slds-size--1-of-4 slds-grid slds-wrap">
+            <dl class="slds-dl--inline">
+                <dt class="slds-dl--inline__label">
+                    <lightning:icon iconName="utility:event" size="x-small" class="slds-icon--x-small" />
+                </dt>
+                <dd class="slds-dl--inline__detail slds-text-body--small slds-m-top--xx-small slds-m-left--xx-small">
+
+                    <span class="slds-text-color--weak">
+                        {!format($Label.FinServ.Label_Member_Activity_Counts, v.activityCounts.Events, $Label.FinServ.Link_Events)}
+                    </span> 
+                </dd>
+            </dl>
+        </div>
+        <div class="slds-size--1-of-4 slds-grid slds-wrap">
+            <dl class="slds-dl--inline">
+                <dt class="slds-dl--inline__label">
+                    <lightning:icon iconName="utility:task" size="x-small" class="slds-icon--x-small" />
+                </dt>
+                <dd class="slds-dl--inline__detail slds-text-body--small slds-m-top--xx-small slds-m-left--xx-small">
+                    <span class="slds-text-color--weak">
+                        {!format($Label.FinServ.Label_Member_Activity_Counts, v.activityCounts.Tasks, $Label.FinServ.Link_Tasks)}
+                    </span> 
+                </dd>
+            </dl>
+        </div>
+        <div class="slds-size--1-of-4 slds-grid slds-wrap">
+            <dl class="slds-dl--inline">            
+                <dt class="slds-dl--inline__label">
+                    <lightning:icon iconName="utility:log_a_call" size="x-small" class="slds-icon--x-small" />
+                </dt>
+                <dd class="slds-dl--inline__detail slds-text-body--small slds-m-top--xx-small slds-m-left--xx-small">
+                    <span class="slds-text-color--weak">
+                        {!format($Label.FinServ.Label_Member_Activity_Counts, v.activityCounts.Calls, $Label.FinServ.Link_Calls)}
+                    </span> 
+                </dd>
+            </dl>
+        </div>
+        <div class="slds-size--1-of-4 slds-grid slds-wrap">
+            <dl class="slds-dl--inline">            
+                <dt class="slds-dl--inline__label">
+                    <lightning:icon iconName="utility:email" size="x-small" class="slds-icon--x-small" />
+                </dt>
+                <dd class="slds-dl--inline__detail slds-text-body--small slds-m-top--xx-small slds-m-left--xx-small">
+                    <span class="slds-text-color--weak">
+                        {!format($Label.FinServ.Label_Member_Activity_Counts, v.activityCounts.Emails, $Label.FinServ.Link_Emails)}
+                    </span> 
+                </dd>            
+            </dl>
+        </div>
+    </div>
+</aura:component>

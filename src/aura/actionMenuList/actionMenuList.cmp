@@ -1,0 +1,30 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description actions wrapper component for ACR actions (Membership or Relationship)
+ * @since 206
+-->
+<aura:component>
+	<aura:attribute name="actionTypes" type="List" required="true" default="['standardButton']" description="Possible Action types: membership, relationship, standardButton" />
+	<aura:attribute name="recordId" type="String" description="Record for the required actions" />
+    <aura:attribute name="groupName" type="String" description="the record name" />
+	<aura:attribute name="groupId" type="String" description="ID of the group to which the record is related. This is only for memberships." />
+	<aura:attribute name="groupAttributes" type="Map" description="Attributes used for edit group modal/Setup UI" />
+	<aura:attribute name="class" type="String" default="" description="css used for container" />
+    <aura:locator target="actionMenuList_membershipActionMenuList" description="member menu"/>
+    <aura:locator target="actionMenuList_groupActionMenuList" description="group menu"/>
+    <aura:locator target="actionMenuList_actionWrapper" description="action wrapper menu"/>
+
+	<aura:if isTrue="{!or(v.actionTypes[0] == 'membership', v.actionTypes[0] == 'relationship')}">
+	    <FinServ:actionRelationshipMenuList aura:id="actionMenuList_membershipActionMenuList" class="{!v.class}" recordId="{!v.recordId}" groupId="{!v.groupId}" isRelationship="{!v.actionTypes[0] == 'relationship'}" />
+	    <aura:set attribute="else">
+	        <aura:if isTrue="{!v.actionTypes[0] == 'group'}">
+	            <FinServ:actionRelationshipMenuList aura:id="actionMenuList_groupActionMenuList" class="{!v.class}" groupName="{!v.groupName}" recordId="{!v.groupId}" groupId="{!v.groupId}" groupEdit="true" groupAttributes="{!v.groupAttributes}" />
+	            <aura:set attribute="else">
+	                <FinServ:actionsContainerWrapper aura:id="actionMenuList_actionWrapper" recordId="{!v.recordId}" refreshView="false" actionTypes="{!v.actionTypes}" />
+	            </aura:set>
+	        </aura:if>
+	    </aura:set>
+	</aura:if>
+</aura:component>

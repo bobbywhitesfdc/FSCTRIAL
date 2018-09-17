@@ -1,0 +1,113 @@
+<!--
+ * Copyright © 2017 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced, 
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description This component renders a list of referrals.
+ * @since 210
+-->
+<aura:component 
+    controller="FinServ.ReferralController"
+    extends="FinServ:baseComponent" 
+    implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" 
+    access="global">
+    
+    <aura:set attribute="sObjectName" value="Lead" />
+    <aura:set attribute="icon" value="standard:reward"/>
+    <aura:set attribute="header" value="{!format($Label.FinServ.Header_Component_Assigned_Referrals,'--')}"/>
+    <aura:set attribute="placeholder" value="table_list_line_item" />
+    <aura:set attribute="licenseKeys" value="['standard']" />
+    <aura:set attribute="recordTypeNamesMap" value="{'Lead' : ['Referral']}" />
+    <aura:set attribute="additionalSObjects" value="['Contact']" />
+
+    <aura:attribute name="colorSuccessDark" type="String" default="#04844B" description="Dark Green - success color" />
+    <aura:attribute name="colorSuccess" type="String" default="#4BCA81" description="Light Green - success color" />
+    <aura:attribute name="colorToastError" type="String" default="#C23934" description="Dark Red - Partial color" />
+    <aura:attribute name="colorDestructiveActive" type="String" default="#870500" description="Light Red - Partial color" />
+    <aura:attribute name="errors" type="List" default="" description="list of error messages" />
+    <aura:attribute name="referralList" type="Object[]" access="PRIVATE"/>
+    <aura:attribute name="recordCount" type="String" access="PRIVATE"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <aura:if isTrue="{!v.canRead}">
+    <aura:if isTrue="{!!empty(v.errors)}">
+        <force:pageError errors="{!v.errors}" />
+    </aura:if>
+    <div id="assignedReferralCard" class="slds-card slds-text-body--regular">
+        <header class="slds-card__header slds-media--center slds-grid">
+            <div class="slds-media__figure">
+                <lightning:icon aura:id="iconName" iconName="standard:reward" size="small" class="slds-icon--small" />
+            </div>
+            <div class="slds-col slds-has-flexi-truncate slds-align-middle">
+                <div class="slds-media__body">
+                    <h2 class="slds-text-heading--small slds-m-right--small slds-truncate">
+                        <ui:outputText aura:id="assignedReferrals" value="{!format($Label.FinServ.Header_Component_Assigned_Referrals,v.recordCount)}" />
+                    </h2>
+                </div>
+            </div>
+        </header>
+        <section class="slds-card__body">
+            <aura:if isTrue="{!(v.recordCount > 0)}">
+            <ul>
+                <aura:iteration items="{!v.referralList}" var="so" indexVar="iter">
+                    <li class="slds-media slds-tile slds-m-vertical--small slds-m-horizontal--medium">
+                        <div class="slds-media slds-container_fluid">
+                            <div class="slds-media__body slds-tile--board">
+                                <div class="tile__title slds-truncate slds-tile__title">
+                                    <FinServ:navToObjectWrapper aura:id="referralName" sObjectId="{!so.Id}" displayText="{!so.Name}" />
+                                </div>
+                                <ul class="slds-list_horizontal slds-wrap slds-has-dividers slds-text-body--small">
+                                    <li class="slds-list__item">
+                                        <span class="slds-text-body_small">
+                                            {! (!empty(so.ExpressedInterest__c)) ? so.ExpressedInterest__c : '--'}
+                                        </span>
+                                    </li>
+                                    <li class="slds-list__item">
+                                        <span class="slds-text-body_small">
+                                            {! (!empty(so.Status)) ? so.Status : '--'}
+                                        </span>
+                                    </li>
+                                    <li class="slds-list__item">
+                                        <span class="slds-text-body_small">
+                                            <FinServ:dateCmp aura:id="createdDate" date="{!so.CreatedDate}" />
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="slds-float--right">
+                                <div class="slds-timeline__actions">
+                                   <aura:if isTrue="{!so.LeadScore != undefined}">
+                                            <FinServ:svgDonutChart aura:id="leadScore"
+                                            donutId="{!('donutContainer'+iter)}"  
+                                            percentage="{!so.LeadScore}" 
+                                            size="30" showPercentage="false" donutThicknessPercentage="15"
+                                            color="{! (so.LeadScore >= 80) ? v.colorSuccessDark : (so.LeadScore >= 60) ? v.colorSuccess : (so.LeadScore >= 40) ? v.colorToastError : v.colorDestructiveActive }" />
+                                        <aura:set attribute="else">
+                                            <FinServ:visualRating iconType="star" maxRating="3" 
+                                                    temperatureRating="{! (so.Rating.length > 0 ) ? so.Rating : 0}" />
+                                        </aura:set>
+                                    </aura:if>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </li>
+                </aura:iteration>
+            </ul>
+            <aura:set attribute="else">
+                    <div class="slds-media__body"> 
+                    <div class="slds-has-flexi-truncate">
+                        <p class="tile__title slds-truncate slds-tile__title slds-text-align--center">
+                            <lightning:formattedText aura:id="noReferralsText" value="{!$Label.FinServ.Text_No_Referrals}"/>
+                        </p>
+                    </div>
+                    </div>
+            </aura:set>
+          </aura:if>
+        </section>
+        <footer class="slds-card__footer">
+            <FinServ:navToListView aura:id="footer" listViewName="Open_Referrals_Im_Assigned" objectName="Lead" displayText="{!$Label.FinServ.Link_View_All}" assistiveText="{!$Label.FinServ.Label_Open_Referrals_Im_Assigned}"/>
+        </footer>
+    </div>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,8 @@
+<aura:documentation>
+    <aura:description>
+		<p>The <code>FinServ:insurancePolicy</code> component renders the financial Account with record type Insurance Policy.</p>
+		<p>This component can only be added to the Lightning page: for example <code>Account</code> record home flexipage</p>
+		<p>Here is an example</p>
+		<pre>&lt;FinServ:insurancePolicy /></pre>
+	</aura:description>
+</aura:documentation>

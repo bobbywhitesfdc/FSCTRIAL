@@ -1,0 +1,93 @@
+<!--
+ * Copyright © 2015 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to display RMD card for today page
+ * @since 204
+-->
+<aura:component extends="FinServ:baseFinServTemplate" controller="FinServ.ClientController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:set attribute="icon" value="custom:custom25"/>
+    <aura:set attribute="header" value="{!format($Label.FinServ.Text_RMD,'--')}"/>
+    <aura:set attribute="placeholder" value="table_list_line_item" />
+    <aura:set attribute="sObjectName" value="Account" />
+    <aura:set attribute="additionalSObjects" value="['Contact']" />
+    <aura:set attribute="licenseKeys" value="['standard']" />
+    <aura:attribute name="RMDList" type="Object[]" access="PRIVATE"/>
+    <aura:attribute name="recordCount" type="Integer" access="PRIVATE"/>
+    <aura:attribute name="errorState" type="Boolean" access="PRIVATE"/>
+    <aura:attribute name="maxListSize" type="String" access="PUBLIC" default="5" description="The maximum amount records that you can render at one time. Default is 5"/>
+    <aura:attribute name="age" type="String" access="PUBLIC" default="70" description="Mimumum age (in years) to include in list. Default is 70."/>
+    <aura:attribute name="dayAfterAge" type="String" access="PUBLIC" default="90" description="Number of days after birthday. Default is 90."/>
+    <aura:attribute name="dayRange" type="String" access="PUBLIC" default="7" description="Affects how days are shown. Default is 7"/>
+     
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    <aura:locator target="RMDCard_viewAll" description="View All for RMD Card"/>
+    
+    <div class="slds-card slds-text-body--regular">
+        <header class="slds-card__header slds-media--center slds-grid">
+            <div class="slds-media__figure">
+                <lightning:icon iconName="custom:custom25" size="small" class="slds-icon--small RMDIcon" />
+            </div>
+            <div class="slds-col slds-has-flexi-truncate slds-align-middle">
+                <div class="slds-media__body">
+                    <h3 class="slds-text-heading--small slds-m-right--small slds-truncate">
+                        <ui:outputText aura:id="birthdays" value="{!format($Label.FinServ.Text_RMD,v.recordCount)}" />
+                    </h3>
+                </div>
+            </div>
+        </header>
+        <aura:if isTrue="{!v.errorState}">
+            <div class="slds-card__body slds-text-align--center"> 
+            {!$Label.FinServ.Msg_Error_General}
+            </div>
+
+            <aura:set attribute="else">
+                <section class="slds-card__body">
+                    <aura:if isTrue="{!(v.recordCount gt 0)}">
+                        <ul>
+                            <aura:iteration items="{!v.RMDList}" var="so">
+                                <li class="slds-media slds-tile slds-m-vertical--small slds-m-horizontal--large">
+                                    <div class="slds-media__body">
+                                        <div class="slds-grid slds-grid--align-spread slds-has-flexi-truncate">
+                                            <p class="tile__title slds-truncate slds-tile__title">
+                                                <force:outputLookupWithPreview label="{!so.clientName}" value="{!so.accountId}" isProfilePicSupported="false" showRelatedLists="true" showPreview="true" />
+                                            </p>
+                                            <div>
+                                                <ui:outputCurrency value="{!so.AUM}"/>
+                                            </div>
+                                        </div>
+                                        <ul class="slds-tile__detail slds-list--horizontal slds-has-dividers slds-text-body--small">
+                                            <aura:if isTrue="{!so.clientCategory}">
+                                                <li class="slds-truncate slds-list__item">{!so.clientCategory}</li>
+                                            </aura:if>
+                                            <aura:if isTrue="{!so.daysAwayRMD}">
+                                                <li class="slds-truncate slds-list__item">
+                                                    <lightning:formattedText value="{!format($Label.FinServ.Label_RMD_Days_Away,so.daysAwayRMD)}"/> 
+                                                </li>
+                                            </aura:if>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </aura:iteration>
+                        </ul>
+
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!(v.recordCount == 0)}">
+                                <div class="slds-media__body"> 
+                                    <div class="slds-has-flexi-truncate">
+                                        <p class="tile__title slds-truncate slds-tile__title" align="Center">
+                                            <lightning:formattedText value="{!$Label.FinServ.Text_No_Upcoming_RMD}"/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </aura:if>
+                        </aura:set>
+                    </aura:if>
+                </section>
+                 <footer class="slds-card__footer">
+                    <FinServ:navToListView aura:id="RMDCard_viewAll" listViewName="Upcoming_RMDs_Next_7_Days" objectName="Contact" displayText="{!$Label.FinServ.Link_View_All}" assistiveText= "{!$Label.FinServ.Label_Upcoming_RMDs_Next_7_Days}"/>
+                </footer>
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>

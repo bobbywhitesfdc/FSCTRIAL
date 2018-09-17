@@ -1,0 +1,31 @@
+<!--
++ * Copyright © 2015 salesforce.com, inc. All rights reserved.
++ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
++ * transferred, or disclosed to others, without the prior written consent of Salesforce.
++ * @description component to handle the display of various data formats
++ * @since 196
++-->
+<aura:component >
+    <aura:dependency resource="markup://ui:outputCheckbox" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:outputCurrency" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:outputDate" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:outputDateTime" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:outputEmail" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:outputNumber" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:outputPhone" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:outputSelect" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:outputText" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:outputTextArea" type="COMPONENT" />
+    <aura:dependency resource="markup://ui:outputURL" type="COMPONENT" />
+    
+    <aura:attribute name="fieldLabel" type="String" required="true" />
+    <aura:attribute name="fieldType" type="String" required="true" />
+    <aura:attribute name="fieldMap" type="Object" default="{}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class="uiOutput uiOutputGeneric">
+	  <label class="uiLabel-left uiLabel">
+	    <span class="slds-form-element__label">{!v.fieldLabel}</span>
+	  </label>
+	  <div class="uiOutputDiv word-break">{!v.body}</div>
+	</div>
+</aura:component>

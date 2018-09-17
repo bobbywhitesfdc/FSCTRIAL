@@ -1,0 +1,116 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to visualize clients' relationships
+ * @since 206
+-->
+<aura:component description="The visual model of relationships for accounts, contacts, and individuals." implements="force:hasRecordId" extends="FinServ:baseComponent" extensible="true" abstract="true">
+    <aura:set attribute="icon" value="standard:household"/>
+    <aura:set attribute="sObjectName" value="AccountContactRelation" />
+    <aura:set attribute="additionalSObjects" value="['Account','Contact']" />
+    <aura:set attribute="licenseKeys" value="['standard']" />
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:handler event="force:recordChange" action="{!c.onChange}" />
+    <aura:handler event="force:recordDeleted" action="{!c.onChange}" />
+    <aura:attribute name="showErrors" type="Boolean" default="false" description="Display error state" />
+    <aura:attribute name="errors" type="List" default="" description="list of error messages" />
+    <aura:attribute name="rootObject" type="Object" description="Root object for the Visualization tree" />
+    <!-- Fields for Creating new Relationships -->
+    <aura:attribute name="createAccountAccountRelation_Param" type="Map" description="fields used in record create event" />
+    <aura:attribute name="createParam" type="Map" description="fields used in record create event" />
+    <aura:attribute name="loading" type="Boolean" default="true" description="Boolean to indicate show loading/stencil state" />
+    <aura:attribute name="additionalWatchObjects" type="String" default=""/> <!-- use a comma delimited string to add new objects to watch for refresh-->
+
+    <aura:attribute name="dataProvider" type="Aura.Component[]" required="true" />
+
+    <aura:handler name="onchange" event="ui:dataChanged" description="Event fired when the list data changes." action="{!c.showData}" includeFacets="true"/>
+    <aura:handler name="error" event="ui:dataProvideError" description="Event fired when there a data provider error occurs." action="{!c.showError}" includeFacets="true"/>
+
+    <aura:attribute name="addIndividualToGroupButton" type="Aura.Component[]"/>
+
+    <aura:attribute name="treeLeafComponentName" type="String" required="true" description="Name of the concrete leaf component to use for the root leaf (if group)"/>
+    <aura:attribute name="rootLeaf" type="Aura.Component[]" description="Leaf component for the root object (if group)"/>
+    <aura:attribute name="shownInAlohaConsole" type="Boolean" default="false" />
+    
+    <div class="{!'abstractMap' + (v.shownInAlohaConsole ? '' : ' slds-card')}">
+        <aura:if isTrue="{!(!v.showErrors)}">
+            <div class="tree">
+                <aura:if isTrue="{!(!v.loading)}">
+                    <ul class="tree-branch">
+                        <li class="tree-leaf">
+                            <div class="slds-text-align--left">
+                                <aura:if isTrue="{!v.rootObject.isGroup}">
+                                    {!v.rootLeaf}
+                                    <aura:set attribute="else">
+                                        <div class=" leafBox slds-p-around--medium slds-text-align--center">
+                                            <lightning:icon iconName="{!v.rootObject.iconName}" size="medium" />
+                                            <h2 class="slds-text-heading--small slds-truncate slds-m-top--x-small" title="{!v.rootObject.name}">
+                                                    {!v.rootObject.name}
+                                            </h2>
+                                        </div>
+                                    </aura:set>
+                                </aura:if>
+                            </div>
+                        <li>
+                            <ul class="tree-branch">
+                                <!--moved this action block into its own component-->
+                                <div class="slds-text-align--left">
+                                    {!v.addIndividualToGroupButton}
+                                </div>
+                                <ul class="tree-branch">
+                                    <!-- in the relationshipMap's concrete implementation create the leaves with an aura:iteration -->
+                                    <!--  for the rootObject children, using the concrete relationshipTreeLeaf component -->
+                                    {!v.body}
+                                </ul>
+                            </ul>
+                        </li>
+                        </li>
+                    </ul>
+                    <!-- Stencil for loading state -->
+                    <aura:set attribute="else">
+                        <div class="loading">
+                            <ul class="tree-branch">
+                                <li class="tree-leaf">
+                                    <div class=" leafBox">
+                                        <force:placeholder name="preview_panel_anchor" />
+                                    </div>
+                                    <ul class="tree-branch">
+                                        <li class="tree-leaf">
+                                            <div class=" leafBox">
+                                                <force:placeholder name="preview_panel_anchor" />
+                                            </div>
+                                        </li>
+                                        <li class="tree-leaf">
+                                            <div class=" leafBox">
+                                                <force:placeholder name="preview_panel_anchor" />
+                                            </div>
+                                        </li>
+                                        <li class="tree-leaf">
+                                            <div class=" leafBox">
+                                                <force:placeholder name="preview_panel_anchor" />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </aura:set>
+                </aura:if>
+            </div>
+            <aura:set attribute="else">
+                <!-- Error State -->
+                <div aura:id="errorMessage" class="errorMessage">
+                    <force:message severity="error" strength="3" theme="pOne">
+                        <aura:set attribute="summary">{!$Label.DetailError.EntitySaveErrorSummary}</aura:set>
+                        <aura:set attribute="detail">
+                            <aura:iteration items="{!v.errors}" var="error">
+                                <span>{!error.message}</span>
+                            </aura:iteration>
+                        </aura:set>
+                    </force:message>
+                </div>
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>

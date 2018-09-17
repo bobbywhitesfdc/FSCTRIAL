@@ -1,0 +1,126 @@
+<!--
+ * Copyright © 2016 salesforce.com, inc. All rights reserved.
+ * @copyright This document contains proprietary and confidential information and shall not be reproduced,
+ * transferred, or disclosed to others, without the prior written consent of Salesforce.
+ * @description component to visualize clients' relationships
+ * @since 206
+-->
+<aura:component access="global" implements="force:hasRecordId,flexipage:availableForRecordHome" controller="FinServ.ClientVisualizationController" description="The visual model of relationships for accounts, contacts, and individuals." extends="FinServ:baseComponent" >
+    <aura:set attribute="icon" value="standard:household"/>
+    <aura:set attribute="header" value="{!$Label.FinServ.Label_Field_Set_Relationship_Groups}" />
+    <aura:set attribute="sObjectName" value="AccountContactRelation" />
+    <aura:set attribute="additionalSObjects" value="['Account','Contact']" />
+    <aura:set attribute="licenseKeys" value="['standard']" />
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:handler event="force:recordChange" action="{!c.onChange}" />
+    <aura:handler event="force:recordDeleted" action="{!c.onChange}" />
+    <aura:attribute name="showErrors" type="Boolean" default="false" description="Display error state" />
+    <aura:attribute name="errors" type="List" default="" description="list of error messages" />
+    <aura:attribute name="rootObject" type="FinServ.VisualizationComponent" description="Root object for the Visualization tree" />
+    <!-- Fields for Creating new Relationships -->
+    <aura:attribute name="createAccountAccountRelation_Param" type="Map" description="fields used in record create event" />
+    <aura:attribute name="createParam" type="Map" description="fields used in record create event" />
+	<aura:attribute name="loading" type="Boolean" default="true" description="Boolean to indicate show loading/stencil state" />
+
+	<aura:attribute name="showRelatedAccounts" access="GLOBAL" type="Boolean" default="true" description="Show the Related Accounts section" />
+	<aura:attribute name="showRelatedContacts" access="GLOBAL" type="Boolean" default="true" description="Show the Related Contacts section" />
+
+	<aura:locator target="relationshipMap_groupCreate" description="Relationship map create group"/>
+	<aura:locator target="relationshipMap_addToGroup" description="Relationship map add to group"/>
+
+    <aura:if isTrue="{!(!v.showErrors)}">
+        <div class="tree">
+			<aura:if isTrue="{!(!v.loading)}">
+	            <ul class="tree-branch">
+	                <li class="tree-leaf">
+	                    <div class="slds-text-align--left">
+	                        <aura:if isTrue="{!v.rootObject.isGroup}">
+	                            <FinServ:relationshipsTreeLeaf entity="{!v.rootObject}" showRelatedAccounts="{!v.showRelatedAccounts}" showRelatedContacts="{!v.showRelatedContacts}" />
+	                            <aura:set attribute="else">
+	                                <div class="slds-popover slds-p-around--medium slds-text-align--center">
+	                                    <aura:if isTrue="{!v.rootObject.isContact}">
+	                                        <lightning:icon iconName="standard:contact" size="medium" />
+	                                        <aura:set attribute="else">
+	                                            <lightning:icon iconName="{!'standard:' + (v.rootObject.isIndividual ? 'client' : 'account')}" size="medium" />
+	                                        </aura:set>
+	                                    </aura:if>
+   										<h2 class="slds-text-heading--small slds-truncate slds-m-top--x-small" title="{!v.rootObject.name}">                                         
+	                                        {!v.rootObject.name}
+	                                    </h2>
+	                                </div>
+	                            </aura:set>
+	                        </aura:if>
+	                    </div>
+						<li>
+		                    <ul class="tree-branch">
+		                        <aura:if isTrue="{!v.rootObject.hasGroupChildren}">
+		                            <div class="slds-text-align--left">
+		                                <!-- For Group, pop up AAR modal -->
+		                                <aura:if isTrue="{!v.rootObject.isGroup}">
+		                                    <FinServ:actionCreateButton aura:id="relationshipMap_groupCreate" class="slds-popover slds-button slds-button--neutral" additionalSObjects="['AccountAccountRelation__c']" event="e.force:createRecord" label="{!$Label.FinServ.Button_Label_Add_Group}" params="{!v.createAccountAccountRelation_Param}" />
+		                                    <!-- For all others, pop up Setup UI modal -->
+		                                    <aura:set attribute="else">
+		                                        <FinServ:groupActionButton aura:id="relationshipMap_addToGroup" class="slds-popover slds-button slds-button--neutral" params="{!v.createParam}" label="{!$Label.FinServ.Button_Label_Add_Group}" additionalSObjects="['Account']" />
+		                                    </aura:set>
+		                                </aura:if>
+		                            </div>
+		                        </aura:if>
+		                        <ul class="tree-branch">
+			                            <aura:iteration items="{!v.rootObject.children}" var="child">
+			                                <li class="tree-leaf">
+			                                    <span>
+													<FinServ:relationshipsTreeLeaf aura:id="childLeaf" showRelatedAccounts="{!v.showRelatedAccounts}" showRelatedContacts="{!v.showRelatedContacts}" entity="{!child}" parentEntity="{!v.rootObject}" />
+												</span>
+			                                </li>
+			                            </aura:iteration>
+		                        </ul>
+		                    </ul>
+						</li>
+	                </li>
+	            </ul>
+				<!-- Stencil for loading state -->
+				<aura:set attribute="else">
+		            <div class="loading">
+		                <ul class="tree-branch">
+		                    <li class="tree-leaf">
+		                        <div class="slds-popover">
+		                            <force:placeholder aura:id="relationshipMapStencil" name="preview_panel_anchor" />
+		                        </div>
+		                        <ul class="tree-branch">
+		                            <li class="tree-leaf">
+		                                <div class="slds-popover">
+		                                    <force:placeholder name="preview_panel_anchor" />
+		                                </div>
+		                            </li>
+		                            <li class="tree-leaf">
+		                                <div class="slds-popover">
+		                                    <force:placeholder name="preview_panel_anchor" />
+		                                </div>
+		                            </li>
+		                            <li class="tree-leaf">
+		                                <div class="slds-popover">
+		                                    <force:placeholder name="preview_panel_anchor" />
+		                                </div>
+		                            </li>
+		                        </ul>
+		                    </li>
+		                </ul>
+		            </div>
+				</aura:set>
+			</aura:if>
+        </div>
+        <aura:set attribute="else">
+            <!-- Error State -->
+            <div aura:id="errorMessage" class="errorMessage">
+                <force:message severity="error" strength="3" theme="pOne">
+                    <aura:set attribute="summary">{!$Label.DetailError.EntitySaveErrorSummary}</aura:set>
+                    <aura:set attribute="detail">
+                        <aura:iteration items="{!v.errors}" var="error">
+                            <span>{!error.message}</span>
+                        </aura:iteration>
+                    </aura:set>
+                </force:message>
+            </div>
+        </aura:set>
+    </aura:if>
+</aura:component>

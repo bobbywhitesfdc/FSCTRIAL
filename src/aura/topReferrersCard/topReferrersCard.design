@@ -1,0 +1,7 @@
+<design:component label="Referrals Top Referrers - Financial Services Cloud" >
+    <design:attribute name="title" label="Title" description="Referral Sumary component title" />
+    <design:attribute name="selectOrderBy" datasource="Revenue,Made,Converted" default="Made" label="Sorting" description="Choose the sorting order to display referrers"/>
+    <design:attribute name="displayRevenueFromReferrals" default="true" label="Revenue Generated"/>
+    <design:attribute name="displayTooltip" default="true" label="Show/Hide Tooltip"/>
+    <design:attribute name="displayViewMoreLink" default="true" label="Show/Hide View More Link"/>
+</design:component>
