@@ -1,3 +1,5 @@
 package.xml
 # Exclude Managed Package artifacts
-*FinServ__*
+src/classes/FinServ__*
+src/pages/FinServ__*
+src/triggers/FinServ__*
