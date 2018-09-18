@@ -796,6 +796,11 @@
         <name>FinServ__WalletShare__c</name>
     </fields>
     <recordTypes>
+        <description><!-- Custom Person Account Record on Account Object --></description>
+        <label><!-- Custom PA On Account --></label>
+        <name>CustomPAOnAccount</name>
+    </recordTypes>
+    <recordTypes>
         <description><!-- A business or an organization --></description>
         <label><!-- Business --></label>
         <name>IndustriesBusiness</name>

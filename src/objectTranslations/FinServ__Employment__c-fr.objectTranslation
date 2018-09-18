@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Expérience professionnelle</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Expériences professionnelles</value>
+    </caseValues>
+    <fields>
+        <label><!-- Annual Income --></label>
+        <name>FinServ__AnnualIncome__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>FinServ__Contact__c</name>
+        <relationshipLabel><!-- Employment --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Employer Address --></label>
+        <name>FinServ__EmployerAddress__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employer Phone Number --></label>
+        <name>FinServ__EmployerPhoneNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employment Status --></label>
+        <name>FinServ__EmploymentStatus__c</name>
+        <picklistValues>
+            <masterLabel>Employed</masterLabel>
+            <translation>Employé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home Maker</masterLabel>
+            <translation>Au foyer</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retired</masterLabel>
+            <translation>Retraité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self-Employed</masterLabel>
+            <translation>Indépendant</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Student</masterLabel>
+            <translation>Étudiant</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unemployed with Income</masterLabel>
+            <translation>Sans emploi avec un revenu</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unemployed without Income</masterLabel>
+            <translation>Sans emploi sans revenu</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>FinServ__EndDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Length of Employment --></label>
+        <name>FinServ__LengthOfEmployment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Occupation --></label>
+        <name>FinServ__Occupation__c</name>
+        <picklistValues>
+            <masterLabel>Architecture and Engineering</masterLabel>
+            <translation>Architecture et ingénierie</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arts, Design, Entertainment, Sports, and Media</masterLabel>
+            <translation>Arts, design, divertissement, sports et médias</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Building and Grounds Cleaning/Maintennce</masterLabel>
+            <translation>Nettoyage/maintenance des bâtiments et des terrains</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Community and Social Service</masterLabel>
+            <translation>Services communautaires et sociaux</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computer and Mathematical</masterLabel>
+            <translation>Informatique et mathématiques</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction and Extraction</masterLabel>
+            <translation>Construction et extraction</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education, Training, and Library</masterLabel>
+            <translation>Éducation, formation et bibliothèque</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Farming, Fishing, and Forestry</masterLabel>
+            <translation>Agriculture, pêche et foresterie</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Food Preparation and Serving</masterLabel>
+            <translation>Cuisine et restauration</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare Practitioners and Technical</masterLabel>
+            <translation>Techniciens et professionnels de la santé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare Support</masterLabel>
+            <translation>Soutien des prestataires de soins</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Installation, Maintenance, and Repair</masterLabel>
+            <translation>Installation, maintenance et réparation</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal</masterLabel>
+            <translation>Juridique</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Life, Physical, and Social Science</masterLabel>
+            <translation>Sciences de la vie, sciences physiques et sciences sociales</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Management</masterLabel>
+            <translation>Direction</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Office Admin</masterLabel>
+            <translation>Administration</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Autre</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Personal Care and Service</masterLabel>
+            <translation>Soins et services personnels</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production</masterLabel>
+            <translation>Production</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Protective Service</masterLabel>
+            <translation>Service de protection</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales</masterLabel>
+            <translation>Vente</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation and Material Moving</masterLabel>
+            <translation>Transport et déplacement de matériaux</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Position --></label>
+        <name>FinServ__Position__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System ID --></label>
+        <name>FinServ__SourceSystemId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>FinServ__StartDate__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Nom de l&apos;employeur</nameFieldLabel>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage><!-- The end date can&apos;t be in the future. --></errorMessage>
+        <name>FinServ__EndDateCannotBeInFuture</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The start date can&apos;t be in the future. --></errorMessage>
+        <name>FinServ__StartDateCannotBeInFuture</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The start date can&apos;t be later than the end date. --></errorMessage>
+        <name>FinServ__StartDateCannotBeLaterThanEndDate</name>
+    </validationRules>
+</CustomObjectTranslation>

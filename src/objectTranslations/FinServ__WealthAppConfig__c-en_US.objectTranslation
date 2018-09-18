@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Enable Group Record Rollups --></label>
+        <name>FinServ__EnableGroupRecordRollups__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Rollup Summary --></label>
+        <name>FinServ__EnableRollupSummary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Interaction Update Frequency --></label>
+        <name>FinServ__InteractionUpdateFrequency__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Referrer Score --></label>
+        <name>FinServ__ReferrerScoreCalcEnabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rejected Referral Status --></label>
+        <name>FinServ__RejectedReferralStatus__c</name>
+    </fields>
+</CustomObjectTranslation>

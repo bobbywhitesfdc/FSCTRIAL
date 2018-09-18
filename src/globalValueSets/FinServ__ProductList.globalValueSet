@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Mortgage</fullName>
+        <default>false</default>
+        <label>Mortgage</label>
+    </customValue>
+    <customValue>
+        <fullName>Personal Loan</fullName>
+        <default>false</default>
+        <label>Personal Loan</label>
+    </customValue>
+    <customValue>
+        <fullName>Credit Card</fullName>
+        <default>false</default>
+        <label>Credit Card</label>
+    </customValue>
+    <customValue>
+        <fullName>Savings Account</fullName>
+        <default>false</default>
+        <label>Savings Account</label>
+    </customValue>
+    <customValue>
+        <fullName>Checking Account</fullName>
+        <default>false</default>
+        <label>Checking Account</label>
+    </customValue>
+    <customValue>
+        <fullName>HELOC</fullName>
+        <default>false</default>
+        <label>HELOC</label>
+    </customValue>
+    <customValue>
+        <fullName>Day to Day Banking</fullName>
+        <default>false</default>
+        <label>Day to Day Banking</label>
+    </customValue>
+    <customValue>
+        <fullName>Manage Money</fullName>
+        <default>false</default>
+        <label>Manage Money</label>
+    </customValue>
+    <customValue>
+        <fullName>Property Purchase</fullName>
+        <default>false</default>
+        <label>Property Purchase</label>
+    </customValue>
+    <customValue>
+        <fullName>Investments</fullName>
+        <default>false</default>
+        <label>Investments</label>
+    </customValue>
+    <customValue>
+        <fullName>Education</fullName>
+        <default>false</default>
+        <label>Education</label>
+    </customValue>
+    <customValue>
+        <fullName>Manage Debt</fullName>
+        <default>false</default>
+        <label>Manage Debt</label>
+    </customValue>
+    <masterLabel>Product List</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

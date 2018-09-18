@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Documento di identificazione</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Documenti di identificazione</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>FinServ__Account__c</name>
+        <relationshipLabel><!-- Identification Document --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Document Number --></label>
+        <name>FinServ__DocumentNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Type --></label>
+        <name>FinServ__DocumentType__c</name>
+        <picklistValues>
+            <masterLabel>Green Card</masterLabel>
+            <translation>Permesso di residenza permanente (green card)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>License</masterLabel>
+            <translation>Patente</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Altro</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Passport</masterLabel>
+            <translation>Passaporto</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visa</masterLabel>
+            <translation>Visto</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Expiration Date --></label>
+        <name>FinServ__ExpirationDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue Date --></label>
+        <name>FinServ__IssueDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issuing Country --></label>
+        <name>FinServ__IssuingCountry__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System ID --></label>
+        <name>FinServ__SourceSystemId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Verified By --></label>
+        <name>FinServ__VerifiedBy__c</name>
+        <relationshipLabel><!-- Identification Documents --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Verified On --></label>
+        <name>FinServ__VerifiedOn__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <nameFieldLabel>Documento</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- The expiration date can&apos;t be earlier than the issue date. --></errorMessage>
+        <name>FinServ__ExpDateCannotBeLaterThanStart</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The issue date can&apos;t be in the future. --></errorMessage>
+        <name>FinServ__IssueDateCannotBeInFuture</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Verification date and time can&apos;t be in the future. --></errorMessage>
+        <name>FinServ__VerificationDateTimeCannotBeInFuture</name>
+    </validationRules>
+</CustomObjectTranslation>

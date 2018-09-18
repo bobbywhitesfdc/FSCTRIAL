@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Tariffe e commissioni</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Tariffe e commissioni</value>
+    </caseValues>
+    <fields>
+        <label><!-- APR Type --></label>
+        <name>FinServ__APRType__c</name>
+        <picklistValues>
+            <masterLabel>Fixed</masterLabel>
+            <translation>Fisso</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Altro</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Variable</masterLabel>
+            <translation>Variabile</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- APR --></label>
+        <name>FinServ__APR__c</name>
+    </fields>
+    <fields>
+        <label><!-- ATM Fee --></label>
+        <name>FinServ__ATMFee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Annual Account Charge --></label>
+        <name>FinServ__AnnualAccountCharge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Annual Membership Fee --></label>
+        <name>FinServ__AnnualMembershipFee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Balance Transfer APR --></label>
+        <name>FinServ__BalanceTransferAPR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cash APR Type --></label>
+        <name>FinServ__CashAPRType__c</name>
+        <picklistValues>
+            <masterLabel>Fixed</masterLabel>
+            <translation>Fisso</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Altro</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Variable</masterLabel>
+            <translation>Variabile</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Cash APR --></label>
+        <name>FinServ__CashAPR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cash Advance Fee --></label>
+        <name>FinServ__CashAdvanceFee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Foreign Transaction Fee --></label>
+        <name>FinServ__ForeignTransactionFee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Insufficient Funds Fee --></label>
+        <name>FinServ__InsufficientFundsFee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Interest Rate --></label>
+        <name>FinServ__InterestRate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Late Payment Fee --></label>
+        <name>FinServ__LatePaymentFee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Maximum Transaction Fee --></label>
+        <name>FinServ__MaximumTransactionFee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Monthly Service Fee --></label>
+        <name>FinServ__MonthlyServiceFee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Overdraft Fees --></label>
+        <name>FinServ__OverdraftFees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Replacement Card Fee --></label>
+        <name>FinServ__ReplacementCardFee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Returned Check Fee --></label>
+        <name>FinServ__ReturnedCheckFee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System ID --></label>
+        <name>FinServ__SourceSystemId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Statement Fee --></label>
+        <name>FinServ__StatementFee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stop Payment Fee --></label>
+        <name>FinServ__StopPaymentFee__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Nome delle tariffe e commissioni</nameFieldLabel>
+    <recordTypes>
+        <description><!-- Fees and rates for a line of credit --></description>
+        <label><!-- Credit --></label>
+        <name>Credit</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Fees and rates for a deposit account --></description>
+        <label><!-- Debit --></label>
+        <name>Debit</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

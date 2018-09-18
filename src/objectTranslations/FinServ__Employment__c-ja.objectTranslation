@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>雇用</value>
+    </caseValues>
+    <fields>
+        <label><!-- Annual Income --></label>
+        <name>FinServ__AnnualIncome__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>FinServ__Contact__c</name>
+        <relationshipLabel><!-- Employment --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Employer Address --></label>
+        <name>FinServ__EmployerAddress__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employer Phone Number --></label>
+        <name>FinServ__EmployerPhoneNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employment Status --></label>
+        <name>FinServ__EmploymentStatus__c</name>
+        <picklistValues>
+            <masterLabel>Employed</masterLabel>
+            <translation>会社員</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home Maker</masterLabel>
+            <translation>主婦</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retired</masterLabel>
+            <translation>定年退職</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self-Employed</masterLabel>
+            <translation>自営</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Student</masterLabel>
+            <translation>学生</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unemployed with Income</masterLabel>
+            <translation>無職 (収入あり)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unemployed without Income</masterLabel>
+            <translation>無職 (収入なし)</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>FinServ__EndDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Length of Employment --></label>
+        <name>FinServ__LengthOfEmployment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Occupation --></label>
+        <name>FinServ__Occupation__c</name>
+        <picklistValues>
+            <masterLabel>Architecture and Engineering</masterLabel>
+            <translation>建築、工学</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arts, Design, Entertainment, Sports, and Media</masterLabel>
+            <translation>芸術、デザイン、娯楽、スポーツ、メディア</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Building and Grounds Cleaning/Maintennce</masterLabel>
+            <translation>ビルおよびグラウンドの清掃/保守</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Community and Social Service</masterLabel>
+            <translation>コミュニティサービス、社会福祉サービス</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computer and Mathematical</masterLabel>
+            <translation>コンピュータ、数学</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction and Extraction</masterLabel>
+            <translation>建設、採掘</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education, Training, and Library</masterLabel>
+            <translation>教育、訓練、図書館</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Farming, Fishing, and Forestry</masterLabel>
+            <translation>農業、漁業、林業</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Food Preparation and Serving</masterLabel>
+            <translation>食料品製造および提供</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare Practitioners and Technical</masterLabel>
+            <translation>医療従事者、技術</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare Support</masterLabel>
+            <translation>医療支援</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Installation, Maintenance, and Repair</masterLabel>
+            <translation>設置、保守、修理</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal</masterLabel>
+            <translation>法務</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Life, Physical, and Social Science</masterLabel>
+            <translation>生命科学、物理科学、社会科学</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Management</masterLabel>
+            <translation>管理</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Office Admin</masterLabel>
+            <translation>秘書</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>その他</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Personal Care and Service</masterLabel>
+            <translation>生活関連サービス</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production</masterLabel>
+            <translation>製造</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Protective Service</masterLabel>
+            <translation>保安サービス</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales</masterLabel>
+            <translation>販売</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation and Material Moving</masterLabel>
+            <translation>輸送、資材運搬</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Position --></label>
+        <name>FinServ__Position__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System ID --></label>
+        <name>FinServ__SourceSystemId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>FinServ__StartDate__c</name>
+    </fields>
+    <nameFieldLabel>雇用主の名前</nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- The end date can&apos;t be in the future. --></errorMessage>
+        <name>FinServ__EndDateCannotBeInFuture</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The start date can&apos;t be in the future. --></errorMessage>
+        <name>FinServ__StartDateCannotBeInFuture</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The start date can&apos;t be later than the end date. --></errorMessage>
+        <name>FinServ__StartDateCannotBeLaterThanEndDate</name>
+    </validationRules>
+</CustomObjectTranslation>

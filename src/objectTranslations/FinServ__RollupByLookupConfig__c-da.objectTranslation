@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>Oprulningen efter opslagskonfig.</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>false</plural>
+        <value>Oprulning efter opslagskonfig.</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>Oprulning efter opslagskonfig.</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>Oprulningerne efter opslagskonfigs.</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>true</plural>
+        <value>Oprulninger efter opslagskonfigs.</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>Oprulninger efter opslagskonfigs.</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>FinServ__Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field To Roll Up From --></label>
+        <name>FinServ__FromField__c</name>
+    </fields>
+    <fields>
+        <label><!-- From Object --></label>
+        <name>FinServ__FromObject__c</name>
+    </fields>
+    <fields>
+        <label><!-- From Record Type --></label>
+        <name>FinServ__FromRecordType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lookup Field --></label>
+        <name>FinServ__LookupField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Namespace --></label>
+        <name>FinServ__Namespace__c</name>
+        <picklistValues>
+            <masterLabel>Industries</masterLabel>
+            <translation>Brancher</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Process Type --></label>
+        <name>FinServ__ProcessType__c</name>
+        <picklistValues>
+            <masterLabel>Async</masterLabel>
+            <translation>Asynkron</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Batch</masterLabel>
+            <translation>Batch</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Realtime</masterLabel>
+            <translation>Realtid</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Rollup Operation --></label>
+        <name>FinServ__RollupOperation__c</name>
+        <picklistValues>
+            <masterLabel>Avg</masterLabel>
+            <translation>Gns.</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Count</masterLabel>
+            <translation>Antal</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Max</masterLabel>
+            <translation>Maks.</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Min</masterLabel>
+            <translation>Min.</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sum</masterLabel>
+            <translation>Sum</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Field To Roll Up To --></label>
+        <name>FinServ__ToField__c</name>
+    </fields>
+    <fields>
+        <label><!-- To Object --></label>
+        <name>FinServ__ToObject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fields Triggering Update --></label>
+        <name>FinServ__UpdateOnChange__c</name>
+    </fields>
+    <fields>
+        <help>Et eksempeludtryk for Where-sætningen er: (1 OR 2) AND 3.
+Her svarer tallene til de filterkriterier, der er defineret i det underordnede objekt RollUpByLookupFilterCriteria.</help>
+        <label><!-- Where Clause --></label>
+        <name>FinServ__WhereClause__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Oprulning efter navn på opslagskonfigura</nameFieldLabel>
+    <webLinks>
+        <label><!-- Run_Rules --></label>
+        <name>FinServ__Run_Rules</name>
+    </webLinks>
+</CustomObjectTranslation>

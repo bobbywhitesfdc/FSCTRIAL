@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opleiding/studie</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opleiding/studie</value>
+    </caseValues>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>FinServ__Contact__c</name>
+        <relationshipLabel><!-- Education --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Education Level --></label>
+        <name>FinServ__EducationLevel__c</name>
+        <picklistValues>
+            <masterLabel>Decline to Comment</masterLabel>
+            <translation>Geen verdere informatie</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Graduate</masterLabel>
+            <translation>Afgestudeerd (Bachelor)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High School</masterLabel>
+            <translation>Middelbare school</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Post Graduate</masterLabel>
+            <translation>Afgestudeerd (Master/Dr.)</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Graduation Date --></label>
+        <name>FinServ__GraduationDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Institution --></label>
+        <name>FinServ__Institution__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System ID --></label>
+        <name>FinServ__SourceSystemId__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Naam instituut/instelling</nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- The year of graduation can&apos;t be in the future. --></errorMessage>
+        <name>FinServ__YearOfGradCannotBeInFuture</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Represents the role occupied by a person or organizational entity that is involved with a financial account, such as a beneficiary or trustee.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fieldSets>
+        <fullName>WM_Client_FinancialAccountRole</fullName>
+        <description>Client profile&apos;s Financials tab.</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>FinServ__FinancialAccount__r.Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>FinServ__Role__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>FinServ__Active__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Financial Account Role</label>
+    </fieldSets>
+    <fields>
+        <fullName>FinServ__Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates whether the organizational entity or person currently occupies this role.</description>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__Editable__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates whether this field is read-only or editable.</description>
+        <externalId>false</externalId>
+        <label>Editable</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__EndDate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>End date when the organizational entity or person relinquished this role.</description>
+        <externalId>false</externalId>
+        <label>End Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__FinancialAccount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Financial account that this role is related to.</description>
+        <externalId>false</externalId>
+        <label>Financial Account</label>
+        <referenceTo>FinServ__FinancialAccount__c</referenceTo>
+        <relationshipLabel>Financial Account Roles</relationshipLabel>
+        <relationshipName>FinancialAccountRoles</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>FinServ__RelatedAccount__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Name of the organizational entity that is involved with the financial account.</description>
+        <externalId>false</externalId>
+        <label>Related Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Financial Account Roles</relationshipLabel>
+        <relationshipName>FinancialAccountRoles</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__RelatedContact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Name of the person who is involved with the financial account.</description>
+        <externalId>false</externalId>
+        <label>Related Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Financial Account Roles</relationshipLabel>
+        <relationshipName>FinancialAccountRoles</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__Role__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Role that describes how the organizational entity or person is involved with the financial account.</description>
+        <externalId>false</externalId>
+        <label>Role</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Beneficiary</fullName>
+                    <default>false</default>
+                    <label>Beneficiary</label>
+                </value>
+                <value>
+                    <fullName>Accountant</fullName>
+                    <default>false</default>
+                    <label>Accountant</label>
+                </value>
+                <value>
+                    <fullName>Trustee</fullName>
+                    <default>false</default>
+                    <label>Trustee</label>
+                </value>
+                <value>
+                    <fullName>Corporation</fullName>
+                    <default>false</default>
+                    <label>Corporation</label>
+                </value>
+                <value>
+                    <fullName>Foundation</fullName>
+                    <default>false</default>
+                    <label>Foundation</label>
+                </value>
+                <value>
+                    <fullName>Grantor</fullName>
+                    <default>false</default>
+                    <label>Grantor</label>
+                </value>
+                <value>
+                    <fullName>Business Manager</fullName>
+                    <default>false</default>
+                    <label>Business Manager</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>FinServ__SourceSystemId__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>Source System ID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FinServ__StartDate__c</fullName>
+        <defaultValue>today()</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Start date when the organizational entity or person assumed this role.</description>
+        <externalId>false</externalId>
+        <label>Start Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <label>Financial Account Role</label>
+    <nameField>
+        <displayFormat>FAR-{000000000}</displayFormat>
+        <label>Role Number</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Financial Account Roles</pluralLabel>
+    <recordTypes>
+        <fullName>FinServ__AccountRole</fullName>
+        <active>true</active>
+        <description>Role occupied by an organizational entity, such as a corporation or LLC</description>
+        <label>Account Role</label>
+        <picklistValues>
+            <picklist>FinServ__Role__c</picklist>
+            <values>
+                <fullName>Accountant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Beneficiary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Business Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Corporation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Foundation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grantor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trustee</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>FinServ__ContactRole</fullName>
+        <active>true</active>
+        <description>Role occupied by a person</description>
+        <label>Contact Role</label>
+        <picklistValues>
+            <picklist>FinServ__Role__c</picklist>
+            <values>
+                <fullName>Accountant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Beneficiary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Business Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grantor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trustee</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>FinServ__CannotCreateInactiveRecord</fullName>
+        <active>true</active>
+        <description>Ensures that a record cannot be created as Inactive</description>
+        <errorConditionFormula>ISBLANK(FinServ__EndDate__c) &amp;&amp; NOT(FinServ__Active__c)</errorConditionFormula>
+        <errorMessage>A Financial Account Role cannot be created as Inactive</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FinServ__FARCannotBeModified</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(OR(ISCHANGED(FinServ__RelatedAccount__c),ISCHANGED(FinServ__RelatedContact__c),ISCHANGED(FinServ__FinancialAccount__c),ISCHANGED(FinServ__Role__c)),NOT(ISNEW()))</errorConditionFormula>
+        <errorMessage>This record cannot be edited. To update role information, you can deactivate this record and create a new one.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FinServ__InactiveFARCannotBeEdited</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(PRIORVALUE(FinServ__Active__c) == false,NOT(ISNEW()))</errorConditionFormula>
+        <errorMessage>Inactive record cannot be edited. To update FAR, you can create a new one.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FinServ__InactiveRecordCannotBeReactivated</fullName>
+        <active>true</active>
+        <description>Ensures that inactive records cannot be reactivated.</description>
+        <errorConditionFormula>1!=1</errorConditionFormula>
+        <errorMessage>Inactive Financial Roles cannot be reactivated.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FinServ__OwnershipRolesCannotBeDeactivated</fullName>
+        <active>true</active>
+        <description>Enforces that changes to primary roles cannot be deactivated.</description>
+        <errorConditionFormula>(FinServ__Editable__c == false) &amp;&amp;
+        (ISCHANGED( FinServ__Active__c ))</errorConditionFormula>
+        <errorMessage>This record cannot be deactivated because ownership can be updated on the financial account only.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FinServ__OwnershipRolesCannotBeModified</fullName>
+        <active>true</active>
+        <description>Enforces that changes to Related Contact, Related Account, Role fields are not allowed when fields are non editable.</description>
+        <errorConditionFormula>1!=1</errorConditionFormula>
+        <errorMessage>This record cannot be modified because ownership can be specified on the financial account only.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FinServ__RelatedAccountOrContactRequired</fullName>
+        <active>true</active>
+        <description>Enforce selection of the correct lookup relationship: either a Related Account or Related Contact.</description>
+        <errorConditionFormula>ISBLANK(FinServ__RelatedContact__c) &amp;&amp; ISBLANK( FinServ__RelatedAccount__c)</errorConditionFormula>
+        <errorMessage>Either Related Account or Related Contact is required.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FinServ__RoleIsMandatory</fullName>
+        <active>true</active>
+        <description>Enforces that the Role__c field is mandatory when a FinancialAccountRole__c object is created.</description>
+        <errorConditionFormula>ISBLANK(TEXT(FinServ__Role__c))</errorConditionFormula>
+        <errorMessage>Role is required.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

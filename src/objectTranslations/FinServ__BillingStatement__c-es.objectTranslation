@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Estado de cuenta</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Estados de cuenta</value>
+    </caseValues>
+    <fields>
+        <label><!-- Balance Transfers --></label>
+        <name>FinServ__BalanceTransfers__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billing Period End --></label>
+        <name>FinServ__BillingPeriodEnd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billing Period Start --></label>
+        <name>FinServ__BillingPeriodStart__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cash Advances --></label>
+        <name>FinServ__CashAdvances__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deposits --></label>
+        <name>FinServ__Deposits__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ending Balance --></label>
+        <name>FinServ__EndingBalance__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fees Charged --></label>
+        <name>FinServ__FeesCharged__c</name>
+    </fields>
+    <fields>
+        <label><!-- Financial Account --></label>
+        <name>FinServ__FinancialAccount__c</name>
+        <relationshipLabel><!-- Billing Statements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Interest This Period --></label>
+        <name>FinServ__InterestThisPeriod__c</name>
+    </fields>
+    <fields>
+        <label><!-- Interest YTD --></label>
+        <name>FinServ__InterestYTD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Payment Date --></label>
+        <name>FinServ__LastPaymentDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Minimum Payment Due --></label>
+        <name>FinServ__MinimumPaymentDue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Credits --></label>
+        <name>FinServ__OtherCredits__c</name>
+    </fields>
+    <fields>
+        <label><!-- Past Due Amount --></label>
+        <name>FinServ__PastDueAmount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Due Date --></label>
+        <name>FinServ__PaymentDueDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payments --></label>
+        <name>FinServ__Payments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Balance --></label>
+        <name>FinServ__PreviousBalance__c</name>
+    </fields>
+    <fields>
+        <label><!-- Purchases --></label>
+        <name>FinServ__Purchases__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System ID --></label>
+        <name>FinServ__SourceSystemId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Statement Date --></label>
+        <name>FinServ__StatementDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Withdrawals --></label>
+        <name>FinServ__Withdrawals__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <nameFieldLabel>Nombre</nameFieldLabel>
+    <recordTypes>
+        <description><!-- Credit Billing Statement --></description>
+        <label><!-- Credit --></label>
+        <name>Credit</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Debit Billing Statement --></description>
+        <label><!-- Debit --></label>
+        <name>Debit</name>
+    </recordTypes>
+</CustomObjectTranslation>

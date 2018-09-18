@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>FinServ__EmploymentCompactLayout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>FinServ__EmploymentCompactLayout</fullName>
+        <fields>Name</fields>
+        <fields>FinServ__EmploymentStatus__c</fields>
+        <fields>FinServ__StartDate__c</fields>
+        <fields>FinServ__EndDate__c</fields>
+        <label>Employment Compact Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Represents information about a person&apos;s employment history.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>FinServ__AnnualIncome__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Annual Income</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__Contact__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Employment</relationshipLabel>
+        <relationshipName>Employment</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__EmployerAddress__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Employer Address</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>FinServ__EmployerPhoneNumber__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Employer Phone Number</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__EmploymentStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Employment Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Employed</fullName>
+                    <default>false</default>
+                    <label>Employed</label>
+                </value>
+                <value>
+                    <fullName>Self-Employed</fullName>
+                    <default>false</default>
+                    <label>Self-Employed</label>
+                </value>
+                <value>
+                    <fullName>Home Maker</fullName>
+                    <default>false</default>
+                    <label>Home Maker</label>
+                </value>
+                <value>
+                    <fullName>Retired</fullName>
+                    <default>false</default>
+                    <label>Retired</label>
+                </value>
+                <value>
+                    <fullName>Student</fullName>
+                    <default>false</default>
+                    <label>Student</label>
+                </value>
+                <value>
+                    <fullName>Unemployed with Income</fullName>
+                    <default>false</default>
+                    <label>Unemployed with Income</label>
+                </value>
+                <value>
+                    <fullName>Unemployed without Income</fullName>
+                    <default>false</default>
+                    <label>Unemployed without Income</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>FinServ__EndDate__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>End Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__LengthOfEmployment__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>If(ISBLANK(FinServ__EndDate__c),If(And(Month(TODAY())&gt;= month(FinServ__StartDate__c), Day(TODAY()) &gt;= Day(FinServ__StartDate__c)),
+Year(TODAY())- Year(FinServ__StartDate__c) +
+(Month(TODAY())-Month(FinServ__StartDate__c))/12,
+if(And(month(TODAY())&lt; month(FinServ__StartDate__c), Day(TODAY())&gt;= Day(FinServ__StartDate__c)),
+Year(TODAY())-Year(FinServ__StartDate__c)-1 +
+(12 - Month(FinServ__StartDate__c)+month(TODAY()))/12,
+if(And( month(TODAY())&lt; month(FinServ__StartDate__c), Day(TODAY())&lt; Day(FinServ__StartDate__c)),
+(Year(TODAY())-Year(FinServ__StartDate__c)-1) + 
+((12 - Month(FinServ__StartDate__c)+month(TODAY())-1))/12,
+if(And( month(TODAY())= month(FinServ__StartDate__c), Day(TODAY())&lt; Day(FinServ__StartDate__c)),
+(Year(TODAY())- Year(FinServ__StartDate__c)-1) + (11/12),
+(Year(TODAY())- Year(FinServ__StartDate__c)) + 
+(Month(TODAY())-Month(FinServ__StartDate__c)-1)/12)))),If(And(Month(FinServ__EndDate__c)&gt;= month(FinServ__StartDate__c), Day(FinServ__EndDate__c) &gt;= Day(FinServ__StartDate__c)),
+Year(FinServ__EndDate__c)- Year(FinServ__StartDate__c) +
+(Month(FinServ__EndDate__c)-Month(FinServ__StartDate__c))/12,
+if(And(month(FinServ__EndDate__c)&lt; month(FinServ__StartDate__c), Day(FinServ__EndDate__c)&gt;= Day(FinServ__StartDate__c)),
+Year(FinServ__EndDate__c)-Year(FinServ__StartDate__c)-1 +
+(12 - Month(FinServ__StartDate__c)+month(FinServ__EndDate__c))/12,
+if(And( month(FinServ__EndDate__c)&lt; month(FinServ__StartDate__c), Day(FinServ__EndDate__c)&lt; Day(FinServ__StartDate__c)),
+(Year(FinServ__EndDate__c)-Year(FinServ__StartDate__c)-1) + 
+((12 - Month(FinServ__StartDate__c)+month(FinServ__EndDate__c)-1))/12,
+if(And( month(FinServ__EndDate__c)= month(FinServ__StartDate__c), Day(FinServ__EndDate__c)&lt; Day(FinServ__StartDate__c)),
+(Year(FinServ__EndDate__c)- Year(FinServ__StartDate__c)-1) + (11/12),
+(Year(FinServ__EndDate__c)- Year(FinServ__StartDate__c)) + 
+(Month(FinServ__EndDate__c)-Month(FinServ__StartDate__c)-1)/12)))))</formula>
+        <label>Length of Employment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FinServ__Occupation__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Occupation</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Management</fullName>
+                    <default>false</default>
+                    <label>Management</label>
+                </value>
+                <value>
+                    <fullName>Computer and Mathematical</fullName>
+                    <default>false</default>
+                    <label>Computer and Mathematical</label>
+                </value>
+                <value>
+                    <fullName>Architecture and Engineering</fullName>
+                    <default>false</default>
+                    <label>Architecture and Engineering</label>
+                </value>
+                <value>
+                    <fullName>Life, Physical, and Social Science</fullName>
+                    <default>false</default>
+                    <label>Life, Physical, and Social Science</label>
+                </value>
+                <value>
+                    <fullName>Community and Social Service</fullName>
+                    <default>false</default>
+                    <label>Community and Social Service</label>
+                </value>
+                <value>
+                    <fullName>Legal</fullName>
+                    <default>false</default>
+                    <label>Legal</label>
+                </value>
+                <value>
+                    <fullName>Education, Training, and Library</fullName>
+                    <default>false</default>
+                    <label>Education, Training, and Library</label>
+                </value>
+                <value>
+                    <fullName>Arts, Design, Entertainment, Sports, and Media</fullName>
+                    <default>false</default>
+                    <label>Arts, Design, Entertainment, Sports, and Media</label>
+                </value>
+                <value>
+                    <fullName>Healthcare Practitioners and Technical</fullName>
+                    <default>false</default>
+                    <label>Healthcare Practitioners and Technical</label>
+                </value>
+                <value>
+                    <fullName>Healthcare Support</fullName>
+                    <default>false</default>
+                    <label>Healthcare Support</label>
+                </value>
+                <value>
+                    <fullName>Protective Service</fullName>
+                    <default>false</default>
+                    <label>Protective Service</label>
+                </value>
+                <value>
+                    <fullName>Food Preparation and Serving</fullName>
+                    <default>false</default>
+                    <label>Food Preparation and Serving</label>
+                </value>
+                <value>
+                    <fullName>Building and Grounds Cleaning/Maintennce</fullName>
+                    <default>false</default>
+                    <label>Building and Grounds Cleaning/Maintennce</label>
+                </value>
+                <value>
+                    <fullName>Personal Care and Service</fullName>
+                    <default>false</default>
+                    <label>Personal Care and Service</label>
+                </value>
+                <value>
+                    <fullName>Sales</fullName>
+                    <default>false</default>
+                    <label>Sales</label>
+                </value>
+                <value>
+                    <fullName>Office Admin</fullName>
+                    <default>false</default>
+                    <label>Office Admin</label>
+                </value>
+                <value>
+                    <fullName>Farming, Fishing, and Forestry</fullName>
+                    <default>false</default>
+                    <label>Farming, Fishing, and Forestry</label>
+                </value>
+                <value>
+                    <fullName>Construction and Extraction</fullName>
+                    <default>false</default>
+                    <label>Construction and Extraction</label>
+                </value>
+                <value>
+                    <fullName>Installation, Maintenance, and Repair</fullName>
+                    <default>false</default>
+                    <label>Installation, Maintenance, and Repair</label>
+                </value>
+                <value>
+                    <fullName>Production</fullName>
+                    <default>false</default>
+                    <label>Production</label>
+                </value>
+                <value>
+                    <fullName>Transportation and Material Moving</fullName>
+                    <default>false</default>
+                    <label>Transportation and Material Moving</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>FinServ__Position__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Position</label>
+        <length>150</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FinServ__SourceSystemId__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>Source System ID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FinServ__StartDate__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Start Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <label>Employment</label>
+    <nameField>
+        <label>Employer Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Employment</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>FinServ__EndDateCannotBeInFuture</fullName>
+        <active>true</active>
+        <description>Error message when the employment end date is in the future.</description>
+        <errorConditionFormula>FinServ__EndDate__c &gt; TODAY()</errorConditionFormula>
+        <errorMessage>The end date can&apos;t be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FinServ__StartDateCannotBeInFuture</fullName>
+        <active>true</active>
+        <description>Error message when the employment start date is in the future.</description>
+        <errorConditionFormula>FinServ__StartDate__c &gt; TODAY()</errorConditionFormula>
+        <errorMessage>The start date can&apos;t be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FinServ__StartDateCannotBeLaterThanEndDate</fullName>
+        <active>true</active>
+        <description>Error message when the employment start date is later than the end date.</description>
+        <errorConditionFormula>FinServ__StartDate__c &gt; FinServ__EndDate__c</errorConditionFormula>
+        <errorMessage>The start date can&apos;t be later than the end date.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Transazione account finanziario</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Transazioni account finanziario</value>
+    </caseValues>
+    <fields>
+        <label><!-- Amount --></label>
+        <name>FinServ__Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billing Statement --></label>
+        <name>FinServ__BillingStatements__c</name>
+        <relationshipLabel><!-- Financial Account Transactions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Card Account ID --></label>
+        <name>FinServ__CardAccountID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>FinServ__Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Financial Account --></label>
+        <name>FinServ__FinancialAccount__c</name>
+        <relationshipLabel><!-- Financial Account Transactions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Merchant Category Code (MCCode) --></label>
+        <name>FinServ__MerchantCategoryCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Post Date --></label>
+        <name>FinServ__PostDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Running Balance --></label>
+        <name>FinServ__RunningBalance__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System ID --></label>
+        <name>FinServ__SourceSystemId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source Transaction Type --></label>
+        <name>FinServ__SourceTransactionType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Transaction Date --></label>
+        <name>FinServ__TransactionDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Transaction Id --></label>
+        <name>FinServ__TransactionId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Transaction Status --></label>
+        <name>FinServ__TransactionStatus__c</name>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation>In sospeso</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Posted</masterLabel>
+            <translation>Registrata</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Transaction Sub-type --></label>
+        <name>FinServ__TransactionSubtype__c</name>
+        <picklistValues>
+            <masterLabel>ATM Deposit</masterLabel>
+            <translation>Deposito agli sportelli automatici</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ATM Withdrawal</masterLabel>
+            <translation>Prelievo agli sportelli automatici</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bill Payment</masterLabel>
+            <translation>Pagamento fatture</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cash Deposit</masterLabel>
+            <translation>Deposito di contanti</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit Card Cash Advance</masterLabel>
+            <translation>Anticipo contati su carta di credito</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit Card Payment</masterLabel>
+            <translation>Pagamento carta di credito</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EFT</masterLabel>
+            <translation>Trasferimento elettronico di fondi (EFT)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fee</masterLabel>
+            <translation>Tariffa</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Foreign Cash Deposit</masterLabel>
+            <translation>Deposito di contanti in valuta estera</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interest Earned</masterLabel>
+            <translation>Interessi guadagnati</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal Funds Transfer</masterLabel>
+            <translation>Trasferimento di fondi interni</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Loan Payment</masterLabel>
+            <translation>Pagamento prestiti</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Merchant Charge</masterLabel>
+            <translation>Commissione esercenti</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Misc. Credit</masterLabel>
+            <translation>Crediti vari</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Misc. Debit</masterLabel>
+            <translation>Debiti vari</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mortgage Payment</masterLabel>
+            <translation>Pagamento ipoteche</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On-Us Check Deposit</masterLabel>
+            <translation>Deposito di assegni su piazza</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POS withdrawal</masterLabel>
+            <translation>Prelievo da POS</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reversal</masterLabel>
+            <translation>Storno</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transit Check Deposit</masterLabel>
+            <translation>Deposito di assegni fuori piazza</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Transaction Type --></label>
+        <name>FinServ__TransactionType__c</name>
+        <picklistValues>
+            <masterLabel>Credit</masterLabel>
+            <translation>Avere</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Debit</masterLabel>
+            <translation>Dare</translation>
+        </picklistValues>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Nome transazione</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

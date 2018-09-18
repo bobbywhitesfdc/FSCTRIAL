@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Defines Wealth configurations.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>FinServ__EnableGroupRecordRollups__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable rolling of household__c field to records</description>
+        <externalId>false</externalId>
+        <label>Enable Group Record Rollups</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__EnableRollupSummary__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable Rollup Summary calculations</description>
+        <externalId>false</externalId>
+        <label>Enable Rollup Summary</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__InteractionUpdateFrequency__c</fullName>
+        <defaultValue>15</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Frequency (in minutes) with which the Last Interaction and Next Interaction dates are automatically updated.</description>
+        <externalId>false</externalId>
+        <label>Interaction Update Frequency</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FinServ__ReferrerScoreCalcEnabled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable Referrer Score calculations.</description>
+        <externalId>false</externalId>
+        <label>Enable Referrer Score</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__RejectedReferralStatus__c</fullName>
+        <defaultValue>&quot;Closed - Not Converted&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>The Lead Status used to identify rejected referrals.</description>
+        <externalId>false</externalId>
+        <label>Rejected Referral Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Wealth Application Config</label>
+    <visibility>Public</visibility>
+</CustomObject>

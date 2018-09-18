@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Account Holder --></label>
+        <name>FinServ__AccountHolder__c</name>
+        <relationshipLabel><!-- Cards --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>FinServ__Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- BIN Number --></label>
+        <name>FinServ__BinNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Financial Account --></label>
+        <name>FinServ__FinancialAccount__c</name>
+        <relationshipLabel><!-- Financial Account Card --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Ownership Type --></label>
+        <name>FinServ__OwnershipType__c</name>
+        <picklistValues>
+            <masterLabel>Authorized</masterLabel>
+            <translation><!-- Authorized --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Primary</masterLabel>
+            <translation><!-- Primary --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Source System ID --></label>
+        <name>FinServ__SourceSystemId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Valid Until --></label>
+        <name>FinServ__ValidUntil__c</name>
+    </fields>
+</CustomObjectTranslation>

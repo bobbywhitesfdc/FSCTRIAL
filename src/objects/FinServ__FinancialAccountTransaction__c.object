@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>FinServ__FATransaction</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>FinServ__FATransaction</fullName>
+        <fields>Name</fields>
+        <fields>FinServ__FinancialAccount__c</fields>
+        <fields>FinServ__TransactionDate__c</fields>
+        <fields>FinServ__Description__c</fields>
+        <fields>FinServ__Amount__c</fields>
+        <fields>FinServ__TransactionId__c</fields>
+        <fields>FinServ__TransactionType__c</fields>
+        <fields>FinServ__TransactionStatus__c</fields>
+        <fields>FinServ__PostDate__c</fields>
+        <fields>FinServ__CardAccountID__c</fields>
+        <label>FATransaction</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Represents information about financial account transactions.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>FinServ__Amount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The amount of each transaction. This field is used for reconciliation.</description>
+        <externalId>false</externalId>
+        <label>Amount</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__BillingStatements__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Billing Statement</label>
+        <referenceTo>FinServ__BillingStatement__c</referenceTo>
+        <relationshipLabel>Financial Account Transactions</relationshipLabel>
+        <relationshipName>FinancialAccountTransactions</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__CardAccountID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The card number for each transaction. This field is used for reconciliation logic.</description>
+        <externalId>false</externalId>
+        <label>Card Account ID</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FinServ__Description__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Describes each transaction. This field is used for reconciliation and categorization.</description>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FinServ__FinancialAccount__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Financial Account</label>
+        <referenceTo>FinServ__FinancialAccount__c</referenceTo>
+        <relationshipLabel>Financial Account Transactions</relationshipLabel>
+        <relationshipName>FinancialAccountTranslations</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__MerchantCategoryCode__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Merchant category code.</description>
+        <externalId>false</externalId>
+        <label>Merchant Category Code (MCCode)</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FinServ__PostDate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The date each transaction posted to the account.</description>
+        <externalId>false</externalId>
+        <label>Post Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__RunningBalance__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Running balance for this respective transaction.</description>
+        <externalId>false</externalId>
+        <label>Running Balance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__SourceSystemId__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>Source System ID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FinServ__SourceTransactionType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Secondary Account holder transaction type of the account.</description>
+        <externalId>false</externalId>
+        <label>Source Transaction Type</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FinServ__TransactionDate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The date each transaction occurred. This field is used for reconciliation.</description>
+        <externalId>false</externalId>
+        <label>Transaction Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__TransactionId__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <description>Unique transaction ID for each transaction.</description>
+        <externalId>false</externalId>
+        <label>Transaction Id</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>FinServ__TransactionStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The status of transaction.</description>
+        <externalId>false</externalId>
+        <label>Transaction Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>false</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                    <fullName>Posted</fullName>
+                    <default>false</default>
+                    <label>Posted</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>FinServ__TransactionSubtype__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Transaction Sub-type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>FinServ__TransactionType__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cash Deposit</fullName>
+                    <default>false</default>
+                    <label>Cash Deposit</label>
+                </value>
+                <value>
+                    <fullName>On-Us Check Deposit</fullName>
+                    <default>false</default>
+                    <label>On-Us Check Deposit</label>
+                </value>
+                <value>
+                    <fullName>Transit Check Deposit</fullName>
+                    <default>false</default>
+                    <label>Transit Check Deposit</label>
+                </value>
+                <value>
+                    <fullName>Foreign Cash Deposit</fullName>
+                    <default>false</default>
+                    <label>Foreign Cash Deposit</label>
+                </value>
+                <value>
+                    <fullName>Bill Payment</fullName>
+                    <default>false</default>
+                    <label>Bill Payment</label>
+                </value>
+                <value>
+                    <fullName>EFT</fullName>
+                    <default>false</default>
+                    <label>EFT</label>
+                </value>
+                <value>
+                    <fullName>ATM Deposit</fullName>
+                    <default>false</default>
+                    <label>ATM Deposit</label>
+                </value>
+                <value>
+                    <fullName>ATM Withdrawal</fullName>
+                    <default>false</default>
+                    <label>ATM Withdrawal</label>
+                </value>
+                <value>
+                    <fullName>POS withdrawal</fullName>
+                    <default>false</default>
+                    <label>POS withdrawal</label>
+                </value>
+                <value>
+                    <fullName>Misc. Credit</fullName>
+                    <default>false</default>
+                    <label>Misc. Credit</label>
+                </value>
+                <value>
+                    <fullName>Misc. Debit</fullName>
+                    <default>false</default>
+                    <label>Misc. Debit</label>
+                </value>
+                <value>
+                    <fullName>Loan Payment</fullName>
+                    <default>false</default>
+                    <label>Loan Payment</label>
+                </value>
+                <value>
+                    <fullName>Mortgage Payment</fullName>
+                    <default>false</default>
+                    <label>Mortgage Payment</label>
+                </value>
+                <value>
+                    <fullName>Credit Card Payment</fullName>
+                    <default>false</default>
+                    <label>Credit Card Payment</label>
+                </value>
+                <value>
+                    <fullName>Credit Card Cash Advance</fullName>
+                    <default>false</default>
+                    <label>Credit Card Cash Advance</label>
+                </value>
+                <value>
+                    <fullName>Internal Funds Transfer</fullName>
+                    <default>false</default>
+                    <label>Internal Funds Transfer</label>
+                </value>
+                <value>
+                    <fullName>Reversal</fullName>
+                    <default>false</default>
+                    <label>Reversal</label>
+                </value>
+                <value>
+                    <fullName>Interest Earned</fullName>
+                    <default>false</default>
+                    <label>Interest Earned</label>
+                </value>
+                <value>
+                    <fullName>Fee</fullName>
+                    <default>false</default>
+                    <label>Fee</label>
+                </value>
+                <value>
+                    <fullName>Merchant Charge</fullName>
+                    <default>false</default>
+                    <label>Merchant Charge</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Credit</controllingFieldValue>
+                <valueName>Cash Deposit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Credit</controllingFieldValue>
+                <valueName>On-Us Check Deposit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Credit</controllingFieldValue>
+                <valueName>Transit Check Deposit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Credit</controllingFieldValue>
+                <valueName>Foreign Cash Deposit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Credit</controllingFieldValue>
+                <valueName>Bill Payment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Credit</controllingFieldValue>
+                <controllingFieldValue>Debit</controllingFieldValue>
+                <valueName>EFT</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Credit</controllingFieldValue>
+                <valueName>ATM Deposit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Credit</controllingFieldValue>
+                <valueName>Misc. Credit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Credit</controllingFieldValue>
+                <controllingFieldValue>Debit</controllingFieldValue>
+                <valueName>Loan Payment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Credit</controllingFieldValue>
+                <controllingFieldValue>Debit</controllingFieldValue>
+                <valueName>Mortgage Payment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Credit</controllingFieldValue>
+                <valueName>Credit Card Payment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Credit</controllingFieldValue>
+                <controllingFieldValue>Debit</controllingFieldValue>
+                <valueName>Internal Funds Transfer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Credit</controllingFieldValue>
+                <valueName>Interest Earned</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Credit</controllingFieldValue>
+                <controllingFieldValue>Debit</controllingFieldValue>
+                <valueName>Merchant Charge</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Debit</controllingFieldValue>
+                <valueName>ATM Withdrawal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Debit</controllingFieldValue>
+                <valueName>POS withdrawal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Debit</controllingFieldValue>
+                <valueName>Misc. Debit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Debit</controllingFieldValue>
+                <valueName>Credit Card Cash Advance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Debit</controllingFieldValue>
+                <valueName>Reversal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Debit</controllingFieldValue>
+                <valueName>Fee</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>FinServ__TransactionType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Type of the transaction. This field is used to determine whether the transaction falls under income or expense. Also used in reconciliation logic.</description>
+        <externalId>false</externalId>
+        <label>Transaction Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Credit</fullName>
+                    <default>false</default>
+                    <label>Credit</label>
+                </value>
+                <value>
+                    <fullName>Debit</fullName>
+                    <default>false</default>
+                    <label>Debit</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Financial Account Transaction</label>
+    <listViews>
+        <fullName>FinServ__All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>T-{000000000}</displayFormat>
+        <label>Transaction Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Financial Account Transactions</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -3842,7 +3842,7 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>PersonAccount-Person Account Layout</layout>
-        <recordType>PersonAccount.MyCustomPersonAccount</recordType>
+        <recordType>PersonAccount.Client</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>PersonAccount-Person Account Layout</layout>
@@ -4330,6 +4330,11 @@
     </pageAccesses>
     <recordTypeVisibilities>
         <default>false</default>
+        <recordType>Account.CustomPAOnAccount</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
         <recordType>Account.FinServ__IndustriesBusiness</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
@@ -4510,7 +4515,7 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>PersonAccount.MyCustomPersonAccount</recordType>
+        <recordType>PersonAccount.Client</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

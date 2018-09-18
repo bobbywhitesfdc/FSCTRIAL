@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>FinServ__FinancialServicesCloudStandard</name>
+    </customPermissions>
+    <description>Enables a permission set for the Financial Services Cloud Standard license.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Financial Services Cloud Standard</label>
+    <license>FinServ.FinancialServicesCloudStandardPsl</license>
+</PermissionSet>

@@ -13,10 +13,10 @@
     </compactLayouts>
     <enableHistory>false</enableHistory>
     <recordTypes>
-        <fullName>MyCustomPersonAccount</fullName>
+        <fullName>Client</fullName>
         <active>true</active>
-        <description>MyCustomPersonAccount Record Type</description>
-        <label>MyCustomPersonAccount</label>
+        <description>Client Record Type</description>
+        <label>Client</label>
         <picklistValues>
             <picklist>AccountSource</picklist>
             <values>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value>Beschäftigung</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value>Beschäftigungen</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value><!-- Beschäftigung --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value><!-- Beschäftigungen --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value><!-- Beschäftigung --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value><!-- Beschäftigungen --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value><!-- Beschäftigung --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value><!-- Beschäftigungen --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Annual Income --></label>
+        <name>FinServ__AnnualIncome__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>FinServ__Contact__c</name>
+        <relationshipLabel><!-- Employment --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Employer Address --></label>
+        <name>FinServ__EmployerAddress__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employer Phone Number --></label>
+        <name>FinServ__EmployerPhoneNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employment Status --></label>
+        <name>FinServ__EmploymentStatus__c</name>
+        <picklistValues>
+            <masterLabel>Employed</masterLabel>
+            <translation>Angestellt</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home Maker</masterLabel>
+            <translation>Hausfrau/-mann</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retired</masterLabel>
+            <translation>Rentner</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self-Employed</masterLabel>
+            <translation>Selbstständig</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Student</masterLabel>
+            <translation>Student</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unemployed with Income</masterLabel>
+            <translation>Arbeitslos mit Einkommen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unemployed without Income</masterLabel>
+            <translation>Arbeitslos ohne Einkommen</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>FinServ__EndDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Length of Employment --></label>
+        <name>FinServ__LengthOfEmployment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Occupation --></label>
+        <name>FinServ__Occupation__c</name>
+        <picklistValues>
+            <masterLabel>Architecture and Engineering</masterLabel>
+            <translation>Architektur und Ingenieurwesen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arts, Design, Entertainment, Sports, and Media</masterLabel>
+            <translation>Kunst, Design, Unterhaltung, Sport und Medien</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Building and Grounds Cleaning/Maintennce</masterLabel>
+            <translation>Gebäudepflege und -instandhaltung</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Community and Social Service</masterLabel>
+            <translation>Zivil- und Sozialdienst</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computer and Mathematical</masterLabel>
+            <translation>Informatik und Mathematik</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction and Extraction</masterLabel>
+            <translation>Bau und Förderung</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education, Training, and Library</masterLabel>
+            <translation>Ausbildung, Weiterbildung und Bibliothek</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Farming, Fishing, and Forestry</masterLabel>
+            <translation>Landwirtschaft, Fischerei und Forstwirtschaft</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Food Preparation and Serving</masterLabel>
+            <translation>Zubereitung und Servieren von Speisen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare Practitioners and Technical</masterLabel>
+            <translation>Heilberufe und Medizintechnik</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare Support</masterLabel>
+            <translation>Gesundheitspflege – Unterstützung</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Installation, Maintenance, and Repair</masterLabel>
+            <translation>Montage, Wartung und Reparatur</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal</masterLabel>
+            <translation>Jurist</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Life, Physical, and Social Science</masterLabel>
+            <translation>Bio-, Natur- und Sozialwissenschaft</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Management</masterLabel>
+            <translation>Management</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Office Admin</masterLabel>
+            <translation>Büroverwaltung</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Andere</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Personal Care and Service</masterLabel>
+            <translation>Persönliche Pflege und Betreuung</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production</masterLabel>
+            <translation>Produktion</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Protective Service</masterLabel>
+            <translation>Schutzdienst</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales</masterLabel>
+            <translation>Vertrieb</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation and Material Moving</masterLabel>
+            <translation>Beförderung und Materialtransport</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Position --></label>
+        <name>FinServ__Position__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System ID --></label>
+        <name>FinServ__SourceSystemId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>FinServ__StartDate__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Name des Arbeitgebers</nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- The end date can&apos;t be in the future. --></errorMessage>
+        <name>FinServ__EndDateCannotBeInFuture</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The start date can&apos;t be in the future. --></errorMessage>
+        <name>FinServ__StartDateCannotBeInFuture</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The start date can&apos;t be later than the end date. --></errorMessage>
+        <name>FinServ__StartDateCannotBeLaterThanEndDate</name>
+    </validationRules>
+</CustomObjectTranslation>

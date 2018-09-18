@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>ansættelsen</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>false</plural>
+        <value>ansættelse</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>ansættelse</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>ansættelserne</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>true</plural>
+        <value>ansættelser</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>ansættelser</value>
+    </caseValues>
+    <fields>
+        <label><!-- Annual Income --></label>
+        <name>FinServ__AnnualIncome__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>FinServ__Contact__c</name>
+        <relationshipLabel><!-- Employment --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Employer Address --></label>
+        <name>FinServ__EmployerAddress__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employer Phone Number --></label>
+        <name>FinServ__EmployerPhoneNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employment Status --></label>
+        <name>FinServ__EmploymentStatus__c</name>
+        <picklistValues>
+            <masterLabel>Employed</masterLabel>
+            <translation>Ansat</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home Maker</masterLabel>
+            <translation>Hjemmegående</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retired</masterLabel>
+            <translation>Pensioneret</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self-Employed</masterLabel>
+            <translation>Selvstændig</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Student</masterLabel>
+            <translation>Studerende</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unemployed with Income</masterLabel>
+            <translation>Arbejdsløs med indkomst</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unemployed without Income</masterLabel>
+            <translation>Arbejdsløs uden indkomst</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>FinServ__EndDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Length of Employment --></label>
+        <name>FinServ__LengthOfEmployment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Occupation --></label>
+        <name>FinServ__Occupation__c</name>
+        <picklistValues>
+            <masterLabel>Architecture and Engineering</masterLabel>
+            <translation>Arkitektur og ingeniør</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arts, Design, Entertainment, Sports, and Media</masterLabel>
+            <translation>Kunst, design, underholdning, sport og medier</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Building and Grounds Cleaning/Maintennce</masterLabel>
+            <translation>Rengøring/vedligeholdelse af bygninger om omliggende arealer</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Community and Social Service</masterLabel>
+            <translation>Samfundsmæssig og social service</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computer and Mathematical</masterLabel>
+            <translation>Computer og matematik</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction and Extraction</masterLabel>
+            <translation>Byggeri og udvinding</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education, Training, and Library</masterLabel>
+            <translation>Uddannelse, undervisning og bibliotek</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Farming, Fishing, and Forestry</masterLabel>
+            <translation>Landbrug, fiskeri og skovbrug</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Food Preparation and Serving</masterLabel>
+            <translation>Fødevareforberedelse og servering</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare Practitioners and Technical</masterLabel>
+            <translation>Sundhedsplejere og teknik</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare Support</masterLabel>
+            <translation>Sundhedspleje</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Installation, Maintenance, and Repair</masterLabel>
+            <translation>Installation, vedligeholdelse og reparation</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal</masterLabel>
+            <translation>Jura</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Life, Physical, and Social Science</masterLabel>
+            <translation>Biologisk videnskab, fysisk videnskab og samfundsvidenskab</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Management</masterLabel>
+            <translation>Ledelse</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Office Admin</masterLabel>
+            <translation>Kontoradministration</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Andet</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Personal Care and Service</masterLabel>
+            <translation>Tjenester til personlig pleje</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production</masterLabel>
+            <translation>Produktion</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Protective Service</masterLabel>
+            <translation>Sikkerhedsvagtservice</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales</masterLabel>
+            <translation>Salg</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation and Material Moving</masterLabel>
+            <translation>Transport og flytning af materialer</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Position --></label>
+        <name>FinServ__Position__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System ID --></label>
+        <name>FinServ__SourceSystemId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>FinServ__StartDate__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Arbejdsgiverens navn</nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- The end date can&apos;t be in the future. --></errorMessage>
+        <name>FinServ__EndDateCannotBeInFuture</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The start date can&apos;t be in the future. --></errorMessage>
+        <name>FinServ__StartDateCannotBeInFuture</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The start date can&apos;t be later than the end date. --></errorMessage>
+        <name>FinServ__StartDateCannotBeLaterThanEndDate</name>
+    </validationRules>
+</CustomObjectTranslation>

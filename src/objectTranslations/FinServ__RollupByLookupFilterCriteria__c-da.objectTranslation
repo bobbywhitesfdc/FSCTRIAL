@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>Oprulningen efter opslagsfilterkriterier</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>false</plural>
+        <value>Oprulning efter opslagsfilterkriterier</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>Oprulning efter opslagsfilterkriterier</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>Oprulningerne efter opslagsfilterkriterier</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>true</plural>
+        <value>Oprulninger efter opslagsfilterkriterier</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>Oprulninger efter opslagsfilterkriterier</value>
+    </caseValues>
+    <fields>
+        <label><!-- Field Name --></label>
+        <name>FinServ__FieldName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Value --></label>
+        <name>FinServ__FieldValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Operator --></label>
+        <name>FinServ__Operator__c</name>
+        <picklistValues>
+            <masterLabel>IN</masterLabel>
+            <translation><!-- IN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>contains</masterLabel>
+            <translation>indeholder</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ends with</masterLabel>
+            <translation>slutter med</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>equals</masterLabel>
+            <translation>er lig med</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>greater than</masterLabel>
+            <translation>større end</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>greater than or equal to</masterLabel>
+            <translation>større end eller lig med</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>less than</masterLabel>
+            <translation>mindre end</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>less than or equal to</masterLabel>
+            <translation>mindre end eller lig med</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>not contains</masterLabel>
+            <translation>indeholder ikke</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>not equal to</masterLabel>
+            <translation>ikke lig med</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>not like</masterLabel>
+            <translation>ligner ikke</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>starts with</masterLabel>
+            <translation>starter med</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Parent Configuration --></label>
+        <name>FinServ__RollupByLookupConfig__c</name>
+        <relationshipLabel><!-- Rollup By Lookup Filter Criterias --></relationshipLabel>
+    </fields>
+    <gender>Neuter</gender>
+    <nameFieldLabel>Oprulning efter kriterienavn for opslags</nameFieldLabel>
+</CustomObjectTranslation>

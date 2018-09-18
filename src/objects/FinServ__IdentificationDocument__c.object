@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>FinServ__IdentificationDocumentCompactLayout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>FinServ__IdentificationDocumentCompactLayout</fullName>
+        <fields>Name</fields>
+        <fields>FinServ__DocumentType__c</fields>
+        <fields>FinServ__DocumentNumber__c</fields>
+        <fields>FinServ__ExpirationDate__c</fields>
+        <fields>FinServ__IssueDate__c</fields>
+        <fields>FinServ__VerifiedBy__c</fields>
+        <fields>FinServ__VerifiedOn__c</fields>
+        <label>Identification Document Compact Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Represents information about documents used to verify a person&apos;s identity.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>FinServ__Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Identification Document</relationshipLabel>
+        <relationshipName>IdentificationDocument</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__DocumentNumber__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Document Number</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FinServ__DocumentType__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Document Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Passport</fullName>
+                    <default>false</default>
+                    <label>Passport</label>
+                </value>
+                <value>
+                    <fullName>License</fullName>
+                    <default>false</default>
+                    <label>License</label>
+                </value>
+                <value>
+                    <fullName>Visa</fullName>
+                    <default>false</default>
+                    <label>Visa</label>
+                </value>
+                <value>
+                    <fullName>Green Card</fullName>
+                    <default>false</default>
+                    <label>Green Card</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>FinServ__ExpirationDate__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Expiration Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__IssueDate__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Issue Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__IssuingCountry__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Issuing Country</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>FinServ__Countries</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>FinServ__SourceSystemId__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>Source System ID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FinServ__VerifiedBy__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Verified By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>IdentificationDocument</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>FinServ__VerifiedOn__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Verified On</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <label>Identification Document</label>
+    <nameField>
+        <displayFormat>DOC-{000000000}</displayFormat>
+        <label>Document</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Identification Documents</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>FinServ__ExpDateCannotBeLaterThanStart</fullName>
+        <active>true</active>
+        <description>Error message when the expiration date is earlier than the issue date.</description>
+        <errorConditionFormula>FinServ__IssueDate__c &gt; FinServ__ExpirationDate__c</errorConditionFormula>
+        <errorMessage>The expiration date can&apos;t be earlier than the issue date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FinServ__IssueDateCannotBeInFuture</fullName>
+        <active>true</active>
+        <description>Error message when the issue date is in the future.</description>
+        <errorConditionFormula>FinServ__IssueDate__c &gt; TODAY()</errorConditionFormula>
+        <errorMessage>The issue date can&apos;t be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FinServ__VerificationDateTimeCannotBeInFuture</fullName>
+        <active>true</active>
+        <description>Error message when the verification date and time are in the future.</description>
+        <errorConditionFormula>FinServ__VerifiedOn__c &gt; NOW()</errorConditionFormula>
+        <errorMessage>Verification date and time can&apos;t be in the future.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

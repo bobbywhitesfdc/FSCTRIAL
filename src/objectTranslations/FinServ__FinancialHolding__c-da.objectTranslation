@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>Finansielle beholdning</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>false</plural>
+        <value>Finansiel beholdning</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>Finansiel beholdning</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>Finansielle beholdninger</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>true</plural>
+        <value>Finansielle beholdninger</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>Finansielle beholdninger</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- Financial Holding --></label>
+        <name>WM_Client_FinancialHolding</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Financial Holding --></label>
+        <name>WM_Household_FinancialHolding</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Asset Category Name --></label>
+        <name>FinServ__AssetCategoryName__c</name>
+        <picklistValues>
+            <masterLabel>Large Blend</masterLabel>
+            <translation>Large Blend</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Large Growth</masterLabel>
+            <translation>Stor vækst</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Large Value</masterLabel>
+            <translation>Stor værdi</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mid-Cap Blend</masterLabel>
+            <translation>Mid-Cap Blend</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mid-Cap Growth</masterLabel>
+            <translation>Mid-Cap-vækst</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mid-Cap Value</masterLabel>
+            <translation>Mid-Cap-værdi</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small Blend</masterLabel>
+            <translation>Small Blend</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small Growth</masterLabel>
+            <translation>Lille vækst</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small Value</masterLabel>
+            <translation>Lille værdi</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Asset Category --></label>
+        <name>FinServ__AssetCategory__c</name>
+        <picklistValues>
+            <masterLabel>Allocation</masterLabel>
+            <translation>Allokering</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alternative</masterLabel>
+            <translation>Alternativ</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Commodities</masterLabel>
+            <translation>Varer</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Equity</masterLabel>
+            <translation>International formue</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Municipal Bond</masterLabel>
+            <translation>Kommunal obligation</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sector Equity</masterLabel>
+            <translation>Sektorformue</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Taxable Bond</masterLabel>
+            <translation>Skattepligtig obligation</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>U.S. Equity</masterLabel>
+            <translation>Amerikansk formue</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Asset Class --></label>
+        <name>FinServ__AssetClass__c</name>
+        <picklistValues>
+            <masterLabel>Alternative Investments</masterLabel>
+            <translation>Alternative investeringer</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cash Equivalents</masterLabel>
+            <translation>Likvider</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Equities</masterLabel>
+            <translation>Egenkapital</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fixed Income</masterLabel>
+            <translation>Fast indkomst</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Financial Account --></label>
+        <name>FinServ__FinancialAccount__c</name>
+        <relationshipLabel><!-- Financial Holdings --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Ændring i værdi siden køb.</help>
+        <label><!-- Gain/Loss --></label>
+        <name>FinServ__GainLoss__c</name>
+    </fields>
+    <fields>
+        <label><!-- Household --></label>
+        <name>FinServ__Household__c</name>
+        <relationshipLabel><!-- Household Financial Holdings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Last Updated --></label>
+        <name>FinServ__LastUpdated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Market Value --></label>
+        <name>FinServ__MarketValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Percent Change --></label>
+        <name>FinServ__PercentChange__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price --></label>
+        <name>FinServ__Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Owner --></label>
+        <name>FinServ__PrimaryOwner__c</name>
+        <relationshipLabel><!-- Client Financial Holdings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Purchase Price --></label>
+        <name>FinServ__PurchasePrice__c</name>
+    </fields>
+    <fields>
+        <label><!-- Symbol --></label>
+        <name>FinServ__Securities__c</name>
+        <relationshipLabel><!-- Securities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Shares --></label>
+        <name>FinServ__Shares__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System ID --></label>
+        <name>FinServ__SourceSystemId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Symbol --></label>
+        <name>FinServ__Symbol__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Navn på finansiel beholdning</nameFieldLabel>
+</CustomObjectTranslation>
