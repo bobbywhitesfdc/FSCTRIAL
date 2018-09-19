@@ -2457,6 +2457,13 @@
         <active>true</active>
         <description>Prospect Account</description>
         <label>Prospect</label>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Prospect</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
     </recordTypes>
     <sharingModel>ReadWrite</sharingModel>
 </CustomObject>
