@@ -2452,5 +2452,11 @@
             </values>
         </picklistValues>
     </recordTypes>
+    <recordTypes>
+        <fullName>Prospect</fullName>
+        <active>true</active>
+        <description>Prospect Account</description>
+        <label>Prospect</label>
+    </recordTypes>
     <sharingModel>ReadWrite</sharingModel>
 </CustomObject>
